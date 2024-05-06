@@ -13,27 +13,19 @@
 
 function lancerGeneration() {
 
-    let peuple
-    let prenom
+let peuple
+let prenom
             
+        // fonction de redondance pour être sûr que tout est vierge à la création d'un personnage (?)
         reinitialiserGenerateur();
-        prenom = genererPrenom();
 
-        console.log(`////////////////////////////////// ${prenom} ////////////////////////////////////////`)
+        prenom = genererPrenom();
+        console.log(`//////////\\\\\\\\\\\\\\\\\\\\////////// |||||  ${prenom}  ||||| \\\\\\\\\\\\\\\\\\\\//////////\\\\\\\\\\\\\\\\\\\\`)
         
         // -1 pour aléatoire (archétype, métiers, peuple)
-        peuple = genererPeupleEtCompetences(0);
+        peuple = genererCaracteristiques(0);
         ajouterArchetype(0);
-
         ajouterMetiers(10, -1, peuple);
-
-        // vérifier total caractéristiques
-        let x = 0
-        for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
-            x += valeursCaracteristiques[i]
-        }
-
-
         calculerMagie()
         calculerAtouts();
         calculerAttributsSecondaires();
@@ -41,25 +33,12 @@ function lancerGeneration() {
         afficherEquipement();
 
         if (verifierSiPJMage()) {
-
-        grimoireToursDeMagie = genererListeSortileges(toursDeMagie);
-        grimoireSortilege = genererListeSortileges(sortileges);
-
-        //afficherGrimoire()
-
+            grimoireToursDeMagie = genererListeSortileges(toursDeMagie);
+            grimoireSortilege = genererListeSortileges(sortileges);
+            //afficherGrimoire()
         } 
-        //verifierCaracteristiques(peuple)      
-        
-                // vérifier total caractéristiques
-                let y = 0 ;
-                for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
-                    y += valeursCaracteristiques[i]
-                }
-                let z = y+valeurMagie ;
-                let u = x - z
-                console.log("valeur initiale (430) = "+x+"  ; valeur après magie : "+y+" (valeur attendue : "+z+" / différence : "+u+")")
 
-
+        //verifierCaracteristiques()      
 }
 
 
@@ -90,24 +69,23 @@ function indice(x) {
 
 
 /** 
- * Cette fonction retourne un élément aléatoire parmi une liste OU
- * un chiffre aléatoire compris entre 0 et le chiffre en entrée (exclus)
+ * Cette fonction retourne un index aléatoire parmi un ARRAY ou un nombre aléatoire entre et 0 et l'input (exclus)
  * 
- * @param {number} liste : la liste parmi laquelle je veux chercher un élément aléatoire
+ * 
+ * @param {number} input : la liste parmi laquelle je veux chercher un élément aléatoire
  */ 
 
-function aleatoire(liste) {
+function aleatoire(input) {
 
     let i
-    
-if (Array.isArray(liste))
-    {    
-    i = Math.floor(Math.random() * liste.length)
+        
+    if (Array.isArray(input)) {    
+        i = Math.floor(Math.random() * input.length)
+        }
+    else if (!isNaN(input)) {
+        i = Math.floor(Math.random() * input)
     }
-else if (!isNaN(liste)) {
-    i = Math.floor(Math.random() * liste)
-}
-    return i
+        return i
 } 
 
 
@@ -128,23 +106,22 @@ console.log(6,"Mouvement : "              +(valeursCaracteristiques[6])+" "+modi
 console.log(7,"Perception : "             +(valeursCaracteristiques[7])+" "+modifCaracteristiques[7][0]+" "+modifCaracteristiques[7][1])
 console.log(8,"Sociabilité : "            +(valeursCaracteristiques[8])+" "+modifCaracteristiques[8][0]+" "+modifCaracteristiques[8][1])
 console.log(9,"Survie : "                 +(valeursCaracteristiques[9])+" "+modifCaracteristiques[9][0]+" "+modifCaracteristiques[9][1])
-console.log(10,"Tir : "                    +(valeursCaracteristiques[10])+" "+modifCaracteristiques[10][0]+" "+modifCaracteristiques[10][1])
-console.log(11,"Volonté : "                +(valeursCaracteristiques[11])+" "+modifCaracteristiques[11][0]+" "+modifCaracteristiques[11][1])
-console.log(12,"Magie : "                +(valeurMagie))
+console.log(10,"Tir : "                   +(valeursCaracteristiques[10])+" "+modifCaracteristiques[10][0]+" "+modifCaracteristiques[10][1])
+console.log(11,"Volonté : "               +(valeursCaracteristiques[11])+" "+modifCaracteristiques[11][0]+" "+modifCaracteristiques[11][1])
+console.log(12,"Magie : "                 +(valeurMagie))
 
 }
 
 /**
- * Générer les caractéristiques du personnage. 
- * Un personnage dispose de 120 points à répartir parmi ses
- * 12 caractéristiques (sans compter la magie)
+ * Générer les caractéristiques du personnage et tire au sort le peuple s'il n'est pas préselectionné 
+ * Un personnage dispose de 120 points à répartir parmi ses 12 caractéristiques (sans compter la magie)
  * 
  * @param {string}
  * @param {string} 
  *
  */
 
-function genererPeupleEtCompetences(peuple) {
+function genererCaracteristiques(peuple) {
 
 let sommeCaracteristiques = 0
 let pool = 120
@@ -179,7 +156,7 @@ if (peuple === -1) {
 
         // si la somme des caractéristiques n'est pas égale à 120, on lance une nouvelle création
         if (sommeCaracteristiques !== 120) {
-            genererPeupleEtCompetences(peuple)
+            genererCaracteristiques(peuple)
         } else {
             
             // donner l'origine du personnage
@@ -189,6 +166,7 @@ if (peuple === -1) {
 
             for (let i = 0; i < valeursCaracteristiques.length; i++) {
                 valeursCaracteristiques[i] += origine[peuple][i+1] ;
+                attributsSecondaires[8][1] += valeursCaracteristiques[i]
               }
         }
     return peuple
@@ -197,7 +175,7 @@ if (peuple === -1) {
 /** 
  * 
  * Cette fonction va calculer les notations des types suivants : "RU+*FOR*1","1d10+*CNS" ou "5d10"
- * Attention : cette fonction calcule les jets de dés que jusqu'à 9d10
+ * Attention : cette fonction ne calcule les jets de dés que jusqu'à 9d10
  * 
  * @param {string} str : la chaîne de caractère que l'on veut analyser
  *
@@ -290,43 +268,45 @@ let indexStart
 // relève où se trouve les "/" dans la chaîne de caractère
 // enregistre dans la variable position les différentes positions des "/"
 // si position[i] = -1 c'est à dire qu'il n'y pas de caractère "/" dans la chaîne de caractère
-while (position[i] !== -1) {
-i++
-position[i] = str.indexOf("/", indexStart+1)
-indexStart = position[i]
-}
 
-// la dernière inscription dans le tableau est vierge de toute information. On la supprime
-position.pop();
+    while (position[i] !== -1) {
+        i++
+        position[i] = str.indexOf("/", indexStart+1)
+        indexStart = position[i]
+    }
 
-// le nombre de proposition est +1 le nombre de "/". La fonction aléatoire ne retourne pas le plafond. donc on inscrit +2
-x = aleatoire(position.length+2)
+        // la dernière inscription dans le tableau est vierge de toute information. On la supprime
+        position.pop();
 
-switch (x) {
-    case 0:
-        // l'aléatoire retourné est la première proposition
-        return str.slice(0, position[0])
-    
-    case position.length+1:
-        // l'aléatoire retourné est la dernière proposition
-        return str.slice(position[x-2]+1)
+        // le nombre de proposition est +1 le nombre de "/". La fonction aléatoire ne retourne pas le plafond. donc on inscrit +2
+        x = aleatoire(position.length+2)
 
-    default:
-        // toute autre proposition [x-2] : retourne le "/" au début de la xème proposition, +1 enlève de "/" de la valeur retournée 
-        return str.slice((position[x-2]+1), position[x-1])
-}
+    switch (x) {
+        case 0:
+            // l'aléatoire retourné est la première proposition
+            return str.slice(0, position[0])
+        
+        case position.length+1:
+            // l'aléatoire retourné est la dernière proposition
+            return str.slice(position[x-2]+1)
+
+        default:
+            // toute autre proposition [x-2] : retourne le "/" au début de la xème proposition, +1 enlève de "/" de la valeur retournée 
+            return str.slice((position[x-2]+1), position[x-1])
+    }
 
 }
 
 /**
- * Cette fonction mélange un array
- * Fisher-Yates shuffle
+ * Cette fonction mélange un array avec la méthode Fisher-Yates shuffle
+ * 
  * 
  * @param {array} : l'array a mélanger
  *
  */
 
 function shuffle(array) {
+
     let currentIndex = array.length;
   
     // While there remain elements to shuffle...
@@ -344,19 +324,19 @@ function shuffle(array) {
 
 
 /**
- * Cette fonction tire au sort les modifs à apporter
- * liés à l'archétype et appelle une autre fonction
- * qui les ajoute aux caractéristiques
- * 
+ * Cette fonction s'occupe de tout ce qui est lié à l'archétype.
+ * Elle choisit les modifications à apporter aux caractéristiques lorsque nécessaire avec stringrandom()
+ * Elle indique les vices et vertus sélectionne depuis la liste en évitant les doublons
+ *  
  * @param {number} : l'index de l'archétype. Si aléatoire index vaut -1
  *  
  */
 
-  function ajouterArchetype(i) {
+function ajouterArchetype(i) {
 
-if (i === -1) {
-    i = aleatoire(archetype.length)
-}
+    if (i === -1) {
+        i = aleatoire(archetype.length)
+    }
 
 let v = []
 let y = []
@@ -365,7 +345,6 @@ console.log("Archétype : "+archetype[i][0])
 
     // applique les modificateurs de caractéristiques de l'archétype un par un
     for (let x = 0 ; x < archetype[i][1].length ; x++) {
-
         v[x] = stringrandom(archetype[i][1][x])
         incrementerCaracteristiques(v[x])
     }
@@ -393,26 +372,26 @@ console.log("Archétype : "+archetype[i][0])
 
 
 /**
- * Cette fonction reçoit en entrée une valeur du type "FOR+5".
+ * Cette fonction complète la fonction de création de sélection de l'archétype
+ * Elle reçoit en entrée une chaîne de caractère du type "FOR+5".
  * Elle décline la valeur entre trois variables "FOR", "+" et "5"
  * Elle s'occupe ensuite d'incrémenter la valeur concernée
  * 
- * @param {string} str : la chaîne de texte à traduire en instructions
+ * @param {string} str : la chaîne de caractère à traduire en instructions
  * 
  */
 
 function incrementerCaracteristiques(str) {
-    let competence
-    let operateur
-    let x   // valeur d'incrémentation/décrémentation
-    let z
 
-// récupérer l'opérateur
+let competence
+let operateur
+let x   // valeur d'incrémentation/décrémentation
+let z
 
+    // récupérer l'opérateur
     if (str.indexOf("+") !== -1) {
         operateur = "+"
         z = str.indexOf("+")
-        
     }
     else {
         operateur = "-"
@@ -427,20 +406,21 @@ x = str.slice(z+1)
 
 competence = str.slice(0, z)
 
-for (let i = 0 ; i < nomsCaracteristiques.length ; i++) {
-    if (competence === abrevCaracteristiques[i]) {
-        if (operateur === "+") {
-        //console.log(`la valeur de ${abrevCaracteristiques[i]} a été incrémenté de ${x}`)
-        valeursCaracteristiques[i] += Number(x)
-        modifCaracteristiques[i][0] = `(+${x})`
-        }
-        else {
-        //console.log(`la valeur de ${abrevCaracteristiques[i]} a été décrémenté de ${x}`)
-        valeursCaracteristiques[i] -= Number(x) 
-        modifCaracteristiques[i][0] = `(-${x})`
-        }
-    }}
-
+    for (let i = 0 ; i < nomsCaracteristiques.length ; i++) {
+        if (competence === abrevCaracteristiques[i]) {
+            if (operateur === "+") {
+                //console.log(`la valeur de ${abrevCaracteristiques[i]} a été incrémenté de ${x}`)
+                valeursCaracteristiques[i] += Number(x)
+                modifCaracteristiques[i][0] = `(+${x})`
+                attributsSecondaires[8][2] += Number(x)
+            }
+            else {
+                //console.log(`la valeur de ${abrevCaracteristiques[i]} a été décrémenté de ${x}`)
+                valeursCaracteristiques[i] -= Number(x) 
+                modifCaracteristiques[i][0] = `(-${x})`
+                attributsSecondaires[8][2] -= Number(x)
+            }
+        }}
 
 //console.log(competence, operateur, x)
 
@@ -455,13 +435,12 @@ for (let i = 0 ; i < nomsCaracteristiques.length ; i++) {
  * 
  * @param {number} x : la branche de métiers
  * @param {number} xx : le métier
- * @param {number} peuple : le peuple/origine du personange
+ * @param {number} peuple : le peuple/origine du personnange (aléatoire si vaut -1)
  * 
  */
 
 function ajouterMetiers(x, xx, peuple) {
     
-
     // si tout est aléatoire
     if (x === -1 && xx === -1) {
 
@@ -506,20 +485,18 @@ function afficherEquipement() {
 
 let i
 
-for (i = 1 ; i < carrieres[attributsSecondaires[5][1]].length ; i++) {
+    for (i = 1 ; i < carrieres[attributsSecondaires[5][1]].length ; i++) {
 
-    //générer l'équipement de la branche de métiers
-    console.log(faireCalcul(stringrandom(carrieres[attributsSecondaires[5][1]][i])))
+        //générer l'équipement de la branche de métiers
+        console.log(faireCalcul(stringrandom(carrieres[attributsSecondaires[5][1]][i])))
+    }
 
-}
 
+    for (i = 21 ; i < metiers[attributsSecondaires[6][1]].length ; i++) {
 
-for (i = 21 ; i < metiers[attributsSecondaires[6][1]].length ; i++) {
-
-    //générer l'équipement additionnel du métier
-    console.log(faireCalcul(stringrandom(metiers[attributsSecondaires[6][1]][i])))
-
-}
+        //générer l'équipement additionnel du métier
+        console.log(faireCalcul(stringrandom(metiers[attributsSecondaires[6][1]][i])))
+    }
 }
 
 
@@ -565,6 +542,13 @@ function calculerAttributsSecondaires() {
     // nombre d'atouts
     console.log(attributsSecondaires[7][0],attributsSecondaires[7][1])
 
+    // total : [initiale + archétype] - [magie - mod combat] = total final
+    for (let i = 0 ; i < valeursCaracteristiques.length ; i++) {
+        attributsSecondaires[8][3] += valeursCaracteristiques[i]
+    }
+    attributsSecondaires[8][5] = (attributsSecondaires[8][1] + attributsSecondaires[8][2]) - (valeurMagie - attributsSecondaires[8][4]) ;
+    console.log(`${attributsSecondaires[8][0]}[${attributsSecondaires[8][1]} (initial) + ${attributsSecondaires[8][2]} (archetype)] - [${valeurMagie} - ${attributsSecondaires[8][4]}] = ${attributsSecondaires[8][3]} (${attributsSecondaires[8][5]})`)
+
 }
 
 
@@ -589,16 +573,13 @@ function calculerAtouts() {
             x[i] = metiers[attributsSecondaires[6][1]][i+1]
         }
 
-        
         // enlever l'entrée vide du tableau puis le mélanger
         atouts[0]=stringrandom(metiers[attributsSecondaires[6][1]][1])
         console.log(atouts[0])
         x.splice(0,1)
         shuffle(x)
+
         // tirer les atouts suivants en vérifiant qu'aucun atout n'est un doublon du premier atout (domaine magique)
-
-        
-
         for (i = 1 ; i < attributsSecondaires[7][1] ; i++) {
 
             atouts[i] = stringrandom(x[i])
@@ -609,7 +590,8 @@ function calculerAtouts() {
             console.log(atouts[i])
         } 
 
-    } else {
+    } 
+    else {
 
         // SI LE PJ N'EST PAS UN MAGE !
         // remplit un tableau avec les 20 atouts possibles        
@@ -681,8 +663,7 @@ function attribuerScoreMagie() {
         }
 
         // mage catégorie 2
-        for (i = 0 ; i < magicienMono.length ; i++)
-            {
+        for (i = 0 ; i < magicienMono.length ; i++) {
                 if (attributsSecondaires[6][1] === magicienMono[i]) {
                     pjEstUnMage = 2
                     valeurMagie = magCat2[1]
@@ -690,15 +671,12 @@ function attribuerScoreMagie() {
             }
     
         // mage catégorie 3
-        for (i = 0 ; i < magicienDuo.length ; i++)
-            {
+        for (i = 0 ; i < magicienDuo.length ; i++) {
                 if (attributsSecondaires[6][1] === magicienDuo[i]) {
                     pjEstUnMage = 3
                     valeurMagie = magCat3[2]
                 }
             }
-  
-
     return pjEstUnMage
 }
 
@@ -712,10 +690,8 @@ function attribuerScoreMagie() {
 
 function calculerMagie() {
 
-
 // initiatilisation des catégories de mages
     
-
 let x = 0
 let profilApprentissageMagie = [0,0,0,0,0,0,0,0,0,0,0,0]
 let i = 0
@@ -723,91 +699,66 @@ let ajusterCombat = 0
 let y = 0
 let poolDeMagie = 0
 
-
 attribuerScoreMagie()
 poolDeMagie = valeurMagie
 // console.log ("valeur de magie : " + valeurMagie)
 
     // on ne peut prélever plus de 10% dans une caractéristique
         for (i = 0 ; i < profilApprentissageMagie.length ; i++) {
-                console.log(profilApprentissageMagie)
-                if (poolDeMagie >= 10) {
-                    x = (aleatoire(2)+1)*5
-                    profilApprentissageMagie[i] += x
-                    poolDeMagie -= x
-                    console.log(poolDeMagie)
-                    console.log("///")
-                }
-                else if (poolDeMagie === 5) {
-                    x = 5
-                    profilApprentissageMagie[i] += x
-                    poolDeMagie = 0
-                    console.log(poolDeMagie)
-                    console.log("///")
-                }   
-                
+            if (poolDeMagie >= 10) {
+                x = (aleatoire(2)+1)*5
+                profilApprentissageMagie[i] += x
+                poolDeMagie -= x
+                //console.log("/////////"+poolDeMagie)
+            }
+            else if (poolDeMagie === 5) {
+                x = 5
+                profilApprentissageMagie[i] += x
+                poolDeMagie = 0
+                //console.log("/////////"+poolDeMagie)
+            }          
         }
     
-
-    let xxx = 0
-    for (i = 0 ; i < profilApprentissageMagie.length ; i++) {  
-    xxx += profilApprentissageMagie[i]
-    }
-
-    console.log(xxx, valeurMagie)
-    console.log(profilApprentissageMagie)
-    
-
     shuffle(profilApprentissageMagie)
-
-
     ajusterCombat = profilApprentissageMagie[0]
+    attributsSecondaires[8][4] = ajusterCombat
 
     while (ajusterCombat > 0) {
 
-                // chaque point prélevé en combat compte double
-                // si les points prélevés en combat sont supérieurs à 0 ET que la valeur de combat est inférieure à la valeur de magie
-                if (profilApprentissageMagie[0] > 0 && valeurMagie > profilApprentissageMagie[0]) {
+        // chaque point prélevé en combat compte double
+        // si les points prélevés en combat sont supérieurs à 0 ET que la valeur de combat est inférieure à la valeur de magie
+        if (profilApprentissageMagie[0] > 0 && valeurMagie > profilApprentissageMagie[0]) {
 
-                        y = aleatoire(11)+1
-                        console.log("MAGIE/COMBAT init... tentative sur... "+y+" : "+abrevCaracteristiques[y]+" ---> vaut "+profilApprentissageMagie[y])
-                                            
-                            if (profilApprentissageMagie[y] >= 5) {
-                                console.log("correcteur -5 à la stat "+profilApprentissageMagie[y]+" "+abrevCaracteristiques[y])
-                                profilApprentissageMagie[y] -= 5
-                                ajusterCombat -= 5
-                            } 
-                }
-                else if (profilApprentissageMagie[0] > 0 && valeurMagie === profilApprentissageMagie[0]) {
-                        valeurMagie += profilApprentissageMagie[0]
-                        ajusterCombat = 0
-                }
+                    y = aleatoire(11)+1
+                    // DEBUG : console.log("MAGIE/COMBAT init... tentative sur... "+y+" : "+abrevCaracteristiques[y]+" ---> vaut "+profilApprentissageMagie[y])
+                                
+                if (profilApprentissageMagie[y] >= 5) {
+                    // DEBUG : console.log("correcteur -5 à la stat "+profilApprentissageMagie[y]+" "+abrevCaracteristiques[y])
+                    profilApprentissageMagie[y] -= 5
+                    ajusterCombat -= 5
+                } 
+        }
+        else if (profilApprentissageMagie[0] > 0 && valeurMagie === profilApprentissageMagie[0]) {
+                valeurMagie += profilApprentissageMagie[0]
+                ajusterCombat = 0
+        }
     }
 
-   //système pour vérifier que ça marche
-   let xx = 0
-for (i = 0 ; i < profilApprentissageMagie.length ; i++)
-    {
-        xx += profilApprentissageMagie[i]
-    }
-   console.log(xx+" + "+profilApprentissageMagie[0]+" = "+valeurMagie)
-
+    // verifierMagieEtCombat()
     
-
     // applique le profil d'apprentissage de la magie aux caractéristiques
     for (i = 0 ; i < profilApprentissageMagie.length ; i++) {
-
         if (profilApprentissageMagie[i] !== 0) {
-            console.log(`"correction de ${profilApprentissageMagie[i]} à la stat ${abrevCaracteristiques[i]}`)
+            // DEBUG : console.log(`"correction de ${profilApprentissageMagie[i]} à la stat ${abrevCaracteristiques[i]}`)
             valeursCaracteristiques[i] -= profilApprentissageMagie[i]
             modifCaracteristiques[i][1] = `[-${profilApprentissageMagie[i]}]`
         }
         else {
             modifCaracteristiques[i][1] = ""
         }
-
     }
 }
+
 
 
 /**
@@ -817,19 +768,19 @@ for (i = 0 ; i < profilApprentissageMagie.length ; i++)
 
 function reinitialiserGenerateur() {
 
-let i
+let i = 0
 
     for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
         valeursCaracteristiques[i] =0
     }
 
+    // a priori cette partie est rendondante et pourrait être retirée sans altération
     for (i = 0 ; i < modifCaracteristiques.length ; i++) {
         modifCaracteristiques[i][0] = ""
         modifCaracteristiques[i][1] = ""
     }
     
     valeurMagie = 0
-
 
     for (i = 0 ; i < grimoireSortilege.length ; i++) {
         grimoireSortilege[i] = ""
@@ -839,8 +790,134 @@ let i
         grimoireToursDeMagie[i] = ""
     }
     
+    attributsSecondaires = [
+        ["Initiative : "],
+        ["Vitalité : "],
+        ["Seuil de blessure : "],
+        ["Sang-Froid : "],
+        ["Instabilité : "],
+        ["Branche : "],
+        ["Metiers : "],
+        ["Atouts : "],
+        ["Total caractéristiques (sans magie) : ",0,0,0,0,0]
+    ]
 
 }
+
+/**
+ * Générer un prénom aléatoire
+ * 
+ */
+
+function genererPrenom() {
+    let x = aleatoire(prenomsMedievaux.length)
+    return prenomsMedievaux[x]
+}
+
+
+/**
+ * Générer les sortilèges/tours de magie
+ * 
+ * @param {string} : peut-être branché sur toursDeMagie ou sortileges
+ * @param {string} : le grimoire à remplir
+ * 
+ */
+
+function genererListeSortileges(mode) {
+
+    console.log("// Sortilèges //")
+    
+let domaine1
+let domaine2
+let i = 0
+let ii = 0
+let x = 0
+let grimoire = []
+
+    if (atouts[0] != undefined) {
+                domaine1 = atouts[0].indexOf('Domaine magique (')
+            if (domaine1 !== -1) {
+                // DEBUG : console.log(atouts[0])
+                domaine1 = atouts[0].slice(16) 
+            }
+        }
+
+    // cette partie doit chercher dans tous les atouts du personnages !!! (ce n'est pas encore le cas)
+    if (atouts[1] != undefined) {
+        for (i = 1 ; i < attributsSecondaires[7][1] ; i++) {
+                domaine2 = atouts[i].indexOf('Domaine magique (')
+            if (domaine2 !== -1) {
+                // DEBUG : console.log(atouts[i])
+                domaine2 = atouts[i].slice(16)
+            }
+        }
+    }
+
+    // pour chaque tour de magie on vérifie s'il appartient au.x domaine.s magique.s du PJ
+    for (i = 0 ; i < mode.length ; i++) {
+        for (ii = 0 ; ii < mode[i][1].length ; ii++) {
+            if (mode[i][1][ii] === domaine1 || mode[i][1][ii] === domaine2) {
+                grimoire[x] = mode[i][0][0]
+                // DEBUG : console.log(grimoire[x])
+                x++
+            }
+        }
+    }
+
+    grimoire = removeDuplicates(grimoire)
+    console.log(grimoire)
+
+    return grimoire
+}
+
+
+/**
+ * Retirer les doublons d'un array
+ * 
+ * @param {array} 
+ * 
+ */
+
+
+function removeDuplicates(array) {
+    return array.filter(function(item, pos, self) {
+        return self.indexOf(item) === pos;
+    });
+}
+
+
+
+
+
+
+
+
+
+/* ////////////////////////////////////////////////// LES FONCTIONS DE DEBOGAGES //////////////////////////////////////////////////////////// */
+
+
+
+/**
+ * Cette fonction permet de vérifier si les scores de caractéristiques + magie produisent un résultat cohérent
+ * Il conseillé de l'utiliser avec les réglages peuple(0) et archétype (0) pour plus de clarté
+ * 
+ */
+
+function verifierCaracteristiques() {
+
+    let y = 0 ;
+    for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
+        y += valeursCaracteristiques[i]
+    }
+    let z = y+valeurMagie ;
+    let u = x - z
+    
+    // DEBUG
+    console.log("valeur initiale (humain : 430) = "+x+"  ; valeur après magie : "+y+" (valeur attendue : "+z+" / différence : "+u+")")
+
+}
+
+
 
 
 /**
@@ -862,143 +939,19 @@ function afficherGrimoire() {
 }
 
 
-    
-
-
 
 /**
- * Générer un prénom aléatoire
- * 
+ * Cette fonction effectue la somme de toutes les altérations aux caractéritiques liés à l'apprentissage de la 
+ * magie. On y ajoute la modification de la caractéristique de combat car elle compte double. 
+ * Si le calcul ne tombe pas juste, il y a un problème...
  */
 
-function genererPrenom() {
-    let x = aleatoire(prenomsMedievaux.length)
-    return prenomsMedievaux[x]
-}
-
-
-/**
- * Fonction bêta
- * Lance une vérification des résultats pour vérifier qu'il n'y a pas d'erreur,
- * déclenche une alerte s'il y a une erreur
- * 
- */
-
-function verifierCaracteristiques(peuple) {
-
-let sommePeuple = 0
-let sommeFinale = 0
-let somme = 0
-let alert = false
-
-for (let i = 0 ; i < valeursCaracteristiques.length ; i++) {
-somme += valeursCaracteristiques[i]
-    if (valeursCaracteristiques[i] > 50) {
-        alert = true
+function verifierMagieEtCombat() {
+        let x = 0
+    for (i = 0 ; i < profilApprentissageMagie.length ; i++) {
+        x+= profilApprentissageMagie[i]
     }
+        // DEBUG
+        console.log(x+" + "+profilApprentissageMagie[0]+" = "+valeurMagie)
 }
 
-for (let i = 1 ; i < origine[peuple].length ; i++) {
-sommePeuple += origine[peuple][i]
-}
-
-
-sommeFinale = somme-sommePeuple
-
-console.log("somme initiale des caractéristiques :",sommeFinale,"(+"+sommePeuple+")")
-
-if (alert) {
-    console.log("////////////////////////////////////////// ALERT ///////////////////////////////////////////////")
-    console.log("////////////////////////////////////////// ALERT ///////////////////////////////////////////////")
-    console.log("////////////////////////////////////////// ALERT ///////////////////////////////////////////////")
-}
-
-}
-
-
-
-/**
- * Générer les sortilèges/tours de magie
- * 
- * @param {string} : peut-être branché sur toursDeMagie ou sortileges
- * @param {string} : le grimoire à remplir
- * 
- */
-
-function genererListeSortileges(mode) {
-
-    console.log("// Sortilèges //")
-    
-
-let domaine1
-let domaine2
-let i = 0
-let ii = 0
-let x = 0
-let grimoire = []
-
-    if (atouts[0] != undefined) {
-
-        domaine1 = atouts[0].indexOf('Domaine magique (')
-
-            if (domaine1 !== -1) {
-                console.log(atouts[0])
-
-                domaine1 = atouts[0].slice(16)
-                
-            }
-        }
-
-    // cette partie doit chercher dans tous les atouts du personnages !!! (ce n'est pas encore le cas)
-    if (atouts[1] != undefined) {
-
-        for (i = 1 ; i < attributsSecondaires[7][1] ; i++) {
-
-            domaine2 = atouts[i].indexOf('Domaine magique (')
-
-            if (domaine2 !== -1) {
-                console.log(atouts[i])
-                console.log("////////////////////////////////////////////////// VICTORY /////////////////////////////////////////////////////////")
-                domaine2 = atouts[i].slice(16)
-            }
-        }
-       
-    }
-
-    // pour chaque tour de magie on vérifie s'il appartient au.x domaine.s magique.s du PJ
-    for (i = 0 ; i < mode.length ; i++) {
-
-            for (ii = 0 ; ii < mode[i][1].length ; ii++) {
-
-                    if (mode[i][1][ii] === domaine1 || mode[i][1][ii] === domaine2)
-                        {
-                            grimoire[x] = mode[i][0][0]
-                            //console.log(grimoire[x])
-                            x++
-                        }
-
-
-            }
-        }
-
-    grimoire = removeDuplicates(grimoire)
-    
-    console.log(grimoire)
-
-    return grimoire
-}
-
-
-/**
- * Retirer les doublons d'un array
- * 
- * @param {array} 
- * 
- */
-
-
-function removeDuplicates(array) {
-    return array.filter(function(item, pos, self) {
-        return self.indexOf(item) === pos;
-    });
-}

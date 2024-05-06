@@ -41,7 +41,8 @@ let attributsSecondaires = [
     ["Instabilité : "],
     ["Branche : "],
     ["Metiers : "],
-    ["Atouts : "]
+    ["Atouts : "],
+    ["Total caractéristiques (sans magie) : ",0,0,0,0,0]
 ]
 
 
