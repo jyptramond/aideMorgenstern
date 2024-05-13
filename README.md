@@ -1,0 +1,1 @@
+Le site Brigandyne Character Generator permet de créer un personnage de jeu de rôle aléatoirement selon certains paramètres en utlisant toutes les règles proposées dans l'ouvrage Brigandyne 2nde édition.
