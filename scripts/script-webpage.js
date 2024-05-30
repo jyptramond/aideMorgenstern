@@ -482,12 +482,10 @@ if (attributsSecondaires[3][3] !== 0) {
 
 function replaceIco(str) {
 
-    let position = str.indexOf("☠")
-    console.log("ok")
+    let position = str.indexOf("☠");
 
     if (position !== -1) {
         str = str.replace("☠",`<i class="fa-solid fa-skull"></i>`);
-        console.log("replaced")
     }
     return str
 } 
