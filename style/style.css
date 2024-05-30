@@ -34,10 +34,7 @@ body {
 }
 
 #fullWindow {
-    background-image: url("https://img.freepik.com/free-photo/wooden-floor-background_53876-88628.jpg?w=1380&t=st=1715105222~exp=1715105822~hmac=7a8555b6933f69743a9d8b9087894a92c594fc77ecb0748c21f0781c3225f4f5");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: white;
 
     border: solid black 2px;
     
@@ -466,14 +463,6 @@ background-color: var(--color-5);
 /**
  * setup grid config
  */
-
-
-#fullWindow {
-    background-image: url("https://img.freepik.com/photos-gratuite/vieux-papier-fond-texture-grunge_1048-4464.jpg?t=st=1715387065~exp=1715390665~hmac=76767931182d39f25efdc695cd1abfe7b72b136555bdff70a6c3422346f093a4&w=740");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 
  #buttons {
