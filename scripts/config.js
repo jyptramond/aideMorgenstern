@@ -1174,8 +1174,20 @@ const sortileges = [
 const prenoms = [
 
     //////////
-    // Français
-        [["Aubin",
+    // Français / Falcogne
+        [["Albertin", "Albin", "Alphonse", "Andri", "Anton",
+        "Arnould", "Arthuryn", "Audouin", "Auffroy", "Augé",
+        "Auguste", "Balthazar", "Barthélémy", "Bellus", "Béranger",
+        "Célestin", "Côme", "Crespin", "Domin", "Edman", "Emery",
+        "Estienne", "Evrardus", "Florimond", "Gamelet", "Gaspard",
+        "Gervesot", "Gobin", "Gracien", "Guerinet", "Guillot", "Gustave",
+        "Hebertus", "Hector", "Heliot", "Hemeritus", "Horace",
+        "Hubert", "Huchon", "Innocent", "Isembart", "Isidore", "Jacobus",
+        "Jacotin", "Jacques", "Lambert", "Landricus", "Léon",
+        "Léopold", "Ligier", "Louys", "Loyset", "Luquin", "Lyebault",
+        "Octave", "Odo", "Ogier", "Poncelet", "Radulfus", "Raymondin",
+        "Rogerin", "Rolin", "Romuald", "Scipion", "Senestre", "Simonet",
+        "Tassin", "Thevot", "Valère", "Valérian", "Zéphirin", "Aubin",
         "Toussaint",
         "Guillaume",
         "Matthieu",
@@ -1230,7 +1242,15 @@ const prenoms = [
         "Zacharie"],
 
 
-        ["Aélis",
+        ["Abéline", "Adélina", "Anastasie", "Bélinda",
+        "Bérénisse", "Berthilde", "Blanche", "Blandine", "Blondine",
+        "Constance", "Corantine", "Cybelle", "Dahlia", "Dulcina",
+        "Emeline", "Emerise", "Ernestine", "Eugénie", "Florette",
+        "Georgelle", "Gloria", "Hermine", "Irma", "Isolde", "Jéméline",
+        "Joalie", "Laureline", "Leonor", "Linette", "Loïse", "Lorette",
+        "Lorine", "Ludmilla", "Madeleine", "Marguerite", "Mélusine",
+        "Nellie", "Perrine", "Prudence", "Rosalie", "Rose", "Rosie", "Sélène",
+        "Valériane", "Violette", "Yacinthe", "Yvoline", "Zéphirine", "Aélis",
         "Hiledegarde",
         "Brumehilde",
         "Brigitte",
@@ -1282,8 +1302,14 @@ const prenoms = [
         "Yseult"]],
 
     ////////////////
-    // 1 hispaniques
-        [["Alfonso",
+    // 1 hispaniques / Doragne
+        [["Ambrosio", "Anselmo", "Anton", "Antonio",
+        "Arias", "Beltrane", "Bernaldino", "Blasco", "Carlos", "Cornieles",
+        "Cosme", "Diego", "Felipe", "Ferrer", "Fulgencio", "Garaçia",
+        "Guillen", "Gutirre", "Henrrique", "Hernando",
+        "Jayme", "Juanes", "Larnaz", "Lope", "Lucon", "Luys", "Mendo",
+        "Pablo", "Ramon", "Salazar", "Savastian", "Suero", "Tristàn",
+        "Vernaldo", "Ximon", "Ynigo", "Alfonso",
         "José",
         "Estéban",
         "Bernardo",
@@ -1337,7 +1363,13 @@ const prenoms = [
         "Zorro"],
 
 
-        ["Adelaida",
+        ["Alatara", "Aldonsa", "Aldorisa", "Ana", "Andrea",
+        "Argeda", "Aularia", "Barbera", "Barbola", "Beatriz",
+        "Brigida", "Catalyna", "Caterina", "Costança", "Eguala", "Florinda",
+        "Gracia", "Guiomar", "Ines", "Joana", "Juliana", "Leonor",
+        "Lopisa", "Loreta", "Luysa", "Mancia", "Mariana", "Marina",
+        "Orastriosa", "Quiteria", "Sancha", "Teresa", "Viana", "Vicenta",
+        "Ypola", "Ysabel", "Adelaida",
         "Beatriz",
         "Carolina",
         "Dolores",
@@ -1492,8 +1524,17 @@ const prenoms = [
         "Zelda"]],
     
     /////////
-    // italien
-        [["Benvenuto",
+    // italien / Sélénie / Sainte-Papauté
+        [["Agnolino", "Albizzo", "Ambrogio", "Amerigo",
+        "Amilcare", "Armando", "Arturo", "Bartolomeo",
+        "Bernardo", "Bertino", "Bonaguida", "Cambino", "Camillo",
+        "Chimenti", "Cione", "Corrado", "Corso", "Domenico",
+        "Edmondo", "Ennio", "Ernesto", "Eugenio", "Ferdinando",
+        "Geri", "Iacopo", "Ippolito", "Gino", "Gioacchino", "Gregorio",
+        "Guglielmo", "Ignazio", "Lapo", "Leandro", "Leonardo", "Leonello",
+        "Lorenzo", "Manno", "Mario", "Marsilio", "Ottavio",
+        "Romeo", "Salvestro", "Saverio", "Sinibaldo", "Strozza",
+        "Teodoro", "Vittorio", "Benvenuto",
         "Adalberto",
         "Lucas",
         "Mario",
@@ -1561,7 +1602,14 @@ const prenoms = [
         "Zioa"],
 
 
-        ["Adelaide",
+        ["Adrianna", "Agnella", "Agnese", "Alessandra",
+        "Bartola", "Beatrice", "Bella", "Bianca", "Cassandra", "Caterina",
+        "Ciosa", "Cosima", "Druda", "Elena", "Faustia", "Fiametta",
+        "Florenza", "Foscarinna", "Gaspara", "Gemma", "Ginevra",
+        "Ipolitta", "Isabella", "Isadora", "Isotta", "Lucrezia", "Maddalena",
+        "Mela", "Moresina", "Nencia", "Nezetta", "Paola", "Pellegrina",
+        "Olimpia", "Renata", "Stella", "Tessa", "Tita", "Tullia",
+        "Violante", "Vittoria", "Adelaide",
         "Maria",
         "Beatrice",
         "Caterina",
@@ -1620,8 +1668,18 @@ const prenoms = [
         "Zoia"]],
 
     ///////////////
-    // 4 Scandinaves
-        [["Frederich",
+    // 4 Scandinaves / Borennie
+        [["Adalgis", "Adalrik", "Ademar", "Aimeric",
+        "Aimersende", "Alarik", "Albérik", "Alrik", "Amaury", "Anfray",
+        "Archibald", "Arduin", "Arnald", "Arnoul", "Arnvald", "Asselin",
+        "Aubert", "Aubourg", "Aymar", "Baudry", "Beowulf", "Berthold",
+        "Conrad", "Didrik", "Evrard", "Ewald", "Frobert",
+        "Fulrad", "Godrik", "Gunther", "Hamelin", "Harald", "Harold",
+        "Heinrich", "Hildéric", "Hubert", "Humbert", "Hunéric", "Jurgen",
+        "Knut", "Karl", "Ludwig", "Manfred", "Oswald", "Othon",
+        "Philbert", "Ragnar", "Richer", "Rolf", "Sarus", "Siegfried",
+        "Tancred", "Toriak", "Wandrille", "Werner", "Wilfried", "Wisimar",
+        "Wolfgang", "Wolfram", "Willhelm", "Wulf", "Wulfran", "Wulfar", "Frederich",
         "Alaric",
         "Björn",
         "Cedric",
@@ -1673,7 +1731,15 @@ const prenoms = [
         "Yannick",
         "Zacharias"],
 
-        ["Astrid",
+        ["Adélaïde", "Adèle", "Aldegonde", "Alix", "Aloïs",
+        "Astrid", "Aubrée", "Auda", "Bathilde", "Berthe", "Berthild",
+        "Brünhild", "Brunimonde", "Brunissende", "Dagmar", "Elvir",
+        "Elfried", "Ermelinde", "Ermengarde", "Germonda",
+        "Gersende", "Gertrud", "Gudrun", "Gunda", "Helesinde", "Hildebrand",
+        "Hildebold", "Hildegarde", "Imgarde", "Ingelbald",
+        "Ingrid", "Isembard", "Isolde", "Kunigonda", "Lydwine",
+        "Mauger", "Sigrid", "Siegrun", "Sighild", "Walburga", "Waltraud",
+        "Wivine", "Astrid",
         "Birgit",
         "Cecilia",
         "Dagny",
@@ -1725,20 +1791,25 @@ const prenoms = [
 
  
     //////////
-    // 6 Grecs
-        [["Vassili",
+    // 6 Grecs / Antiques
+        [["Abelann", "Alden", "Auris", "Balian", "Balion",
+        "Bardik", "Beleris", "Boren", "Bran", "Braxus", "Brianon", "Cael",
+        "Calios", "Coréus", "Darian", "Dario", "Delvas", "Dinas", "Djern",
+        "Errain", "Filvan", "Galid", "Galien", "Hazellias", "Holrik", "Issel",
+        "Jalko", "Jir", "Joran", "Kandjar", "Laurin", "Lizyo", "Lorn", "Lothar",
+        "Mandias", "Obel", "Occlinn", "Orlainn", "Pereym", "Rodrick",
+        "Rovhal", "Sagreval", "Silas", "Thelinos", "Thorgern",
+        "Valedan", "Valkyr", "Varko", "Vornan", "Yvin", "Vassili",
         "Achille",
         "Basil",
         "Charalampos",
         "Dimitrios",
         "Evangelos",
         "Fotios",
-        "George",
         "Heracles",
         "Ioannis",
         "Konstantinos",
         "Leonidas",
-        "Michael",
         "Nikolaos",
         "Orestes",
         "Panagiotis",
@@ -1787,7 +1858,14 @@ const prenoms = [
         "Zacharias"],
 
 
-        ["Alexandra",
+        ["Adaïre", "Aïlis", "Améline", "Anwen", "Aryline",
+        "Ashaël", "Azilia", "Bélora", "Beonysse", "Cadilia", "Calise",
+        "Caythlinn", "Cécinia", "Damaé", "Deïna", "Délianne", "Dorianne",
+        "Drivelys", "Dryla", "Ellin", "Eoline", "Esterel", "Evanna",
+        "Hazel", "Iris", "Isleen", "Jaïda", "Jémina", "Jyna", "Kaeli",
+        "Kailyn", "Karilda", "Kerylin", "Laïna", "Leocina", "Liwen", "Lona",
+        "Lynaïs", "Lynelle", "Meliana", "Nalys", "Nolyn", "Shanael",
+        "Shauna", "Shynnae", "Thalia", "Tianna", "Tya", "Vama", "Zyna", "Alexandra",
         "Berenice",
         "Callista",
         "Dimitra",
@@ -1944,7 +2022,7 @@ const prenoms = [
         "Zephyra"]],
 
     //////////////
-    // 7 Orientaux
+    // 7 Orientaux / Orientalie
         [["Abdul",
         "Bahir",
         "Cemal",
@@ -2033,8 +2111,15 @@ const prenoms = [
 
 
     /////////
-    // Slaves
-        [["Piotyr",
+    // Slaves / Empire
+        [["Aleksandr", "Aleksei", "Anatoli", "Andrei",
+        "Borislav", "Borya", "Daniil", "Demyan", "Dima", "Dimitri",
+        "Faddey", "Feodor", "Foka", "Gavriil", "Grigory", "Grisha", "Igor",
+        "Ilari", "Iosif", "Irinei", "Ivan", "Kirill", "Kolya", "Konstantin",
+        "Kuzma", "Lazar", "Leonid", "Lyov", "Makar", "Matvey", "Melor",
+        "Mikhail", "Miroslav", "Mitya", "Naum", "Nikita", "Nikolai",
+        "Oleg", "Piotr", "Rhodya", "Rurik", "Sergei", "Vadim", "Vassily",
+        "Varlam", "Yuri", "Viktor", "Vladislav", "Vladimir", "Zhakar", "Piotyr",
         "Alexei",
         "Boris",
         "Constantin",
@@ -2132,11 +2217,17 @@ const prenoms = [
         "Simeon",
         "Tomasz",
         "Vasily",
-        "Yuri",
-        "Zlatan"],
+        "Yuri"],
 
 
-        ["Anastasia",
+        ["Agata", "Aleksandrina", "Alisa", "Anastasiya",
+        "Angelina", "Ania", "Dunya", "Elena", "Esfir", "Eva", "Faina", "Fedora",
+        "Galya", "Gavriila", "Inna", "Irina", "Ivanna", "Katerina",
+        "Katinka", "Kira", "Klava", "Lana", "Kseniya", "Larisa", "Lidiya",
+        "Masha", "Natalya", "Natasha", "Nina", "Oksana", "Polina",
+        "Raya", "Sofya", "Sonya", "Sveta", "Talya", "Tamara", "Tanya",
+        "Tasha", "Tatyana", "Uliana", "Ustinya", "Valentina", "Valeriya",
+        "Varya", "Vera", "Yelena", "Zanna", "Zoya", "Anastasia",
         "Darya",
         "Ekaterina",
         "Feodora",
@@ -2236,7 +2327,17 @@ const prenoms = [
     /////////////////
     // 8 Gobelinoïdes
 
-        [["Yoel",
+        [["Arvak", "Azabrog", "Bashag", "Boghak",
+        "Corgak", "Dagzog", "Dorgash", "Drommok", "Durzhum",
+        "Durzol", "Ermug", "Fandhag", "Fargad", "Gorkad", "Graghed",
+        "Grakhlag", "Kalog", "Kirzol", "Kogzol", "Kouzog", "Kurz",
+        "Magduk", "Marhzug", "Markub", "Morghed", "Mourkhad",
+        "Nargad", "Ooldahg", "Oorkhub", "Oorzol", "Parurk", "Rigahk",
+        "Roshrag", "Shagrol", "Sharkub", "Sharurk", "Shaznog",
+        "Shorgad", "Urzol", "Valduk", "Vardol", "Varzhum", "Vazog",
+        "Vorghak", "Vorkag", "Vrarag", "Zalkhed", "Zamog", "Zuhgan",
+        "Zulkad", 
+        "Yoel",
         "Huck",
         "Dashrän",
         "Grok",
@@ -2291,7 +2392,16 @@ const prenoms = [
         "Gorl",
         "Grimnok"],
 
-        ["Grona",
+        ["Arvakia", "Azabrogi", "Bashagia", "Boghakia",
+        "Corga", "Dagzogi", "Dorgashia", "Drommoka", "Durza",
+        "Durzhumi", "Ermuga", "Fandha", "Fargadi", "Gorka", "Graghedi",
+        "Grakhlaga", "Kaloga", "Kirzol", "Kogzola", "Kouzogi",
+        "Kurza", "Magdukia", "Marhzuga", "Markub", "Morghedia",
+        "Mourkhedia", "Narga", "Ooldahgi", "Oorkhub", "Oorzola",
+        "Parurka", "Rigahkia", "Roshragi", "Shagrolia", "Sharkub",
+        "Sharurkia", "Shaznogi", "Shorga", "Urzola", "Valduki", "Vardoli",
+        "Varzhuma", "Vazogi", "Vorgha", "Vorkagi", "Vrara",
+        "Zalkhedia", "Zamogia", "Zuhga", "Zulka", "Grona",
         "Mogga",
         "Thraga",
         "Zogga",
@@ -2345,7 +2455,17 @@ const prenoms = [
 
 
     // Elfiques
-        [["Aranion",
+        [["Aleris", "Almidor", "Alrénis", "Anandil", "Aolis",
+        "Arthenir", "Avendiel", "Calemdor", "Caméris", "Cerimond",
+        "Corymnor", "Daloril", "Dorenim", "Eldorin", "Elrindel",
+        "Erghel", "Ethalin", "Faethyn", "Fanélyn", "Filindel", "Hovelin",
+        "Iril", "Jadriel", "Jovandor", "Kheldril", "Kyllin", "Kyriondil",
+        "Laeris", "Ladriel", "Linaën", "Lörienar", "Lysandir", "Lyvandor",
+        "Mélandor", "Méloril", "Météril", "Nethelvin", "Nevelluin",
+        "Ryvellin", "Selandir", "Talmaris", "Tanaelin", "Tanelyr",
+        "Terianis", "Thaniel", "Thauvael", "Valakel", "Vaneriel",
+        "Vaneril", "Vareldin",
+        "Aranion",
         "Baelon",
         "Caladon",
         "Draelen",
@@ -2399,7 +2519,16 @@ const prenoms = [
         "Zaerion"],
 
 
-        ["Aelwyn",
+        ["Almiria", "Amaldoria", "Amiala", "Amrilina",
+        "Aryë", "Beliae", "Briannen", "Brimen", "Brindina", "Calethina",
+        "Calilwen", "Calith", "Delynd", "Demariyen", "Doriela",
+        "Dorinia", "Elonnae", "Erdelina", "Ethalina", "Evelind", "Faelynd",
+        "Fanelya", "Farelith", "Gloryenn", "Isarina", "Jadriella",
+        "Kaelith", "Lyniala", "Lyvianna", "Madrierith", "Melandina",
+        "Melorien", "Myrillë", "Nosaldia", "Numaliel", "Oenind",
+        "Onadrien", "Ryvelith", "Selantia", "Silnae", "Sinalith", "Talmae",
+        "Tarisia", "Tynella", "Vadelen", "Vaeliel", "Vaelith", "Vanerind",
+        "Velaïth", "Ymalwen", "Aelwyn",
         "Briallen",
         "Celestia",
         "Daelia",
@@ -2453,7 +2582,16 @@ const prenoms = [
         "Zephyrella"]],
 
     // Nains
-        [["Ragdolf",
+        [["Baldarim", "Balnur", "Bardund", "Bhalmand",
+        "Brandor", "Branidam", "Branmir", "Brogi", "Brumni",
+        "Dalrig", "Dridam", "Dromni", "Duln", "Dulrig", "Durgann",
+        "Dwalim", "Dwili", "Errund", "Ghim", "Girhni", "Gorim", "Grahlumir",
+        "Grendor", "Grimnor", "Grimyl", "Grindur", "Hirgrun",
+        "Hjoldram", "Hjolrig", "Hjuladar", "Jorthund",
+        "Kazadrim", "Kelemdar", "Keredam", "Kolrim", "Korund",
+        "Melgrim", "Moradur", "Muromir", "Olmund", "Orim", "Ornomir",
+        "Regor", "Rignor", "Rohmir", "Thorgrim", "Thorm",
+        "Thulnor", "Tirnor", "Valdrun", "Ragdolf",
         "Balïn",
         "Dwalïn",
         "Thorïn",
@@ -2498,7 +2636,15 @@ const prenoms = [
         "Zígr"],
 
 
-        ["Disa",
+        ["Avonmora", "Bonni", "Boradina", "Boria",
+        "Branwyn", "Brelundinn", "Bridinn", "Brietta", "Broghilda",
+        "Bryna", "Cerdwyn", "Cordelia", "Cormida", "Corri", "Cymreig",
+        "Dania", "Dolgura", "Dunhilda", "Durrinn", "Elanni",
+        "Erinn", "Friga", "Gaïra", "Gibarta", "Gimlona", "Gordania",
+        "Gormly", "Grizela", "Gweneth", "Gwyndolen", "Iorwenn",
+        "Jennava", "Kalirinn", "Katalyn", "Kazadrilla", "Kirillia", "Malmiri",
+        "Moïra", "Myma", "Nelda", "Nuala", "Olka", "Onora", "Rhosyn",
+        "Rigna", "Sigrid", "Sigrun", "Tullia", "Valdrunia", "Vanira", "Disa",
         "Dís",
         "Frísa",
         "Lódis",
@@ -2539,7 +2685,20 @@ const prenoms = [
         "Zóra"]],
 
     // Halfelins
-        [["Scanlan",
+        [["Albertin", "Albin", "Alphonse", "Andri", "Anton",
+        "Arnould", "Arthuryn", "Audouin", "Auffroy", "Augé",
+        "Auguste", "Balthazar", "Barthélémy", "Bellus", "Béranger",
+        "Célestin", "Côme", "Crespin", "Domin", "Edman", "Emery",
+        "Estienne", "Evrardus", "Florimond", "Gamelet", "Gaspard",
+        "Gervesot", "Gobin", "Gracien", "Guerinet", "Guillot", "Gustave",
+        "Hebertus", "Hector", "Heliot", "Hemeritus", "Horace",
+        "Hubert", "Huchon", "Innocent", "Isembart", "Isidore", "Jacobus",
+        "Jacotin", "Jacques", "Lambert", "Landricus", "Léon",
+        "Léopold", "Ligier", "Louys", "Loyset", "Luquin", "Lyebault",
+        "Octave", "Odo", "Ogier", "Poncelet", "Radulfus", "Raymondin",
+        "Rogerin", "Rolin", "Romuald", "Scipion", "Senestre", "Simonet",
+        "Tassin", "Thevot", "Valère", "Valérian", "Zéphirin", 
+        "Scanlan",
         "Peregrin",
         "Roscoe",
         "Milo",
@@ -2579,7 +2738,15 @@ const prenoms = [
         "Bufar",
         "Dinodas"],
         
-        ["Rosie",
+        ["Abéline", "Adélina", "Anastasie", "Bélinda",
+        "Bérénisse", "Berthilde", "Blanche", "Blandine", "Blondine",
+        "Constance", "Corantine", "Cybelle", "Dahlia", "Dulcina",
+        "Emeline", "Emerise", "Ernestine", "Eugénie", "Florette",
+        "Georgelle", "Gloria", "Hermine", "Irma", "Isolde", "Jéméline",
+        "Joalie", "Laureline", "Leonor", "Linette", "Loïse", "Lorette",
+        "Lorine", "Ludmilla", "Madeleine", "Marguerite", "Mélusine",
+        "Nellie", "Perrine", "Prudence", "Rosalie", "Rose", "Rosie", "Sélène",
+        "Valériane", "Violette", "Yacinthe", "Yvoline", "Zéphirine", "Rosie",
         "Pyke",
         "Primrose",
         "Ruby",
@@ -2618,7 +2785,6 @@ const prenoms = [
         "Tanta",
         "Violet",
         "Wilimar",
-        "Rose",
         "Lobelia"
       ]]
 
