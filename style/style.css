@@ -22,8 +22,11 @@ body {
     background-color: var(--color-1);
     height: 100vw;
     font-family:"Segoe UI";
-    max-height: 97vh;
+    max-height: 100vh;
     overflow-y: auto; /* pour activer le défilement vertical si nécessaire */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #tableVue {
@@ -40,7 +43,7 @@ body {
     
     width: 60%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 35px;
 
     display: grid;
 
@@ -96,7 +99,7 @@ body {
 
 footer {
     color: rgba(255, 255, 255, 0.329);
-    text-align: end;
+    text-align: center;
     padding-right: 1rem;
 }
 
@@ -453,6 +456,7 @@ background-color: var(--color-5);
     }
 
     #fullWindow {
+        margin-top: 0;
         width: 100%;
         grid-template:  "a"
                         "b"

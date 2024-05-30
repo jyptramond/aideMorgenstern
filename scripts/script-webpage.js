@@ -446,7 +446,7 @@ if (attributsSecondaires[3][3] !== 0) {
     }
     for (i = 0 ; i < grimSortileges.length ; i++) {
         let nouveauSorts = document.createElement("li")
-        nouveauSorts.textContent = grimSortileges[i]
+        nouveauSorts.innerHTML = replaceIco(grimSortileges[i]);
         baliseGrimoireSortileges.appendChild(nouveauSorts)
     }
     } else {
@@ -473,6 +473,24 @@ if (attributsSecondaires[3][3] !== 0) {
             }
     }
 }
+
+
+/** 
+ *  Remplacer l'icone squelette par l'icone fontawesome appropriée
+ * 
+ */
+
+function replaceIco(str) {
+
+    let position = str.indexOf("☠")
+    console.log("ok")
+
+    if (position !== -1) {
+        str = str.replace("☠",`<i class="fa-solid fa-skull"></i>`);
+        console.log("replaced")
+    }
+    return str
+} 
 
 
 
