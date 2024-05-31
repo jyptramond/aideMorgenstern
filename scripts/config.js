@@ -159,6 +159,128 @@ const repartitionMetiers = [
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+const newArchetype = [
+    {
+        nom: "Aigle",
+        bonus: ["CNS+5/PER+5", "VOL+5"],
+        traits: ["Orgueilleux", "Envieux/Travailleur/Sobre/Prudent/Loyal"]
+    },
+    {
+        nom: "Âne",
+        bonus: ["END+5", "HAB+5/SUR+5", "VOL+5", "CNS-5/MOU-5"],
+        traits: ["Humble", "Travailleur/Chaste/Prudent/Clément/Loyal"]
+    },
+    {
+        nom: "Cerf",
+        bonus: ["SOC+5", "VOL+5", "SUR+5/MOU+5", "DIS-5/TIR-5"],
+        traits: ["Loyal", "Orgueilleux/Bienveillant/Clément/Généreux/Valeureux"]
+    },
+    {
+        nom: "Chat",
+        bonus: ["DIS+5", "PER+5", "MOU+5", "FOR-5/VOL-5"],
+        traits: ["Cruel/Envieux/Lâche/Paresseux/Prudent/Trompeur"]
+    },
+    {
+        nom: "Chien",
+        bonus: ["END+5", "PER+5", "SOC+5", "DIS-5/HAB-5"],
+        traits: ["Bienveillant/Généreux/Gourmand/Clément/Loyal/Valeureux"]
+    },
+    {
+        nom: "Coq",
+        bonus: ["COM+5", "SOC+5", "DIS-5/HAB-5"],
+        traits: ["Orgueilleux/Colérique/Luxurieux/Envieux/Loyal/Valeureux"]
+    },
+    {
+        nom: "Corbeau",
+        bonus: ["CNS+5", "DIS+5/SUR+5", "VOL+5", "SOC-5"],
+        traits: ["Cruel/Humble/Chaste/Sobre/Prudent/Envieux"]
+    },
+    {
+        nom: "Fourmi",
+        bonus: ["CNS+5/DIS+5", "HAB+5", "VOL+5", "PER-5/SOC-5"],
+        traits: ["Travailleur", "Avare/Humble/Chaste/Sobre/Prudent"]
+    },
+    {
+        nom: "Hibou",
+        bonus: ["CNS+10", "HAB+5/PER+5", "SOC+5/VOL+5", "COM-5"],
+        traits: ["Travailleur", "Orgueilleux/Chaste/Prudent/Envieux/Loyal"]
+    },
+    {
+        nom: "Hyène",
+        bonus: ["COM+5", "DIS+5/MOU+5", "FOR-5/VOL-5"],
+        traits: ["Cruel", "Colérique/Envieux/Lâche/Humble/Trompeur"]
+    },
+    {
+        nom: "Lapin",
+        bonus: ["DIS+5", "MOU+5", "PER+5", "SOC+10", "COM-5", "FOR-5"],
+        traits: ["Bienveillant/Lâche/Prudent/Luxurieux/Clément/Humble"]
+    },
+    {
+        nom: "Lion",
+        bonus: ["COM+5", "FOR+5", "SOC+5", "CNS-5/HAB-5", "DIS-5"],
+        traits: ["Orgueilleux", "Paresseux/Luxurieux/Colérique/Loyal/Valeureux"]
+    },
+    {
+        nom: "Loup",
+        bonus: ["COM+5", "PER+5/SUR+5", "SOC-5"],
+        traits: ["Colérique", "Cruel/Sobre/Loyal/Envieux/Valeureux"]
+    },
+    {
+        nom: "Mouton",
+        bonus: ["HAB+5", "PER+5", "SOC+5", "VOL-5"],
+        traits: ["Humble", "Travailleur/Prudent/Lâche/Clément/Chaste"]
+    },
+    {
+        nom: "Ours",
+        bonus: ["FOR+5", "END+5", "PER+5/SUR+5", "CNS-5/DIS-5"],
+        traits: ["Gourmand/Colérique/Bienveillant/Clément/Loyal/Valeureux"]
+    },
+    {
+        nom: "Paon",
+        bonus: ["SOC+10", "CNS+5/PER+5", "FOR-5"],
+        traits: ["Envieux/Orgueilleux/Paresseux/Luxurieux/Lâche/Trompeur"]
+    },
+    {
+        nom: "Porc",
+        bonus: ["FOR+5", "END+5", "SOC+5", "MOU-5/CNS-5"],
+        traits: ["Gourmand", "Colérique/Généreux/Luxurieux/Bienveillant/Paresseux"]
+    },
+    {
+        nom: "Rat",
+        bonus: ["DIS+5", "CNS+5/VOL+5", "END+5/SUR+5", "FOR-5"],
+        traits: ["Avare/Cruel/Envieux/Prudent/Chaste/Trompeur"]
+    },
+    {
+        nom: "Renard",
+        bonus: ["DIS+5/HAB+5", "MOU+5", "SOC+5", "END-5/FOR-5"],
+        traits: ["Trompeur","Paresseux/Gourmand/Prudent/Envieux/Lâche"]
+    },
+    {
+        nom: "Serpent",
+        bonus: ["CNS+5", "SOC+5", "VOL+5", "MOU-5/PER-5"],
+        traits: ["Trompeur/Cruel/Envieux/Prudent/Travailleur/Sobre"]
+    },
+    {
+        nom: "Singe",
+        bonus: ["MOU+10", "SOC+5", "VOL-5"],
+        traits: ["Généreux/Paresseux/Lâche/Bienveillant/Clément/Trompeur"]
+    },
+    {
+        nom: "Souris",
+        bonus: ["DIS+10", "HAB+5", "MOU+5", "SOC+5", "COM-5", "FOR-5"],
+        traits: ["Bienveillant", "Lâche/Généreux/Humble/Clément/Loyal"]
+    },
+    {
+        nom: "Taureau",
+        bonus: ["COM+5", "END+5", "FOR+5", "DIS-5", "CNS-5/HAB-5"],
+        traits: ["Orgueilleux/Colérique/Luxurieux/Gourmand/Clément/Valeureux"]
+    },
+    {
+        nom: "Vautour",
+        bonus: ["CNS+5/END+5", "PER+5", "VOL+5", "MOU-5/SOC-5"],
+        traits: ["Avare/Humble/Sobre/Prudent/Cruel/Trompeur"]
+    }
+];
 
 const archetype = [
 /*0*/   ["Aigle",   ["CNS+5/PER+5", "VOL+5"],                               ["Orgueilleux", "Envieux/Travailleur/Sobre/Prudent/Loyal"]],
