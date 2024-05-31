@@ -37,6 +37,8 @@ body {
 }
 
 #fullWindow {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
     background-color: white;
 
     border: solid black 2px;
@@ -456,6 +458,7 @@ background-color: var(--color-5);
     }
 
     #fullWindow {
+        background-image: url('../images/background-rotate.jpg');
         margin-top: 0;
         width: 100%;
         grid-template:  "a"
