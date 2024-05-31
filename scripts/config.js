@@ -160,6 +160,7 @@ const repartitionMetiers = [
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
+
 const archetype = [
 /*0*/   ["Aigle",   ["CNS+5/PER+5", "VOL+5"],                               ["Orgueilleux", "Envieux/Travailleur/Sobre/Prudent/Loyal"]],
         ["Âne",     ["END+5", "HAB+5/SUR+5", "VOL+5", "CNS-5/MOU-5"],       ["Humble", "Travailleur/Chaste/Prudent/Clément/Loyal"]],    
