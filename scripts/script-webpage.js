@@ -594,9 +594,6 @@ function takeScreenshotWeb() {
 
         html2canvas(document.getElementById('content')).then(function(canvas) {
             
-            // Convert canvas to JPEG image
-            var imgData = canvas.toDataURL('image/jpeg');
-
             
             if (baliseCocherNotes.checked) {
                 drawTextArea(canvas, textarea, text);

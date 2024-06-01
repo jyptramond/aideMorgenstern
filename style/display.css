@@ -25,6 +25,7 @@ html {
 
  header {
     background-color: rgb(148, 0, 0);
+    height: 60px;
  }
 
 header nav {
@@ -58,9 +59,7 @@ header nav a {
 
 body {
     background-color: var(--color-1);
-    height: 100vw;
     font-family:"Segoe UI";
-    max-height: 100vh;
     overflow-y: auto; /* pour activer le défilement vertical si nécessaire */
     display: flex;
     flex-direction: column;
@@ -273,6 +272,10 @@ select {
 
 
 .do-not-display {
+    display:none;
+}
+
+.do-not-display article {
     display:none;
 }
 

@@ -19,8 +19,11 @@
 
     <!-- My scripts -->
     
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="../scripts/script-webpage.js" defer></script>
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/spellbook.js" defer></script>
+    
 
 </head>
 <body>
@@ -51,13 +54,54 @@
 
                 <div><input type="text" id="userSearch" maxlength="30" placeholder="Votre recherche"></div>
 
+                <div id="perType">
+                    <label for="type">Domaine magique:</label>
+                    <select id="selectType" name="type">
+                        <option value="Tous">Tous</option>
+                        <option value="Air">Air</option>
+                        <option value="Animalisme">Animalisme</option>
+                        <option value="Châtiment">Châtiment</option>
+                        <option value="Divination">Divination</option>
+                        <option value="Eau">Eau</option>
+                        <option value="Enchantements">Enchantements</option>
+                        <option value="Feu">Feu</option>
+                        <option value="Guerre">Guerre</option>
+                        <option value="Illusions">Illusions</option>
+                        <option value="Mentalisme">Mentalisme</option>
+                        <option value="Nécromancie">Nécromancie</option>
+                        <option value="Ombre">Ombre</option>
+                        <option value="Protection">Protection</option>
+                        <option value="Terre">Terre</option>
+                        <option value="Voyage">Voyage</option>
+                        <option value="Alchimie">Alchimie</option>
+                    </select>
+                </div>
+
+                <div id="tricksAndSpells">
+                    <input type="checkbox" id="checkTricks" checked>
+                    <label for="checkTricks">Tours de Magie</label><br>
+                    <input type="checkbox" id="checkSpells" checked>
+                    <label for="checkSpells">Sortilèges</label>
+                </div>
+
+                <div id="divSpellbookOnly">
+                    <input type="checkbox" id="spellbookOnly">
+                    <label for="spellbookOnly">Grimoire Uniquement</label>
+                </div>
+                <div id="divNoSpellbook">
+                    <input type="checkbox" id="noSpellbook">
+                    <label for="noSpellbook">Cacher le grimoire</label>
+                </div>
+
 
         </aside>
 
 
         
         <div id="fullWindow">
-            <div id="searchArea"></div>
+            <div id="content">
+                <div id="searchArea"></div>
+            </div>
         </div>
 
     </main>

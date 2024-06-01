@@ -5,41 +5,6 @@
  * 
  *********************************************************************************/
 
-
-function displaySpellPerType(type) {
-// Filtrer les sorts avec une difficulté supérieure ou égale à 10
-const filteredSorts = spells.filter(spell => spell.type.includes(type));
-
-const newfilteredSorts = filteredSorts.sort((a, b) => b.difficulty - a.difficulty);
-
-// Utiliser map et une fonction fléchée pour afficher les noms et descriptions des sorts filtrés
-const sortDescriptions = newfilteredSorts.map(spell => `${spell.name} ${spell.difficulty > 0 ? `(+${spell.difficulty})` : `(${spell.difficulty})`}`);
-
-console.log(type);
-console.log(sortDescriptions.join('\n\n'));
-console.log('\n\n\n\n');
-}
-
-// displaySpellPerType("Air");
-// displaySpellPerType("Animalisme");
-// displaySpellPerType("Châtiment");
-// displaySpellPerType("Divination");
-// displaySpellPerType("Eau");
-// displaySpellPerType("Enchantements");
-// displaySpellPerType("Feu");
-// displaySpellPerType("Guerre");
-// displaySpellPerType("Illusions");
-// displaySpellPerType("Mentalisme");
-// displaySpellPerType("Nécromancie");
-// displaySpellPerType("Ombre");
-// displaySpellPerType("Protection");
-// displaySpellPerType("Terre");
-// displaySpellPerType("Voyage");
-// displaySpellPerType("Alchimie");
-
-
-
-
 /** 
  *  Fonction qui regroupe les sous-fonctions de génération
  * 

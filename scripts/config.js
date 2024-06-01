@@ -1111,270 +1111,315 @@ const toursDeMagie = [
 const tricks = [
     {
         name: "Agacement",
+        alt:"",
         type: ["Animalisme", "Guerre"],
         difficulty: 10,
         description: "Vous aiguillez des insectes vers *MAG* cibles. Des mouches peuvent tournoyer autour de la tête d’un cheval, une guêpe effrayer un enfant, un hanneton bourdonner quand un archer décoche sa flèche, etc. Si une cible rate un test de VOL, elle subit 1 Désavantage pour ce tour."
     },
     {
         name: "Aide-mémoire",
+        alt: ["aide mémoire", "aide memoire"],
         type: ["Châtiment"],
         difficulty: 10,
         description: "La cible gagne 1 Avantage aux tests de CNS pendant *MAG* tours."
     },
     {
         name: "Apaisement",
+        alt:"",
         type: ["Eau", "Mentalisme"],
         difficulty: 10,
         description: "Vous apaisez la colère d’une personne. Cela ne la rendra pas aimable pour autant, mais diminuera sa colère d’un « cran ». Ce tour dure une heure. Il peut aussi apaiser la tristesse de quelqu’un (ce qui a pour effet de le réconforter sans avoir à réussir un test de SOC – cf Regain du Sang-froid)."
     },
     {
         name: "Baie nourrissante",
+        alt:"",
         type: ["Protection", "Terre", "Voyage"],
         difficulty: 10,
         description: "Ce sort enchante une baie (ou un fruit fraîchement cueilli), qui fait regagner immédiatement 1 PV. En manger plusieurs n’a aucun effet supplémentaire."
     },
     {
         name: "Balai enchanté",
+        alt:"",
         type: ["Enchantements"],
         difficulty: 10,
         description: "Ce tour de magie anime un balais ou un plumeau, qui nettoiera une habitation pendant une heure."
     },
     {
         name: "Belle figure",
+        alt:"",
         type: ["Illusions"],
         difficulty: 10,
         description: "La cible gagne 1 Avantage aux tests de SOC pendant *MAG* tours."
     },
     {
         name: "Brise légère",
+        alt:"brise legere",
         type: ["Air"],
         difficulty: 10,
         description: "Un vent frais procure une sensation de bien-être durant une heure à toute l’équipe (+1 point de SF pour tous, sauf s’il fait froid ; limité à une augmentation par jour). La brise n’est pas assez forte pour éteindre une torche, mais peut souffler plusieurs bougies."
     },
     {
         name: "Bruine",
+        alt:"",
         type: ["Eau"],
         difficulty: 10,
         description: "Vous transformez l’humidité de l’air en une pluie fine sur une zone de *MAG* m de rayon. Utile dans les journées de canicule ou pour détruire les pages d’un livre… Ce tour dure une heure maximum."
     },
     {
         name: "Catalepsie",
+        alt:"",
         type: ["Guerre", "Nécromancie"],
         difficulty: 10,
         description: "Vous plongez dans un état de catalepsie pendant *MAG* heures, qui vous fait passer pour mort. Conscient, vous ne pouvez cependant ni voir, ni agir. Seul un test de MAG réussi peut détecter la supercherie."
     },
     {
-        name: "Connaissance des objets magiques",
+        name: "Connaissance<br>des objets magiques",
+        alt:"connaissance des objets magiques",
         type: ["Enchantements", "Alchimie"],
         difficulty: 10,
         description: "Ce sort permet de détecter tous les objets magiques autour de vous pendant *MAG* minutes. De plus, il vous permet de connaître exactement le pouvoir d’un tel objet, mais il vous faudra le porter (casque sur la tête, amulette autour du cou, bottes aux pieds, etc.)."
     },
     {
         name: "Connaissance des potions",
+        alt:"",
         type: ["Enchantements", "Alchimie"],
         difficulty: 10,
         description: "Vous reconnaissez les potions et préparations alchimiques lorsque vous en voyez une, leurs effets et comment vous en prémunir (si ce moyen est possible et connu des alchimistes)."
     },
     {
         name: "Connaissance du temps écoulé",
+        alt:"connaissance du temps ecoule",
         type: ["Châtiment", "Divination", "Mentalisme"],
         difficulty: 10,
         description: "Ce tour a une double utilité : connaître l’âge d’une chose ou d’une personne, et connaître le temps exact qui s’est écoulé à partir d’un moment précis."
     },
     {
         name: "Cri animal",
+        alt:"",
         type: ["Animalisme"],
         difficulty: 10,
         description: "Ce sort permet d’imiter le bruit ou le cri d’un animal précis (un chat, un oiseau, un rat, un loup…) pendant *MAG* minutes. Vous pouvez choisir si ce bruit est plutôt celui d’un mâle ou d’une femelle et son but : chasse, reproduction, avertissement..."
     },
     {
         name: "Désagrément",
+        alt:"desagrement",
         type: ["Mentalisme"],
         difficulty: 10,
         description: "Vous donnez une envie irrésistible à une cible (figurant ou second rôle) de bâiller, tousser, éternuer ou se gratter. Ce désagrément ne dure qu’une seconde, mais peut s’avérer précieux au bon moment. La cible agacée subit 1 Désavantage pour ce tour."
     },
     {
         name: "Diable de poussière",
+        alt:"diable de poussiere",
         type: ["Air", "Terre"],
         difficulty: 10,
         description: "Vous créez un petit tourbillon (1 mètre maximum) qui rassemble la poussière, la cendre et le sable environnants. Le sort dure *MAG* tours. Une créature prise dans le tourbillon sera incommodée par la poussière dans les yeux, et devra tester son END à chaque tour pour ne pas être Affaiblie."
     },
     {
         name: "Dissipation d'ivresse",
+        alt:"",
         type: ["Châtiment", "Eau", "Mentalisme"],
         difficulty: 10,
         description: "Ce sort dissipe les effets mentaux de l’alcool sur une cible. Très utile face à un individu ivre mort, qui retrouvera son aspect normal et tous ses esprits, ou pour se débarrasser d’une « gueule de bois ». La cible gagne 1 Avantage aux tests d’HAB pendant *MAG* tours."
     },
     {
         name: "Doigts de fée",
+        alt:"doigts de fee",
         type: ["Enchantements", "Ombre"],
         difficulty: 10,
         description: "La cible gagne 1 Avantage aux tests d’HAB pendant *MAG* tours."
     },
     {
         name: "Eau bénite",
+        alt:"eau benite",
         type: ["Châtiment", "Protection"],
         difficulty: 10,
         description: "Vous bénissez de l’eau (environ un bol). Indispensable contre certains démons et morts-vivants.",
     },
     {
         name: "Eau de feu",
+        alt:"",
         type: ["Châtiment", "Feu", "Alchimie"],
         difficulty: 10,
         description: "Ce tour change environ un litre d’eau en une substance inflammable pendant *MAG* heures. Passé ce délai, ce liquide ne sera plus que de l’eau souillée.",
     },
     {
         name: "Escamotage",
+        alt:"",
         type: ["Illusions", "Ombre"],
         difficulty: 10,
         description: "Ce charme bien utile rend invisible un objet (pas un être vivant) ne dépassant pas *MAG*x 20 cm pendant une heure. Une bourse d’or, des dés pipés, une épée courte, une fiole de poison ou un grimoire maudit pourront ainsi être introduits partout."
     },
     {
-        name: "Etincelle",
+        name: "Étincelle",
+        alt:"etincelle",
         type: ["Feu", "Guerre", "Alchimie"],
         difficulty: 10,
         description: "Vous déclenchez une étincelle, à vue. Pour qu’elle donne lieu à une flammèche, il faut qu’elle se produise sur une matière combustible (paille, papier, bois sec…). Elle peut rallumer un feu à peine éteint."
     },
     {
         name: "Feux follets",
+        alt:"",
         type: ["Feu", "Nécromancie"],
         difficulty: 10,
         description: "Vous créez *MAG* lumières dansantes que vous dirigez à distance pendant une heure. Ces lumières ne brûlent pas, mais elles attirent l’attention."
     },
     {
         name: "Fumée sans feu",
+        alt:"fumee sans feu",
         type: ["Feu"],
         difficulty: 10,
         description: "Une fumée (blanche, grise ou noire) s’échappe du sol et envahit peu à peu une zone de *MAG* mètres de rayon pendant une heure. Cela peut faire croire à un incendie ou l’œuvre d’un démon."
     },
     {
         name: "Graisse",
+        alt:"",
         type: ["Animalisme", "Alchimie"],
         difficulty: 10,
         description: "Vous appliquez sur le sol ou un objet une graisse particulièrement glissante (1m² maximum), qui nécessitera un test de MOU ou d’HAB (selon les cas) pour continuer son action. La graisse se solidifie au bout d’une heure."
     },
     {
         name: "Guérison cutanée",
+        alt:"guerison cutanee",
         type: ["Protection"],
         difficulty: 10,
         description: "Ce tour guérit instantanément les petits désagréments cutanés (boutons, verrues, rougeurs…) et permet de recouvrer une peau sans défaut. Ce sort ne fonctionne pas sur les furoncles issus de maladies graves comme la peste. La cible gagne 1 Avantage aux tests de SUR pendant *MAG* tours."
     },
     {
         name: "Instinct naturel",
+        alt:"",
         type: ["Animalisme", "Terre", "Voyage"],
         difficulty: 10,
         description: "La cible gagne 1 Avantage aux tests de SUR pendant *MAG* tours.",
     },
     {
         name: "Les goûts et les couleurs",
+        alt:"les gouts et les couleurs",
         type: ["Illusions"],
         difficulty: 10,
         description: "Pendant *MAG* heures, vous modifiez la couleur d’un objet ou le goût et l’odeur d’un aliment (plus doux, plus épicé, plus aigre ou même infect)."
     },
     {
         name: "Lien cadavérique",
+        alt:"lien cadaverique",
         type: ["Guerre", "Nécromancie"],
         difficulty: 10,
         description: "Ce sort permet de voir, entendre, ou sentir à la place d’un cadavre, pendant *MAG* minutes. Vous devez être à moins de 100 m du corps (mais vous n’êtes pas obligé de le voir). Si le cadavre a les yeux fermés, vous ne pourrez rien voir, car vous ne projetez que vos sens sur ce corps, sans pouvoir agir sur lui."
     },
     {
         name: "Lumière",
+        alt:"lumiere",
         type: ["Feu", "Illusions", "Protection"],
         difficulty: 10,
         description: "Vous enchantez un objet qui se met à briller pendant *MAG* minutes. La lumière est celle d’une torche."
     },
     {
         name: "Manipulation lointaine",
+        alt:"",
         type: ["Air", "Mentalisme", "Ombre"],
         difficulty: 10,
         description: "Vous déplacez par la pensée un objet ne dépassant pas 1 kilo sur *MAG* mètres. L’objet ne peut être projeté avec violence."
     },
     {
         name: "Ombre furtive",
+        alt:"",
         type: ["Illusions", "Nécromancie", "Ombre"],
         difficulty: 10,
         description: "La cible gagne 1 Avantage aux tests de DIS pendant *MAG* tours."
     },
     {
         name: "Pare-pluie",
+        alt:["pare pluie", "para pluie", "para-pluie"],
         type: ["Eau", "Voyage"],
         difficulty: 10,
         description: "Les gouttes de pluie ne touchent pas la cible, qui reste bien au sec pendant *MAG* heures. La cible gagne 1 Avantage en MOU pendant *MAG* tours."
     },
     {
         name: "Pied-léger",
+        alt:["pied leger", "pied-leger", "pied léger"],
         type: ["Air", "Animalisme", "Voyage"],
         difficulty: 10,
         description: "La cible gagne 1 Avantage en MOU pendant *MAG* tours.",
     },
     {
         name: "Plume magique",
+        alt:"",
         type: ["Enchantements", "Protection"],
         difficulty: 10,
         description: "Ce charme enchante une plume, qui peut écrire seule sous la dictée. De plus l’encre dans laquelle elle est trempée peut devenir luminescente, et ainsi être lue dans l’obscurité. Ce tour dure *MAG* heures."
     },
     {
         name: "Présage",
+        alt:"presage",
         type: ["Divination"],
         difficulty: 10,
         description: "Ce tour vous permet de lancer un d100 et de garder le résultat « en réserve » pendant une heure. Vous pourrez utiliser ce résultat (ou non) à un prochain test demandé par le MJ. Attention : si vous obtenez un double un revers de fortune vous fera perdre 1PV. Vous ne pouvez lancer ce tour qu’une fois par jour."
     },
     {
         name: "Purification de l'eau",
+        alt:"purification de l eau",
         type: ["Feu", "Protection", "Voyage", "Alchimie", "Eau"],
         difficulty: 10,
         description: "Vous pouvez rendre claire et potable environ un litre d’eau de mer, d’eau souillée ou contaminée."
     },
     {
         name: "Réparation",
+        alt:"reparation",
         type: ["Enchantements", "Terre"],
         difficulty: 10,
         description: "Ce charme répare un objet simple (ne dépassant pas un mètre) pendant *MAG* heures. Après quoi, l’objet retrouve son état initial."
     },
     {
         name: "Sculpture du bois",
+        alt:"",
         type: ["Terre"],
         difficulty: 10,
         description: "Ce tour permet de tailler et sculpter une pièce de bois ne dépassant pas un mètre. Vous pourrez ainsi graver rapidement une image grossière ou construire un gourdin en modelant une branche de chêne."
     },
     {
         name: "Solide comme un roc",
+        alt:"",
         type: ["Guerre", "Terre"],
         difficulty: 10,
         description: "La cible gagne 1 point de protection pendant *MAG* minutes. Ce point est à usage unique et disparaît dès qu’il a été utilisé."
     },
     {
         name: "Trouver de l'eau",
+        alt:"trouver de l eau",
         type: ["Divination", "Eau"],
         difficulty: 10,
         description: "Vous localisez la source la plus proche (jusqu’à *MAG* kilomètres) s’il y en a une : un point d’eau, une rivière, un puits, une source souterraine…"
     },
     {
         name: "Vent de murmures",
+        alt:"",
         type: ["Air", "Guerre", "Ombre"],
         difficulty: 10,
         description: "Vous invoquez un vent léger, qui délivrera un message sous la forme de légers murmures. Il peut parcourir jusqu’à *MAG* kilomètres, mais tous ceux qui se trouvent sur sa route entendront le message s’ils tendent suffisamment l’oreille (test de PER)."
     },
     {
         name: "Ventriloquie",
+        alt:"ventriloque",
         type: ["Air", "Illusions", "Mentalisme"],
         difficulty: 10,
         description: "Vous « projetez » votre voix à une dizaine de pas, et vous pouvez donc vous exprimer même si vous êtes bâillonné. Ce tour dure *MAG* minutes."
     },
     {
         name: "Vision de nuit",
+        alt:["vision nocturne", "nyctalopie"],
         type: ["Divination", "Nécromancie", "Ombre", "Voyage"],
         difficulty: 10,
         description: "Ce tour vous confère pendant *MAG* minutes une vision nocturne qui vous prémunit des malus dus à l’obscurité. Ce sort est inutile dans le noir total."
     },
     {
         name: "Voir les animaux",
+        alt:"",
         type: ["Animalisme", "Divination"],
         difficulty: 10,
         description: "Pendant *MAG* heures, vous pouvez localiser tous les animaux tels que les oiseaux, les insectes, les mammifères et les poissons (hormis les animaux fabuleux) autour de vous sur une portée moyenne."
     },
     {
         name: "Voir les esprits",
+        alt:"",
         type: ["Châtiment", "Divination", "Nécromancie"],
         difficulty: 10,
         description: "Vous pouvez voir tous les esprits présents autour de vous à une portée moyenne pendant *MAG* minutes (sauf les esprits particulièrement puissants qui souhaitent rester invisibles)."
@@ -3297,7 +3342,7 @@ const spells = [
     },
     {
         name: "Vision de l’aura",
-        alt: "vision de l'aura",
+        alt: ["vision de l'aura", "vision de l aura"],
         difficulty: 10,
         formula: "On discerne les âmes, qui est lion, qui est rat,<br>A l’ardeur de leur flamme, à la teinte et l’éclat",
         type: ["Divination", "Mentalisme"],

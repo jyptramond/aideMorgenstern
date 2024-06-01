@@ -1,6 +1,7 @@
 function generateMySpellbook() {
     const fullWindow = document.querySelector("#fullWindow");
     const bookTitle = document.createElement("h2");
+    bookTitle.id = "mySpellbookTitle"
     bookTitle.innerText = "Mon Grimoire";
     //tricksTitle.classList.add('do-not-display');
     const divSpellbook = document.createElement("div");
@@ -18,8 +19,11 @@ function generateMySpellbook() {
 function generateTricks(tricks) {
     const searchArea = document.querySelector("#searchArea");
     const tricksTitle = document.createElement("h2");
+    const tricksDiv = document.createElement("div");
     tricksTitle.innerText = "TOURS DE MAGIE";
-    searchArea.appendChild(tricksTitle);
+
+    tricksTitle.id = "myTricksTitle";
+    tricksDiv.id = "myTricksDiv";
 
     for (let y = 0 ; y < tricks.length ; y++) {
         const trick = tricks[y];
@@ -27,6 +31,7 @@ function generateTricks(tricks) {
         // Création d’une balise dédiée à un sortilège
         const trickCard = document.createElement("article");
         trickCard.classList.add("notsaved");
+        trickCard.classList.add("card-effect");
         
         const nameTrick = document.createElement("h3");
         nameTrick.innerHTML = `${trick.name}`;
@@ -36,7 +41,10 @@ function generateTricks(tricks) {
         descriptionTrick.innerHTML = `${trick.description}`;
 
         // On rattache la balise article a la section Fiches
-        searchArea.appendChild(trickCard);
+            searchArea.appendChild(tricksTitle);
+            searchArea.appendChild(tricksDiv)
+
+            tricksDiv.appendChild(trickCard);
             trickCard.appendChild(nameTrick);
             trickCard.appendChild(descriptionTrick);
     }
@@ -45,9 +53,12 @@ function generateTricks(tricks) {
 
 function generateSpells(spells) {
     const searchArea = document.querySelector("#searchArea");
-    const spellTitle = document.createElement("h2");
-    spellTitle.innerText = "SORTILÈGES";
-    searchArea.appendChild(spellTitle);
+    const spellsTitle = document.createElement("h2");
+    const spellsDiv = document.createElement("div");
+    spellsTitle.innerText = "SORTILÈGES";
+
+    spellsTitle.id = "mySpellsTitle";
+    spellsDiv.id = "mySpellsDiv";
 
 for (let i = 0 ; i < spells.length ; i++) {
     const spell = spells[i];
@@ -55,6 +66,7 @@ for (let i = 0 ; i < spells.length ; i++) {
     // Création d’une balise dédiée à un sortilège
     const spellCard = document.createElement("article");
     spellCard.classList.add("notsaved");
+    spellCard.classList.add("card-effect");
     
     const nameSpell = document.createElement("h3");
     nameSpell.innerHTML = `${spell.name} ${spell.isForbidden ? `<i class="fa-solid fa-book-skull"></i>` : ''}`;
@@ -82,8 +94,11 @@ for (let i = 0 ; i < spells.length ; i++) {
 
 
     // On rattache la balise article a la section Fiches
-        searchArea.appendChild(spellCard);
-        
+        searchArea.appendChild(spellsTitle);
+        searchArea.appendChild(spellsDiv);
+
+        spellsDiv.appendChild(spellCard);
+
 		spellCard.appendChild(nameSpell);
         spellCard.appendChild(formulaSpell);
         if (ritualSpell.innerHTML !== null) {
@@ -97,13 +112,13 @@ for (let i = 0 ; i < spells.length ; i++) {
 
 function lockingCard() {
 const cards = document.querySelectorAll(".notsaved");
+console.log(cards);
 
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].addEventListener("click", function(event) {
             const clonedElement = cards[i].cloneNode(true);
-            clonedElement.classList.add("saved");
+            clonedElement.classList.add("card-effect");
             clonedElement.classList.remove("notsaved")
-            const saved = document.querySelectorAll(".saved");
             const mySpellbook = document.getElementById("mySpellbook")
             mySpellbook.appendChild(clonedElement);
 
@@ -116,31 +131,193 @@ const cards = document.querySelectorAll(".notsaved");
 }
 
 
+function userTypeFiltering() {
+    
+    document.getElementById('selectType').addEventListener("change", function(event) {
+        theFilter();
+    });
+}
+
 
 function userFiltering() {
     const userSearch = document.getElementById('userSearch');
-
     userSearch.addEventListener("input", function(event) {
+        theFilter();
+    });
+}
+
+
+function theFilter() {
+
+    let magicType = document.getElementById('selectType').value ;
+    data = userSearch.value.toLowerCase();
+
+const filteredTricks = tricks.filter(function (trick) {
+    return trick.alt.includes(data) || trick.name.toLowerCase().includes(data) || trick.description.toLowerCase().includes(data);
+});
+
+const filteredSpells = spells.filter(function (spell) {
+    return spell.alt.includes(data) || spell.name.toLowerCase().includes(data) || spell.description.toLowerCase().includes(data) || spell.formula.toLowerCase().includes(data)  ;
+});
+
+    // Initialize filteredAgainTricks and filteredAgainSpells
+    let filteredAgainTricks = filteredTricks;
+    let filteredAgainSpells = filteredSpells;
+
+if (magicType !== 'Tous') {
+    filteredAgainTricks = filteredTricks.filter(trick => trick.type.includes(magicType));
+    filteredAgainSpells = filteredSpells.filter(spell => spell.type.includes(magicType));
+}
+
+
+    document.querySelector("#searchArea").innerHTML = "";
+    generateTricks(filteredAgainTricks);
+    generateSpells(filteredAgainSpells);
+
+    if (document.querySelector("#myTricksDiv")) {
+        displayTricks();
+    }
+    if (document.querySelector("#mySpellsDiv")) {
+    displaySpells();
+    }
+    lockingCard()  
+}
+
+function spellbookOnly() {
+    let spellbookOnly= document.getElementById("spellbookOnly");
     
-        const filteredTricks = tricks.filter(function (trick) {
-            return trick.name.toLowerCase().includes(userSearch.value) || trick.description.toLowerCase().includes(userSearch.value) || trick.type.includes(userSearch.value);
+    spellbookOnly.addEventListener("change", function(event) {
+        
+        if (spellbookOnly.checked) {
+            document.querySelector("#searchArea").innerHTML = "";
+        }      
+        else {
+            document.querySelector("#searchArea").innerHTML = "";
+            theFilter();
+        }
+    });
+}
+
+function noSpellbook() {
+    let noSpellbook = document.getElementById("noSpellbook");
+    let mySpellbookTitle = document.getElementById("mySpellbookTitle")
+    let mySpellbook = document.getElementById("mySpellbook")
+    
+    noSpellbook.addEventListener("change", function(event) {
+        
+        if (noSpellbook.checked) {
+            mySpellbook.classList.add("do-not-display");
+            mySpellbookTitle.classList.add("do-not-display");
+        } else {
+            mySpellbook.classList.remove("do-not-display");
+            mySpellbookTitle.classList.remove("do-not-display");
+        }
+    });
+}
+
+function displayTricksAndSpells() {
+    
+    let checkSpells = document.getElementById("checkSpells");
+    let checkTricks = document.getElementById("checkTricks");
+
+    checkTricks.addEventListener("change", function(event) {
+        displayTricks(); 
+    });
+
+    checkSpells.addEventListener("change", function(event) {
+        displaySpells();
+    });
+}
+
+
+function displayTricks() {
+    let checkTricks = document.getElementById("checkTricks");
+    let myTricksDiv = document.querySelector("#myTricksDiv");
+    let myTricksTitle = document.querySelector("#myTricksTitle");
+    if (!checkTricks.checked) {
+        myTricksDiv.classList.add("do-not-display");
+        myTricksTitle.classList.add("do-not-display");
+    } else {
+        myTricksDiv.classList.remove("do-not-display");
+        myTricksTitle.classList.remove("do-not-display");
+    }
+}
+
+function displaySpells() {
+    
+    let checkSpells = document.getElementById("checkSpells");
+    let mySpellsDiv = document.querySelector("#mySpellsDiv");
+    let mySpellsTitle = document.querySelector("#mySpellsTitle");
+    if (!checkSpells.checked) {
+        mySpellsDiv.classList.add("do-not-display");
+        mySpellsTitle.classList.add("do-not-display");
+    } else {
+        mySpellsDiv.classList.remove("do-not-display");
+        mySpellsTitle.classList.remove("do-not-display");
+    }
+}
+
+
+function initialisationWeb() {
+
+    let baliseAtouts = document.getElementById("listeAtouts")
+    baliseAtouts.innerHTML = ""
+
+    let baliseEquipement = document.getElementById("listeEquipement")
+    baliseEquipement.innerHTML = ""
+
+    let baliseGrimoireTours = document.getElementById("listeGrimoireTours")
+    baliseGrimoireTours.innerHTML = ""
+
+    let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
+    baliseGrimoireSortileges.innerHTML = ""
+
+    let baliseTableGrimoire = document.getElementById("tableGrimoire")
+    let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
+    let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
+    baliseGrimoireTours.classList.add("do-not-display")
+    baliseGrimoireSortileges.classList.add("do-not-display")
+    baliseTableGrimoire.classList.add("do-not-display")
+    baliseGrimoireh2.classList.add("do-not-display")
+    baliseGrimoireDiv.classList.add("do-not-display")
+}
+
+
+
+function takeScreenshotWeb() {
+    document.getElementById('save').addEventListener('click', function(event) {
+
+
+        html2canvas(document.getElementById('content')).then(function(canvas) {
+            
+            // Créer un lien pour télécharger l'image
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/jpeg');
+
+            filename = `mon-grimoire-aideBrigandyne.jpeg`;
+            
+            link.download = filename;
+
+            document.body.appendChild(link);
+
+            // Déclencher le téléchargement
+            link.click();
+
+            // Supprimer l'élément de lien
+            document.body.removeChild(link);
         });
 
-        const filteredSpells = spells.filter(function (spell) {
-            return spell.alt.includes(userSearch.value) || spell.name.toLowerCase().includes(userSearch.value) || spell.description.toLowerCase().includes(userSearch.value) || spell.type.includes(userSearch.value);
-        });
-
-
-        document.querySelector("#searchArea").innerHTML = "";
-        generateTricks(filteredTricks);
-        generateSpells(filteredSpells);
-        lockingCard()       
     });
 }
 
 userFiltering();
+userTypeFiltering();
 generateTricks(tricks);
 generateSpells(spells);
 generateMySpellbook();
+spellbookOnly();
+noSpellbook();
+displayTricksAndSpells();
+takeScreenshotWeb();
 
 lockingCard();
