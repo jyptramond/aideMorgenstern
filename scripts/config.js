@@ -2222,7 +2222,7 @@ const spells = [
       },
       {
         name: "Fumée sombre",
-        alt: "",
+        alt: "fumee sombre",
         difficulty: 10,
         formula: "Subterfuge démoniaque jaillissant des crevasses<br>Fumées noires et opaques, nous entourent, nous enlacent",
         type: ["Feu", "Nécromancie", "Ombre", "Alchimie"],
@@ -2878,7 +2878,7 @@ const spells = [
     },
     {
         name: "Peau d’Écorce",
-        alt: "peau d'ecorce",
+        alt: ["peau d'ecorce", "peau d'écorce"],
         difficulty: 0,
         formula: "Nous avons hérité de l’écorce des vieux chênes,<br>Et au solstice d’été, leur sève coule dans nos veines",
         type: ["Terre"],

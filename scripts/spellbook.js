@@ -1,5 +1,5 @@
 function generateMySpellbook() {
-    const fullWindow = document.querySelector("#fullWindow");
+    const content = document.querySelector("#content");
     const bookTitle = document.createElement("h2");
     bookTitle.id = "mySpellbookTitle"
     bookTitle.innerText = "Mon Grimoire";
@@ -10,8 +10,8 @@ function generateMySpellbook() {
     
 
             // On rattache la balise article a la section Fiches
-            fullWindow.appendChild(bookTitle);
-            fullWindow.appendChild(divSpellbook);
+            content.appendChild(bookTitle);
+            content.appendChild(divSpellbook);
 }
 
 
