@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Génération de personnage pré-tirés pour Brigandyne 2nde édition ? Brigandyne, le jeu de rôle dark fantasy à l'atmosphère chair et sang. Il vous suffit de quelques clics pour vous créer un personnage aléatoire sur mesure">
+    <title>aideBrigandyne Grimoire</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="../style/display.css">
+    <link rel="stylesheet" href="../style/responsive.css">
+    <link rel="stylesheet" href="../style/spellbook.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+
+    <!-- Font-Awesome -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- My scripts -->
+    
+    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/spellbook.js" defer></script>
+
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+      <nav>
+          <a href="../index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
+            <div>
+                <a href="../index.html">Accueil</a>
+                <a href="#">Générateur</a>
+                <a href="#">Grimoire</a>
+                <a href="#">Rencontres</a>
+            </div>
+      </nav>
+  </header>
+
+
+    <!-- MAIN -->
+    <main>  
+
+
+        <aside>
+            <div id="buttons">
+            <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
+            </div>
+
+
+                <div><input type="text" id="userSearch" maxlength="30" placeholder="Votre recherche"></div>
+
+
+        </aside>
+
+
+        
+        <div id="fullWindow">
+            <div id="searchArea"></div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>Le jeu de rôle <a href="https://brigandyne.wordpress.com/" target="_blank">Brigandyne</a> est une œuvre de James Tornade, tous droits réservés.</span>
+        <span class="is-smaller">favicon made by Skoll. Available on <a href="https://game-icons.net" target="_blank">Game-icons.net</a></span> 
+        <span class="is-smaller"> website designed by Jyp</span>
+    </footer>
+</body>
+</html>

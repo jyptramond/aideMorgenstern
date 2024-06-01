@@ -20,22 +20,22 @@ console.log(sortDescriptions.join('\n\n'));
 console.log('\n\n\n\n');
 }
 
-displaySpellPerType("Air");
-displaySpellPerType("Animalisme");
-displaySpellPerType("Châtiment");
-displaySpellPerType("Divination");
-displaySpellPerType("Eau");
-displaySpellPerType("Enchantements");
-displaySpellPerType("Feu");
-displaySpellPerType("Guerre");
-displaySpellPerType("Illusions");
-displaySpellPerType("Mentalisme");
-displaySpellPerType("Nécromancie");
-displaySpellPerType("Ombre");
-displaySpellPerType("Protection");
-displaySpellPerType("Terre");
-displaySpellPerType("Voyage");
-displaySpellPerType("Alchimie");
+// displaySpellPerType("Air");
+// displaySpellPerType("Animalisme");
+// displaySpellPerType("Châtiment");
+// displaySpellPerType("Divination");
+// displaySpellPerType("Eau");
+// displaySpellPerType("Enchantements");
+// displaySpellPerType("Feu");
+// displaySpellPerType("Guerre");
+// displaySpellPerType("Illusions");
+// displaySpellPerType("Mentalisme");
+// displaySpellPerType("Nécromancie");
+// displaySpellPerType("Ombre");
+// displaySpellPerType("Protection");
+// displaySpellPerType("Terre");
+// displaySpellPerType("Voyage");
+// displaySpellPerType("Alchimie");
 
 
 

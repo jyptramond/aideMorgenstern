@@ -1,0 +1,90 @@
+
+#fullWindow,
+#fullWindow div,
+#mySpellbook {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#fullWindow article {
+    border: solid black 2px;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 10px;
+    width: 275px;
+    background: white;
+}
+
+article h3 {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    text-align: right;
+    color: rgb(56, 56, 56);
+    border-bottom: solid 2px rgb(56, 56, 56);
+}
+
+.formula {
+font-size: 0.7rem;
+font-style: italic;
+text-align: right;
+margin-bottom: 5px;
+}
+
+.ritual {
+    margin: 0;
+}
+
+.header,
+.ritual,
+.description {
+    font-size: 0.8rem;
+    text-align:start;
+    margin:0;
+}
+
+.description-spell {
+    font-size: 0.8rem;
+    text-align:start;
+    margin-top:0.7rem;
+    margin-bottom: 0;
+}
+
+.header {
+    margin-bottom: 5px;
+}
+
+article .description ul {
+    margin: 3px 3px 3px 10px;
+}
+
+article .description li {
+    margin:0;
+}
+
+article .description div {
+    text-align: center;
+    margin-top: 8px;
+}
+
+h2 {
+    font-size:2rem;
+    border-bottom: solid 5px rgb(0, 0, 0);
+    margin: 5rem 2rem 2rem 2rem;
+}
+
+#userSearch {
+    display:block;
+    width: 80%;
+    margin: 0 auto;
+    background-image: linear-gradient(#464d55, #000000);
+    background-color: black;
+    padding: 0 0.4rem;
+    border:none;
+    color:white;
+    height:1.7rem;
+ }
+
+ .locked {
+    box-shadow: rgba(255, 255, 255, 0.534) 0px 54px 55px, rgba(255, 255, 255, 0.562) 0px -12px 30px, rgba(255, 255, 255, 0.521) 0px 4px 6px, rgba(255, 255, 255, 0.562) 0px 12px 13px, rgba(255, 255, 255, 0.562) 0px -3px 5px;
+ }

@@ -1,0 +1,143 @@
+/**
+ * Media responsive
+ */
+
+ @media screen and (min-width: 1651px) and (max-width: 1750px)  {
+    #fullWindow {
+        width: 70%;
+    }
+    }
+
+@media screen  and (min-width: 1551px) and (max-width: 1650px) {
+    #fullWindow {
+        width: 77.5%;
+    }
+    }
+
+@media screen  and (min-width: 1451px) and (max-width: 1550px) {
+    #fullWindow {
+        width: 85%;
+    }
+    }
+
+@media screen  and (min-width: 1351px) and (max-width: 1450px) {
+    #fullWindow {
+        width: 92.5%;
+    }
+}
+
+@media screen  and (min-width: 851px) and (max-width: 1350px) {
+    #fullWindow {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+
+    body {
+        margin:auto;
+    }
+
+    #fullWindow {
+        background-image: url('../images/background-rotate.jpg');
+        margin-top: 0;
+        width: 100%;
+        grid-template:  "a"
+                        "b"
+                        "foot" auto/1fr;
+        }
+        
+    #rightBottomDisplay {
+        display: flex;
+        flex-direction: column;
+    }
+
+/**
+ * setup grid config
+ */
+
+
+ #buttons {
+    display: flex;
+    flex-direction: row;
+    grid-area: buttons;
+ }
+ #divSelectName {
+    grid-area: name;
+ }
+#propositionUtilisateur {
+    grid-area: proposition;
+}
+
+ #divArchetype {
+    grid-area: archetype;
+ }
+ #divPeuple {
+    grid-area: peuple;
+ }
+ #divGroupe {
+    grid-area: groupe;
+ }
+ #divCarriere {
+    grid-area: carriere;
+ }
+ #divCompetences {
+    grid-area:competences;
+ }
+ #divMode {
+    grid-area: mode;
+ }
+ #zoneVueDetaillee {
+    grid-area: vue;
+ }
+#zoneNoe {
+    grid-area:notes;
+}
+
+.config {
+    display: grid;         
+    grid-template:  
+    "archetype peuple competences"
+    "groupe carriere mode"
+    "name proposition proposition"
+    ". notes vue"
+    "buttons buttons buttons" auto/1fr 1fr 1fr;
+}
+
+.config div {
+    margin:0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#propositionUtilisateur {
+    align-items: flex-end;
+    margin: 0 0 12px 0;
+}
+
+#generer {
+    height:4rem;
+}
+
+#save {
+    height:4rem;
+}
+
+.affichageLeft,
+.affichageMid,
+.affichageRight {
+    display: flex;
+    flex-direction: column;
+}
+
+select {
+    width: 5.8rem;
+    margin: 0;
+}
+
+
+}

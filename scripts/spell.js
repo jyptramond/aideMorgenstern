@@ -1,0 +1,1 @@
+const sectionFiches = document.querySelector("#fullWindow");
