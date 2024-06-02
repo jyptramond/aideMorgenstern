@@ -14,6 +14,8 @@
     justify-content: center;
 }
 
+
+
 #fullWindow article,
 #fullWindow div article {
     border: solid black 1px;
@@ -111,7 +113,8 @@ justify-content: center;
 }
 
 
-#userSearch {
+#userSearch,
+#customSpellbook {
     display:block;
     width: 100%;
     margin: 0 auto;
@@ -123,10 +126,11 @@ justify-content: center;
     height:1.7rem;
  }
 
-#mySpellbook {
-    margin-bottom: 2rem;
-}
 
+#searchArea div,
+#mySpellbook {
+    padding-bottom: 3rem;
+}
 
 /* CSS */
 .card-effect:hover,

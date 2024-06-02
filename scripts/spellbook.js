@@ -1,4 +1,5 @@
 let difficultyFilter = -30;
+let lastSelectedOptionId = 'ascending';
 
 
 function generateMySpellbook() {
@@ -216,9 +217,21 @@ if (magicType !== 'Tous') {
 
 
     document.querySelector("#searchArea").innerHTML = "";
-    generateTricks(filteredAgainTricks);
-    generateSpells(filteredAgainSpells);
-    
+    generateTricks(filteredAgainTricks);    
+
+    if (lastSelectedOptionId === 'ascending') {
+        let spellsByDifficulty = filteredAgainSpells.sort((a, b) => b.difficulty - a.difficulty);
+        console.log(spellsByDifficulty)
+        generateSpells(spellsByDifficulty);
+    }
+    else if (lastSelectedOptionId === 'descending') {
+        let spellsByDifficulty = filteredAgainSpells.sort((a, b) => a.difficulty - b.difficulty);
+        console.log(spellsByDifficulty)
+        generateSpells(spellsByDifficulty);
+    }
+    else {
+        generateSpells(filteredAgainSpells);
+    }
     
     
     lockingCard();  
@@ -341,7 +354,9 @@ function takeScreenshotWeb() {
             const link = document.createElement('a');
             link.href = canvas.toDataURL('image/jpeg');
 
-            filename = `mon-grimoire-aideBrigandyne.jpeg`;
+            let mySpellbookTitle = document.getElementById('mySpellbookTitle') ;
+
+            filename = `${mySpellbookTitle.textContent}-aideBrigandyne.jpeg`;
             
             link.download = filename;
 
@@ -401,17 +416,48 @@ function pressToShowMore(button, displayedArray) {
 }
 
 
+function customizeSpellbookName() {
+    let customSpellbook = document.getElementById('customSpellbook');
+    let mySpellbookTitle = document.getElementById('mySpellbookTitle');
+    customSpellbook.addEventListener("input", function(event) {
+        
+        if (customSpellbook.value === "") {
+            mySpellbookTitle.textContent = "Mon Grimoire";
+        }
+        else {
+            mySpellbookTitle.textContent = customSpellbook.value;
+        }
+        
+
+    });
+}
+
+function difficultySorting() {
+
+    const radioButtons = document.querySelectorAll('input[name="options"]');
+
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                lastSelectedOptionId = this.id;
+                console.log(lastSelectedOptionId)
+                theFilter();
+            }
+        });
+    });
+}
+
+
 userFiltering();
 userTypeFiltering();
 userDifficultyFiltering();
-generateTricks(tricks);
-generateSpells(spells);
+difficultySorting();
+theFilter();
 generateMySpellbook();
 spellbookOnly();
 noSpellbook();
 displayTricksAndSpells();
+customizeSpellbookName();
 takeScreenshotWeb();
-display9articles('displayedTricks','#myTricksDiv .notsaved', 'myTricksDiv','tricks');
-display9articles('displayedSpells','#mySpellsDiv .notsaved', 'mySpellsDiv','spells');
 
 lockingCard();

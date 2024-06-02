@@ -51,7 +51,6 @@
             <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
             </div>
 
-
                 <div><input type="text" id="userSearch" maxlength="20" placeholder="Votre recherche"></div>
 
 
@@ -98,6 +97,20 @@
                     <input type="checkbox" id="noSpellbook">
                     <label for="noSpellbook">Cacher le grimoire</label>
                 </div>
+
+                <form id="selectSorting">
+                    <input type="radio" id="ascending" name="options" value="option1" checked>
+                    <label for="ascending">difficulté croissante</label><br>
+
+                    <input type="radio" id="descending" name="options" value="option1">
+                    <label for="descending">difficulté décroissante</label><br>
+
+                    <input type="radio" id="alphabetical" name="options" value="option1">
+                    <label for="alphabetical">ordre alphabétique</label><br>
+
+                </form>
+
+                <div><input type="text" id="customSpellbook" maxlength="20" placeholder="Mon Grimoire"></div>
 
 
         </aside>
