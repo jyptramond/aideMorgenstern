@@ -1,4 +1,4 @@
-let difficultyFilter = 30;
+let difficultyFilter = -30;
 
 
 function generateMySpellbook() {
@@ -6,9 +6,7 @@ function generateMySpellbook() {
     const bookTitle = document.createElement("h2");
     bookTitle.id = "mySpellbookTitle"
     bookTitle.innerText = "Mon Grimoire";
-    //tricksTitle.classList.add('do-not-display');
     const divSpellbook = document.createElement("div");
-    //divTricks.classList.add('do-not-display');
     divSpellbook.id = "mySpellbook";
     
             // On rattache la balise article a la section Fiches
@@ -156,13 +154,13 @@ function userDifficultyFiltering() {
 
         switch (difficulty.value) {
             case '0': 
-            labelDifficulty.innerText = `Difficulté max. : -20 `;
-            difficultyFilter = -20;
+            labelDifficulty.innerText = `Difficulté max. : +20 `;
+            difficultyFilter = 20;
             break;
 
             case '10': 
-            labelDifficulty.innerText = `Difficulté max. : -10 `; 
-            difficultyFilter = -10;
+            labelDifficulty.innerText = `Difficulté max. : +10 `; 
+            difficultyFilter = 10;
             break;
 
             case '20': 
@@ -171,18 +169,18 @@ function userDifficultyFiltering() {
             break;
 
             case '30': 
-            labelDifficulty.innerText = `Difficulté max. : +10 `; 
-            difficultyFilter = 10;
+            labelDifficulty.innerText = `Difficulté max. : -10`; 
+            difficultyFilter = -10;
             break;
 
             case '40': 
-            labelDifficulty.innerText = `Difficulté max. : +20 `;
-            difficultyFilter = 20;
+            labelDifficulty.innerText = `Difficulté max. : -20 `;
+            difficultyFilter = -20;
             break;
 
             case '50': 
-            labelDifficulty.innerText = `Difficulté max. : +30 `; 
-            difficultyFilter = 30;
+            labelDifficulty.innerText = `Difficulté max. : -30 `; 
+            difficultyFilter = -30;
             break;
         }
 
@@ -204,7 +202,7 @@ const filteredTricks = tricks.filter(function (trick) {
 });
 
 const filteredSpells = spells.filter(function (spell) {
-    return spell.alt.includes(data) || spell.name.toLowerCase().includes(data) || spell.description.toLowerCase().includes(data) || spell.formula.toLowerCase().includes(data) || spell.difficulty <= difficultyFilter ;
+    return (spell.alt.includes(data) || spell.name.toLowerCase().includes(data) || spell.description.toLowerCase().includes(data) || spell.formula.toLowerCase().includes(data)) && spell.difficulty >= difficultyFilter ;
 });
 
     // Initialize filteredAgainTricks and filteredAgainSpells
@@ -216,19 +214,23 @@ if (magicType !== 'Tous') {
     filteredAgainSpells = filteredSpells.filter(spell => spell.type.includes(magicType));
 }
 
+
     document.querySelector("#searchArea").innerHTML = "";
     generateTricks(filteredAgainTricks);
     generateSpells(filteredAgainSpells);
+    
+    
     
     lockingCard();  
 
     if (document.querySelector("#myTricksDiv")) {
         display9articles('displayedTricks','#myTricksDiv .notsaved', 'myTricksDiv','tricks');
-        displayTricks();
+        displayMagic('checkTricks', 'myTricksDiv', 'myTricksTitle', 'buttonArrow-tricks')
     }
     if (document.querySelector("#mySpellsDiv")) {
         display9articles('displayedSpells','#mySpellsDiv .notsaved', 'mySpellsDiv','spells');
-        displaySpells();
+
+        displayMagic('checkSpells', 'mySpellsDiv', 'mySpellsTitle', 'buttonArrow-spells')
     } 
 }
 
@@ -272,45 +274,33 @@ function displayTricksAndSpells() {
     let checkTricks = document.getElementById("checkTricks");
 
     checkTricks.addEventListener("change", function(event) {
-        displayTricks(); 
+        displayMagic('checkTricks', 'myTricksDiv', 'myTricksTitle', 'buttonArrow-tricks')
     });
 
     checkSpells.addEventListener("change", function(event) {
-        displaySpells();
+        displayMagic('checkSpells', 'mySpellsDiv', 'mySpellsTitle', 'buttonArrow-spells')
     });
 }
 
 
-function displayTricks() {
-    let checkTricks = document.getElementById("checkTricks");
-    let myTricksDiv = document.querySelector("#myTricksDiv");
-    let myTricksTitle = document.querySelector("#myTricksTitle");
-    let button = document.getElementById('buttonArrow-tricks');
-    if (!checkTricks.checked) {
-        myTricksDiv.classList.add("do-not-display");
-        myTricksTitle.classList.add("do-not-display");
-        button.classList.add('do-not-display');
-    } else {
-        myTricksDiv.classList.remove("do-not-display");
-        myTricksTitle.classList.remove("do-not-display");
-        button.classList.remove('do-not-display');
-    }
-}
 
-function displaySpells() {
-    
-    let checkSpells = document.getElementById("checkSpells");
-    let mySpellsDiv = document.querySelector("#mySpellsDiv");
-    let mySpellsTitle = document.querySelector("#mySpellsTitle");
-    let button = document.getElementById('buttonArrow-spells');
-    if (!checkSpells.checked) {
-        mySpellsDiv.classList.add("do-not-display");
-        mySpellsTitle.classList.add("do-not-display");
-        button.classList.add('do-not-display');
+function displayMagic(checkId, divId, titleId, buttonId) {
+    let check = document.getElementById(checkId);
+    let myDiv = document.getElementById(divId);
+    let myTitle = document.getElementById(titleId);
+    let button = document.getElementById(buttonId);
+    if (!check.checked) {
+        myDiv.classList.add("do-not-display");
+        myTitle.classList.add("do-not-display");
+        if (button) {
+            button.classList.add('do-not-display');
+        }
     } else {
-        mySpellsDiv.classList.remove("do-not-display");
-        mySpellsTitle.classList.remove("do-not-display");
-        button.classList.remove('do-not-display');
+        myDiv.classList.remove("do-not-display");
+        myTitle.classList.remove("do-not-display");
+        if (button) {
+            button.classList.remove('do-not-display');
+        }
     }
 }
 
@@ -383,7 +373,7 @@ function display9articles(displayedArray, location, buttonLocation,mode) {
         button.appendChild(showMore);
         showMore.id = `buttonArrow-${mode}`
 
-        pressToShowMore(showMore, displayedArray, location);
+        pressToShowMore(showMore, displayedArray);
 
     }
 }
@@ -391,7 +381,8 @@ function display9articles(displayedArray, location, buttonLocation,mode) {
 function pressToShowMore(button, displayedArray) {
     button.addEventListener("click", function(event) {
         let range = 0;
-        for (i=9 ; i < displayedArray.length ; i++) {
+        let count = 0;
+        for (let i=9 ; i < displayedArray.length ; i++) {
             if (displayedArray[i].classList.contains('do-not-display') && range<6) {
                 displayedArray[i].classList.remove('do-not-display');
                 range++
@@ -400,11 +391,12 @@ function pressToShowMore(button, displayedArray) {
 
         for (element of displayedArray) {
             if (element.classList.contains('do-not-display')) {
-                pressToShowMore();
+                count++
             }
+        } 
+        if (count === 0) {
+            button.remove();
         }
-
-        button.remove();
     });
 }
 
