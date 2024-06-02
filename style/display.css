@@ -24,19 +24,17 @@ html {
  */
 
  header {
-    background-color: rgb(148, 0, 0);
+    background-image: linear-gradient(to bottom, #320000, #470006, #5d0008, #730006, #890000);
     height: 60px;
  }
 
 header nav {
     display: flex;
-    justify-content:left;
+    justify-content:space-between;
     padding: 1rem;
+    margin: 0 20%;
 }
 
-header nav div {
-    margin:auto;
-}
 
 header nav div a {
     padding: 0 1.5rem 0 1.5rem;
@@ -74,15 +72,14 @@ body {
 }
 
 #fullWindow {
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    background-color: white;
 
-    border: solid black 2px;
+    border-top: 0;
+    border-bottom: 0;
+    background-image: url('../images/background-rotate.jpg');
+    background-size:contain;
+    margin-right: 250px;
     
     width: 60%;
-    margin: auto;
-    margin-top: 35px;
 
     display: grid;
 
@@ -90,7 +87,6 @@ body {
                     "foot foot" auto/1fr 6fr;
 
     padding:0;
-    box-shadow: rgba(255, 255, 255, 0.445) 0px 3px 50px;
 }
 
 
@@ -110,17 +106,26 @@ body {
 
 
 main {
+    background-color: black;
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 aside {
+    color:black;
+    background-color: white;
+    border: solid black 2px;
+    position: sticky;
+    top: 0px;
     width: 250px;
     padding:0 1rem 1rem 1rem;
     display: flex;
     flex-direction: column;
-    background-color: white;
-    height: 100vh ;
+    justify-content:space-around;
+    align-items: center;
+    height: 70vh ;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .config {
@@ -146,7 +151,7 @@ aside {
 }
 
 footer {
-    color: rgba(255, 255, 255, 0.329);
+    color: black;
     text-align: center;
     padding-right: 1rem;
 }
@@ -168,7 +173,6 @@ a {
  #buttons {
     display:flex;
     justify-content: space-around;
-    margin: 1.2rem 0;
  }
 
  .config #zoneVueDetaillee,
@@ -270,17 +274,11 @@ select {
 }
 
 
-
-.do-not-display {
-    display:none;
-}
-
-.do-not-display article {
-    display:none;
-}
-
+.do-not-display,
+.do-not-display article,
+.do-not-display i,
 .do-not-display-magie {
-    display:none;
+    display:none !important;
 }
 
 table {

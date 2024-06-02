@@ -1,3 +1,9 @@
+#content {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%
+}
+
 
 #fullWindow,
 #fullWindow div,
@@ -10,30 +16,41 @@
 
 #fullWindow article,
 #fullWindow div article {
-    border: solid black 2px;
+    border: solid black 1px;
     padding: 1rem;
     margin: 0.5rem;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 275px;
-    background: white;
+    background-image: url('../images/paper.jpg');
+    background-size:auto;
 }
 
-header {
-    position: sticky;
-    z-index: 2;
-    top: 0; /* Stick to the top of the viewport */
+.show-more-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    text-align: center;
+    font-size: 50px;
+    color: black;
+    border-radius: 100%;
+    width: 50px!important;
+    height: 50px !important;
+    margin: 25px 150px 0 150px !important;
+
 }
 
-aside {
-    position: sticky;
-    top: 60px;
-}
+
+
+
 
 article h3 {
     font-family:Arial, Helvetica, sans-serif;
     font-size: 0.9rem;
     text-align: right;
-    color: rgb(56, 56, 56);
+    color: black;
     border-bottom: solid 2px rgb(56, 56, 56);
 }
 
@@ -82,14 +99,21 @@ article .description div {
 
 h2 {
     font-size:2rem;
-    border-bottom: solid 5px rgb(0, 0, 0);
+    color: black;
+    border-bottom: solid 5px black;
     margin: 2rem 2rem 2rem 2rem;
+}
+
+#perType {
+display: flex;
+flex-direction: column;
+justify-content: center;
 }
 
 
 #userSearch {
     display:block;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-image: linear-gradient(#464d55, #000000);
     background-color: black;

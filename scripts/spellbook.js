@@ -1,3 +1,6 @@
+let difficultyFilter = 30;
+
+
 function generateMySpellbook() {
     const content = document.querySelector("#content");
     const bookTitle = document.createElement("h2");
@@ -8,7 +11,6 @@ function generateMySpellbook() {
     //divTricks.classList.add('do-not-display');
     divSpellbook.id = "mySpellbook";
     
-
             // On rattache la balise article a la section Fiches
             content.appendChild(bookTitle);
             content.appendChild(divSpellbook);
@@ -112,7 +114,6 @@ for (let i = 0 ; i < spells.length ; i++) {
 
 function lockingCard() {
 const cards = document.querySelectorAll(".notsaved");
-console.log(cards);
 
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].addEventListener("click", function(event) {
@@ -146,6 +147,52 @@ function userFiltering() {
     });
 }
 
+function userDifficultyFiltering() {
+    let difficulty = document.getElementById('difficultyOfSpell');
+    let labelDifficulty = document.getElementById('labelDifficulty');
+    
+
+    difficulty.addEventListener("input", function(event) {
+
+        switch (difficulty.value) {
+            case '0': 
+            labelDifficulty.innerText = `Difficulté max. : -20 `;
+            difficultyFilter = -20;
+            break;
+
+            case '10': 
+            labelDifficulty.innerText = `Difficulté max. : -10 `; 
+            difficultyFilter = -10;
+            break;
+
+            case '20': 
+            labelDifficulty.innerText = `Difficulté max. : 0`; 
+            difficultyFilter = 0;
+            break;
+
+            case '30': 
+            labelDifficulty.innerText = `Difficulté max. : +10 `; 
+            difficultyFilter = 10;
+            break;
+
+            case '40': 
+            labelDifficulty.innerText = `Difficulté max. : +20 `;
+            difficultyFilter = 20;
+            break;
+
+            case '50': 
+            labelDifficulty.innerText = `Difficulté max. : +30 `; 
+            difficultyFilter = 30;
+            break;
+        }
+
+        theFilter();
+
+        
+    });
+    
+}
+
 
 function theFilter() {
 
@@ -153,11 +200,11 @@ function theFilter() {
     data = userSearch.value.toLowerCase();
 
 const filteredTricks = tricks.filter(function (trick) {
-    return trick.alt.includes(data) || trick.name.toLowerCase().includes(data) || trick.description.toLowerCase().includes(data);
+    return trick.alt.includes(data) || trick.name.toLowerCase().includes(data) || trick.description.toLowerCase().includes(data) ;
 });
 
 const filteredSpells = spells.filter(function (spell) {
-    return spell.alt.includes(data) || spell.name.toLowerCase().includes(data) || spell.description.toLowerCase().includes(data) || spell.formula.toLowerCase().includes(data)  ;
+    return spell.alt.includes(data) || spell.name.toLowerCase().includes(data) || spell.description.toLowerCase().includes(data) || spell.formula.toLowerCase().includes(data) || spell.difficulty <= difficultyFilter ;
 });
 
     // Initialize filteredAgainTricks and filteredAgainSpells
@@ -169,19 +216,22 @@ if (magicType !== 'Tous') {
     filteredAgainSpells = filteredSpells.filter(spell => spell.type.includes(magicType));
 }
 
-
     document.querySelector("#searchArea").innerHTML = "";
     generateTricks(filteredAgainTricks);
     generateSpells(filteredAgainSpells);
+    
+    lockingCard();  
 
     if (document.querySelector("#myTricksDiv")) {
+        display9articles('displayedTricks','#myTricksDiv .notsaved', 'myTricksDiv','tricks');
         displayTricks();
     }
     if (document.querySelector("#mySpellsDiv")) {
-    displaySpells();
-    }
-    lockingCard()  
+        display9articles('displayedSpells','#mySpellsDiv .notsaved', 'mySpellsDiv','spells');
+        displaySpells();
+    } 
 }
+
 
 function spellbookOnly() {
     let spellbookOnly= document.getElementById("spellbookOnly");
@@ -197,6 +247,7 @@ function spellbookOnly() {
         }
     });
 }
+
 
 function noSpellbook() {
     let noSpellbook = document.getElementById("noSpellbook");
@@ -234,12 +285,15 @@ function displayTricks() {
     let checkTricks = document.getElementById("checkTricks");
     let myTricksDiv = document.querySelector("#myTricksDiv");
     let myTricksTitle = document.querySelector("#myTricksTitle");
+    let button = document.getElementById('buttonArrow-tricks');
     if (!checkTricks.checked) {
         myTricksDiv.classList.add("do-not-display");
         myTricksTitle.classList.add("do-not-display");
+        button.classList.add('do-not-display');
     } else {
         myTricksDiv.classList.remove("do-not-display");
         myTricksTitle.classList.remove("do-not-display");
+        button.classList.remove('do-not-display');
     }
 }
 
@@ -248,12 +302,15 @@ function displaySpells() {
     let checkSpells = document.getElementById("checkSpells");
     let mySpellsDiv = document.querySelector("#mySpellsDiv");
     let mySpellsTitle = document.querySelector("#mySpellsTitle");
+    let button = document.getElementById('buttonArrow-spells');
     if (!checkSpells.checked) {
         mySpellsDiv.classList.add("do-not-display");
         mySpellsTitle.classList.add("do-not-display");
+        button.classList.add('do-not-display');
     } else {
         mySpellsDiv.classList.remove("do-not-display");
         mySpellsTitle.classList.remove("do-not-display");
+        button.classList.remove('do-not-display');
     }
 }
 
@@ -310,8 +367,51 @@ function takeScreenshotWeb() {
     });
 }
 
+
+function display9articles(displayedArray, location, buttonLocation,mode) {
+    displayedArray = document.querySelectorAll(location)
+    if (displayedArray.length>9) {
+        for (i=9 ; i < displayedArray.length ; i++) {
+            displayedArray[i].classList.add('do-not-display');
+        }
+
+        const showMore = document.createElement("button");
+        showMore.innerHTML = `<i class="fa-solid fa-circle-chevron-down"></i>`;
+        showMore.classList.add("card-effect")
+        showMore.classList.add("show-more-button")
+        const button = document.getElementById(buttonLocation);
+        button.appendChild(showMore);
+        showMore.id = `buttonArrow-${mode}`
+
+        pressToShowMore(showMore, displayedArray, location);
+
+    }
+}
+
+function pressToShowMore(button, displayedArray) {
+    button.addEventListener("click", function(event) {
+        let range = 0;
+        for (i=9 ; i < displayedArray.length ; i++) {
+            if (displayedArray[i].classList.contains('do-not-display') && range<6) {
+                displayedArray[i].classList.remove('do-not-display');
+                range++
+            };
+        }
+
+        for (element of displayedArray) {
+            if (element.classList.contains('do-not-display')) {
+                pressToShowMore();
+            }
+        }
+
+        button.remove();
+    });
+}
+
+
 userFiltering();
 userTypeFiltering();
+userDifficultyFiltering();
 generateTricks(tricks);
 generateSpells(spells);
 generateMySpellbook();
@@ -319,5 +419,7 @@ spellbookOnly();
 noSpellbook();
 displayTricksAndSpells();
 takeScreenshotWeb();
+display9articles('displayedTricks','#myTricksDiv .notsaved', 'myTricksDiv','tricks');
+display9articles('displayedSpells','#mySpellsDiv .notsaved', 'mySpellsDiv','spells');
 
 lockingCard();

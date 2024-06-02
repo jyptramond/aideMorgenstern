@@ -1328,7 +1328,7 @@ const tricks = [
     },
     {
         name: "Pare-pluie",
-        alt:["pare pluie", "para pluie", "para-pluie"],
+        alt:["pare pluie", "para pluie", "para-pluie", "parapluie"],
         type: ["Eau", "Voyage"],
         difficulty: 10,
         description: "Les gouttes de pluie ne touchent pas la cible, qui reste bien au sec pendant *MAG* heures. La cible gagne 1 Avantage en MOU pendant *MAG* tours."

@@ -52,7 +52,7 @@
             </div>
 
 
-                <div><input type="text" id="userSearch" maxlength="30" placeholder="Votre recherche"></div>
+                <div><input type="text" id="userSearch" maxlength="20" placeholder="Votre recherche"></div>
 
                 <div id="perType">
                     <label for="type">Domaine magique:</label>
@@ -76,6 +76,11 @@
                         <option value="Alchimie">Alchimie</option>
                     </select>
                 </div>
+
+                <div id="selectDifficulty">
+                    <label for="difficultyOfSpell" id="labelDifficulty">Difficulté max. : -30</label>
+                    <input type="range" id="difficultyOfSpell" name="difficultyOfSpell" min="0" max="50" value="50" step="10" />
+                  </div>
 
                 <div id="tricksAndSpells">
                     <input type="checkbox" id="checkTricks" checked>
@@ -106,11 +111,5 @@
 
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <span>Le jeu de rôle <a href="https://brigandyne.wordpress.com/" target="_blank">Brigandyne</a> est une œuvre de James Tornade, tous droits réservés.</span>
-        <span class="is-smaller">favicon made by Skoll. Available on <a href="https://game-icons.net" target="_blank">Game-icons.net</a></span> 
-        <span class="is-smaller"> website designed by Jyp</span>
-    </footer>
 </body>
 </html>
