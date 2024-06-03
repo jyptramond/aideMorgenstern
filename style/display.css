@@ -8,6 +8,10 @@
 }
 
 
+/**
+ * mon set de couleur
+ */
+
 html {
     --color-1: #000000;
     --color-2: #ffffff;
@@ -23,7 +27,7 @@ html {
  * Header
  */
 
- header {
+header {
     background-image: linear-gradient(to bottom, #320000, #470006, #5d0008, #730006, #890000);
     height: 60px;
  }
@@ -55,7 +59,72 @@ header nav a {
  * Eléments génériques
  */
 
-body {
+
+
+aside {
+    color:black;
+    background-color: white;
+    border: solid black 2px;
+    position: sticky;
+    
+    width: 250px;
+    height: fit-content;
+    padding:0 1rem 1rem 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#asideConfig {
+    top: 0px;
+}
+
+#asideInfos {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+aside h3 {
+    margin-bottom: 1rem;
+}
+
+aside div,
+aside form {
+    margin: 10px auto;
+}
+
+aside .inputText input {
+    display:block;
+    width: 100%;
+    font-size: 15px;
+    background-image: linear-gradient(#464d55, #000000);
+    background-color: black;
+    padding: 0 0.4rem;
+    border:none;
+    color:white;
+    height:2rem;
+}
+
+
+aside div select {
+    margin: 3px auto 0.7rem auto;
+    width: 190px;
+    color: var(--color-2);
+    background-image: linear-gradient(#464d55, #000000);
+    background-color: black;
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: none;
+}
+
+
+/**
+ * Eléments génériques
+ */
+
+ body {
     background-color: var(--color-1);
     font-family:"Segoe UI";
     overflow-y: auto; /* pour activer le défilement vertical si nécessaire */
@@ -64,11 +133,12 @@ body {
     justify-content: space-between;
 }
 
-#tableVue {
-    grid-area : foot;
-    margin: 1rem;
-    padding:10px 10px 10px 30px;
-    background-color: var(--color-3);
+
+main {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 #fullWindow {
@@ -77,7 +147,6 @@ body {
     border-bottom: 0;
     background-image: url('../images/background-rotate.jpg');
     background-size:contain;
-    margin-right: 250px;
     
     width: 60%;
 
@@ -91,123 +160,115 @@ body {
 
 
 
-#rightBottomDisplay {
-    display: grid;
-    width:100%;
-    grid-template-columns: 2.5fr 3fr 4fr;
-    
-}
-   
-
-
 /**
- * Colonnes
+ * Autres
  */
 
-
-main {
-    background-color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-aside {
-    color:black;
-    background-color: white;
-    border: solid black 2px;
-    position: sticky;
-    top: 0px;
-    width: 250px;
-    padding:0 1rem 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content:space-around;
-    align-items: center;
-    height: 70vh ;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-}
-
-.config {
-    justify-content: space-around;
-    align-content: space-around;
-}
-
-.affichageLeft {
-    justify-content: flex-start;
-}
-
-.affichageMid {
-    justify-content: flex-start;
-
-}
-
-.affichageRight {
-    justify-content: flex-start;
-}
-
-#fullMiddleDisplay {
-    padding:0 1rem 1rem 1rem;
-}
-
-footer {
-    color: black;
+h1 {
     text-align: center;
-    padding-right: 1rem;
-}
-
-footer span {
-    margin : 0.75rem 0.75rem;
-    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Book Antiqua;
 }
 
 
-a {
-    color : rgb(148, 0, 0);
+h2 {
+    text-align: center;
+    width:100%;
+    font-size: 1.2rem;
+    padding:5px;
+    font-family: Book Antiqua;
 }
+
+
+p {
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+}
+
 
 /**
- * Config
+ * Do-not-display
  */
 
- #buttons {
-    display:flex;
-    justify-content: space-around;
- }
-
- .config #zoneVueDetaillee,
- .config #zoneNotes {
-    margin: 1rem auto;
- }
-
-#propositionUtilisateur {
-    display:flex;
-    flex-direction: row;
+.do-not-display,
+.do-not-display article,
+.do-not-display i,
+.do-not-display-magie {
+    display:none !important;
 }
 
- #champTexte {
-    display:block;
-    width: 70%;
-    margin: 0 auto;
-    background-image: linear-gradient(#464d55, #000000);
-    background-color: black;
-    padding: 0 0.4rem;
-    border:none;
-    color:white;
-    height:1.7rem;
+
+/**
+ * My buttons
+ */
+
+
+ .myButton {
+    
+    height:100%;
+    appearance: none;
+    background-color: rgba(0, 0, 0, 0.178);
+    box-shadow: rgba(255, 255, 255, 0.25) 0 8px 15px;
+    color: black;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family:expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";  
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+  }
+ 
+  .myButton img {
+     position: absolute; /* Position the image absolutely */
+     top: 50%; /* Align the image vertically at 50% of the button's height */
+     left: 50%; /* Align the image horizontally at 50% of the button's width */
+     transform: translate(-50%, -50%); /* Center the image */
+     width: 65%; /* Image width will match the width of the button */
+     height: 65%; /* Image height will match the height of the button */
+     z-index: 1; /* Ensure the image appears above the background */
+  }
+  
+  .myButton:disabled {
+    pointer-events: none;
+  }
+  
+  .myButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.26) 0 8px 15px;
+    transform: translateY(-2px);
+    background-color: rgba(0, 0, 0, 0.39);
+  }
+  
+  .myButton:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+ 
+ 
+  #generer {
+     aspect-ratio: 1.5 / 1;
  }
 
- #champAge {
-    display:block;
-    width: 20%;
-    margin: 0 auto;
-    background-image: linear-gradient(#464d55, #000000);
-    background-color: black;
-    border:none;
-    padding: 0 0.4rem;
-    color:white;
-    height:1.7rem;
+
+ #save {
+    aspect-ratio: 1 / 1;
  }
+
+
 
 
 
@@ -215,7 +276,7 @@ a {
  * Text
  */
 
-.strong {
+ .strong {
     font-weight: bold;
 }
 
@@ -242,226 +303,3 @@ a {
 .is-bigger {
     font-size:xx-large;
 }
-
-
-
-/**
- * Autres
- */
-
-h1 {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: Book Antiqua;
-}
-
-p {
-    text-align: center;
-    margin: 0 0 20px 0;
-}
-
-
-select {
-    margin: 3px auto 0.7rem auto;
-    width: 190px;
-    color: var(--color-2);
-    background-image: linear-gradient(#464d55, #000000);
-    background-color: black;
-    padding: 0.6rem;
-    border-radius: 10px;
-    border: none;
-}
-
-
-.do-not-display,
-.do-not-display article,
-.do-not-display i,
-.do-not-display-magie {
-    display:none !important;
-}
-
-table {
-    border-collapse : collapse;
-}
-
-
-td {
-    border-top: solid 1px var(--color-4);
-    border-bottom: solid 1px var(--color-4);
-}
-
-#tableCompetences {
-    width : 100%
-}
-
-#tableCompetences td {
-    padding: 10px 0 10px 10px;
-}
-
-#tableCompetences td + td {
-    padding: 10px 10px 10px 0;
-}
-
-td + td {
-    text-align:right;
-}
-
-#tableAttributs {
-    width : 100%;
-    margin: 0 auto 0 auto;
-}
-
-#tableAttributs td {
-    padding: 10px 0 10px 10px;
-}
-
-#tableAttributs td + td {
-    padding: 10px 10px 10px 0;
-}
-
-#tableAtouts {
-    margin: 15px 0 0 0;
-}
-
-#tableGrimoire {
-    margin: 15px 0 0 0;
-}
-
-
-#tableAtouts div {
-    min-height: 3rem;
-}
-
-#listeAtouts, 
-#listeEquipement,
-#listeGrimoireTours,
-#listeGrimoireSortileges {
-    margin: 0 0 0 20px; /* décale les listes sur le côté*/
-    padding: 10px;
-}
-
-#tableEquipement div,
-#tableAtouts div,
-#tableGrimoire div {
-    border-collapse: collapse;
-    background-color: var(--color-3);
-}
-
-#tableEquipement div {
-    min-height: 10rem;
-    width:100%
-}
-
-
-
-
-
-ul li {
-    margin-bottom: 0.5rem;
-}
-
-
-h2 {
-    text-align: center;
-    width:100%;
-    font-size: 1.2rem;
-    padding:5px;
-    font-family: Book Antiqua;
-}
-
-
-
-tr:nth-child(odd) {
-    background-color: var(--color-3);
-  }
-
-tr:nth-child(even) {
-background-color: var(--color-5);
-}
-
-
-
-#champNotes {
-    background-color: var(--color-3);
-    border:none;
-    width: 100% ;
-    padding: 10px;
-    resize: vertical;
-    font-family:"Segoe UI";
-    font-size: 16px;
-}
-
-
-
-
-/**
- * Bouton
- */
- 
- .myButton {
-    
-   height:100%;
-   appearance: none;
-   background-color: rgba(0, 0, 0, 0.178);
-   box-shadow: rgba(255, 255, 255, 0.25) 0 8px 15px;
-   color: black;
-   border: none;
-   border-radius: 20px;
-   cursor: pointer;
-   font-family:expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";  
-   font-size: 16px;
-   font-weight: 600;
-   line-height: normal;
-   outline: none;
-   padding: 10px;
-   text-align: center;
-   text-decoration: none;
-   transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-   user-select: none;
-   -webkit-user-select: none;
-   touch-action: manipulation;
-   will-change: transform;
- }
-
- .myButton img {
-    position: absolute; /* Position the image absolutely */
-    top: 50%; /* Align the image vertically at 50% of the button's height */
-    left: 50%; /* Align the image horizontally at 50% of the button's width */
-    transform: translate(-50%, -50%); /* Center the image */
-    width: 65%; /* Image width will match the width of the button */
-    height: 65%; /* Image height will match the height of the button */
-    z-index: 1; /* Ensure the image appears above the background */
- }
-
-
-#generer {
-    aspect-ratio: 1.5 / 1;
-}
-
- #save {
-    aspect-ratio: 1 / 1;
- }
- 
- .myButton:disabled {
-   pointer-events: none;
- }
- 
- .myButton:hover {
-   box-shadow: rgba(0, 0, 0, 0.26) 0 8px 15px;
-   transform: translateY(-2px);
-   background-color: rgba(0, 0, 0, 0.39);
- }
- 
- .myButton:active {
-   box-shadow: none;
-   transform: translateY(0);
- }
-
-
-
-
-
-
-
-

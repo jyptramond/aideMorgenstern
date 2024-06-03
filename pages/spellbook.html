@@ -46,15 +46,17 @@
     <main>  
 
 
-        <aside>
-            <div id="buttons">
-            <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
-            </div>
+        <aside id="asideConfig">
+                <div>
+                    <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
+                </div>
 
-                <div><input type="text" id="userSearch" maxlength="20" placeholder="Votre recherche"></div>
+                <div class="inputText">
+                    <input type="text" id="userSearch" maxlength="20" placeholder="Votre recherche">
+                </div>
 
 
-                <div id="perType">
+                <div>
                     <label for="type">Domaine magique:</label>
                     <select id="selectType" name="type">
                         <option value="Tous">Tous</option>
@@ -77,28 +79,29 @@
                     </select>
                 </div>
 
-                <div id="selectDifficulty">
+                <div class="inputRange">
                     <label for="difficultyOfSpell" id="labelDifficulty">Difficulté max. : -30</label>
-                    <input type="range" id="difficultyOfSpell" name="difficultyOfSpell" min="0" max="50" value="50" step="10" />
-                  </div>
+                    <input type="range" list="tickmarks" id="difficultyOfSpell" name="difficultyOfSpell" min="0" max="50" value="50" step="10" />
+                </div>
 
-                <div id="tricksAndSpells">
+                <div class="inputCheckbox">
                     <input type="checkbox" id="checkTricks" checked>
                     <label for="checkTricks">Tours de Magie</label><br>
                     <input type="checkbox" id="checkSpells" checked>
                     <label for="checkSpells">Sortilèges</label>
                 </div>
 
-                <div id="divSpellbookOnly">
+                <div class="inputCheckbox">
                     <input type="checkbox" id="spellbookOnly">
                     <label for="spellbookOnly">Grimoire Uniquement</label>
                 </div>
-                <div id="divNoSpellbook">
+
+                <div class="inputCheckbox">
                     <input type="checkbox" id="noSpellbook">
                     <label for="noSpellbook">Cacher le grimoire</label>
                 </div>
 
-                <form id="selectSorting">
+                <form class="inputRadio">
                     <input type="radio" id="ascending" name="options" value="option1" checked>
                     <label for="ascending">difficulté croissante</label><br>
 
@@ -107,10 +110,11 @@
 
                     <input type="radio" id="alphabetical" name="options" value="option1">
                     <label for="alphabetical">ordre alphabétique</label><br>
-
                 </form>
 
-                <div><input type="text" id="customSpellbook" maxlength="20" placeholder="Mon Grimoire"></div>
+                <div class="inputText">
+                    <input type="text" id="customSpellbook" maxlength="35" placeholder="Mon Grimoire">
+                </div>
 
 
         </aside>
@@ -122,6 +126,10 @@
                 <div id="searchArea"></div>
             </div>
         </div>
+
+
+        <aside id="asideInfos"><h3>Contenu du Grimoire</h3>
+        <ul></ul></aside>
 
     </main>
 

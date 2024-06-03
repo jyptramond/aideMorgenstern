@@ -2454,7 +2454,7 @@ const spells = [
         range: "Extrême",
         resistance: "MAG",
         success: "le sort affecte aussi les innocents.",
-        description: "« Tuez-les tous, Dieu reconnaîtra les siens » Le ciel se déchire, et les astres semblent se disperser le temps d’une seconde. Tous vos ennemis voient leur peau se flétrir, comme calcinée par le châtiment divin. Ils subissent tous immédiatement (RU +8) dégâts de feu (l’armure ne compte pas). Les survivants perdent ensuite 1 PV par tour jusqu’à ce qu’ils subissent des soins. Ce sort n’a aucun effet contre une âme sainte ou innocente."
+        description: "<i>« Tuez-les tous, Dieu reconnaîtra les siens »</i><br>Le ciel se déchire, et les astres semblent se disperser le temps d’une seconde. Tous vos ennemis voient leur peau se flétrir, comme calcinée par le châtiment divin. Ils subissent tous immédiatement (RU +8) dégâts de feu (l’armure ne compte pas). Les survivants perdent ensuite 1 PV par tour jusqu’à ce qu’ils subissent des soins. Ce sort n’a aucun effet contre une âme sainte ou innocente."
       },
     {
         name: "Lame vampire de Shaula",

@@ -116,16 +116,40 @@ const cards = document.querySelectorAll(".notsaved");
 
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].addEventListener("click", function(event) {
-            const clonedElement = cards[i].cloneNode(true);
-            clonedElement.classList.add("card-effect");
-            clonedElement.classList.remove("notsaved")
-            const mySpellbook = document.getElementById("mySpellbook")
-            mySpellbook.appendChild(clonedElement);
 
-            clonedElement.addEventListener("click", function(event) {
-                clonedElement.remove();
-            })
+            let isDuplicate = false;
+            let savedElements = document.querySelectorAll("#mySpellbook article")
+            for (element of savedElements) {
+                if (element.firstChild.textContent === cards[i].firstChild.textContent) {
+                    isDuplicate = true;
+                }
+            }
 
+            if (!isDuplicate) {
+                const clonedElement = cards[i].cloneNode(true);
+                clonedElement.classList.add("card-effect");
+                clonedElement.classList.remove("notsaved")
+    
+                let spellbookRecap = document.querySelector("aside ul")
+                let recapElement = document.createElement("li")
+                recapElement.innerText = cards[i].firstChild.textContent
+                spellbookRecap.appendChild(recapElement);
+    
+                clonedElement.id = cards[i].name;
+                const mySpellbook = document.getElementById("mySpellbook")
+                mySpellbook.appendChild(clonedElement);
+    
+                clonedElement.addEventListener("click", function(event) {
+                    let allRecapElements = document.querySelectorAll("aside ul li")
+                    for (element of allRecapElements) {
+                        if (element.textContent === clonedElement.firstChild.textContent) {
+                            element.remove();
+                            break;
+                        }
+                    }
+                    clonedElement.remove();
+                })
+            }
         });   
 	}
 }
@@ -427,8 +451,6 @@ function customizeSpellbookName() {
         else {
             mySpellbookTitle.textContent = customSpellbook.value;
         }
-        
-
     });
 }
 
@@ -459,5 +481,3 @@ noSpellbook();
 displayTricksAndSpells();
 customizeSpellbookName();
 takeScreenshotWeb();
-
-lockingCard();
