@@ -1,0 +1,208 @@
+#content {
+    width: 100%
+}
+
+.column {
+    margin: 10px;
+}
+
+#explications {
+    grid-area : foot;
+    margin: 1rem;
+    padding:10px 10px 10px 30px;
+    background-color: var(--color-3);
+}
+
+
+#characterSheet {
+    display: grid;
+    width:100%;
+    grid-template-columns: 2.5fr 3fr 4fr;    
+}
+
+#notes {
+    padding:0 1rem 1rem 1rem;
+}
+
+#fullWindow {
+    margin-right : 250px;
+}
+
+#characterSheetHeader {
+    margin-top: 20px;
+}
+
+/**
+ * Config
+ */
+
+#champAge {
+    width:20%;
+}
+
+#champTexte {
+    width : 60%;
+}
+
+
+/**
+ * Attributs
+ */
+
+#attributs {
+    width : 100%;
+    margin: 0 auto 0 auto;
+}
+
+#attributs td {
+    padding: 10px 0 10px 10px;
+}
+
+#attributs td + td {
+    padding: 10px 10px 10px 0;
+}
+
+
+/**
+ * Atouts
+ */
+
+#atouts {
+    margin: 15px 0 0 0;
+}
+
+
+#atouts div {
+    min-height: 3rem;
+}
+
+
+/**
+ * Compétences
+ */
+
+#competences {
+    width : 100%
+}
+
+#competences td {
+    padding: 10px 0 10px 10px;
+}
+
+#competences td + td {
+    padding: 10px 10px 10px 0;
+}
+
+
+
+/**
+ * Grimoire
+ */
+
+ #spellbook {
+    margin: 15px 0 0 0;
+}
+
+/**
+ * Tableaux
+ */
+
+
+table {
+    border-collapse : collapse;
+}
+
+td {
+    border-top: solid 1px var(--color-4);
+    border-bottom: solid 1px var(--color-4);
+}
+
+td + td {
+    text-align:right;
+}
+
+
+
+
+
+
+
+#listeAtouts, 
+#listeEquipement,
+#listeGrimoireTours,
+#listeGrimoireSortileges {
+    margin: 0 0 0 20px; /* décale les listes sur le côté*/
+    padding: 10px;
+}
+
+#equipements div,
+#atouts div,
+#spellbook div {
+    border-collapse: collapse;
+    background-color: var(--color-3);
+}
+
+#equipements div {
+    min-height: 10rem;
+    width:100%
+}
+
+
+a {
+    color : rgb(148, 0, 0);
+}
+
+
+/**
+ * Tableau
+ */
+
+tr:nth-child(odd) {
+    background-color: var(--color-3);
+  }
+
+tr:nth-child(even) {
+background-color: var(--color-5);
+}
+
+#champNotes {
+    background-color: var(--color-3);
+    border:none;
+    width: 100% ;
+    padding: 10px;
+    resize: vertical;
+    font-family:"Segoe UI";
+    font-size: 16px;
+}
+
+
+/**
+ * Mise en forme du texte
+ */
+
+ h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Book Antiqua;
+}
+
+
+h2 {
+    text-align: center;
+    width:100%;
+    font-size: 1.2rem;
+    padding:5px;
+    font-family: Book Antiqua;
+}
+
+
+p {
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+
+ul li {
+    margin-bottom: 0.5rem;
+}

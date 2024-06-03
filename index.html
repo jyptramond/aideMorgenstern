@@ -6,298 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Génération de personnage pré-tirés pour Brigandyne 2nde édition ? Brigandyne, le jeu de rôle dark fantasy à l'atmosphère chair et sang. Il vous suffit de quelques clics pour vous créer un personnage aléatoire sur mesure">
     <title>Générateur pour Brigandyne 2nde édition</title>
-    <link rel="stylesheet" href="style/style.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="style/display.css">
+    <link rel="stylesheet" href="style/index.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <script src="scripts/config.js" defer></script>
-    <script src="scripts/script.js" defer></script>
-    <script src="scripts/script-webpage.js" defer></script>
-    <script src="scripts/script-calculation.js" defer></script>
-    <script src="scripts/main.js" defer></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Scripts-->
 
 </head>
 <body>
 
 
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <a href="index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
+              <div>
+                  <a href="#">Accueil</a>
+                  <a href="pages/generate.html">Générateur</a>
+                  <a href="pages/spellbook.html">Grimoire</a>
+                  <a href="#">Rencontres</a>
+              </div>
+        </nav>
+    </header>
+
     <!-- MAIN -->
     <main>
-
-        
         
         <div id="fullWindow">
-
-            <div class="column config">
-                <div id="buttons">
-                <button class="myButton" role="button" id="generer"><i class="fa-solid fa-circle-plus"></i> Générer</button>
-                <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
-                </div>
-
-                    <div id="divSelectName">
-                        <label for="nom">Nom:</label>
-                        <select id="selectName" name="nom">
-                        <fieldset>
-                            <option value="-2">Logique</option>
-                            <option value="-1">Aléatoire</option>
-                        </fieldset>
-                        <fieldset>
-                            <option value="5">Antique (gr)</option>
-                            <option value="4">Borennie (de)</option>
-                            <option value="1">Doragne (es)</option>
-                            <option value="0">Falcogne (fr)</option>
-                            <option value="3">Sélénie / Sainte-Papauté (it)</option>
-                            <option value="8">Volgie (ru)</option>
-                        </fieldset>
-                        <fieldset>
-                            <option value="10">Elfique</option>
-                            <option value="9">Gobelinoïde</option>  
-                            <option value="12">Halfelin</option>
-                            <option value="11">Nain</option>
-                        </fieldset>  
-                        <fieldset>
-                            <option value="7">Orientalie</option>
-                            <option value="2">Anglais</option>
-                            <option value="6">Celtique</option>
-                        </fieldset>
-                        </select>
-                    </div>
-
-                    <div id="propositionUtilisateur"><input type="text" id="champTexte" maxlength="30" placeholder="Nom">
-                        <input type="text" id="champAge"  placeholder="âge" maxlength="5"></div>
-
-
-                    <div id="divArchetype">
-                        <label for="archetype">Archétype:</label>
-                        <select id="selectArchetype" name="archetype">
-                            <option value="-1">Aléatoire</option>
-                            <option value="0">Aigle</option>
-                            <option value="1">Âne</option>
-                            <option value="2">Cerf</option>
-                            <option value="3">Chat</option>
-                            <option value="4">Chien</option>
-                            <option value="5">Coq</option>
-                            <option value="6">Corbeau</option>
-                            <option value="7">Fourmi</option>
-                            <option value="8">Hibou</option>
-                            <option value="9">Hyène</option>
-                            <option value="10">Lapin</option>
-                            <option value="11">Lion</option>
-                            <option value="12">Loup</option>
-                            <option value="13">Mouton</option>
-                            <option value="14">Ours</option>
-                            <option value="15">Paon</option>
-                            <option value="16">Porc</option>
-                            <option value="17">Rat</option>
-                            <option value="18">Renard</option>
-                            <option value="19">Serpent</option>
-                            <option value="20">Singe</option>
-                            <option value="21">Souris</option>
-                            <option value="22">Taureau</option>
-                            <option value="23">Vautour</option>
-                        </select>
-                    </div>
-
-                    <div id="divPeuple">
-                        <label for="peuple">Peuple:</label>
-                        <select id="selectPeuple" name="peuple">
-                            <option value="-2">Logique</option>
-                            <option value="-1">Aléatoire</option>
-                            <option value="0">Humain</option>
-                            <option value="1">Elfe</option>
-                            <option value="2">Nain</option>
-                            <option value="3">Halfelin</option>
-                            <option value="4">Elvin</option>
-                            <option value="5">Hudvàr</option>
-                            <option value="6">Ogrin</option>
-                            <option value="7">Orquin</option>
-                            <option value="8">Morvelin</option>
-                        </select>
-                    </div>
-
-                    <div id="divGroupe">
-                        <label for="groupe">Groupe:</label>
-                        <select id="selectGroupe" name="groupe">
-                            <option value="-2">Logique</option>
-                            <option value="-1">Aléatoire</option>
-                            <option value="0">Agents et domestiques</option>
-                            <option value="1">Aristocrates et nobles</option>
-                            <option value="2">Artisans et commerçants</option>
-                            <option value="3">Bandits et brigands</option>
-                            <option value="4">Bateleurs et saltimbanques</option>
-                            <option value="5">Érudits et lettrés</option>
-                            <option value="6">Filous et roublards</option>
-                            <option value="7">Forestiers et paysans</option>
-                            <option value="8">Guerriers et bretteurs</option>
-                            <option value="9">Hommes d'armes et soldats</option>
-                            <option value="10">Magiciens et thaumaturges</option>
-                            <option value="11">Parias et miséreux</option>
-                            <option value="12">Religieux et prêtres</option>
-                        </select>
-                    </div>
-
-                    <div id="divCarriere">
-                        <label for="carriere">Carrière:</label>
-                        <select id="selectCarriere" nom="carriere">
-                            <option value="-1">Aléatoire</option>
-                        </select>
-                    </div>
-                
-                    <div id="divCompetences">
-                        <label for="mode">Compétences:</label>
-                        <select id="selectMode" name="mode">
-                            <option value="0">Répartition</option>
-                            <option value="1">Tirage</option>
-                            <option value="2">Tirage (5)</option>
-                        </select>
-                    </div>
-
-                    <div id="divMode">
-                        <label for="role">Mode:</label>
-                        <select id="selectRole" name="role">
-                            <option value="0">Normal</option>
-                            <option value="1">Spécialiste</option>
-                            <option value="2">Champion</option>
-                            <option value="3">Héros Mineur</option>
-                            <option value="4">Héros Majeur</option>
-                        </select>
-                    </div>
-
-                        <div id="zoneVueDetaillee">
-                            <label for="cocherInfo"><i class="fa-solid fa-circle-info"></i> Plus d'infos</label>
-                            <input type="checkbox" id="cocherInfo">
-                        </div>
-
-                        <div id="zoneNotes">
-                            <label for="cocherNotes">Notes</label>
-                            <input type="checkbox" id="cocherNotes">
-                        </div>
-
-            </div>
-
-        <div id="content">
-
-            <div id="rightTopDisplay"><h1 id="identite">Nom, Peuple (Archétype, âge)</h1>
-                                        <p id="vices"></p></div>
-
-
-        <div id="rightBottomDisplay">
-            
-            <div class="column affichageLeft">
-
-
-                <table id="tableAttributs">
-                    <h2><i class="fa-solid fa-image-portrait"></i> Attributs</h2>
-                    <tbody>
-                        <tr><td>Carrière</td>           <td id="CARR"></td></tr>
-                        <tr><td><i class="fa-solid fa-heart"></i> Vitalité</td>           <td><span id="PV" class="strong">0</span><span class="expert do-not-display is-smaller" id="PV2"></span></td></tr>
-                        <tr><td><i class="fa-solid fa-bolt"></i> Sang-Froid</td>         <td><span id="SF" class="strong">0</span><span class="expert do-not-display is-smaller" id="SF2"></span></td></tr>
-                        <tr><td>Initiative</td>         <td id="INIT">0</td></tr>
-                        <tr><td>Destin</td>             <td id="DEST" class="strong">0</td></tr>
-                        <tr><td>Seuil de blessure</td>  <td id="SB">0</td></tr>
-                        <tr><td>Instabilité</td>        <td id="INST">0</td></tr>
-                        <tr><td>Spécial</td>            <td id="SPE"></td></tr>
-                        <tr class="expert do-not-display"><td class="expert do-not-display">ΣComp</td>              <td id="COMP" class="expert do-not-display  is-smaller">0</td></tr>
-                        
-                    </tbody>
-                </table>
-
-            <div id="tableAtouts">
-                <h2><i class="fa-solid fa-hands-holding-circle"></i> Atouts</h2>
-                <div>
-                <ul id="listeAtouts"></ul>
-                </div>
-            </div>
-
-            </div>
-
-            <div class="column affichageMid">
-                    
-
-
-
-
-                <table id="tableCompetences">
-                    <h2><i class="fa-solid fa-fire-flame-curved"></i> Compétences</h2>
-                    <tbody>
-                        <tr><td>Combat (COM)</td>           <td id="COMinfo" class="expert do-not-display is-smaller" width ="40%"></td><td id="COM" width ="5%">0</td></tr>
-                        <tr><td>Connaissances (CNS) </td>   <td id="CNSinfo" class="expert do-not-display is-smaller"></td><td id="CNS">0</td></tr>
-                        <tr><td>Discrétion (DIS)</td>       <td id="DISinfo" class="expert do-not-display is-smaller"></td><td id="DIS">0</td></tr>
-                        <tr><td>Endurance (END)</td>        <td id="ENDinfo" class="expert do-not-display is-smaller"></td><td id="END">0</td></tr>
-                        <tr><td>Force (FOR)</td>            <td id="FORinfo" class="expert do-not-display is-smaller"></td><td id="FOR">0</td></tr>
-                        <tr><td>Habileté (HAB)</td>         <td id="HABinfo" class="expert do-not-display is-smaller"></td><td id="HAB">0</td></tr>
-                        <tr><td>Mouvement (MOU)</td>        <td id="MOUinfo" class="expert do-not-display is-smaller"></td><td id="MOU">0</td></tr>
-                        <tr><td>Perception (PER)</td>       <td id="PERinfo" class="expert do-not-display is-smaller"></td><td id="PER">0</td></tr>
-                        <tr><td>Sociabilité (SOC)</td>      <td id="SOCinfo" class="expert do-not-display is-smaller"></td><td id="SOC">0</td></tr>
-                        <tr><td>Survie (SUR)</td>           <td id="SURinfo" class="expert do-not-display is-smaller"></td><td id="SUR">0</td></tr>
-                        <tr><td>Tir (TIR)</td>              <td id="TIRinfo" class="expert do-not-display is-smaller"></td><td id="TIR">0</td></tr>
-                        <tr><td>Volonté (VOL)</td>          <td id="VOLinfo" class="expert do-not-display is-smaller"></td><td id="VOL">0</td></tr>
-                        <tr><td class="magie do-not-display-magie">Magie (MAG)</td>            <td id="MAGinfo" class="expert is-smaller magie do-not-display do-not-display-magie"></td><td class="magie do-not-display-magie" id="MAG">0</td></tr>
-                    </tbody>
-                </table>
-
-
-
-            </div>
-
-            <div class="column affichageRight">
-
-                <div id="tableEquipement">
-                    <h2><i class="fa-solid fa-sack-xmark"></i> Équipements</h2>
-                    <div>
-                    <ul id="listeEquipement"></ul>
-                    </div>
-                </div>
-
-                <div id="tableGrimoire" class="do-not-display">
-                    <h2><i class="fa-solid fa-scroll"></i> Grimoire</h2>
-                    <div>
-                    <ul id="listeGrimoireTours"></ul>
-                    <ul id="listeGrimoireSortileges"></ul>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div id="fullMiddleDisplay" class="do-not-display">
-                <h2><i class="fa-solid fa-feather"></i> Notes</h2>
-                <textarea wrap="hard" id="champNotes"  placeholder="Vos notes..."></textarea>
-            </div>
-
-        </div>
-        <div id="tableVue" class="expert do-not-display">
-            <h2>Quelques explications...</h2><br>
-            <span class="strong">ΣComp</span>: <span class="is-smaller">((Valeurs de base + Pts de compétences sup. + Archétype) - (Magie - Pts décrémentés sur le COM)) + Magie = Total des pts de compétences (doit être le même résultat)</span><br><br>
-            <span class="strong">Nom</span>:
-            <ul><li><span class=italic>Logique</span>: tire un nom au sort de façon cohérente avec le peuple sélectionné
-            </ul><br>
-            <span class="strong">Peuple</span> :
-            <ul><li><span class=italic>Logique</span>: tire un peuple au sort sur la table des origines (Livre I, p29)
-            </ul><br>
-            <span class="strong">Groupe</span> :
-            <ul><li><span class=italic>Logique</span>: tire un groupe de carrière au sort sur la table des carrières (Livre I, p55-56) en fontion du peuple sélectionné 
-            </ul><br>
-            <span class="strong">Compétences</span> (définit le mode de calcul des points venant s'ajouter aux valeurs de base des compétences) :
-            <ul><li><span class=italic>Répartition</span> : répartit 120 points dans les compétences (sauf magie) par tranches de 5 
-                <li><span class=italic>Tirage</span> : assigne la somme de 2d10 dans chaque compétence (sauf magie)
-                <li><span class=italic>Tirage (tranche de 5)</span> : assigne 0, 5, 10, 15 ou 20 dans chaque compétence (saug magie)
-            </ul><br>
-            <span class="strong">Mode</span>:
-            <ul><li><span class=italic>Normal</span>: permet de créer un personnage-joueur ou un premier rôle selon les règles normales de création
-                <li><span class=italic>Spécialiste</span>: le personnage dispose de caractéristiques supplémentaires (voir détails d'attribution des caractéristiques)
-                <li><span class=italic>Champion</span>: idem
-                <li><span class=italic>Héros mineur</span>: idem
-                <li><span class=italic>Héros majeur</span>: idem<br>
-                <span class="italic is-smaller"><span class="strong">Note</span>: la génération de l'équipement reste toujours calquée sur le mode normal. Il peut donc être intéressant de l'adapter pour les autres modes.</span>
-            </ul><br>
+            <h2>Hello les brigands!</h2>
+            Bienvenue sur <strong>aideBrigandyne</strong>, votre sanctuaire dédié à l'univers fascinant et impitoyable de Brigandyne !
         </div>
 
-        </div>
+
     </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <span>Le jeu de rôle <a href="https://brigandyne.wordpress.com/" target="_blank">Brigandyne</a> est une œuvre de James Tornade, tous droits réservés.</span>
-        <span class="is-smaller">favicon made by Skoll. Available on <a href="https://game-icons.net" target="_blank">Game-icons.net</a></span> 
-        <span class="is-smaller"> website designed by Jyp</span>
-    </footer>
 </body>
 </html>

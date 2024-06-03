@@ -428,9 +428,9 @@ if (attributsSecondaires[3][3] !== 0) {
 
     let baliseGrimoireTours = document.getElementById("listeGrimoireTours")
     let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
-    let baliseTableGrimoire = document.getElementById("tableGrimoire")
-    let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
-    let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
+    let baliseTableGrimoire = document.getElementById("spellbook")
+    let baliseGrimoireh2 = document.querySelector("#spellbook h2")
+    let baliseGrimoireDiv = document.querySelector("#spellbook div")
     baliseGrimoireTours.classList.remove("do-not-display")
     baliseGrimoireSortileges.classList.remove("do-not-display")
     baliseTableGrimoire.classList.remove("do-not-display")
@@ -450,9 +450,9 @@ if (attributsSecondaires[3][3] !== 0) {
         baliseGrimoireSortileges.appendChild(nouveauSorts)
     }
     } else {
-        let baliseTableGrimoire = document.getElementById("tableGrimoire")
-        let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
-        let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
+        let baliseTableGrimoire = document.getElementById("spellbook")
+        let baliseGrimoireh2 = document.querySelector("#spellbook h2")
+        let baliseGrimoireDiv = document.querySelector("#spellbook div")
         baliseGrimoireTours.classList.add("do-not-display")
         baliseGrimoireSortileges.classList.add("do-not-display")
         baliseTableGrimoire.classList.add("do-not-display")
@@ -504,7 +504,7 @@ let baliseCocherInfo = document.getElementById("cocherInfo");
 baliseCocherInfo.addEventListener("change", function(event) {
 
     // Récupérer toutes les balises <span> avec la classe "monSpan"
-    let balisesExpert = document.getElementsByClassName("expert");
+    let balisesExpert = document.getElementById("expert");
 
     // Votre logique de traitement ici
     if (baliseCocherInfo.checked) {
@@ -569,9 +569,9 @@ function initialisationWeb() {
     let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
     baliseGrimoireSortileges.innerHTML = ""
 
-    let baliseTableGrimoire = document.getElementById("tableGrimoire")
-    let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
-    let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
+    let baliseTableGrimoire = document.getElementById("spellbook")
+    let baliseGrimoireh2 = document.querySelector("#spellbook h2")
+    let baliseGrimoireDiv = document.querySelector("#spellbook div")
     baliseGrimoireTours.classList.add("do-not-display")
     baliseGrimoireSortileges.classList.add("do-not-display")
     baliseTableGrimoire.classList.add("do-not-display")

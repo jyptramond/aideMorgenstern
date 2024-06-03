@@ -30,6 +30,7 @@ html {
 header {
     background-image: linear-gradient(to bottom, #320000, #470006, #5d0008, #730006, #890000);
     height: 60px;
+    border-bottom: solid black 2px;
  }
 
 header nav {
@@ -56,7 +57,7 @@ header nav a {
 
 
 /**
- * Eléments génériques
+ * Aside
  */
 
 
@@ -105,7 +106,7 @@ aside h3 {
 
 aside div,
 aside form {
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 aside .inputText input {
@@ -124,6 +125,18 @@ aside .inputRange input {
     display: flex;
     justify-content: center;
 }
+
+aside .inputSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+aside .inputSelect label {
+    width: 100%;
+    text-align: left;
+}
+
 
 
 aside div select {
@@ -165,14 +178,8 @@ main {
     border-bottom: 0;
     background-image: url('../images/background-rotate.jpg');
     background-size:contain;
-    
+    border: solid black 2px;
     width: 60%;
-
-    display: grid;
-
-    grid-template:  "a b"
-                    "foot foot" auto/1fr 6fr;
-
     padding:0;
 }
 
@@ -233,7 +240,9 @@ ul li {
  .myButton {
     display:flex;
     align-items: center;
-    height:100%;
+    justify-content: center;
+    height:60px;
+
     appearance: none;
     background-color: rgba(0, 0, 0, 0.178);
     box-shadow: rgba(255, 255, 255, 0.25) 0 8px 15px;
@@ -281,13 +290,14 @@ ul li {
     transform: translateY(0);
   }
  
- 
-  #generer {
-     aspect-ratio: 1.5 / 1;
+
+ #generer {
+     aspect-ratio: 1.75 / 1;
  }
 
 
- #save {
+ #save,
+ #screen {
     aspect-ratio: 1 / 1;
  }
 
