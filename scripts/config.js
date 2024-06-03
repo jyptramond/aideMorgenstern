@@ -1429,7 +1429,7 @@ const tricks = [
 
 const spells = [
     {
-      name: "Abondance<br>providentielle de Tegmine",
+      name: "Abondance <br>providentielle de Tegmine",
       alt: "Abondance providentielle de Tegmine",
       difficulty: 20,
       formula: "Généreuse est la terre, pour celui qui a faim,<br>Qui connaît ses mystères, et veille à ses jardins",
@@ -3328,7 +3328,7 @@ const spells = [
         description: "La terre, un arbre ou un rocher s’ouvre pour vous accueillir et vous protéger. L’abri peut contenir *MAG*x2 personnes. Vous pouvez l’ouvrir et le refermer à volonté."
     },
     {
-        name: "Visions<br>cauchemardesques de Shaula",
+        name: "Visions <br>cauchemardesques de Shaula",
         alt: "Visions cauchemardesques de Shaula",
         difficulty: 10,
         formula: "J’ai exhumé la peur, dans tes rêves, tes nuits noires<br>Pour qu’au fond de ton cœur se creuse le désespoir",

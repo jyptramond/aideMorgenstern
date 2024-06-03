@@ -366,7 +366,24 @@ function initialisationWeb() {
     baliseGrimoireDiv.classList.add("do-not-display")
 }
 
+function changeScreenRatio() {
+    document.getElementById('screen').addEventListener('click', function(event) {
 
+        let fullWindow = document.getElementById('fullWindow');
+
+        if (fullWindow.classList.contains("phoneRatio")) {
+            fullWindow.classList.remove("phoneRatio");
+            this.innerHTML = `<i class="fa-solid fa-mobile-screen is-bigger">`
+        }
+        else {
+            fullWindow.classList.add("phoneRatio") ;
+            this.innerHTML = `<i class="fa-solid fa-display is-bigger">`
+        }
+        
+        
+
+    });
+}
 
 function takeScreenshotWeb() {
     document.getElementById('save').addEventListener('click', function(event) {
@@ -469,7 +486,7 @@ function difficultySorting() {
     });
 }
 
-
+changeScreenRatio();
 userFiltering();
 userTypeFiltering();
 userDifficultyFiltering();
