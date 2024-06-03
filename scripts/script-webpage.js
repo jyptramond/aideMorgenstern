@@ -504,7 +504,7 @@ let baliseCocherInfo = document.getElementById("cocherInfo");
 baliseCocherInfo.addEventListener("change", function(event) {
 
     // Récupérer toutes les balises <span> avec la classe "monSpan"
-    let balisesExpert = document.getElementById("expert");
+    let balisesExpert = document.getElementsByClassName("expert");
 
     // Votre logique de traitement ici
     if (baliseCocherInfo.checked) {
@@ -531,7 +531,7 @@ baliseCocherInfo.addEventListener("change", function(event) {
 function displayNotes() {
 
     let baliseCocherNotes = document.getElementById("cocherNotes");
-    let baliseDisplayNotes = document.getElementById("fullMiddleDisplay");
+    let baliseDisplayNotes = document.getElementById("notes");
 
     baliseCocherNotes.addEventListener("change", function(event) {
     
@@ -667,4 +667,21 @@ lines.forEach(function(line) {
     ctx.fillText(lineText, x, y);
     y += 20; // Espacement vertical entre les lignes
 });
+}
+
+
+function changeScreenRatio() {
+    document.getElementById('screen').addEventListener('click', function(event) {
+
+        let fullWindow = document.getElementById('fullWindow');
+
+        if (fullWindow.classList.contains("phoneRatio")) {
+            fullWindow.classList.remove("phoneRatio");
+            this.innerHTML = `<i class="fa-solid fa-mobile-screen is-bigger">`
+        }
+        else {
+            fullWindow.classList.add("phoneRatio") ;
+            this.innerHTML = `<i class="fa-solid fa-display is-bigger">`
+        }
+    });
 }

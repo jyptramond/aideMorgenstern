@@ -45,6 +45,18 @@
  * spell card
  */
 
+
+#myTricksDiv article:hover,
+#mySpellsDiv article:hover {
+    filter: sepia(50%) hue-rotate(100deg); /* Rotate the hue by 180 degrees */
+    transition: filter 0.3s ease; /* Smooth transition effect */
+}
+
+#mySpellbook article:hover {
+    filter: sepia(50%) hue-rotate(300deg); /* Rotate the hue by 180 degrees */
+    transition: filter 0.3s ease; /* Smooth transition effect */
+}
+
 #fullWindow article,
 #fullWindow div article {
     border: solid black 1px;
@@ -116,21 +128,8 @@ article .description div {
     margin-top: 8px;
 }
 
-/* CSS */
-.card-effect:hover,
-.card-effect:focus {
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
 
-.card-effect:hover {
-    transform: translateY(-3px);
-}
 
-.card-effect:active {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    transform: translateY(0);
-}
 
 
 

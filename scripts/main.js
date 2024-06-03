@@ -44,3 +44,5 @@ agePersonnalise();
 
 takeScreenshotWeb();
 
+
+changeScreenRatio();

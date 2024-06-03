@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Génération de personnage pré-tirés pour Brigandyne 2nde édition ? Brigandyne, le jeu de rôle dark fantasy à l'atmosphère chair et sang. Il vous suffit de quelques clics pour vous créer un personnage aléatoire sur mesure">
-    <title>Générateur pour Brigandyne 2nde édition</title>
+    <title>aideBrigandyne Générateur</title>
 
     <!-- Style -->
     <link rel="stylesheet" href="../style/display.css">
     <link rel="stylesheet" href="../style/generate.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="../style/responsive.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Scripts-->
@@ -19,6 +20,7 @@
     <script src="../scripts/script-webpage.js" defer></script>
     <script src="../scripts/script-calculation.js" defer></script>
     <script src="../scripts/main.js" defer></script>
+    
 
     <!-- Canvas -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -47,11 +49,18 @@
         <aside>
 
                 <div class="divRow">
-                    <button class="myButton" role="button" id="generer"><i class="fa-solid fa-circle-plus"></i> Générer</button>
+                    
+                    <button class="myButton" role="button" id="screen"><i class="fa-solid fa-mobile-screen is-bigger"></i></button>
                     <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
+                    <button class="myButton" role="button" id="generer"><i class="fa-solid fa-circle-plus"></i> Générer</button>
                 </div>
 
-                <div  class="inputSelect">
+                <div class="inputText divRow">
+                    <input type="text" id="champTexte" maxlength="30" placeholder="Nom">
+                    <input type="text" id="champAge"  placeholder="âge" maxlength="5">
+                </div>
+
+                <div class="inputSelect">
                     <label for="nom">Nom:</label>
                     <select id="selectName" name="nom">
                     <fieldset>
@@ -79,12 +88,6 @@
                     </fieldset>
                     </select>
                 </div>
-
-                <div class="inputText divRow">
-                    <input type="text" id="champTexte" maxlength="30" placeholder="Nom">
-                    <input type="text" id="champAge"  placeholder="âge" maxlength="5">
-                </div>
-
 
                 <div  class="inputSelect">
                     <label for="archetype">Archétype:</label>

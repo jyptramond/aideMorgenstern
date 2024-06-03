@@ -1,3 +1,78 @@
 #fullWindow {
-    height:500px;
+    height:fit-content;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+#articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+h2 {
+    margin: 30px 0 10px;
+    padding:0;
+    text-align: left;
+}
+
+.cover {
+    margin:20px;
+    max-width: 100%;
+    height:min-content;
+    border: solid 2px black;
+}
+
+p {
+text-align: start;
+}
+
+.link {
+    color: rgb(126, 0, 0);
+    font-weight:bold;
+}
+
+h3 {
+    text-align: center;
+}
+
+.thumbnail {
+    margin: 10px;
+    height:100px;
+    border-radius: 5px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(255, 255, 255, 0.25) 0px -12px 30px, rgba(255, 255, 255, 0.25) 0px 4px 6px, rgba(255, 255, 255, 0.25)0px 12px 13px, rgba(255, 255, 255, 0.25) 0px -3px 5px;
+}
+
+#articles article {
+    background-color: rgba(0, 0, 0, 0.432);
+    margin: 15px;
+    padding:5px;
+    width:min-content;
+    border-radius: 5px;
+}
+
+#articles a {
+    color: black;
+    text-decoration: none;
+}
+
+article p {
+    text-align: center;
+    margin: 5px;
+}
+
+article:hover {
+    filter: grayscale(100%); /* Rotate the hue by 180 degrees */
+    transition: filter 0.3s ease; /* Smooth transition effect */
+    cursor: pointer;
+}
+
+
+#myTricksDiv article:hover,
+#mySpellsDiv article:hover {
+    filter: sepia(50%) hue-rotate(100deg); /* Rotate the hue by 180 degrees */
+    transition: filter 0.3s ease; /* Smooth transition effect */
 }
