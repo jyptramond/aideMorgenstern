@@ -202,6 +202,11 @@ aside {
 #screen {
     display:none;
 }
+
+
+#bottom-links {
+    text-align:left;
+}
 }
 
 

@@ -22,6 +22,19 @@
     flex-wrap: wrap;
 }
 
+#presentation {
+    margin: 10px;
+}
+
+#presentation p {
+    text-align: left;
+}
+
+#bottom-links {
+    margin: 10px;
+    text-align:center;
+}
+
 h2 {
     margin: 30px 0 10px;
     padding:0;
@@ -30,14 +43,10 @@ h2 {
 
 .cover {
     max-width: 30%;
-    margin:20px;
+    margin:10px;
     height:min-content;
     aspect-ratio: 500/650;
     border: solid 2px var(--color-black);
-}
-
-p {
-text-align: center;
 }
 
 .link {
