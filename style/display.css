@@ -1,0 +1,396 @@
+/**
+ * Reset
+ */
+ body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/**
+ * mon set de couleur
+ */
+
+html {
+    --color-black: black;
+    --color-white: white;
+    --color-grey: rgba(255, 255, 255, 0.25);
+
+    --color-black-transparent-dark: rgba(0, 0, 0, 0.25);  
+    --color-black-transparent-light: rgba(0, 0, 0, 0.1);  
+
+    --color-green: rgb(1, 107, 1);
+    --color-red: rgb(26, 0, 0);
+    --color-brighter-red: rgb(114, 1, 1);
+}
+
+
+/**
+ * Header
+ */
+
+header {
+    background-image: linear-gradient(to bottom, var(--color-red), var(--color-brighter-red));
+    height: min-content;
+    border-bottom: solid var(--color-black) 2px;
+ }
+
+header nav {
+    display: flex;
+    justify-content:space-between;
+    padding: 1rem 0;
+    margin: 0 20%;
+}
+
+header nav div {
+    display:flex;
+    align-items: center;
+}
+
+header nav #nav-links {
+    width:60%;
+    justify-content: space-evenly;
+}
+
+
+header nav #nav-links a:hover {
+    filter:invert();
+    transition: filter 0.3s ease;
+}
+
+header nav #nav-logo a {
+    padding-left: 2rem;
+}
+
+header nav div a {
+    text-decoration: none;
+}
+
+header nav div h1,
+header nav div a {
+    color: var(--color-white);
+}
+
+
+/**
+ * Footer
+ */
+
+ body {
+    height: 100vh;
+ }
+
+ footer {
+    color: var(--color-white);
+    padding:1rem;
+    text-align: center;
+    margin-top:auto;
+    filter:opacity(25%)
+ }
+
+
+/**
+ * Aside
+ */
+
+
+
+aside {
+    color:black;
+    background-color: var(--color-white);
+    border: solid var(--color-black) 2px;
+    position: sticky;
+    padding: 5px;
+    width: 300px;
+    height: fit-content;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+aside div,
+aside form {
+    margin: 7px 0;
+}
+
+aside div div {
+    margin: 0;
+}
+
+
+aside .divRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-evenly !important;
+}
+
+
+#asideConfig {
+    top: 0px;
+}
+
+#asideInfos {
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 100vh;
+}
+
+#asideInfos ul li {
+    margin-bottom: 0rem;
+}
+
+aside h3 {
+    margin-bottom: 1rem;
+}
+
+
+
+aside .inputText input {
+    display:block;
+    font-size: 18px;
+    background-image: linear-gradient(#464d55, #000000);
+    background-color: var(--color-black);
+    padding: 0.4rem;
+    border:none;
+    color:var(--color-white);
+    height:1.9rem;
+}
+
+aside .inputRange input {
+    display: flex;
+    justify-content: center;
+}
+
+aside .inputSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+aside .inputSelect label {
+    width: 100%;
+    text-align: left;
+}
+
+
+
+
+aside div select {
+    width: 190px;
+    height: fit-content;
+    color: var(--color-white);
+    background-image: linear-gradient(#464d55, var(--color-black));
+    background-color: var(--color-black);
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: none;
+}
+
+
+/**
+ * Eléments génériques
+ */
+
+ body {
+    background-color: var(--color-black);
+    font-family:"Segoe UI";
+    overflow-y: auto; /* pour activer le défilement vertical si nécessaire */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+main {
+    background-color:var(--color-black);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto 0;
+}
+
+#fullWindow {
+
+    border-top: 0;
+    border-bottom: 0;
+    background-image: url('../images/background.jpg');
+    background-size:auto;
+    border: solid var(--color-black) 2px;
+    width: 60%;
+    padding:0;
+}
+
+
+
+
+/**
+ * Autres
+ */
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Book Antiqua;
+}
+
+
+h2 {
+    text-align: center;
+    width:100%;
+    font-size: 1.2rem;
+    padding:5px;
+    font-family: Book Antiqua;
+}
+
+
+p {
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+}
+
+
+/**
+ * Do-not-display
+ */
+
+.do-not-display,
+.do-not-display article,
+.do-not-display i,
+.do-not-display-magie {
+    display:none !important;
+}
+
+
+/**
+ * My buttons
+ */
+
+
+ .myButton {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:60px;
+
+    appearance: none;
+    background-color: var(--color-black-transparent);
+    box-shadow: var(--color-grey) 0 8px 15px;
+    color: var(--color-black);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family:expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";  
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+  }
+ 
+  .myButton img {
+     position: absolute; /* Position the image absolutely */
+     top: 50%; /* Align the image vertically at 50% of the button's height */
+     left: 50%; /* Align the image horizontally at 50% of the button's width */
+     transform: translate(-50%, -50%); /* Center the image */
+     width: 65%; /* Image width will match the width of the button */
+     height: 65%; /* Image height will match the height of the button */
+     z-index: 1; /* Ensure the image appears above the background */
+  }
+  
+  .myButton:disabled {
+    pointer-events: none;
+  }
+  
+  .myButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.26) 0 8px 15px;
+    transform: translateY(-2px);
+    background-color: rgba(0, 0, 0, 0.39);
+  }
+  
+  .myButton:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+ 
+
+ #generer {
+     aspect-ratio: 1.75 / 1;
+ }
+
+
+ #save,
+ #screen,
+ #toggle-button,
+ #toggle-button-config {
+    aspect-ratio: 1 / 1;
+ }
+
+
+
+/**
+ * Text
+ */
+
+ .strong {
+    font-weight: bold;
+}
+
+.is-red {
+    color: var(--color-brighter-red);
+}
+
+.is-green {
+    color: var(--color-green)
+}
+
+.italic {
+    font-style: italic;
+}
+
+.is-small {
+    font-size:large;
+}
+
+.is-smaller {
+    font-size:smaller;
+}
+
+.is-bigger {
+    font-size:xx-large;
+}
+
+
+/* CSS */
+.card-effect:hover,
+.card-effect:focus {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+}
+
+.card-effect:hover {
+    transform: translateY(-3px);
+}
+
+.card-effect:active {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(0);
+}
+

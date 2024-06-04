@@ -1,0 +1,88 @@
+#fullWindow {
+    padding:20px;
+}
+
+
+#fullWindow section {
+    height:fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+#fullWindow section #presentation {
+    display: flex;
+    flex-direction: column;
+}
+
+#articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+h2 {
+    margin: 30px 0 10px;
+    padding:0;
+    text-align: left;
+}
+
+.cover {
+    max-width: 30%;
+    margin:20px;
+    height:min-content;
+    aspect-ratio: 500/650;
+    border: solid 2px var(--color-black);
+}
+
+p {
+text-align: center;
+}
+
+.link {
+    color: var(--color-brighter-red);
+    font-weight:bold;
+}
+
+h3 {
+    text-align: center;
+}
+
+.thumbnail {
+    margin: 10px;
+    height:100px;
+    border-radius: 5px;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 54px 55px, rgba(255, 255, 255, 0.25) 0px -12px 30px, rgba(255, 255, 255, 0.25) 0px 4px 6px, rgba(255, 255, 255, 0.25)0px 12px 13px, rgba(255, 255, 255, 0.25) 0px -3px 5px;
+}
+
+#articles article {
+    background-color: var(--color-black-transparent-dark);
+    margin: 15px;
+    padding:5px;
+    width:min-content;
+    border-radius: 5px;
+}
+
+#articles a {
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+article p {
+    text-align: center;
+    margin: 5px;
+}
+
+article:hover {
+    filter: grayscale(100%); /* Rotate the hue by 180 degrees */
+    transition: filter 0.3s ease; /* Smooth transition effect */
+    cursor: pointer;
+}
+
+
+#myTricksDiv article:hover,
+#mySpellsDiv article:hover {
+    filter: sepia(50%) hue-rotate(100deg); /* Rotate the hue by 180 degrees */
+    transition: filter 0.3s ease; /* Smooth transition effect */
+}

@@ -1,0 +1,207 @@
+/**
+ * Media responsive
+ */
+
+
+.phoneRatio {
+    width: 325px !important;
+}
+
+.phoneRatio #characterSheet {
+    display: flex;
+    flex-direction: column;
+}
+
+#toggle-button,
+#toggle-button-config {
+    display:none;
+}
+
+
+
+@media screen and (max-width: 1890px) {
+
+.cover {
+    max-width:50%
+}
+
+}
+
+@media screen and (max-width: 1795px) {
+
+.cover {
+    display:none;
+}
+    
+    }
+
+@media screen and (max-width: 1500px) {
+
+    main {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #asideInfos {
+        display: none;
+    }
+    aside {
+        width: 60%;
+        display:flex;
+        flex-direction: column;
+        position: relative;
+        padding:15px;
+        gap: 15px;
+    }
+    #fullWindow {
+        margin-right :0;
+        padding:15px;
+    }
+
+
+/**
+ * aside display
+ */
+
+
+
+aside .divRow {
+    align-items: center;
+    justify-content: center;
+}
+
+aside .inputSelect label {
+    width: fit-content;
+    text-align: right;
+}
+
+aside .inputSelect select {
+    width:60%;
+}
+
+
+aside .inputSelect{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: flex-end;
+    gap:10px;
+    width:100%;
+    margin-right :10%;
+}
+
+aside form,
+aside .inputCheckbox {
+    flex-direction: column;
+}
+
+aside .inputRadio div {
+    margin: 0;
+}
+
+
+
+
+
+/**
+ * toggling configs
+ */
+
+.toggle {
+    display: none !important;
+}
+
+.toggle.active {
+    display: flex !important;
+}
+#toggle-button-config {
+    display:flex;
+    color:var(--color-black);
+    font-size:1.8rem;
+}
+}
+
+
+
+
+    /**
+ * Header
+ */
+ @media screen and (max-width: 1100px) {
+
+ nav {
+    padding: 1rem !important;
+    display: flex;
+    flex-direction: column;
+}
+
+nav #nav-logo {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#toggle-button {
+    display:flex;
+    color:var(--color-white);
+    font-size:1.8rem;
+}
+
+nav #nav-links {
+    display: none;
+}
+
+nav #nav-links.active {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap:12px;
+}
+}
+
+
+
+/**
+ * Phone Display
+ */
+
+@media screen and (max-width: 850px) {
+
+/**
+ * Header
+ */
+
+nav {
+    margin: 0 !important;
+}
+
+
+/**
+ * main
+ */
+
+
+
+
+aside {
+    width: 100%;
+    font-size:20px;
+}
+
+
+#fullWindow {
+    width: 100%;
+    margin:0;
+}
+
+#characterSheet {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#screen {
+    display:none;
+}
+}
+
+

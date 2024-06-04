@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Génération de personnage pré-tirés pour Brigandyne 2nde édition ? Brigandyne, le jeu de rôle dark fantasy à l'atmosphère chair et sang. Il vous suffit de quelques clics pour vous créer un personnage aléatoire sur mesure">
+    <title>aideBrigandyne Grimoire</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="../style/display.css">
+    <link rel="stylesheet" href="../style/responsive.css">
+    <link rel="stylesheet" href="../style/spellbook.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+
+    <!-- Font-Awesome -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Scripts -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="../scripts/config.js" defer></script>
+    <script type="module" src="../scripts/spellbook.js" defer></script>
+    
+
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div id="nav-logo">
+                <a href="../index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
+                <button id="toggle-button" class="myButton">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div id="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="generator.html">Générateur</a>
+                <a href="spellbook.html">Grimoire</a>
+                <a href="#">Rencontres</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- MAIN -->
+    <main>  
+
+
+        <aside id="asideConfig" class="spellbook">
+
+                
+                        
+                <div class="divRow">
+                    <button id="toggle-button-config" class="myButton"><i class="fa-solid fa-bars"></i></button>
+                    <button class="myButton" role="button" id="screen"><i class="fa-solid fa-mobile-screen is-bigger"></i></button>
+                    <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
+                </div>
+
+                <div class="inputText toggle">
+                    <input type="text" id="userSearch" maxlength="20" placeholder="Votre recherche">
+                </div>
+
+
+                <div class="inputSelect toggle">
+                    <label for="type">Domaine magique:</label>
+                    <select id="selectType" name="type">
+                        <option value="Tous">Tous</option>
+                        <option value="Air">Air</option>
+                        <option value="Animalisme">Animalisme</option>
+                        <option value="Châtiment">Châtiment</option>
+                        <option value="Divination">Divination</option>
+                        <option value="Eau">Eau</option>
+                        <option value="Enchantements">Enchantements</option>
+                        <option value="Feu">Feu</option>
+                        <option value="Guerre">Guerre</option>
+                        <option value="Illusions">Illusions</option>
+                        <option value="Mentalisme">Mentalisme</option>
+                        <option value="Nécromancie">Nécromancie</option>
+                        <option value="Ombre">Ombre</option>
+                        <option value="Protection">Protection</option>
+                        <option value="Terre">Terre</option>
+                        <option value="Voyage">Voyage</option>
+                        <option value="Alchimie">Alchimie</option>
+                    </select>
+                </div>
+
+                <div class="inputRange toggle">
+                    <label for="difficultyOfSpell" id="labelDifficulty">Difficulté max. : -30&nbsp;</label>
+                    <input type="range" list="tickmarks" id="difficultyOfSpell" name="difficultyOfSpell" min="0" max="50" value="50" step="10" />
+                </div>
+
+                <div class="inputCheckbox toggle">
+                    <div>
+                        <input type="checkbox" id="checkTricks" checked>
+                        <label for="checkTricks"> Tours de Magie</label>
+                    </div>
+                    
+                    <div>
+                        <input type="checkbox" id="checkSpells" checked>
+                        <label for="checkSpells"> Sortilèges</label>
+                    </div>
+                    
+                </div>
+
+                <div class="inputCheckbox toggle">
+                    <div>
+                        <input type="checkbox" id="noSpellbook">
+                        <label for="noSpellbook">Cacher le grimoire</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="spellbookOnly">
+                        <label for="spellbookOnly">Grimoire Uniquement</label>
+                    </div>
+                </div>
+
+                <form class="inputRadio toggle">
+                    <div>
+                        <input type="radio" id="ascending" name="options" value="option1" checked>
+                        <label for="ascending">difficulté croissante</label><br>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="descending" name="options" value="option1">
+                        <label for="descending">difficulté décroissante</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="alphabetical" name="options" value="option1">
+                        <label for="alphabetical">ordre alphabétique</label>
+                    </div>
+                </form>
+
+                <div class="inputText toggle">
+                    <input type="text" id="customSpellbook" maxlength="35" placeholder="Mon Grimoire">
+                </div>
+
+
+        </aside>
+
+
+        
+        <div id="fullWindow">
+            <div id="searchArea"></div>
+            <div id="content"></div>
+        </div>
+
+
+        <aside id="asideInfos"><h3>Contenu du Grimoire</h3>
+        <ul></ul></aside>
+
+    </main>
+    <footer><i class="fa-solid fa-moon"></i> Website by Jyp<br>
+        Brigandyne est une œuvre de James Tornade. Tous droits réservés.<br>
+        Favicon faite par Skoll. Disponible sur Game-icons.net</footer>
+</body>
+</html>

@@ -1,13 +1,4 @@
 
-
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////// LES FONCTIONS WEB /////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-
-
 /** 
  *  Fonction qui s'effectue lorsqu'on appuie sur le bouton de génération
  * 
@@ -428,9 +419,9 @@ if (attributsSecondaires[3][3] !== 0) {
 
     let baliseGrimoireTours = document.getElementById("listeGrimoireTours")
     let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
-    let baliseTableGrimoire = document.getElementById("tableGrimoire")
-    let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
-    let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
+    let baliseTableGrimoire = document.getElementById("spellbook")
+    let baliseGrimoireh2 = document.querySelector("#spellbook h2")
+    let baliseGrimoireDiv = document.querySelector("#spellbook div")
     baliseGrimoireTours.classList.remove("do-not-display")
     baliseGrimoireSortileges.classList.remove("do-not-display")
     baliseTableGrimoire.classList.remove("do-not-display")
@@ -450,9 +441,9 @@ if (attributsSecondaires[3][3] !== 0) {
         baliseGrimoireSortileges.appendChild(nouveauSorts)
     }
     } else {
-        let baliseTableGrimoire = document.getElementById("tableGrimoire")
-        let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
-        let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
+        let baliseTableGrimoire = document.getElementById("spellbook")
+        let baliseGrimoireh2 = document.querySelector("#spellbook h2")
+        let baliseGrimoireDiv = document.querySelector("#spellbook div")
         baliseGrimoireTours.classList.add("do-not-display")
         baliseGrimoireSortileges.classList.add("do-not-display")
         baliseTableGrimoire.classList.add("do-not-display")
@@ -531,7 +522,7 @@ baliseCocherInfo.addEventListener("change", function(event) {
 function displayNotes() {
 
     let baliseCocherNotes = document.getElementById("cocherNotes");
-    let baliseDisplayNotes = document.getElementById("fullMiddleDisplay");
+    let baliseDisplayNotes = document.getElementById("notes");
 
     baliseCocherNotes.addEventListener("change", function(event) {
     
@@ -569,9 +560,9 @@ function initialisationWeb() {
     let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
     baliseGrimoireSortileges.innerHTML = ""
 
-    let baliseTableGrimoire = document.getElementById("tableGrimoire")
-    let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
-    let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
+    let baliseTableGrimoire = document.getElementById("spellbook")
+    let baliseGrimoireh2 = document.querySelector("#spellbook h2")
+    let baliseGrimoireDiv = document.querySelector("#spellbook div")
     baliseGrimoireTours.classList.add("do-not-display")
     baliseGrimoireSortileges.classList.add("do-not-display")
     baliseTableGrimoire.classList.add("do-not-display")
@@ -594,9 +585,6 @@ function takeScreenshotWeb() {
 
         html2canvas(document.getElementById('content')).then(function(canvas) {
             
-            // Convert canvas to JPEG image
-            var imgData = canvas.toDataURL('image/jpeg');
-
             
             if (baliseCocherNotes.checked) {
                 drawTextArea(canvas, textarea, text);
@@ -671,3 +659,7 @@ lines.forEach(function(line) {
     y += 20; // Espacement vertical entre les lignes
 });
 }
+
+
+
+
