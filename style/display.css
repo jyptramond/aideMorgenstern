@@ -1,7 +1,7 @@
 /**
  * Reset
  */
- * {
+ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,13 +13,16 @@
  */
 
 html {
-    --color-1: #000000;
-    --color-2: #ffffff;
-    --color-3: #00000038;   
-    --color-4: #1414148f;
-    --color-5: #6e6e6e15;  
+    --color-black: black;
+    --color-white: white;
+    --color-grey: rgba(255, 255, 255, 0.25);
+
+    --color-black-transparent-dark: rgba(0, 0, 0, 0.25);  
+    --color-black-transparent-light: rgba(0, 0, 0, 0.1);  
+
     --color-green: rgb(1, 107, 1);
-    --color-red: rgb(197, 0, 0);
+    --color-red: rgb(26, 0, 0);
+    --color-brighter-red: rgb(114, 1, 1);
 }
 
 
@@ -28,32 +31,63 @@ html {
  */
 
 header {
-    background-image: linear-gradient(to bottom, #320000, #470006, #5d0008, #730006, #890000);
+    background-image: linear-gradient(to bottom, var(--color-red), var(--color-brighter-red));
     height: min-content;
-    border-bottom: solid black 2px;
+    border-bottom: solid var(--color-black) 2px;
  }
 
 header nav {
     display: flex;
     justify-content:space-between;
-    padding: 1rem;
+    padding: 1rem 0;
     margin: 0 20%;
 }
 
-
-header nav div a {
-    padding: 0 1.5rem 0 1.5rem;
+header nav div {
+    display:flex;
+    align-items: center;
 }
 
-header nav a {
+header nav #nav-links {
+    width:60%;
+    justify-content: space-evenly;
+}
+
+
+header nav #nav-links a:hover {
+    filter:invert();
+    transition: filter 0.3s ease;
+}
+
+header nav #nav-logo a {
+    padding-left: 2rem;
+}
+
+header nav div a {
     text-decoration: none;
 }
 
-header nav h1,
-header nav a {
-    color: white;
+header nav div h1,
+header nav div a {
+    color: var(--color-white);
 }
 
+
+/**
+ * Footer
+ */
+
+ body {
+    height: 100vh;
+ }
+
+ footer {
+    color: var(--color-white);
+    padding:1rem;
+    text-align: center;
+    margin-top:auto;
+    filter:opacity(25%)
+ }
 
 
 /**
@@ -64,20 +98,28 @@ header nav a {
 
 aside {
     color:black;
-    background-color: white;
-    border: solid black 2px;
+    background-color: var(--color-white);
+    border: solid var(--color-black) 2px;
     position: sticky;
-    
-    width: 250px;
+    padding: 5px;
+    width: 300px;
     height: fit-content;
-    padding:0 1rem 1rem 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:10px;
 }
+
+aside div,
+aside form {
+    margin: 7px 0;
+}
+
+aside div div {
+    margin: 0;
+}
+
 
 aside .divRow {
     width: 100%;
@@ -107,21 +149,17 @@ aside h3 {
     margin-bottom: 1rem;
 }
 
-aside div,
-aside form {
-    margin: 5px 0;
-}
+
 
 aside .inputText input {
     display:block;
-    width: 100%;
-    font-size: 15px;
+    font-size: 18px;
     background-image: linear-gradient(#464d55, #000000);
-    background-color: black;
-    padding: 0 0.4rem;
+    background-color: var(--color-black);
+    padding: 0.4rem;
     border:none;
-    color:white;
-    height:2rem;
+    color:var(--color-white);
+    height:1.9rem;
 }
 
 aside .inputRange input {
@@ -142,12 +180,13 @@ aside .inputSelect label {
 
 
 
+
 aside div select {
-    margin: 3px auto 0.7rem auto;
     width: 190px;
-    color: var(--color-2);
-    background-image: linear-gradient(#464d55, #000000);
-    background-color: black;
+    height: fit-content;
+    color: var(--color-white);
+    background-image: linear-gradient(#464d55, var(--color-black));
+    background-color: var(--color-black);
     padding: 0.6rem;
     border-radius: 10px;
     border: none;
@@ -159,7 +198,7 @@ aside div select {
  */
 
  body {
-    background-color: var(--color-1);
+    background-color: var(--color-black);
     font-family:"Segoe UI";
     overflow-y: auto; /* pour activer le défilement vertical si nécessaire */
     display: flex;
@@ -169,19 +208,20 @@ aside div select {
 
 
 main {
-    background-color: black;
+    background-color:var(--color-black);
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: auto 0;
 }
 
 #fullWindow {
 
     border-top: 0;
     border-bottom: 0;
-    background-image: url('../images/background-rotate.jpg');
-    background-size:contain;
-    border: solid black 2px;
+    background-image: url('../images/background.jpg');
+    background-size:auto;
+    border: solid var(--color-black) 2px;
     width: 60%;
     padding:0;
 }
@@ -244,9 +284,9 @@ ul li {
     height:60px;
 
     appearance: none;
-    background-color: rgba(0, 0, 0, 0.178);
-    box-shadow: rgba(255, 255, 255, 0.25) 0 8px 15px;
-    color: black;
+    background-color: var(--color-black-transparent);
+    box-shadow: var(--color-grey) 0 8px 15px;
+    color: var(--color-black);
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -297,11 +337,11 @@ ul li {
 
 
  #save,
- #screen {
+ #screen,
+ #toggle-button,
+ #toggle-button-config {
     aspect-ratio: 1 / 1;
  }
-
-
 
 
 
@@ -314,7 +354,7 @@ ul li {
 }
 
 .is-red {
-    color: var(--color-red);
+    color: var(--color-brighter-red);
 }
 
 .is-green {

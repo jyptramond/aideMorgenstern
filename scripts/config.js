@@ -1464,7 +1464,7 @@ const spells = [
       range: "extrême",
       resistance: "-",
       success: "Dégâts +1",
-      description: "Vous invoquez l’Aigle-Ouragan, un rapace de 18 mètres d’envergure dont les cris sont terrifiants. Vous pouvez le monter avec vos compagnons et lui ordonner de combattre. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>AIGLE-OURAGAN</h4> <strong>COM</strong> 70/-20 <strong>Init</strong> : 21 <strong>Prot</strong> : 2 <strong>PV</strong> : 31 <br><strong>DG</strong> : Serres, bec RU+7 <br><strong>Comp</strong> : END 70, FOR 70, MOU 50, PER&nbsp;80,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : Vol, PEUR (1)</div"
+      description: "Vous invoquez l’Aigle-Ouragan, un rapace de 18 mètres d’envergure dont les cris sont terrifiants. Vous pouvez le monter avec vos compagnons et lui ordonner de combattre. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>AIGLE-OURAGAN</h4> <p><strong>COM</strong> 70/-20 <strong>Init</strong> : 21 <strong>Prot</strong> : 2 <strong>PV</strong> : 31 <br><strong>DG</strong> : Serres, bec RU+7 <br><strong>Comp</strong> : END 70, FOR 70, MOU 50, PER&nbsp;80,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : Vol, PEUR (1)</p></div"
     },
     {
       name: "Ailes de l’archange",
@@ -1985,7 +1985,7 @@ const spells = [
         range: "Extrême",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Vous invoquez le Dragon des Abysses, un gigantesque monstre d’eau. Il ne peut apparaître que dans une grande étendue d’eau (lac, fleuve, mer, océan…). Il peut combattre à vos côtés, et vous avaler pour vous faire voyager sous l’eau, ainsi que (MAG) alliés. Il vous recrachera ensuite à la surface. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>DRAGON DES ABYSSES</h4> <strong>COM</strong> 70/-20 <strong>Init</strong> : 15 <strong>Prot</strong> : 5 <strong>PV</strong> : 37 <br><strong>DG</strong> : Crocs, griffes RU+8 <br><strong>Comp</strong> : END 90, FOR 90, MOU&nbsp;50,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : PEUR (1)</div>"
+        description: "Vous invoquez le Dragon des Abysses, un gigantesque monstre d’eau. Il ne peut apparaître que dans une grande étendue d’eau (lac, fleuve, mer, océan…). Il peut combattre à vos côtés, et vous avaler pour vous faire voyager sous l’eau, ainsi que (MAG) alliés. Il vous recrachera ensuite à la surface. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>DRAGON DES ABYSSES</h4> <p><strong>COM</strong> 70/-20 <strong>Init</strong> : 15 <strong>Prot</strong> : 5 <strong>PV</strong> : 37 <br><strong>DG</strong> : Crocs, griffes RU+8 <br><strong>Comp</strong> : END 90, FOR 90, MOU&nbsp;50,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : PEUR (1)</p></div>"
       },
       {
         name: "Duplication",
@@ -2332,7 +2332,7 @@ const spells = [
         range: "Moyenne",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Un guerrier illusoire - dont vous décidez de l’apparence - apparaît et affronte vos ennemis. Ceux-ci doivent réussir un test de VOL à chaque tour pour ne pas subir ses coups, sans quoi les attaques qu’il porte sont bien réelles. Ses valeurs sont les suivantes : <div><h4>GUERRIER FANTASMATIQUE</h4> <strong>COM</strong> 60/-10 <strong>Init</strong> : 15 <strong>Prot</strong> : 5 <strong>PV</strong> : 20 <br><strong>DG</strong> : Épée ou hache RU +6 <br><strong>Comp</strong> : FOR 60, MOU 70</div>"
+        description: "Un guerrier illusoire - dont vous décidez de l’apparence - apparaît et affronte vos ennemis. Ceux-ci doivent réussir un test de VOL à chaque tour pour ne pas subir ses coups, sans quoi les attaques qu’il porte sont bien réelles. Ses valeurs sont les suivantes : <div><h4>GUERRIER FANTASMATIQUE</h4> <p><strong>COM</strong> 60/-10 <strong>Init</strong> : 15 <strong>Prot</strong> : 5 <strong>PV</strong> : 20 <br><strong>DG</strong> : Épée ou hache RU +6 <br><strong>Comp</strong> : FOR 60, MOU 70</p></div>"
       },
       {
         name: "Histoire de l’inconnu",
@@ -2441,7 +2441,7 @@ const spells = [
         range: "Courte",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Vous invoquez un guerrier en armure antique et aux yeux brillants qui agit immédiatement selon vos ordres. Il n’est pas obligé d’attaquer et peut très bien se tenir près de vous, comme un garde du corps. <div><h4>HOMME-LIGE</h4><strong>COM</strong> 50/0 <strong>PV</strong> : 20 <strong>Init</strong> : 12 <br><strong>Prot</strong> : 4 (armure antique) <br><strong>DG</strong> : Épée ou Lance RU+5 <br><strong>Comp</strong> : FOR 50, MOU 40, PER 50</div>"
+        description: "Vous invoquez un guerrier en armure antique et aux yeux brillants qui agit immédiatement selon vos ordres. Il n’est pas obligé d’attaquer et peut très bien se tenir près de vous, comme un garde du corps. <div><h4>HOMME-LIGE</h4><p><strong>COM</strong> 50/0 <strong>PV</strong> : 20 <strong>Init</strong> : 12 <br><strong>Prot</strong> : 4 (armure antique) <br><strong>DG</strong> : Épée ou Lance RU+5 <br><strong>Comp</strong> : FOR 50, MOU 40, PER 50</p></div>"
       },
       {
         name: "Jugement Dernier",
@@ -2532,7 +2532,7 @@ const spells = [
         range: "Courte",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Vous invoquez le Lion de Braise, monstre rougeoyant à la crinière enflammée, qui pourra combattre à vos côtés. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>LION DE BRAISE</h4> <strong>COM</strong> 75/-25 <strong>Init</strong> : 21 <strong>Prot</strong> : 2 <strong>PV</strong> : 29 <br><strong>DG</strong> : Griffes, crocs RU +7 dégâts de feu <br><strong>Comp</strong> : FOR 70, MOU 70, PER 50, VOL 50 <br><strong>Spécial</strong> : PEUR, Corps de feu (son corps incandescent cause 1 dégât de feu par tour à tous ses adversaires en mêlée).</div>"
+        description: "Vous invoquez le Lion de Braise, monstre rougeoyant à la crinière enflammée, qui pourra combattre à vos côtés. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>LION DE BRAISE</h4> <p><strong>COM</strong> 75/-25 <strong>Init</strong> : 21 <strong>Prot</strong> : 2 <strong>PV</strong> : 29 <br><strong>DG</strong> : Griffes, crocs RU +7 dégâts de feu <br><strong>Comp</strong> : FOR 70, MOU 70, PER 50, VOL 50 <br><strong>Spécial</strong> : PEUR, Corps de feu (son corps incandescent cause 1 dégât de feu par tour à tous ses adversaires en mêlée).</p></div>"
     },
     {
         name: "Main de la Justice",
@@ -2838,7 +2838,7 @@ const spells = [
         range: "Courte",
         resistance: "-",
         success: "PV de l’Ours +*MAG*",
-        description: "Vous invoquez l’Ours de pierre, colossal monstre minéral aux yeux d’obsidienne, qui peut combattre à vos côtés ou vous transporter vous et vos compagnons. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>OURS DE PIERRE</h4> <strong>COM</strong> 70/-20 <strong>Init</strong> : 11 <strong>Prot</strong> : 7 <strong>PV</strong> : 31 <br><strong>DG</strong> : Griffes RU+8 <br><strong>Comp</strong> : FOR 80, MOU 20, PER 20, VOL 50 <br><strong>Spécial</strong> : Corps minéral. Sur une R+, l’ennemi brise son arme contre le corps du monstre. Les masses et les marteaux ne sont pas concernés par cet effet.</div>"
+        description: "Vous invoquez l’Ours de pierre, colossal monstre minéral aux yeux d’obsidienne, qui peut combattre à vos côtés ou vous transporter vous et vos compagnons. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>OURS DE PIERRE</h4> <p><strong>COM</strong> 70/-20 <strong>Init</strong> : 11 <strong>Prot</strong> : 7 <strong>PV</strong> : 31 <br><strong>DG</strong> : Griffes RU+8 <br><strong>Comp</strong> : FOR 80, MOU 20, PER 20, VOL 50 <br><strong>Spécial</strong> : Corps minéral. Sur une R+, l’ennemi brise son arme contre le corps du monstre. Les masses et les marteaux ne sont pas concernés par cet effet.</p></div>"
     },
     {
         name: "Palimpseste",

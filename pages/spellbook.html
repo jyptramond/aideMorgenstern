@@ -17,13 +17,10 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- My scripts -->
-    
+    <!-- Scripts -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="../scripts/script-webpage.js" defer></script>
     <script src="../scripts/config.js" defer></script>
-    <script src="../scripts/spellbook.js" defer></script>
-    <script src="../scripts/script-webpage.js" defer></script>
+    <script type="module" src="../scripts/spellbook.js" defer></script>
     
 
 </head>
@@ -31,35 +28,43 @@
 
     <!-- HEADER -->
     <header>
-      <nav>
-          <a href="../index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
-            <div>
+        <nav>
+            <div id="nav-logo">
+                <a href="../index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
+                <button id="toggle-button" class="myButton">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div id="nav-links">
                 <a href="../index.html">Accueil</a>
-                <a href="generate.html">Générateur</a>
+                <a href="generator.html">Générateur</a>
                 <a href="spellbook.html">Grimoire</a>
                 <a href="#">Rencontres</a>
             </div>
-      </nav>
-  </header>
+        </nav>
+    </header>
 
 
     <!-- MAIN -->
     <main>  
 
 
-        <aside id="asideConfig">
+        <aside id="asideConfig" class="spellbook">
+
+                
                         
                 <div class="divRow">
+                    <button id="toggle-button-config" class="myButton"><i class="fa-solid fa-bars"></i></button>
                     <button class="myButton" role="button" id="screen"><i class="fa-solid fa-mobile-screen is-bigger"></i></button>
                     <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
                 </div>
 
-                <div class="inputText">
+                <div class="inputText toggle">
                     <input type="text" id="userSearch" maxlength="20" placeholder="Votre recherche">
                 </div>
 
 
-                <div class="inputSelect">
+                <div class="inputSelect toggle">
                     <label for="type">Domaine magique:</label>
                     <select id="selectType" name="type">
                         <option value="Tous">Tous</option>
@@ -82,40 +87,53 @@
                     </select>
                 </div>
 
-                <div class="inputRange">
-                    <label for="difficultyOfSpell" id="labelDifficulty">Difficulté max. : -30</label>
+                <div class="inputRange toggle">
+                    <label for="difficultyOfSpell" id="labelDifficulty">Difficulté max. : -30&nbsp;</label>
                     <input type="range" list="tickmarks" id="difficultyOfSpell" name="difficultyOfSpell" min="0" max="50" value="50" step="10" />
                 </div>
 
-                <div class="inputCheckbox">
-                    <input type="checkbox" id="checkTricks" checked>
-                    <label for="checkTricks">Tours de Magie</label><br>
-                    <input type="checkbox" id="checkSpells" checked>
-                    <label for="checkSpells">Sortilèges</label>
+                <div class="inputCheckbox toggle">
+                    <div>
+                        <input type="checkbox" id="checkTricks" checked>
+                        <label for="checkTricks"> Tours de Magie</label>
+                    </div>
+                    
+                    <div>
+                        <input type="checkbox" id="checkSpells" checked>
+                        <label for="checkSpells"> Sortilèges</label>
+                    </div>
+                    
                 </div>
 
-                <div class="inputCheckbox">
-                    <input type="checkbox" id="spellbookOnly">
-                    <label for="spellbookOnly">Grimoire Uniquement</label>
+                <div class="inputCheckbox toggle">
+                    <div>
+                        <input type="checkbox" id="noSpellbook">
+                        <label for="noSpellbook">Cacher le grimoire</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="spellbookOnly">
+                        <label for="spellbookOnly">Grimoire Uniquement</label>
+                    </div>
                 </div>
 
-                <div class="inputCheckbox">
-                    <input type="checkbox" id="noSpellbook">
-                    <label for="noSpellbook">Cacher le grimoire</label>
-                </div>
+                <form class="inputRadio toggle">
+                    <div>
+                        <input type="radio" id="ascending" name="options" value="option1" checked>
+                        <label for="ascending">difficulté croissante</label><br>
+                    </div>
 
-                <form class="inputRadio">
-                    <input type="radio" id="ascending" name="options" value="option1" checked>
-                    <label for="ascending">difficulté croissante</label><br>
+                    <div>
+                        <input type="radio" id="descending" name="options" value="option1">
+                        <label for="descending">difficulté décroissante</label>
+                    </div>
 
-                    <input type="radio" id="descending" name="options" value="option1">
-                    <label for="descending">difficulté décroissante</label><br>
-
-                    <input type="radio" id="alphabetical" name="options" value="option1">
-                    <label for="alphabetical">ordre alphabétique</label><br>
+                    <div>
+                        <input type="radio" id="alphabetical" name="options" value="option1">
+                        <label for="alphabetical">ordre alphabétique</label>
+                    </div>
                 </form>
 
-                <div class="inputText">
+                <div class="inputText toggle">
                     <input type="text" id="customSpellbook" maxlength="35" placeholder="Mon Grimoire">
                 </div>
 
@@ -125,9 +143,8 @@
 
         
         <div id="fullWindow">
-            <div id="content">
-                <div id="searchArea"></div>
-            </div>
+            <div id="searchArea"></div>
+            <div id="content"></div>
         </div>
 
 
@@ -135,6 +152,8 @@
         <ul></ul></aside>
 
     </main>
-
+    <footer><i class="fa-solid fa-moon"></i> Website by Jyp<br>
+        Brigandyne est une œuvre de James Tornade. Tous droits réservés.<br>
+        Favicon faite par Skoll. Disponible sur Game-icons.net</footer>
 </body>
 </html>

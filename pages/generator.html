@@ -9,22 +9,22 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="../style/display.css">
-    <link rel="stylesheet" href="../style/generate.css">
+    <link rel="stylesheet" href="../style/generator.css">
     <link rel="stylesheet" href="../style/responsive.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Scripts-->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="../scripts/config.js" defer></script>
-    <script src="../scripts/script.js" defer></script>
-    <script src="../scripts/script-webpage.js" defer></script>
-    <script src="../scripts/script-calculation.js" defer></script>
-    <script src="../scripts/main.js" defer></script>
+    <script type="module" src="../scripts/generator.js" defer ></script>
+
+    <script src="../scripts/display.js" defer></script>
+    <script src="../scripts/character-creation.js" defer></script>
+    <script src="../scripts/calculation.js" defer></script>
+    <script src="../scripts/generator-main.js" defer></script>
     
 
-    <!-- Canvas -->
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-   
 
 </head>
 <body>
@@ -33,34 +33,41 @@
     <!-- HEADER -->
     <header>
         <nav>
-            <a href="../index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
-              <div>
-                  <a href="../index.html">Accueil</a>
-                  <a href="generate.html">Générateur</a>
-                  <a href="spellbook.html">Grimoire</a>
-                  <a href="#">Rencontres</a>
-              </div>
+            <div id="nav-logo">
+                <a href="../index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
+                <button id="toggle-button" class="myButton">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div id="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="generator.html">Générateur</a>
+                <a href="spellbook.html">Grimoire</a>
+                <a href="#">Rencontres</a>
+            </div>
         </nav>
     </header>
 
     <!-- MAIN -->
     <main>
 
-        <aside>
+        <aside class="generator">
+
+                
 
                 <div class="divRow">
-                    
+                    <button id="toggle-button-config" class="myButton"><i class="fa-solid fa-bars"></i></button>
                     <button class="myButton" role="button" id="screen"><i class="fa-solid fa-mobile-screen is-bigger"></i></button>
                     <button class="myButton" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
-                    <button class="myButton" role="button" id="generer"><i class="fa-solid fa-circle-plus"></i> Générer</button>
+                    <button class="myButton" role="button" id="generer"><i class="fa-solid fa-circle-plus"></i>&nbsp;Générer</button>
                 </div>
 
-                <div class="inputText divRow">
+                <div class="inputText divRow toggle">
                     <input type="text" id="champTexte" maxlength="30" placeholder="Nom">
                     <input type="text" id="champAge"  placeholder="âge" maxlength="5">
                 </div>
 
-                <div class="inputSelect">
+                <div class="inputSelect toggle">
                     <label for="nom">Nom:</label>
                     <select id="selectName" name="nom">
                     <fieldset>
@@ -89,7 +96,7 @@
                     </select>
                 </div>
 
-                <div  class="inputSelect">
+                <div  class="inputSelect toggle">
                     <label for="archetype">Archétype:</label>
                     <select id="selectArchetype" name="archetype">
                         <option value="-1">Aléatoire</option>
@@ -120,7 +127,7 @@
                     </select>
                 </div>
 
-                <div class="inputSelect">
+                <div class="inputSelect toggle">
                     <label for="peuple">Peuple:</label>
                     <select id="selectPeuple" name="peuple">
                         <option value="-2">Logique</option>
@@ -137,7 +144,7 @@
                     </select>
                 </div>
 
-                <div class="inputSelect">
+                <div class="inputSelect toggle">
                     <label for="groupe">Groupe:</label>
                     <select id="selectGroupe" name="groupe">
                         <option value="-2">Logique</option>
@@ -158,14 +165,14 @@
                     </select>
                 </div>
 
-                <div class="inputSelect">
+                <div class="inputSelect toggle">
                     <label for="carriere">Carrière:</label>
                     <select id="selectCarriere" nom="carriere">
                         <option value="-1">Aléatoire</option>
                     </select>
                 </div>
             
-                <div class="inputSelect">
+                <div class="inputSelect toggle">
                     <label for="mode">Compétences:</label>
                     <select id="selectMode" name="mode">
                         <option value="0">Répartition</option>
@@ -174,7 +181,7 @@
                     </select>
                 </div>
 
-                <div class="inputSelect">
+                <div class="inputSelect toggle">
                     <label for="role">Mode:</label>
                     <select id="selectRole" name="role">
                         <option value="0">Normal</option>
@@ -185,15 +192,18 @@
                     </select>
                 </div>
 
-                <div class="inputCheckbox">
-                    <input type="checkbox" id="cocherInfo">
-                    <label for="cocherInfo"><i class="fa-solid fa-circle-info"></i> Plus d'infos</label>
+                <div class="inputCheckbox toggle">
+                    <div>
+                        <input type="checkbox" id="cocherInfo">
+                        <label for="cocherInfo">Plus d'infos</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="cocherNotes">
+                        <label for="cocherNotes">Notes</label>
+                    </div>
                 </div>
 
-                <div class="inputCheckbox">
-                    <input type="checkbox" id="cocherNotes">
-                    <label for="cocherNotes">Notes</label>
-                </div>
+                
 
         </aside>
         
@@ -321,5 +331,8 @@
 
 
     </main>
+    <footer><i class="fa-solid fa-moon"></i> Website by Jyp<br>
+        Brigandyne est une œuvre de James Tornade. Tous droits réservés.<br>
+        Favicon faite par Skoll. Disponible sur Game-icons.net</footer>
 </body>
 </html>

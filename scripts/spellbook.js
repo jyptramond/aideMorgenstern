@@ -1,3 +1,9 @@
+import { toggleNav, changeScreenRatio, toggleConfig } from './export.js';
+
+toggleNav();
+changeScreenRatio();
+toggleConfig();
+
 let difficultyFilter = -30;
 let lastSelectedOptionId = 'ascending';
 
@@ -119,7 +125,7 @@ const cards = document.querySelectorAll(".notsaved");
 
             let isDuplicate = false;
             let savedElements = document.querySelectorAll("#mySpellbook article")
-            for (element of savedElements) {
+            for (let element of savedElements) {
                 if (element.firstChild.textContent === cards[i].firstChild.textContent) {
                     isDuplicate = true;
                 }
@@ -129,6 +135,7 @@ const cards = document.querySelectorAll(".notsaved");
                 const clonedElement = cards[i].cloneNode(true);
                 clonedElement.classList.add("card-effect");
                 clonedElement.classList.remove("notsaved")
+                cards[i].remove();
     
                 let spellbookRecap = document.querySelector("aside ul")
                 let recapElement = document.createElement("li")
@@ -141,9 +148,10 @@ const cards = document.querySelectorAll(".notsaved");
     
                 clonedElement.addEventListener("click", function(event) {
                     let allRecapElements = document.querySelectorAll("aside ul li")
-                    for (element of allRecapElements) {
+                    for (let element of allRecapElements) {
                         if (element.textContent === clonedElement.firstChild.textContent) {
                             element.remove();
+                            theFilter();
                             break;
                         }
                     }
@@ -179,32 +187,32 @@ function userDifficultyFiltering() {
 
         switch (difficulty.value) {
             case '0': 
-            labelDifficulty.innerText = `Difficulté max. : +20 `;
+            labelDifficulty.innerHTML = `Difficulté max. : +20&nbsp;`;
             difficultyFilter = 20;
             break;
 
             case '10': 
-            labelDifficulty.innerText = `Difficulté max. : +10 `; 
+            labelDifficulty.innerHTML = `Difficulté max. : +10&nbsp;`; 
             difficultyFilter = 10;
             break;
 
             case '20': 
-            labelDifficulty.innerText = `Difficulté max. : 0`; 
+            labelDifficulty.innerHTML = `Difficulté max. : 0&nbsp;`; 
             difficultyFilter = 0;
             break;
 
             case '30': 
-            labelDifficulty.innerText = `Difficulté max. : -10`; 
+            labelDifficulty.innerHTML = `Difficulté max. : -10&nbsp;`; 
             difficultyFilter = -10;
             break;
 
             case '40': 
-            labelDifficulty.innerText = `Difficulté max. : -20 `;
+            labelDifficulty.innerHTML = `Difficulté max. : -20&nbsp;`;
             difficultyFilter = -20;
             break;
 
             case '50': 
-            labelDifficulty.innerText = `Difficulté max. : -30 `; 
+            labelDifficulty.innerHTML = `Difficulté max. : -30&nbsp;`; 
             difficultyFilter = -30;
             break;
         }
@@ -220,7 +228,7 @@ function userDifficultyFiltering() {
 function theFilter() {
 
     let magicType = document.getElementById('selectType').value ;
-    data = userSearch.value.toLowerCase();
+    let data = userSearch.value.toLowerCase();
 
 const filteredTricks = tricks.filter(function (trick) {
     return trick.alt.includes(data) || trick.name.toLowerCase().includes(data) || trick.description.toLowerCase().includes(data) ;
@@ -245,12 +253,10 @@ if (magicType !== 'Tous') {
 
     if (lastSelectedOptionId === 'ascending') {
         let spellsByDifficulty = filteredAgainSpells.sort((a, b) => b.difficulty - a.difficulty);
-        console.log(spellsByDifficulty)
         generateSpells(spellsByDifficulty);
     }
     else if (lastSelectedOptionId === 'descending') {
         let spellsByDifficulty = filteredAgainSpells.sort((a, b) => a.difficulty - b.difficulty);
-        console.log(spellsByDifficulty)
         generateSpells(spellsByDifficulty);
     }
     else {
@@ -342,30 +348,6 @@ function displayMagic(checkId, divId, titleId, buttonId) {
 }
 
 
-function initialisationWeb() {
-
-    let baliseAtouts = document.getElementById("listeAtouts")
-    baliseAtouts.innerHTML = ""
-
-    let baliseEquipement = document.getElementById("listeEquipement")
-    baliseEquipement.innerHTML = ""
-
-    let baliseGrimoireTours = document.getElementById("listeGrimoireTours")
-    baliseGrimoireTours.innerHTML = ""
-
-    let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
-    baliseGrimoireSortileges.innerHTML = ""
-
-    let baliseTableGrimoire = document.getElementById("tableGrimoire")
-    let baliseGrimoireh2 = document.querySelector("#tableGrimoire h2")
-    let baliseGrimoireDiv = document.querySelector("#tableGrimoire div")
-    baliseGrimoireTours.classList.add("do-not-display")
-    baliseGrimoireSortileges.classList.add("do-not-display")
-    baliseTableGrimoire.classList.add("do-not-display")
-    baliseGrimoireh2.classList.add("do-not-display")
-    baliseGrimoireDiv.classList.add("do-not-display")
-}
-
 
 function takeScreenshotWeb() {
     document.getElementById('save').addEventListener('click', function(event) {
@@ -379,7 +361,7 @@ function takeScreenshotWeb() {
 
             let mySpellbookTitle = document.getElementById('mySpellbookTitle') ;
 
-            filename = `${mySpellbookTitle.textContent}-aideBrigandyne.jpeg`;
+            let filename = `${mySpellbookTitle.textContent}-aideBrigandyne.jpeg`;
             
             link.download = filename;
 
@@ -399,7 +381,7 @@ function takeScreenshotWeb() {
 function display9articles(displayedArray, location, buttonLocation,mode) {
     displayedArray = document.querySelectorAll(location)
     if (displayedArray.length>9) {
-        for (i=9 ; i < displayedArray.length ; i++) {
+        for (let i=9 ; i < displayedArray.length ; i++) {
             displayedArray[i].classList.add('do-not-display');
         }
 
@@ -427,7 +409,7 @@ function pressToShowMore(button, displayedArray) {
             };
         }
 
-        for (element of displayedArray) {
+        for (let element of displayedArray) {
             if (element.classList.contains('do-not-display')) {
                 count++
             }
@@ -461,14 +443,12 @@ function difficultySorting() {
         radio.addEventListener('change', function() {
             if (this.checked) {
                 lastSelectedOptionId = this.id;
-                console.log(lastSelectedOptionId)
                 theFilter();
             }
         });
     });
 }
 
-changeScreenRatio();
 userFiltering();
 userTypeFiltering();
 userDifficultyFiltering();

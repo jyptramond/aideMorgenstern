@@ -10,10 +10,12 @@
     <!-- Style -->
     <link rel="stylesheet" href="style/display.css">
     <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/responsive.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Scripts-->
+    <script type="module" src="scripts/index.js" defer></script>
 
 </head>
 <body>
@@ -22,13 +24,18 @@
     <!-- HEADER -->
     <header>
         <nav>
-            <a href="index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
-              <div>
-                  <a href="#">Accueil</a>
-                  <a href="pages/generate.html">Générateur</a>
-                  <a href="pages/spellbook.html">Grimoire</a>
-                  <a href="#">Rencontres</a>
-              </div>
+            <div id="nav-logo">
+                <a href="index.html"><h1><i class="fa-solid fa-dungeon"></i> aideBrigandyne</h1></a>
+                <button id="toggle-button" class="myButton">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div id="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="pages/generator.html">Générateur</a>
+                <a href="pages/spellbook.html">Grimoire</a>
+                <a href="#">Rencontres</a>
+            </div>
         </nav>
     </header>
 
@@ -37,46 +44,51 @@
         
         
         <div id="fullWindow">
-            <img src="images/brigandyne.jpg" class="cover" alt="illustration du monde de Brigandyne"></img>
+            
             <section>
-                <h2>Ola, brigands !</h2>
-                <p>Bienvenue sur <strong>aideBrigandyne</strong>, un sanctuaire dédié à l'univers impitoyable de <strong>Brigandyne</strong> créé par James Tornade! 
-                Plusieurs outils sont à votre disposition pour vous aider dans vos aventures.</p> 
-
-
-                <div id="articles">
-                    <a href="pages/generate.html" target="_blank">
-                        <article class="card-effect">
-                            <h3>Le générateur</h3>
-                            <img src="images/generate.jpg" class="thumbnail"></img>
-                            <p>Créez des personnages pré-tirés à la volée.</p>
+                <img src="images/brigandyne.jpg" class="cover" alt="illustration du monde de Brigandyne"></img>
+                <div id="presentation">
+                    <h2>Ola, brigands !</h2>
+                    <p>Bienvenue sur <strong>aideBrigandyne</strong>, un sanctuaire dédié à l'univers impitoyable de <strong>Brigandyne</strong> créé par James Tornade! 
+                    Plusieurs outils sont à votre disposition pour vous aider dans vos aventures.</p> 
+                    <div id="articles">
+                        <a href="pages/generator.html" target="_blank">
+                            <article class="card-effect">
+                                <h3>Le générateur</h3>
+                                <img src="images/generate.jpg" class="thumbnail"></img>
+                                <p>Créez des personnages pré-tirés à la volée.</p>
+                            </article>
+                        </a>
+    
+                        <a href="pages/spellbook.html"  target="_blank">
+                            <article class="card-effect">
+                                <h3>Le grimoire</h3>
+                                <img src="images/spellbook.jpg" class="thumbnail"></img>
+                                <p>Éditez votre grimoire personnalisé rapidement.</p>
+                            </article>
+                        </a>
+    
+                        <article class="card-effect"  target="_blank">
+                            <h3>Les rencontres </h3>
+                            <img src="images/encounter.jpg" class="thumbnail">
+                            <p><i class="fa-solid fa-wrench"></i> En construction<br>Revenez bientôt ;)</p></img>
                         </article>
-                    </a>
-
-                    <a href="pages/spellbook.html"  target="_blank">
-                        <article class="card-effect">
-                            <h3>Le grimoire</h3>
-                            <img src="images/spellbook.jpg" class="thumbnail"></img>
-                            <p>Éditez votre grimoire personnalisé rapidement.</p>
-                        </article>
-                    </a>
-
-                    <article class="card-effect"  target="_blank">
-                        <h3>Les rencontres </h3>
-                        <img src="images/encounter.jpg" class="thumbnail">
-                        <p><i class="fa-solid fa-wrench"></i> En construction</p></img>
-                    </article>
+                    </div>
                 </div>
 
-                <p>Pour récupérer un ouvrage de James Tornade, rendez vous 
-                sur <a class="link" href="https://www.lulu.com/fr/search?contributor=James+Tornade&page=1&pageSize=10&adult_audience_rating=00" target="_blank">Lulu</a>
-                Pour plus d'infos, aller jeter un coup d'oeil sur le <a class="link" href="https://brigandyne.wordpress.com/" target="_blank">site officel de Brigandyne</a>.</p>
-
+                
             </section>
-            
+
+            <p>Si vous souhaitez acquérir Brigandyne, rendez vous 
+                sur <a class="link" href="https://www.lulu.com/fr/search?contributor=James+Tornade&page=1&pageSize=10&adult_audience_rating=00" target="_blank">Lulu</a>.<br>
+                Pour plus d'infos, aller jeter un coup d'oeil sur le <a class="link" href="https://brigandyne.wordpress.com/" target="_blank">site officiel de Brigandyne</a>.
+            </p>
         </div>
-
-
     </main>
+
+    <footer><i class="fa-solid fa-moon"></i> Website by Jyp<br>
+    Brigandyne est une œuvre de James Tornade. Tous droits réservés.<br>
+    Favicon faite par Skoll. Disponible sur Game-icons.net</footer>
+
 </body>
 </html>

@@ -12,7 +12,7 @@
 
 #searchArea div,
 #mySpellbook {
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
 }
 
 #fullWindow,
@@ -33,11 +33,11 @@
     box-shadow: none;
     text-align: center;
     font-size: 50px;
-    color: black;
+    color: var(--color-black);
     border-radius: 100%;
-    width: 50px!important;
-    height: 50px !important;
-    margin: 25px 150px 0 150px !important;
+    width: 50px;
+    height: 50px;
+    margin: 25px 40%;
 
 }
 
@@ -70,16 +70,17 @@
 
 h2 {
     font-size:2rem;
-    color: black;
-    border-bottom: solid 5px black;
+    color:var(--color-black);
+    border-bottom: solid 5px var(--color-black);
     margin: 2rem 2rem 2rem 2rem;
+    height: min-content;
 }
 
 article h3 {
     font-family:Arial, Helvetica, sans-serif;
     font-size: 0.9rem;
     text-align: right;
-    color: black;
+    color: var(--color-black);
     border-bottom: solid 2px rgb(56, 56, 56);
 }
 
@@ -117,6 +118,7 @@ margin-bottom: 5px;
 
 article .description ul {
     margin: 3px 3px 3px 10px;
+    padding-left:0;
 }
 
 article .description li {
@@ -124,7 +126,8 @@ article .description li {
 }
 
 article .description div {
-    text-align: center;
+    display: inline !important;
+    text-align: center !important;
     margin-top: 8px;
 }
 

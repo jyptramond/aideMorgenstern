@@ -1030,20 +1030,17 @@ let grimoire = []
                     if (mode[i][1][ii] === domaine1) {
                         grimoire[x] = mode[i][0][0]
                         x++
-                        // DEBUG : 
-                        console.log(mode[i][0][0]+"... correspondance avec domaine 1 : inscrit sur le grimoire")
+                        // DEBUG : console.log(mode[i][0][0]+"... correspondance avec domaine 1 : inscrit sur le grimoire")
                     } 
                     if (mode[i][1][ii] === domaine2) {
                         grimoire[x] = mode[i][0][0]
                         x++
-                        // DEBUG : 
-                        console.log(mode[i][0][0]+"... correspondance avec domaine 2 : inscrit sur le grimoire")
+                        // DEBUG : console.log(mode[i][0][0]+"... correspondance avec domaine 2 : inscrit sur le grimoire")
                     } 
                     if (mode[i][1][ii] === domaine3) {
                         grimoire[x] = mode[i][0][0]
                         x++
-                        // DEBUG : 
-                        console.log(mode[i][0][0]+"... correspondance avec domaine 3 : inscrit sur le grimoire")
+                        // DEBUG : console.log(mode[i][0][0]+"... correspondance avec domaine 3 : inscrit sur le grimoire")
                     } 
             }
 
@@ -1051,11 +1048,9 @@ let grimoire = []
     }
 
     // DEBUG : console.log("mon grimoire (avant removeDuplicates")
-    // DEBUG : 
-    console.log(grimoire)
+    // DEBUG : console.log(grimoire)
     grimoire = removeDuplicates(grimoire)
-    // DEBUG : 
-    console.log(grimoire)
+    // DEBUG : console.log(grimoire)
 
     return grimoire
 }
