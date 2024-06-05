@@ -3,12 +3,16 @@ import { toggleNav, changeScreenRatio, toggleConfig } from './export.js';
 toggleNav();
 changeScreenRatio();
 toggleConfig();
-launch();
+generate();
 afficherSelectionCarriere();
 displayDetailedView();
 displayNotes();
-personnalizedInput(champTexte, "champTexte",30);
-personnalizedInput(champAge, "champAge",5);
+userInput(champTexte, "champTexte",30);
+userInput(champAge, "champAge",5);
 takeScreenshotWeb();
-initiateGeneration()
+
+initCharacter();
+resetCharacter();
+createCharacter();
+displayCharacter();
 rotateButton("generer");

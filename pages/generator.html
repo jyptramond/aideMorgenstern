@@ -16,12 +16,14 @@
 
     <!-- Scripts-->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="../scripts/config.js" defer></script>
+    <script src="../scripts/old-data.js" defer></script>
     <script src="../scripts/data.js" defer></script>
 
     <script src="../scripts/display.js" defer></script>
     <script src="../scripts/character.js" defer></script>
     <script src="../scripts/calculation.js" defer></script>
+    <script src="../scripts/config.js" defer></script>
+
     
     <script type="module" src="../scripts/generator.js" defer ></script>
 
@@ -228,8 +230,8 @@
                             <h2><i class="fa-solid fa-image-portrait"></i> Attributs</h2>
                             <tbody>
                                 <tr><td>Carrière</td>           <td id="CARR"></td></tr>
-                                <tr><td><i class="fa-solid fa-heart"></i> Vitalité</td>           <td><span id="PV" class="strong">0</span><span class="expert do-not-display is-smaller" id="PV2"></span></td></tr>
-                                <tr><td><i class="fa-solid fa-bolt"></i> Sang-Froid</td>         <td><span id="SF" class="strong">0</span><span class="expert do-not-display is-smaller" id="SF2"></span></td></tr>
+                                <tr><td><i class="fa-solid fa-heart"></i> Vitalité</td>           <td><span id="PV" class="strong">0</span><span class="expert do-not-display is-smaller" id="PVinfo"></span></td></tr>
+                                <tr><td><i class="fa-solid fa-bolt"></i> Sang-Froid</td>         <td><span id="SF" class="strong">0</span><span class="expert do-not-display is-smaller" id="SFinfo"></span></td></tr>
                                 <tr><td>Initiative</td>         <td id="INIT">0</td></tr>
                                 <tr><td>Destin</td>             <td id="DEST" class="strong">0</td></tr>
                                 <tr><td>Seuil de blessure</td>  <td id="SB">0</td></tr>
@@ -266,7 +268,7 @@
                                 <tr><td>Survie (SUR)</td>           <td id="SURinfo" class="expert do-not-display is-smaller"></td><td id="SUR">0</td></tr>
                                 <tr><td>Tir (TIR)</td>              <td id="TIRinfo" class="expert do-not-display is-smaller"></td><td id="TIR">0</td></tr>
                                 <tr><td>Volonté (VOL)</td>          <td id="VOLinfo" class="expert do-not-display is-smaller"></td><td id="VOL">0</td></tr>
-                                <tr><td class="magie do-not-display-magie">Magie (MAG)</td>            <td id="MAGinfo" class="expert is-smaller magie do-not-display do-not-display-magie"></td><td class="magie do-not-display-magie" id="MAG">0</td></tr>
+                                <tr class="magie"><td>Magie (MAG)</td>            <td id="MAGinfo" class="expert is-smaller"></td><td id="MAG">0</td></tr>
                             </tbody>
                         </table>
 
@@ -281,11 +283,11 @@
                             </div>
                         </div>
 
-                        <div id="spellbook" class="do-not-display">
+                        <div id="spellbook" class="magie">
                             <h2><i class="fa-solid fa-scroll"></i> Grimoire</h2>
                                 <div>
-                                    <ul id="listeGrimoireTours"></ul>
-                                    <ul id="listeGrimoireSortileges"></ul>
+                                    <ul id="tricks-list"></ul>
+                                    <ul id="spells-list"></ul>
                                 </div>
                         </div>
 

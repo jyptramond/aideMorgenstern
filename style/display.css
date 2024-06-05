@@ -267,8 +267,7 @@ ul li {
 
 .do-not-display,
 .do-not-display article,
-.do-not-display i,
-.do-not-display-magie {
+.do-not-display i {
     display:none !important;
 }
 

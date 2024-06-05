@@ -121,16 +121,10 @@ td + td {
     text-align:right;
 }
 
-
-
-
-
-
-
 #listeAtouts, 
 #listeEquipement,
-#listeGrimoireTours,
-#listeGrimoireSortileges {
+#tricks-list,
+#spells-list {
     margin: 0 0 0 20px; /* décale les listes sur le côté*/
     padding: 10px;
 }

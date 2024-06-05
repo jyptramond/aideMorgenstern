@@ -10,16 +10,18 @@
  * 
  */
 
-function initiateGeneration() {
+function createCharacter() {
             
         // fonction de redondance pour être sûr que tout est vierge à la création d'un personnage
-        initialiserGenerateur();
-        initialisationWeb();
+        initCharacter();
+        resetCharacter();
 
         // -1 pour aléatoire (archétype, métiers, peuple)
-        genererPeuple(configPeuple);
-        genererPrenom(configPrenom);
-        genererAge();
+        getRace(configPeuple);
+        getFate(configPeuple);
+        getSecondaryAttributes(configPeuple);
+        getName(configPrenom);
+        getAge();
 
         //genererCompetences();
         switch (configMode) {
@@ -34,36 +36,27 @@ function initiateGeneration() {
                 break;
         }
 
-        ajouterArchetype(configArchetype);
-        ajouterMetiers(configGroupe, configCarriere);
-        attribuerScoreMagie()
-        calculateMagic();
+        getArchetype(configArchetype);
+        getJob(configGroupe, configCarriere);
+        getMagicRank()
+        getMagic();
 
         if (configRole !== 0) {
-            giveCharacterMorePower();
+            getPrestigiousTitle();
         }
 
-        calculerAtouts();
-        calculateAttributes();
-        calculateEquipment();
+        getAbilities();
+        getMainAttributes();
+        getEquipment();
 
         // étapes supplémentaires si le PJ pratique la magie
         if (valeurMagie > 0) {
-            grimoireToursDeMagie = genererGrimoire(toursDeMagie);
-            grimoireSortilege = genererGrimoire(sortileges);
+            grimoireToursDeMagie = getSpellbook(toursDeMagie);
+            grimoireSortilege = getSpellbook(sortileges);
             //afficherGrimoire()
-            selectionnerTours()
-            selectionnerSortileges()
+            getTricks()
+            getSpells()
         } 
-
-
-
-
-
-        displayFullCharacter()
-
-
-        //verifierCaracteristiques()      
 }
 
 
@@ -74,7 +67,7 @@ function initiateGeneration() {
  * 
  */
 
-function giveCharacterMorePower() {
+function getPrestigiousTitle() {
 
 let x = 0
 
@@ -186,7 +179,7 @@ function increaseOtherStats(howMany, howMuch, who) {
  *  
  */
 
-function genererPeuple(peuple) {
+function getRace(peuple) {
 
     // tirage du peuple
     if (peuple === -2) {
@@ -234,18 +227,22 @@ function genererPeuple(peuple) {
         peuple = y
     }
 
-
-
-    // le destin
-    if (peuple === 0 || peuple === 3) {
-        attributsSecondaires[5][1] = 3 ;
-    } else {
-        attributsSecondaires[5][1] = 2 ;
-    }
-
     attributsPrincipaux[6] = peuple
     attributsPrincipaux[1] = origine[peuple][0]
-    
+}
+
+
+
+function getFate(peuple) {
+        // le destin
+        if (peuple === 0 || peuple === 3) {
+            attributsSecondaires[5][1] = 3 ;
+        } else {
+            attributsSecondaires[5][1] = 2 ;
+        }
+}
+
+function getSecondaryAttributes(peuple) {
 
     switch (peuple) {
 
@@ -257,8 +254,8 @@ function genererPeuple(peuple) {
             break ;
 
         case 2 :    //nain
-            attributsSecondaires[1][1] += 1 // PV : il faut encore corriger l'implémentation des PV après
-            attributsSecondaires[3][1] += 1 // SF : idem
+            attributsSecondaires[1][1] += 1 // PV 
+            attributsSecondaires[3][1] += 1 // SF 
             attributsSecondaires[6][1] = "PV+1, SF+1"
             attributsSecondaires[1][3] = 1 // PV add.
             attributsSecondaires[3][3] = 1 // SF add.
@@ -272,8 +269,8 @@ function genererPeuple(peuple) {
             break ;
 
         case 5 :    //hudvàr
-            attributsSecondaires[1][1] += 1 // PV : il faut encore corriger l'implémentation des PV après
-            attributsSecondaires[3][1] += 1 // SF : idem
+            attributsSecondaires[1][1] += 1 // PV
+            attributsSecondaires[3][1] += 1 // SF
             attributsSecondaires[6][1] = "PV+1, SF+1"
             attributsSecondaires[1][3] = 1 // PV add.
             attributsSecondaires[3][3] = 1 // SF add.
@@ -293,9 +290,71 @@ function genererPeuple(peuple) {
             attributsSecondaires[6][1] = `Nyctalopie,<br>Rés. aux maladies`
             break ;
     }
-
-    return peuple
 }
+
+/**
+ * Générer un prénom aléatoire
+ * 
+ */
+
+function getName(p) {
+
+    if (p === -1) {
+            // choix d'une liste de prénoms
+        let x = aleatoire(prenoms.length)
+            // choix du masculin ou féminin
+        let y = aleatoire(prenoms[x].length)
+            // choix du prénom
+        let i = aleatoire(prenoms[x][y].length)
+    
+        attributsPrincipaux[0] = prenoms[x][y][i]
+    }
+
+    // choix aléatoire en fonction du peuple
+    if (p === -2) {
+
+        switch (attributsPrincipaux[6]) {
+            case 1: 
+                x = 10;
+                break;
+            case 2:
+                x = 11;
+                break;
+            case 3:
+                x = 12;
+                break;
+            case 6:
+                x = 9;
+                break;
+            case 7:
+                x = 9;
+                break;
+            case 8:
+                x = 9;
+                break;
+            default:
+                x = aleatoire(9)
+        }
+
+        // choix du masculin ou féminin
+    let y = aleatoire(prenoms[x].length)
+        // choix du prénom
+    let i = aleatoire(prenoms[x][y].length)
+
+    attributsPrincipaux[0] = prenoms[x][y][i]
+    }
+
+
+    if (p >= 0) {
+            // choix du masculin ou féminin
+        let y = aleatoire(prenoms[p].length)
+            // choix du prénom
+        let i = aleatoire(prenoms[p][y].length)
+        
+        attributsPrincipaux[0] = prenoms[p][y][i]
+    }
+}
+
 
 
 /**
@@ -303,7 +362,7 @@ function genererPeuple(peuple) {
  *
  */
 
-function genererAge() {
+function getAge() {
 
     // attributsPrincipaux[3] = age
 
@@ -457,7 +516,7 @@ function genererCompetencesTirage(x) {
  *  
  */
 
-function ajouterArchetype(i) {
+function getArchetype(i) {
 
     if (i === -1) {
         i = aleatoire(archetype.length)
@@ -563,7 +622,7 @@ competence = str.slice(0, z)
  * 
  */
 
-function ajouterMetiers(x, xx) {
+function getJob(x, xx) {
     
     // si tout est aléatoire
     if (x === -2 && xx === -1) {
@@ -610,7 +669,7 @@ function ajouterMetiers(x, xx) {
  * 
  */
 
-function calculateEquipment() {
+function getEquipment() {
 
 let i
 let x = 0
@@ -642,11 +701,11 @@ let x = 0
  * 
  */
 
-function calculerAtouts() {
+function getAbilities() {
 
     attributsSecondaires[9][1] = indice(valeursCaracteristiques[1])-1
     let i
-    let pjEstUnMage = verifierSiPJMage()
+    let pjEstUnMage = checkMagic()
     let x = []
 
         // si le PJ a un score de magie positif...
@@ -654,11 +713,11 @@ function calculerAtouts() {
             // ... et suit une carrière de mage...
             if (pjEstUnMage) {
 
-                calculerAtoutsMagicien();
+                getAbilitiesWizard();
             } 
             else {
 
-                calculerAtoutsFauxMagicien();   
+                getAbilitiesNonWizard();   
             } 
         }
         else {
@@ -683,7 +742,7 @@ function calculerAtouts() {
  */
 
 
-function calculerAtoutsMagicien() {
+function getAbilitiesWizard() {
 
 let i
 let z = 0
@@ -706,25 +765,19 @@ let x = []
         if (valeurMagie >= 50 && attributsSecondaires[9][1] > 1) {
             
             if (magicienDuoVar === true) {
-
                 // on vérifie qu'il n'y ai pas de doublon
                 do {
-                    
                     atouts[1] = stringrandom(metiers[attributsSecondaires[8][1]][2])
-
                 }
                 while (atouts[1] === atouts[0])
     
                 // le nombre d'atouts en moins dont bénéficie le personnage
                 z = 2 ;
-    
             }
             else {
                 // on vérifie qu'il n'y ai pas de doublon
-                
                 do {
                     atouts[1] = stringrandom(domaineMagique)
-
                 }
                 while (atouts[1] === atouts[0])
 
@@ -745,14 +798,10 @@ let x = []
         z = 3 ;
         } 
     
-
     // tirer les atouts suivants en vérifiant qu'aucun atout n'est un doublon du premier atout (domaine magique)
     for (i = 0 ; i < attributsSecondaires[9][1]-z ; i++) {
-
         atouts[i+z] = stringrandom(x[i])
-
     }
-
 }
 
 
@@ -764,7 +813,7 @@ let x = []
  */
 
 
-function calculerAtoutsFauxMagicien() {
+function getAbilitiesNonWizard() {
 
 
 let x = []
@@ -811,7 +860,7 @@ let z = 0
  * 
  */
 
-function verifierSiPJMage() {
+function checkMagic() {
 
     let x = false
     let i = 0
@@ -842,7 +891,7 @@ function verifierSiPJMage() {
  * 
  */
 
-function attribuerScoreMagie() {
+function getMagicRank() {
 
     let pjEstUnMage = 0
     let magCat1 = (aleatoire(10)+1)*5
@@ -893,7 +942,7 @@ function attribuerScoreMagie() {
  * 
  */
 
-function calculateMagic() {
+function getMagic() {
 
 // initiatilisation des catégories de mages
     
@@ -981,7 +1030,7 @@ poolDeMagie = valeurMagie
  * 
  */
 
-function genererGrimoire(mode) {
+function getSpellbook(mode) {
     
 let domaine1
 let domaine2
@@ -1063,7 +1112,7 @@ let grimoire = []
  * 
  */
 
-function selectionnerSortileges() {
+function getSpells() {
 
 shuffle(grimoireSortilege)
 // DEBUG : console.log(array)
@@ -1077,7 +1126,7 @@ let x = attributsSecondaires[9][1]+1
     }
 }
 
-function selectionnerTours() {
+function getTricks() {
 
     shuffle(grimoireToursDeMagie)
     // DEBUG : console.log(array)
@@ -1102,7 +1151,7 @@ function selectionnerTours() {
  */
 
 
-function calculateAttributes() {
+function getMainAttributes() {
 
     let i = 0
 
@@ -1138,10 +1187,10 @@ function calculateAttributes() {
  * 
  */
 
-function initialiserGenerateur() {
+function initCharacter() {
 
     let i = 0
-
+ 
     
         for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
             valeursCaracteristiques[i] =0
@@ -1175,9 +1224,9 @@ function initialiserGenerateur() {
 
         attributsSecondaires = [
             /*0*/ ["Initiative : ", 0],                                      
-            /*1*/ ["Vitalité : ", 0,0,0],
+            /*1*/ ["Vitalité : ", 0,0,0], // intitulé, pv final, pv de base, pv supplémentaire avec la race
             /*2*/ ["Seuil de blessure : ", 0],
-            /*3*/ ["Sang-Froid : ", 0,0,0],
+            /*3*/ ["Sang-Froid : ", 0,0,0],  // intitulé, sf final, sf de base, sf supplémentaire avec la race
             /*4*/ ["Instabilité : ", 0],
             /*5*/ ["Destin : ", 0],
             /*6*/ ["Spécial : ", ""],

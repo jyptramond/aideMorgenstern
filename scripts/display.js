@@ -1,114 +1,17 @@
-
-/** 
- *  Fonction qui s'effectue lorsqu'on appuie sur le bouton de génération
- * 
- */
-
-function launch() {
-
-    document.getElementById('generer').addEventListener("click", function(event) {
-
-        menuConfiguration();
-        initiateGeneration();
-    });
-}
-
-
-function rotateButton(target) {    
-    let amount = 0
-    document.getElementById(target).addEventListener("click", function(event) {
-        console.log("ok")
-
-        let icon = document.querySelector('#'+target+" i")
-
-        amount += 360;
-
-        if (icon) {
-            icon.style.transform = `rotate(${amount}deg)`;
-        }
-        
-        
-    });
-}
-
-
-function personnalizeDisplay() {
-
-    let config = {
-        ALLOWED_TAGS: false,
-        ALLOWED_ATTR: false
-    };
-
-    let baliseIdentite = document.getElementById("identite");
-    let champAge = DOMPurify.sanitize(document.getElementById("champAge").value, config);
-    let champTexte = DOMPurify.sanitize(document.getElementById("champTexte").value, config);
-
-    if (!champTexte && !champAge) {
-        baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-    }
-    else if (champTexte && champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${champAge} ans)</span>`
-    }
-    else if (champTexte && !champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-    }
-    else if (!champTexte && champAge) {
-        baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${champAge} ans)</span>`
-    }
-
-
-}
-
-
-/** 
- *  Prénom personnalisé
- * 
- */
-
-// champTexte, "champTexte",30
-// champAge, "champAge", 5
-
-function personnalizedInput(target, targetID, inputLength) {
-    target = document.getElementById(targetID);
-    target.addEventListener('input', function() {
-            // Si la longueur de la valeur du champ de texte dépasse 20 caractères, raccourcir la valeur
-        if (target.value.length > inputLength) {
-            target.value = target.value.slice(0, inputLength);
-        }
-
-        personnalizeDisplay();
-    });
-}
-
-
-function setCharacteristics(tag, tagID, tagValue, tagInfo, tagInfoID, x) {
-    tag = document.getElementById(tagID);
+function displayCharacteristic(tagID, tagValue,  i) {
+    let tag = document.getElementById(tagID);
     tag.textContent = tagValue;
-    tagInfo = document.getElementById(tagInfoID)
-    tagInfo.innerHTML = `${modifCaracteristiques[x][0]} ${modifCaracteristiques[x][1]} ${modifCaracteristiques[x][2]}`
+    let tagInfo = document.getElementById(tagID+"info")
+    tagInfo.innerHTML = `${modifCaracteristiques[i][0]} ${modifCaracteristiques[i][1]} ${modifCaracteristiques[i][2]}`
 }
 
 
-function displayAllCharacteristics() {
+function displayCharacteristics() {
 
-let baliseCombat, baliseCombatInfo, baliseConnaissances, baliseConnaissancesInfo, baliseDiscretion, baliseDiscretionInfo, 
-baliseEndurance, baliseEnduranceInfo, baliseForce, baliseForceInfo, baliseHabilete, baliseHabileteInfo, 
-baliseMouvement, baliseMouvementInfo, balisePerception, balisePerceptionInfo, baliseSociabilite, baliseSociabiliteInfo, 
-baliseSurvie, baliseSurvieInfo, baliseTir, baliseTirInfo, baliseVolonte, baliseVolonteInfo, baliseMagie, baliseMagieInfo;
-
-setCharacteristics(baliseCombat, "COM", valeursCaracteristiques[0], baliseCombatInfo, "COMinfo", 0);
-setCharacteristics(baliseConnaissances, "CNS", valeursCaracteristiques[1], baliseConnaissancesInfo, "CNSinfo", 1);
-setCharacteristics(baliseDiscretion, "DIS", valeursCaracteristiques[2], baliseDiscretionInfo, "DISinfo", 2);
-setCharacteristics(baliseEndurance, "END", valeursCaracteristiques[3], baliseEnduranceInfo, "ENDinfo", 3);
-setCharacteristics(baliseForce, "FOR", valeursCaracteristiques[4], baliseForceInfo, "FORinfo", 4);
-setCharacteristics(baliseHabilete, "HAB", valeursCaracteristiques[5], baliseHabileteInfo, "HABinfo", 5);
-setCharacteristics(baliseMouvement, "MOU", valeursCaracteristiques[6], baliseMouvementInfo, "MOUinfo", 6);
-setCharacteristics(balisePerception, "PER", valeursCaracteristiques[7], balisePerceptionInfo, "PERinfo", 7);
-setCharacteristics(baliseSociabilite, "SOC", valeursCaracteristiques[8], baliseSociabiliteInfo, "SOCinfo", 8);
-setCharacteristics(baliseSurvie, "SUR", valeursCaracteristiques[9], baliseSurvieInfo, "SURinfo", 9);
-setCharacteristics(baliseTir, "TIR", valeursCaracteristiques[10], baliseTirInfo, "TIRinfo", 10);
-setCharacteristics(baliseVolonte, "VOL", valeursCaracteristiques[11], baliseVolonteInfo, "VOLinfo", 11);
-setCharacteristics(baliseMagie, "MAG", valeurMagie, baliseMagieInfo, "MAGinfo", 12);
+    for (let i = 0 ; i < 12 ; i++) {
+        displayCharacteristic(abrevCaracteristiques[i], valeursCaracteristiques[i], i);
+    }
+        displayCharacteristic("MAG", valeurMagie, 12);
 
 }
 
@@ -118,56 +21,91 @@ setCharacteristics(baliseMagie, "MAG", valeurMagie, baliseMagieInfo, "MAGinfo", 
  * 
  */
 
-function displayFullCharacter() {
+function displayCharacter() {
 
     let i = 0
 
-    personnalizeDisplay();
-    displayAllCharacteristics();
+    customHeader();
+    displayCharacteristics();
 
-    let baliseVices = document.getElementById("vices")
-    baliseVices.textContent = `${attributsPrincipaux[4]}+1, ${attributsPrincipaux[5]}+1`
+    document.getElementById("vices").textContent = `${attributsPrincipaux[4]}+1, ${attributsPrincipaux[5]}+1`
 
-    let baliseInitiative = document.getElementById("INIT");
-    baliseInitiative.textContent = attributsSecondaires[0][1]
+    document.getElementById("CARR").innerHTML = `<span class="strong">${stringrandom(metiers[attributsSecondaires[8][1]][0])}</span>`
+    getVitals(attributsSecondaires[1], "PV");
+    getVitals(attributsSecondaires[3], "SF");
+    document.getElementById("INIT").textContent = attributsSecondaires[0][1]
+    document.getElementById("DEST").textContent = attributsSecondaires[5][1]
+    document.getElementById("SB").textContent = attributsSecondaires[2][1]
+    document.getElementById("INST").textContent = attributsSecondaires[4][1]
+    document.getElementById("SPE").innerHTML = attributsSecondaires[6][1]
+    recapCharacteristics()
 
-    let balisePV = document.getElementById("PV");
-    let balisePV2 = document.getElementById("PV2")
-if (attributsSecondaires[1][3] !== 0) {
-    balisePV.textContent = attributsSecondaires[1][1]
-    balisePV2.textContent = ` (${attributsSecondaires[1][2]}+${attributsSecondaires[1][3]})`
-} else {
-    balisePV.textContent = attributsSecondaires[1][1]
-    balisePV2.innerHTML = ""
+    displayAttributes();
+    displayEquipment();
+
+    if (valeurMagie > 0) {
+        displayMagic();
+    }
 }
 
-    let baliseSB = document.getElementById("SB");
-    baliseSB.textContent = attributsSecondaires[2][1]
+function displayMagic() {
+    if (valeurMagie >= 10) {
+        // afficher le grimoire de tours de magie
+        for (i = 0 ; i < grimTours.length ; i++) {
+            let nouveauTours = document.createElement("li")
+            nouveauTours.textContent = grimTours[i]
+            document.getElementById("tricks-list").appendChild(nouveauTours)
+        }
+        for (i = 0 ; i < grimSortileges.length ; i++) {
+            let nouveauSorts = document.createElement("li")
+            nouveauSorts.innerHTML = replaceIco(grimSortileges[i]);
+            document.getElementById("spells-list").appendChild(nouveauSorts)
+        }
+        }
+    
+    // afficher la magie
+    let baliseMagie = document.getElementsByClassName("magie")
 
-    let baliseSF = document.getElementById("SF");
-    let baliseSF2 = document.getElementById("SF2")
-if (attributsSecondaires[3][3] !== 0) {
-    baliseSF.textContent = attributsSecondaires[3][1]
-    baliseSF2.textContent = ` (${attributsSecondaires[3][2]}+${attributsSecondaires[3][3]})`
-} else {
-    baliseSF.textContent = attributsSecondaires[3][1]
-    baliseSF2.innerHTML = ""
+    for (let element of baliseMagie) {
+        element.classList.remove("do-not-display")
+    }
+
 }
 
 
-    let baliseInstabilite = document.getElementById("INST");
-    baliseInstabilite.textContent = attributsSecondaires[4][1]
-
-    let baliseDestin = document.getElementById("DEST");
-    baliseDestin.textContent = attributsSecondaires[5][1]
-
-    let baliseSpecial = document.getElementById("SPE");
-    baliseSpecial.innerHTML = attributsSecondaires[6][1]
-
-    let baliseTotal = document.getElementById("COMP")
+function displayEquipment() {
+    for (let i = 0 ; i < equipement.length ; i++) {   
+        let nouvelEquipement = document.createElement("li");
+        nouvelEquipement.textContent = equipement[i];
+        document.getElementById("listeEquipement").appendChild(nouvelEquipement);
+    }
+    // DEBUG : console.log("equipement.length"+equipement.length)
+}
 
 
+function displayAttributes() {
+    for (let i = 0 ; i < atouts.length ; i++) {
+        let nouvelAtout = document.createElement("li")
+        nouvelAtout.textContent = atouts[i]
+        document.getElementById("listeAtouts").appendChild(nouvelAtout)
+    }
+}
 
+
+
+function getVitals(attribute, ID) {
+    if (attribute[3] !== 0) {
+        document.getElementById(ID).textContent = attribute[1]
+        document.getElementById(ID+"info").textContent = ` (${attribute[2]}+${attribute[3]})`
+    } else {
+        document.getElementById(ID).textContent = attribute[1]
+        document.getElementById(ID+"info").innerHTML = ""
+    }
+}
+
+
+
+function recapCharacteristics() {
     // attribut secondaire [10][1] : 120 + profil de répartion du peuple
     // valeur de base = [10][1]-[10][6] : valeur de base
     // attribut secondaire [10][2] : modification apportée par l'archétype
@@ -180,94 +118,20 @@ if (attributsSecondaires[3][3] !== 0) {
     let valeursTotales = attributsSecondaires[10][5] + valeurMagie
 
     if (valeurMagie > 0) {
-    baliseTotal.innerHTML = `((${valeurDeBase}+${attributsSecondaires[10][6]}+${attributsSecondaires[10][2]})-(${valeurMagie}-${attributsSecondaires[10][4]}))+${valeurMagie}=${attributsSecondaires[10][3]}+${valeurMagie}(${valeursTotales})`
+        document.getElementById("COMP").innerHTML = `((${valeurDeBase}+${attributsSecondaires[10][6]}+${attributsSecondaires[10][2]})-(${valeurMagie}-${attributsSecondaires[10][4]}))+${valeurMagie}=${attributsSecondaires[10][3]}+${valeurMagie}(${valeursTotales})`
     }
     else {
-    baliseTotal.innerHTML = `${valeurDeBase}+${attributsSecondaires[10][6]}+${attributsSecondaires[10][2]}=${attributsSecondaires[10][3]}(${attributsSecondaires[10][5]})`
-    }
-
-
-
-    let baliseCarriere = document.getElementById("CARR");
-    baliseCarriere.innerHTML = `<span class="strong">${stringrandom(metiers[attributsSecondaires[8][1]][0])}</span>`
-
-
-    // afficher les atouts
-    // DEBUG : console.log(atouts)
-
-    for (i = 0 ; i < atouts.length ; i++) {
-        let baliseAtouts = document.getElementById("listeAtouts")
-        let nouvelAtout = document.createElement("li")
-        nouvelAtout.textContent = atouts[i]
-        baliseAtouts.appendChild(nouvelAtout)
-    }
-
-    // afficher l'équipement
-
-    let baliseEquipement = document.getElementById("listeEquipement")
-    for (i = 0 ; i < equipement.length ; i++) {   
-        let nouvelEquipement = document.createElement("li")
-        nouvelEquipement.textContent = equipement[i]
-        baliseEquipement.appendChild(nouvelEquipement)
-    }
-    // DEBUG : console.log("equipement.length"+equipement.length)
-
-    let baliseGrimoireTours = document.getElementById("listeGrimoireTours")
-    let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
-    let baliseTableGrimoire = document.getElementById("spellbook")
-    let baliseGrimoireh2 = document.querySelector("#spellbook h2")
-    let baliseGrimoireDiv = document.querySelector("#spellbook div")
-    baliseGrimoireTours.classList.remove("do-not-display")
-    baliseGrimoireSortileges.classList.remove("do-not-display")
-    baliseTableGrimoire.classList.remove("do-not-display")
-    baliseGrimoireh2.classList.remove("do-not-display")
-    baliseGrimoireDiv.classList.remove("do-not-display")
-
-    if (valeurMagie >= 10) {
-    // afficher le grimoire de tours de magie
-    for (i = 0 ; i < grimTours.length ; i++) {
-        let nouveauTours = document.createElement("li")
-        nouveauTours.textContent = grimTours[i]
-        baliseGrimoireTours.appendChild(nouveauTours)
-    }
-    for (i = 0 ; i < grimSortileges.length ; i++) {
-        let nouveauSorts = document.createElement("li")
-        nouveauSorts.innerHTML = replaceIco(grimSortileges[i]);
-        baliseGrimoireSortileges.appendChild(nouveauSorts)
-    }
-    } else {
-        let baliseTableGrimoire = document.getElementById("spellbook")
-        let baliseGrimoireh2 = document.querySelector("#spellbook h2")
-        let baliseGrimoireDiv = document.querySelector("#spellbook div")
-        baliseGrimoireTours.classList.add("do-not-display")
-        baliseGrimoireSortileges.classList.add("do-not-display")
-        baliseTableGrimoire.classList.add("do-not-display")
-        baliseGrimoireh2.classList.add("do-not-display")
-        baliseGrimoireDiv.classList.add("do-not-display")
-    }
-
-    // afficher la magie
-    let baliseAfficherMagie = document.getElementsByClassName("magie")
-
-    if (valeurMagie > 0) {
-        for (i = 0 ; i < baliseAfficherMagie.length ; i++) {
-        baliseAfficherMagie[i].classList.remove("do-not-display-magie")
-        }
-    } else {
-        for (i = 0 ; i < baliseAfficherMagie.length ; i++) {
-            baliseAfficherMagie[i].classList.add("do-not-display-magie")
-            }
+        document.getElementById("COMP").innerHTML = `${valeurDeBase}+${attributsSecondaires[10][6]}+${attributsSecondaires[10][2]}=${attributsSecondaires[10][3]}(${attributsSecondaires[10][5]})`
     }
 }
 
 
-function configFromSelect(target, targetID, newVar) {
-    target = document.getElementById(targetID).value;
-    target = parseInt(target);
-        if (!isNaN(target)) {
-            // DEBUG : console.log('valueNom:', valueNom);
-            newVar = target;
+function configFromSelect(srcID, config) {
+    let data = parseInt(document.getElementById(srcID).value);
+        if (isNaN(data)) {
+            data = config;
         } 
+    return data
 }
 
 /** 
@@ -275,16 +139,21 @@ function configFromSelect(target, targetID, newVar) {
  * 
  */
 
-function menuConfiguration() {
+function getConfig() {
 
-let valueNom, valueArchetype, valuePeuple, valueGroupe, valueMode, valueRole, configPrenom, configArchetype, configPeuple, configGroupe, configMode, configRole, configCarriere;
+    configPrenom = configFromSelect('selectName', configPrenom);
+    configArchetype = configFromSelect('selectArchetype', configArchetype);
+    configPeuple = configFromSelect('selectPeuple', configPeuple);
+    configGroupe = configFromSelect('selectGroupe', configGroupe);
+    configMode = configFromSelect('selectMode', configMode);
+    configRole = configFromSelect('selectRole', configRole);
 
-configFromSelect(valueNom, 'selectName', configPrenom);
-configFromSelect(valueArchetype, 'selectArchetype', configArchetype);
-configFromSelect(valuePeuple, 'selectPeuple', configPeuple);
-configFromSelect(valueGroupe, 'selectGroupe', configGroupe);
-configFromSelect(valueMode, 'selectMode', configMode);
-configFromSelect(valueRole, 'selectRole', configRole)
+// console.log('configPrenom : '+configPrenom);
+// console.log('configArchetype : '+configArchetype);
+// console.log('configPeuple : '+configPeuple);
+// console.log('configGroupe : '+configGroupe);
+// console.log('configMode : '+configMode);
+// console.log('configRole : '+configRole);
 
 let valueCarriere = document.getElementById('selectCarriere').value;
 valueCarriere = parseInt(valueCarriere);
@@ -423,28 +292,20 @@ function displayNotes() {
  */
 
 
-function initialisationWeb() {
+function resetCharacter() {
 
-    let baliseAtouts = document.getElementById("listeAtouts")
-    baliseAtouts.innerHTML = ""
+    document.getElementById("listeAtouts").innerHTML = "";
+    document.getElementById("listeEquipement").innerHTML = "";
+    document.getElementById("tricks-list").innerHTML = "";
+    document.getElementById("spells-list").innerHTML = ""
 
-    let baliseEquipement = document.getElementById("listeEquipement")
-    baliseEquipement.innerHTML = ""
+    baliseMagie = document.getElementsByClassName("magie")
 
-    let baliseGrimoireTours = document.getElementById("listeGrimoireTours")
-    baliseGrimoireTours.innerHTML = ""
-
-    let baliseGrimoireSortileges = document.getElementById("listeGrimoireSortileges")
-    baliseGrimoireSortileges.innerHTML = ""
-
-    let baliseTableGrimoire = document.getElementById("spellbook")
-    let baliseGrimoireh2 = document.querySelector("#spellbook h2")
-    let baliseGrimoireDiv = document.querySelector("#spellbook div")
-    baliseGrimoireTours.classList.add("do-not-display")
-    baliseGrimoireSortileges.classList.add("do-not-display")
-    baliseTableGrimoire.classList.add("do-not-display")
-    baliseGrimoireh2.classList.add("do-not-display")
-    baliseGrimoireDiv.classList.add("do-not-display")
+    for (let element of baliseMagie) {
+        if (!element.classList.contains("do-not-display")) {
+        element.classList.add("do-not-display");
+        }
+    }
 }
 
 
