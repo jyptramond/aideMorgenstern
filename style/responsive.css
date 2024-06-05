@@ -116,7 +116,6 @@ aside .inputRadio div {
 #toggle-button-config {
     display:flex;
     color:var(--color-black);
-    font-size:1.8rem;
 }
 }
 
@@ -156,6 +155,16 @@ nav #nav-links.active {
     align-items: start;
     gap:12px;
 }
+
+
+#characterSheet {
+    display: flex;
+    flex-direction: column;
+}
+
+td {
+    font-size: 1.2rem;
+ }
 }
 
 
@@ -179,25 +188,56 @@ nav {
  * main
  */
 
-
-
-
 aside {
     width: 100%;
-    font-size:20px;
+    font-size:1.25rem;
 }
 
 
 #fullWindow {
-    width: 100%;
+    width: 100% !important;
     margin:0;
 }
 
-#characterSheet {
-    display: flex;
-    flex-direction: column;
-}
+/**
+ * Texte
+ */
 
+ h1 {
+    font-size: 2rem;
+ }
+
+ h2 {
+   font-size: 1.75rem; 
+ }
+
+ h3 {
+    font-size: 1.5rem;
+ }
+
+ p,
+ select,
+ #atouts div,
+ #equipements div,
+ #spellbook div {
+    font-size: 1.25rem;
+ }
+
+ 
+ .description-spell,
+ .description,
+ .header  {
+    font-size: 1rem !important;
+ }
+
+ .formula {
+    font-size: 0.75rem !important;
+ }
+
+
+ article h3 {
+    font-size: 1.1rem !important;
+ }
 
 #screen {
     display:none;
@@ -207,6 +247,7 @@ aside {
 #bottom-links {
     text-align:left;
 }
+
 }
 
 

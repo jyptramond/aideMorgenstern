@@ -76,7 +76,7 @@ for (let i = 0 ; i < spells.length ; i++) {
     spellCard.classList.add("card-effect");
     
     const nameSpell = document.createElement("h3");
-    nameSpell.innerHTML = `${spell.name} ${spell.isForbidden ? `<i class="fa-solid fa-book-skull"></i>` : ''}`;
+    nameSpell.innerHTML = `${spell.isForbidden ? `${spell.name} <i class="fa-solid fa-book-skull"></i>` : `${spell.name}`}`;
 
     const formulaSpell = document.createElement("p");
     formulaSpell.classList.add("formula");
@@ -117,7 +117,7 @@ for (let i = 0 ; i < spells.length ; i++) {
 }
 }
 
-function lockingCard() {
+function savingCard() {
 const cards = document.querySelectorAll(".notsaved");
 
 	for (let i = 0; i < cards.length; i++) {
@@ -125,41 +125,64 @@ const cards = document.querySelectorAll(".notsaved");
 
             let isDuplicate = false;
             let savedElements = document.querySelectorAll("#mySpellbook article")
+            
             for (let element of savedElements) {
-                if (element.firstChild.textContent === cards[i].firstChild.textContent) {
+                console.log(element.firstChild.textContent)
+                if (element.firstChild.textContent === cards[i].firstChild.textContent || cards[i].firstChild.textContent === 'Ajouté au grimoire !') {
                     isDuplicate = true;
                 }
             }
 
             if (!isDuplicate) {
-                const clonedElement = cards[i].cloneNode(true);
-                clonedElement.classList.add("card-effect");
-                clonedElement.classList.remove("notsaved")
-                cards[i].remove();
-    
-                let spellbookRecap = document.querySelector("aside ul")
-                let recapElement = document.createElement("li")
-                recapElement.innerText = cards[i].firstChild.textContent
-                spellbookRecap.appendChild(recapElement);
-    
-                clonedElement.id = cards[i].name;
-                const mySpellbook = document.getElementById("mySpellbook")
-                mySpellbook.appendChild(clonedElement);
-    
-                clonedElement.addEventListener("click", function(event) {
-                    let allRecapElements = document.querySelectorAll("aside ul li")
-                    for (let element of allRecapElements) {
-                        if (element.textContent === clonedElement.firstChild.textContent) {
-                            element.remove();
-                            theFilter();
-                            break;
-                        }
-                    }
-                    clonedElement.remove();
-                })
+
+                createRecap(cards[i]);
+                createClone(cards[i]);
+                cardRemove(cards[i]);
+
             }
         });   
 	}
+}
+
+
+function cardRemove(src) {
+    
+    if (src.classList.contains('notsaved')) {
+        src.innerHTML = `<h3>Ajouté au grimoire !</h3>`;
+        src.classList.add('addedToSpellbook');
+    }
+
+        src.classList.add('fade');
+    setTimeout(src.remove.bind(src), 500);
+}
+
+function createRecap(src) {
+    let spellbookRecap = document.querySelector("aside ul");
+    let recapElement = document.createElement("li");
+    recapElement.innerText = src.firstChild.textContent;
+    spellbookRecap.appendChild(recapElement);
+}
+
+
+function createClone(src) {
+    const clonedElement = src.cloneNode(true);
+    clonedElement.classList.add("card-effect");
+    clonedElement.classList.remove("notsaved")
+
+    const mySpellbook = document.getElementById("mySpellbook")
+    mySpellbook.appendChild(clonedElement);
+
+    clonedElement.addEventListener("click", function(event) {
+        let allRecapElements = document.querySelectorAll("aside ul li")
+        for (let element of allRecapElements) {
+            if (element.textContent === clonedElement.firstChild.textContent) {
+                element.remove();
+                theFilter();
+                break;
+            }
+        }
+        cardRemove(clonedElement);
+    })
 }
 
 
@@ -177,6 +200,8 @@ function userFiltering() {
         theFilter();
     });
 }
+
+
 
 function userDifficultyFiltering() {
     let difficulty = document.getElementById('difficultyOfSpell');
@@ -225,46 +250,82 @@ function userDifficultyFiltering() {
 }
 
 
-function theFilter() {
-
+function filterMagicType(array) {
     let magicType = document.getElementById('selectType').value ;
-    let data = userSearch.value.toLowerCase();
+    let filteredArray = []
 
-const filteredTricks = tricks.filter(function (trick) {
-    return trick.alt.includes(data) || trick.name.toLowerCase().includes(data) || trick.description.toLowerCase().includes(data) ;
-});
+    if (magicType !== 'Tous') {
+        filteredArray = array.filter(item => item.type.includes(magicType));
+    }
+    else {
+    filteredArray = array;
+    }
 
-const filteredSpells = spells.filter(function (spell) {
-    return (spell.alt.includes(data) || spell.name.toLowerCase().includes(data) || spell.description.toLowerCase().includes(data) || spell.formula.toLowerCase().includes(data)) && spell.difficulty >= difficultyFilter ;
-});
+    return filteredArray
+}
 
-    // Initialize filteredAgainTricks and filteredAgainSpells
-    let filteredAgainTricks = filteredTricks;
-    let filteredAgainSpells = filteredSpells;
+function getTricks(data) {
 
-if (magicType !== 'Tous') {
-    filteredAgainTricks = filteredTricks.filter(trick => trick.type.includes(magicType));
-    filteredAgainSpells = filteredSpells.filter(spell => spell.type.includes(magicType));
+    let array = tricks.filter(trick => 
+        trick.alt.includes(data) || 
+        trick.name.toLowerCase().includes(data) || 
+        trick.description.toLowerCase().includes(data)
+    );
+
+    return array
 }
 
 
+function getSpells(data) {
+
+    let array = spells.filter(spell =>
+        (spell.alt.includes(data) ||
+        spell.name.toLowerCase().includes(data) ||
+        spell.description.toLowerCase().includes(data) ||
+        spell.formula.toLowerCase().includes(data)) &&
+        spell.difficulty >= difficultyFilter
+    );
+
+    return array
+}
+
+function theFilter() {
+
+    let config = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+let data = DOMPurify.sanitize(userSearch.value.toLowerCase(), config);
+
+let filteredTricks = getTricks(data);
+let filteredSpells = getSpells(data);
+
+filteredTricks = filterMagicType(filteredTricks) ;
+filteredSpells = filterMagicType(filteredSpells) ;
+
+filteredTricks = filterDuplicates(filteredTricks);
+filteredSpells = filterDuplicates(filteredSpells);
+
+
+
     document.querySelector("#searchArea").innerHTML = "";
-    generateTricks(filteredAgainTricks);    
+    generateTricks(filteredTricks);    
 
     if (lastSelectedOptionId === 'ascending') {
-        let spellsByDifficulty = filteredAgainSpells.sort((a, b) => b.difficulty - a.difficulty);
+        let spellsByDifficulty = filteredSpells.sort((a, b) => b.difficulty - a.difficulty);
         generateSpells(spellsByDifficulty);
     }
     else if (lastSelectedOptionId === 'descending') {
-        let spellsByDifficulty = filteredAgainSpells.sort((a, b) => a.difficulty - b.difficulty);
+        let spellsByDifficulty = filteredSpells.sort((a, b) => a.difficulty - b.difficulty);
         generateSpells(spellsByDifficulty);
     }
     else {
-        generateSpells(filteredAgainSpells);
+        generateSpells(filteredSpells);
     }
     
     
-    lockingCard();  
+    savingCard();  
 
     if (document.querySelector("#myTricksDiv")) {
         display9articles('displayedTricks','#myTricksDiv .notsaved', 'myTricksDiv','tricks');
@@ -278,30 +339,49 @@ if (magicType !== 'Tous') {
 }
 
 
-function spellbookOnly() {
-    let spellbookOnly= document.getElementById("spellbookOnly");
-    
-    spellbookOnly.addEventListener("change", function(event) {
-        
-        if (spellbookOnly.checked) {
-            document.querySelector("#searchArea").innerHTML = "";
-        }      
-        else {
-            document.querySelector("#searchArea").innerHTML = "";
-            theFilter();
+function filterDuplicates(array) {
+
+    let savedCards = document.querySelectorAll('#mySpellbook article')
+    let mySavedElements = []
+    let config = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+    if (savedCards) {
+        for (let card of savedCards) {
+
+            let filteredCard = DOMPurify.sanitize(card.firstChild.innerHTML, config)
+            filteredCard = filteredCard.trimEnd();
+
+            mySavedElements.push(filteredCard);
         }
-    });
+    }
+    
+    const removeElements = (originalArray, elementsToRemove) => originalArray.filter(item => !elementsToRemove.includes(DOMPurify.sanitize(item.name, config)));
+    let filteredArray = removeElements(array, mySavedElements)
+
+    // console.log("original array : ")
+    // console.log(array);
+    // console.log("duplicates to remove : ")
+    // console.log(mySavedElements);
+    // console.log("filtered array : ")
+    // console.log(filteredArray);
+
+    return filteredArray
 }
 
 
-function noSpellbook() {
-    let noSpellbook = document.getElementById("noSpellbook");
+
+
+function displaySpellbook() {
+    let checkSpellbook = document.getElementById("checkSpellbook");
     let mySpellbookTitle = document.getElementById("mySpellbookTitle")
     let mySpellbook = document.getElementById("mySpellbook")
     
-    noSpellbook.addEventListener("change", function(event) {
+    checkSpellbook.addEventListener("change", function(event) {
         
-        if (noSpellbook.checked) {
+        if (!checkSpellbook.checked) {
             mySpellbook.classList.add("do-not-display");
             mySpellbookTitle.classList.add("do-not-display");
         } else {
@@ -422,15 +502,21 @@ function pressToShowMore(button, displayedArray) {
 
 
 function customizeSpellbookName() {
+
+    let config = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
     let customSpellbook = document.getElementById('customSpellbook');
     let mySpellbookTitle = document.getElementById('mySpellbookTitle');
     customSpellbook.addEventListener("input", function(event) {
         
-        if (customSpellbook.value === "") {
-            mySpellbookTitle.textContent = "Mon Grimoire";
+        if (customSpellbook && customSpellbook.value !== "") {
+            mySpellbookTitle.textContent = DOMPurify.sanitize(customSpellbook.value, config);
         }
         else {
-            mySpellbookTitle.textContent = customSpellbook.value;
+            mySpellbookTitle.textContent = "Mon Grimoire";
         }
     });
 }
@@ -455,8 +541,7 @@ userDifficultyFiltering();
 difficultySorting();
 theFilter();
 generateMySpellbook();
-spellbookOnly();
-noSpellbook();
+displaySpellbook();
 displayTricksAndSpells();
 customizeSpellbookName();
 takeScreenshotWeb();

@@ -10,7 +10,7 @@
  * 
  */
 
-function lancerGeneration() {
+function initiateGeneration() {
             
         // fonction de redondance pour être sûr que tout est vierge à la création d'un personnage
         initialiserGenerateur();
@@ -60,7 +60,7 @@ function lancerGeneration() {
 
 
 
-        afficherWeb()
+        displayFullCharacter()
 
 
         //verifierCaracteristiques()      

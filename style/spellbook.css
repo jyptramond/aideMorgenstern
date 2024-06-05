@@ -46,6 +46,16 @@
  */
 
 
+article {
+    opacity : 1;
+    transition: opacity 0.25s 0.25s !important; /* Transition duration and easing */
+}
+
+article.fade {
+    opacity: 0 !important;
+    
+}
+  
 #myTricksDiv article:hover,
 #mySpellsDiv article:hover {
     filter: sepia(50%) hue-rotate(100deg); /* Rotate the hue by 180 degrees */
@@ -83,6 +93,19 @@ article h3 {
     color: var(--color-black);
     border-bottom: solid 2px rgb(56, 56, 56);
 }
+
+.addedToSpellbook {
+    display: flex;
+    flex: column;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+.addedToSpellbook h3 {
+    font-size: 1.5rem;
+}
+
 
 .formula {
 font-size: 0.7rem;

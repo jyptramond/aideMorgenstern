@@ -206,3 +206,13 @@ p {
 ul li {
     margin-bottom: 0.5rem;
 }
+
+
+/**
+ * Rotation du bouton générer
+ */
+
+
+ #generer i {
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+ } 

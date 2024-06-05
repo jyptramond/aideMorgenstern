@@ -5,15 +5,59 @@
  */
 
 function launch() {
-    document.getElementById('generer').addEventListener('click', function(event) {
+
+    document.getElementById('generer').addEventListener("click", function(event) {
 
         menuConfiguration();
-        lancerGeneration();
-    
+        initiateGeneration();
     });
 }
 
 
+function rotateButton(target) {    
+    let amount = 0
+    document.getElementById(target).addEventListener("click", function(event) {
+        console.log("ok")
+
+        let icon = document.querySelector('#'+target+" i")
+
+        amount += 360;
+
+        if (icon) {
+            icon.style.transform = `rotate(${amount}deg)`;
+        }
+        
+        
+    });
+}
+
+
+function personnalizeDisplay() {
+
+    let config = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+    let baliseIdentite = document.getElementById("identite");
+    let champAge = DOMPurify.sanitize(document.getElementById("champAge").value, config);
+    let champTexte = DOMPurify.sanitize(document.getElementById("champTexte").value, config);
+
+    if (!champTexte && !champAge) {
+        baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
+    }
+    else if (champTexte && champAge) {
+        baliseIdentite.innerHTML = `${champTexte}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${champAge} ans)</span>`
+    }
+    else if (champTexte && !champAge) {
+        baliseIdentite.innerHTML = `${champTexte}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
+    }
+    else if (!champTexte && champAge) {
+        baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${champAge} ans)</span>`
+    }
+
+
+}
 
 
 /** 
@@ -21,216 +65,52 @@ function launch() {
  * 
  */
 
-function prenomPersonnalise() {
+// champTexte, "champTexte",30
+// champAge, "champAge", 5
 
-    champTexte = document.getElementById('champTexte');
-
-    champTexte.addEventListener('input', function() {
+function personnalizedInput(target, targetID, inputLength) {
+    target = document.getElementById(targetID);
+    target.addEventListener('input', function() {
             // Si la longueur de la valeur du champ de texte dépasse 20 caractères, raccourcir la valeur
-    if (champTexte.value.length > 30) {
-        champTexte.value = champTexte.value.slice(0, 30);
-    }
-
-    let baliseIdentite = document.getElementById("identite")
-    if (champTexte.value.length === 0) {
-        if (champAge.value.length === 0) {
-            baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-        } else {
-            baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${champAge.value} ans)</span>`
+        if (target.value.length > inputLength) {
+            target.value = target.value.slice(0, inputLength);
         }
-    } else {
-        if (champAge.value.length === 0) {
-            baliseIdentite.innerHTML = `${champTexte.value}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-        } else {
-            baliseIdentite.innerHTML = `${champTexte.value}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${champAge.value} ans)</span>`
-        }
-    }
-    });
 
-
-
-}
-
-
-function agePersonnalise() {
-
-    champAge = document.getElementById('champAge');
-
-    champAge.addEventListener('input', function() {
-            // Si la longueur de la valeur du champ de texte dépasse 20 caractères, raccourcir la valeur
-    if (champAge.value.length > 5) {
-        champAge.value = champTexte.value.slice(0, 5);
-    }
-
-    let baliseIdentite = document.getElementById("identite")
-    if (champAge.value.length === 0) {
-
-        if (champTexte.value.length === 0) {
-            baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-        } else {
-            baliseIdentite.innerHTML = `${champTexte.value}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-        }
-    
-    } else {
-
-           if (champTexte.value.length === 0) {
-        baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${champAge.value} ans)</span>`
-    } else {
-        baliseIdentite.innerHTML = `${champTexte.value}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${champAge.value} ans)</span>`
-    }
-}
+        personnalizeDisplay();
     });
 }
 
 
-
-/** 
- *  Menu configuration
- * 
- */
-
-function menuConfiguration() {
-
-    /** 
-     *  select Prenom
-     */
-
-        let valueNom = document.getElementById('selectName').value;
-        valueNom = parseInt(valueNom);
-        if (!isNaN(valueNom)) {
-            // DEBUG : console.log('valueNom:', valueNom);
-            configPrenom = valueNom;
-        } 
-
-    /** 
-     *  select Archetype
-     */
-
-    let valueArchetype = document.getElementById('selectArchetype').value;
-    valueArchetype = parseInt(valueArchetype);
-    if (!isNaN(valueArchetype)) {
-        // DEBUG : console.log('valueArchetype:', valueArchetype);
-        configArchetype = valueArchetype;
-    } 
-
-
-    /** 
-     *  select Peuple
-     */
-
-            let valuePeuple = document.getElementById('selectPeuple').value;
-            valuePeuple = parseInt(valuePeuple);
-            if (!isNaN(valuePeuple)) {
-                // DEBUG : console.log('valuePeuple:', valuePeuple);
-                configPeuple = valuePeuple;
-            } 
-
-
-    /** 
-     *  Groupe de carrière
-     */
-
-        let valueGroupe = document.getElementById('selectGroupe').value;
-        valueGroupe = parseInt(valueGroupe);
-        if (!isNaN(valueGroupe)) {
-            // DEBUG : console.log('valueGroupe:', valueGroupe);
-            configGroupe = valueGroupe;
-        } 
-
-
-    /** 
-     *  Carrière
-     */
-
-        let valueCarriere = document.getElementById('selectCarriere').value;
-        valueCarriere = parseInt(valueCarriere);
-        if (!isNaN(valueCarriere)) {
-            // DEBUG : console.log('valueCarriere:', valueCarriere);
-            if (valueCarriere !== -1) {
-                configCarriere = (8*configGroupe)+valueCarriere
-            }
-            else {
-                configCarriere = -1
-            }
-        } 
-
-
-    /** 
-     *  Mode de crétaion
-     */
-
-    let valueMode = document.getElementById('selectMode').value;
-    valueMode = parseInt(valueMode);
-    if (!isNaN(valueMode)) {
-        // DEBUG : console.log('valueMode:', valueMode);
-        configMode = valueMode ;
-    } 
-
-    
-    /** 
-     *  Rôle
-     */
-
-    let valueRole = document.getElementById('selectRole').value;
-    valueRole = parseInt(valueRole);
-    if (!isNaN(valueRole)) {
-        // DEBUG : console.log('valueRole:', valueRole);
-        configRole = valueRole ;
-    } 
-
-
-
-
+function setCharacteristics(tag, tagID, tagValue, tagInfo, tagInfoID, x) {
+    tag = document.getElementById(tagID);
+    tag.textContent = tagValue;
+    tagInfo = document.getElementById(tagInfoID)
+    tagInfo.innerHTML = `${modifCaracteristiques[x][0]} ${modifCaracteristiques[x][1]} ${modifCaracteristiques[x][2]}`
 }
 
 
+function displayAllCharacteristics() {
 
+let baliseCombat, baliseCombatInfo, baliseConnaissances, baliseConnaissancesInfo, baliseDiscretion, baliseDiscretionInfo, 
+baliseEndurance, baliseEnduranceInfo, baliseForce, baliseForceInfo, baliseHabilete, baliseHabileteInfo, 
+baliseMouvement, baliseMouvementInfo, balisePerception, balisePerceptionInfo, baliseSociabilite, baliseSociabiliteInfo, 
+baliseSurvie, baliseSurvieInfo, baliseTir, baliseTirInfo, baliseVolonte, baliseVolonteInfo, baliseMagie, baliseMagieInfo;
 
-
-
-
-/** 
- *  Fonction pour afficher les carrières suivant le choix de groupe
- * 
- */
-
-
-
-function afficherSelectionCarriere() {
-
-
-    document.getElementById('selectGroupe').addEventListener('change', function(event) {
-
-        let baliseGroupe = document.getElementById('selectGroupe')
-        let baliseCarriere = document.getElementById('selectCarriere')
-        let valueGroupe = document.getElementById('selectGroupe').value;
-        valueGroupe = parseInt(valueGroupe);
-    
-        if (valueGroupe >= 0) {
-    
-        let newOptions =   `<option value="-1">Aléatoire</option>
-                            <option value="0">${metiers[(8*valueGroupe)+0][0]}</option>
-                            <option value="1">${metiers[(8*valueGroupe)+1][0]}</option>
-                            <option value="2">${metiers[(8*valueGroupe)+2][0]}</option>
-                            <option value="3">${metiers[(8*valueGroupe)+3][0]}</option>
-                            <option value="4">${metiers[(8*valueGroupe)+4][0]}</option>
-                            <option value="5">${metiers[(8*valueGroupe)+5][0]}</option>
-                            <option value="6">${metiers[(8*valueGroupe)+6][0]}</option>
-                            <option value="7">${metiers[(8*valueGroupe)+7][0]}</option>` 
-    
-        baliseCarriere.innerHTML = newOptions
-        }
-        else {
-            baliseCarriere.innerHTML = `<option value="-1">Aléatoire</option>`
-        }
-    
-        
-        });
+setCharacteristics(baliseCombat, "COM", valeursCaracteristiques[0], baliseCombatInfo, "COMinfo", 0);
+setCharacteristics(baliseConnaissances, "CNS", valeursCaracteristiques[1], baliseConnaissancesInfo, "CNSinfo", 1);
+setCharacteristics(baliseDiscretion, "DIS", valeursCaracteristiques[2], baliseDiscretionInfo, "DISinfo", 2);
+setCharacteristics(baliseEndurance, "END", valeursCaracteristiques[3], baliseEnduranceInfo, "ENDinfo", 3);
+setCharacteristics(baliseForce, "FOR", valeursCaracteristiques[4], baliseForceInfo, "FORinfo", 4);
+setCharacteristics(baliseHabilete, "HAB", valeursCaracteristiques[5], baliseHabileteInfo, "HABinfo", 5);
+setCharacteristics(baliseMouvement, "MOU", valeursCaracteristiques[6], baliseMouvementInfo, "MOUinfo", 6);
+setCharacteristics(balisePerception, "PER", valeursCaracteristiques[7], balisePerceptionInfo, "PERinfo", 7);
+setCharacteristics(baliseSociabilite, "SOC", valeursCaracteristiques[8], baliseSociabiliteInfo, "SOCinfo", 8);
+setCharacteristics(baliseSurvie, "SUR", valeursCaracteristiques[9], baliseSurvieInfo, "SURinfo", 9);
+setCharacteristics(baliseTir, "TIR", valeursCaracteristiques[10], baliseTirInfo, "TIRinfo", 10);
+setCharacteristics(baliseVolonte, "VOL", valeursCaracteristiques[11], baliseVolonteInfo, "VOLinfo", 11);
+setCharacteristics(baliseMagie, "MAG", valeurMagie, baliseMagieInfo, "MAGinfo", 12);
 
 }
-
-
-
 
 
 /** 
@@ -238,100 +118,15 @@ function afficherSelectionCarriere() {
  * 
  */
 
-function afficherWeb() {
+function displayFullCharacter() {
 
     let i = 0
 
-    let baliseIdentite = document.getElementById("identite")
-    if (champTexte.value.length === 0) {
-        if (champAge.value.length === 0) {
-            baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-        } else {
-            baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${champAge.value} ans)</span>`
-        }
-        
-    } else {
-        if (champAge.value.length === 0) {
-            baliseIdentite.innerHTML = `${champTexte.value}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
-        } else {
-            baliseIdentite.innerHTML = `${champTexte.value}, ${attributsPrincipaux[1]} <span class="is-small">(${attributsPrincipaux[2]}, ${champAge.value} ans)</span>`
-        }    
-    }
-
-
-
+    personnalizeDisplay();
+    displayAllCharacteristics();
 
     let baliseVices = document.getElementById("vices")
     baliseVices.textContent = `${attributsPrincipaux[4]}+1, ${attributsPrincipaux[5]}+1`
-
-        //les compétences
-    let baliseCombat = document.getElementById("COM");
-    baliseCombat.textContent = valeursCaracteristiques[0]
-    let baliseCombatInfo = document.getElementById("COMinfo")
-    baliseCombatInfo.innerHTML = `${modifCaracteristiques[0][0]} ${modifCaracteristiques[0][1]} ${modifCaracteristiques[0][2]}`
-
-    let baliseConnaissances = document.getElementById("CNS");
-    baliseConnaissances.textContent = valeursCaracteristiques[1]
-    let baliseConnaissancesInfo = document.getElementById("CNSinfo")
-    baliseConnaissancesInfo.innerHTML = `${modifCaracteristiques[1][0]} ${modifCaracteristiques[1][1]} ${modifCaracteristiques[1][2]}`
-
-    let baliseDiscretion = document.getElementById("DIS");
-    baliseDiscretion.textContent = valeursCaracteristiques[2]
-    let baliseDiscretionInfo = document.getElementById("DISinfo")
-    baliseDiscretionInfo.innerHTML = `${modifCaracteristiques[2][0]} ${modifCaracteristiques[2][1]} ${modifCaracteristiques[2][2]}`
-
-    let baliseEndurance = document.getElementById("END");
-    baliseEndurance.textContent = valeursCaracteristiques[3]
-    let baliseEnduranceInfo = document.getElementById("ENDinfo")
-    baliseEnduranceInfo.innerHTML = `${modifCaracteristiques[3][0]} ${modifCaracteristiques[3][1]} ${modifCaracteristiques[3][2]}`
-
-    let baliseForce = document.getElementById("FOR");
-    baliseForce.textContent = valeursCaracteristiques[4]
-    let baliseForceInfo = document.getElementById("FORinfo")
-    baliseForceInfo.innerHTML = `${modifCaracteristiques[4][0]} ${modifCaracteristiques[4][1]} ${modifCaracteristiques[4][2]}`
-
-    let baliseHabilete = document.getElementById("HAB");
-    baliseHabilete.textContent = valeursCaracteristiques[5]
-    let baliseHabileteInfo = document.getElementById("HABinfo")
-    baliseHabileteInfo.innerHTML = `${modifCaracteristiques[5][0]} ${modifCaracteristiques[5][1]} ${modifCaracteristiques[5][2]}`
-
-    let baliseMouvement = document.getElementById("MOU");
-    baliseMouvement.textContent = valeursCaracteristiques[6]
-    let baliseMouvementInfo = document.getElementById("MOUinfo")
-    baliseMouvementInfo.innerHTML = `${modifCaracteristiques[6][0]} ${modifCaracteristiques[6][1]} ${modifCaracteristiques[6][2]}`
-
-    let balisePerception = document.getElementById("PER");
-    balisePerception.textContent = valeursCaracteristiques[7]
-    let balisePerceptionInfo = document.getElementById("PERinfo")
-    balisePerceptionInfo.innerHTML = `${modifCaracteristiques[7][0]} ${modifCaracteristiques[7][1]} ${modifCaracteristiques[7][2]}`
-
-    let baliseSociabilite = document.getElementById("SOC");
-    baliseSociabilite.textContent = valeursCaracteristiques[8]
-    let baliseSociabiliteInfo = document.getElementById("SOCinfo")
-    baliseSociabiliteInfo.innerHTML = `${modifCaracteristiques[8][0]} ${modifCaracteristiques[8][1]} ${modifCaracteristiques[8][2]}`
-
-    let baliseSurvie = document.getElementById("SUR");
-    baliseSurvie.textContent = valeursCaracteristiques[9]
-    let baliseSurvieInfo = document.getElementById("SURinfo")
-    baliseSurvieInfo.innerHTML = `${modifCaracteristiques[9][0]} ${modifCaracteristiques[9][1]} ${modifCaracteristiques[9][2]}`
-
-    let baliseTir = document.getElementById("TIR");
-    baliseTir.textContent = valeursCaracteristiques[10]
-    let baliseTirInfo = document.getElementById("TIRinfo")
-    baliseTirInfo.innerHTML = `${modifCaracteristiques[10][0]} ${modifCaracteristiques[10][1]} ${modifCaracteristiques[10][2]}`
-    
-    let baliseVolonte = document.getElementById("VOL");
-    baliseVolonte.textContent = valeursCaracteristiques[11]
-    let baliseVolonteInfo = document.getElementById("VOLinfo")
-    baliseVolonteInfo.innerHTML = `${modifCaracteristiques[11][0]} ${modifCaracteristiques[11][1]} ${modifCaracteristiques[11][2]}`
-
-    let baliseMagie = document.getElementById("MAG");
-    baliseMagie.textContent = valeurMagie
-    let baliseMagieInfo = document.getElementById("MAGinfo")
-    baliseMagieInfo.innerHTML = `${modifCaracteristiques[12][0]} ${modifCaracteristiques[12][1]} ${modifCaracteristiques[12][2]}`
-
-
-
 
     let baliseInitiative = document.getElementById("INIT");
     baliseInitiative.textContent = attributsSecondaires[0][1]
@@ -464,6 +259,88 @@ if (attributsSecondaires[3][3] !== 0) {
             }
     }
 }
+
+
+function configFromSelect(target, targetID, newVar) {
+    target = document.getElementById(targetID).value;
+    target = parseInt(target);
+        if (!isNaN(target)) {
+            // DEBUG : console.log('valueNom:', valueNom);
+            newVar = target;
+        } 
+}
+
+/** 
+ *  Menu configuration
+ * 
+ */
+
+function menuConfiguration() {
+
+let valueNom, valueArchetype, valuePeuple, valueGroupe, valueMode, valueRole, configPrenom, configArchetype, configPeuple, configGroupe, configMode, configRole, configCarriere;
+
+configFromSelect(valueNom, 'selectName', configPrenom);
+configFromSelect(valueArchetype, 'selectArchetype', configArchetype);
+configFromSelect(valuePeuple, 'selectPeuple', configPeuple);
+configFromSelect(valueGroupe, 'selectGroupe', configGroupe);
+configFromSelect(valueMode, 'selectMode', configMode);
+configFromSelect(valueRole, 'selectRole', configRole)
+
+let valueCarriere = document.getElementById('selectCarriere').value;
+valueCarriere = parseInt(valueCarriere);
+if (!isNaN(valueCarriere)) {
+    // DEBUG : console.log('valueCarriere:', valueCarriere);
+    if (valueCarriere !== -1) {
+        configCarriere = (8*configGroupe)+valueCarriere
+    }
+    else {
+        configCarriere = -1
+    }
+} 
+}
+
+
+/** 
+ *  Fonction pour afficher les carrières suivant le choix de groupe
+ * 
+ */
+
+function afficherSelectionCarriere() {
+
+
+    document.getElementById('selectGroupe').addEventListener('change', function(event) {
+
+        let baliseGroupe = document.getElementById('selectGroupe')
+        let baliseCarriere = document.getElementById('selectCarriere')
+        let valueGroupe = document.getElementById('selectGroupe').value;
+        valueGroupe = parseInt(valueGroupe);
+    
+        if (valueGroupe >= 0) {
+    
+        let newOptions =   `<option value="-1">Aléatoire</option>
+                            <option value="0">${metiers[(8*valueGroupe)+0][0]}</option>
+                            <option value="1">${metiers[(8*valueGroupe)+1][0]}</option>
+                            <option value="2">${metiers[(8*valueGroupe)+2][0]}</option>
+                            <option value="3">${metiers[(8*valueGroupe)+3][0]}</option>
+                            <option value="4">${metiers[(8*valueGroupe)+4][0]}</option>
+                            <option value="5">${metiers[(8*valueGroupe)+5][0]}</option>
+                            <option value="6">${metiers[(8*valueGroupe)+6][0]}</option>
+                            <option value="7">${metiers[(8*valueGroupe)+7][0]}</option>` 
+    
+        baliseCarriere.innerHTML = newOptions
+        }
+        else {
+            baliseCarriere.innerHTML = `<option value="-1">Aléatoire</option>`
+        }
+    
+        
+        });
+
+}
+
+
+
+
 
 
 /** 

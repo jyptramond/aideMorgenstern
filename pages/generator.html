@@ -19,6 +19,9 @@
     <script src="../scripts/config.js" defer></script>
     <script type="module" src="../scripts/generator.js" defer ></script>
 
+    <!-- DOMpurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js"></script>
+
     <script src="../scripts/display.js" defer></script>
     <script src="../scripts/character-creation.js" defer></script>
     <script src="../scripts/calculation.js" defer></script>
@@ -56,10 +59,10 @@
                 
 
                 <div class="divRow">
-                    <button id="toggle-button-config" title="Afficher les options" class="myButton"><i class="fa-solid fa-bars"></i></button>
-                    <button class="myButton" title="Changer format" role="button" id="screen"><i class="fa-solid fa-mobile-screen is-bigger"></i></button>
-                    <button class="myButton" title="Enregistrer" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
-                    <button class="myButton" title="Générer" role="button" id="generer"><i class="fa-solid fa-circle-plus is-bigger"></i></button>
+                    <button id="toggle-button-config" title="Afficher les options" class="myButton"><i class="fa-solid fa-bars button-size"></i></button>
+                    <button class="myButton" title="Changer format" role="button" id="screen"><i class="fa-solid fa-mobile-screen button-size"></i></button>
+                    <button class="myButton" title="Enregistrer" role="button" id="save"><i class="fa-solid fa-floppy-disk button-size"></i></button>
+                    <button class="myButton" title="Générer" role="button" id="generer"><i class="fa-solid fa-arrows-rotate button-size"></i></button>
                 </div>
 
                 <div class="inputText divRow toggle">
@@ -212,7 +215,7 @@
             <div id="content">
 
                 <div id="characterSheetHeader">
-                    <h1 id="identite">Nom, Peuple (Archétype, âge)</h1>
+                    <h1 id="identite">Nom, Peuple <span class="sub-h1">(archétype, âge)</span></h1>
                     <p id="vices"></p>
                 </div>
 

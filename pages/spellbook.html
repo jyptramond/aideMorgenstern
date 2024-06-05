@@ -17,6 +17,9 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+    <!-- DOMpurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js"></script>
+
     <!-- Scripts -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="../scripts/config.js" defer></script>
@@ -54,9 +57,9 @@
                 
                         
                 <div class="divRow">
-                    <button id="toggle-button-config" title="Afficher les options" class="myButton"><i class="fa-solid fa-bars"></i></button>
-                    <button class="myButton" title="Changer format" role="button" id="screen"><i class="fa-solid fa-mobile-screen is-bigger"></i></button>
-                    <button class="myButton" title="Enregistrer" role="button" id="save"><i class="fa-solid fa-floppy-disk is-bigger"></i></button>
+                    <button id="toggle-button-config" title="Afficher les options" class="myButton"><i class="fa-solid fa-bars button-size"></i></button>
+                    <button class="myButton" title="Changer format" role="button" id="screen"><i class="fa-solid fa-mobile-screen button-size"></i></button>
+                    <button class="myButton" title="Enregistrer" role="button" id="save"><i class="fa-solid fa-floppy-disk button-size"></i></button>
                 </div>
 
                 <div class="inputText toggle">
@@ -102,18 +105,12 @@
                         <input type="checkbox" id="checkSpells" checked>
                         <label for="checkSpells"> Sortilèges</label>
                     </div>
-                    
-                </div>
 
-                <div class="inputCheckbox toggle">
                     <div>
-                        <input type="checkbox" id="noSpellbook">
-                        <label for="noSpellbook">Cacher le grimoire</label>
+                        <input type="checkbox" id="checkSpellbook" checked>
+                        <label for="checkSpellbook">Mon grimoire</label>
                     </div>
-                    <div>
-                        <input type="checkbox" id="spellbookOnly">
-                        <label for="spellbookOnly">Grimoire Uniquement</label>
-                    </div>
+                    
                 </div>
 
                 <form class="inputRadio toggle">
