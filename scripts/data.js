@@ -2267,3 +2267,3678 @@ const spells = [
         description: "Vous lancez ce sort sur *MAG* cibles qui marcheront d’un bon pas et regagneront tous 1 point de Vitalité et 1 point de Sang-froid supplémentaire par jour."
     }
 ]
+
+const jobs = [
+   
+    // 1 : Agents et domestiques        (0-7)
+    {
+        name: "Cocher",
+        skills: [
+            "Arme à distance (tromblon)", 
+            "Arme de mêlée (au choix)", 
+            "Attelages", 
+            "Écoute", 
+            "Équitation", 
+            "Milieu naturel (au choix)", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage", 
+            "Soins des animaux"
+        ],
+        talents: [
+            "Calme", 
+            "Chance insolente", 
+            "Doué (MOU)", 
+            "Doué (SOC)", 
+            "Recharge rapide", 
+            "Réflexes éclairs", 
+            "Second souffle", 
+            "Sixième sens", 
+            "Solidité", 
+            "Tir ciblé"
+        ],
+        armor: [
+            `${armureslegeres}`
+        ],
+        weapons: [
+            "un tromblon (RU+3) avec poudre et 10 munitions"
+        ],
+        inventory: [
+            "une corne de cocher"
+        ],
+    },
+    {
+        name: "Maître-chien/Veneur",
+        skills: [
+            "Animaux", 
+            "Armes à distance (arc)", 
+            "Arme légère (au choix)", 
+            "Déplacement silencieux", 
+            "Dressage", 
+            "Milieu naturel (au choix)", 
+            "Pièges", 
+            "Pistage", 
+            "Repérage", 
+            "Soins des animaux"
+        ],
+        talents: [
+            "Compagnon animal", 
+            "Coup du prédateur", 
+            "Doué (END)", 
+            "Doué (SUR)", 
+            "Guérison rapide", 
+            "Instinct de survie", 
+            "Second souffle", 
+            "Sixième sens", 
+            "Solidité", 
+            "Tir du chasseur"
+        ],
+        armor: [],
+        weapons: [
+            "coutelas (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "vêtements de vilain", 
+            "un chien de chasse intelligent et bien dressé"
+        ]
+    },
+    {
+        name: "Garde-chasse/Garde-Faune",
+        skills: [
+            "Animaux", 
+            "Arme à distance (arc)/Arme à distance (arbalète)", 
+            "Arme de mêlée (au choix)", 
+            "Écoute", 
+            "Équitation", 
+            "Milieu naturel (au choix)", 
+            "Orientation", 
+            "Pièges", 
+            "Pistage", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Compagnon animal", 
+            "Coups puissants", 
+            "Coup du prédateur", 
+            "Doué (MOU)", 
+            "Doué (PER)", 
+            "Doué (SUR)", 
+            "Second souffle", 
+            "Solidité", 
+            "Tir du chasseur"
+        ],
+        armor: [
+            
+        ],
+        weapons: [
+            `${armesdetir}`
+        ],
+        inventory: [
+            "un cheval avec selle et harnais", 
+            "corde de 10 mètres", 
+            "lanterne"
+        ]
+    },
+    {
+        name: "Messager/Courrier",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Attelages", 
+            "Course", 
+            "Diplomatie", 
+            "Équitation", 
+            "Milieu naturel (au choix)", 
+            "Noblesse et politique", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Compagnon animal", 
+            "Coup acrobatique", 
+            "Doué (MOU)", 
+            "Doué (SOC)", 
+            "Doué (SUR)", 
+            "Polyglotte/Sauvegarde", 
+            "Réflexes éclairs", 
+            "Second souffle", 
+            "Vivacité"
+        ],
+        armor: [
+            
+        ],
+        weapons: [
+            `${armesdemeleelegere}/${armesdemeleeordinaire}`
+        ],
+        inventory: [
+            "un cheval avec selle et harnais", 
+            "une carte de la région"
+        ]
+    },
+    {
+        name: "Palefrenier",
+        skills: [
+            "Animaux", 
+            "Attelages", 
+            "Course", 
+            "Équitation", 
+            "Milieu naturel (au choix)", 
+            "Persuasion", 
+            "Premiers soins", 
+            "Renseignements", 
+            "Repérage", 
+            "Soins des animaux"
+        ],
+        talents: [
+            "Compagnon animal", 
+            "Chance insolente", 
+            "Distraction", 
+            "Doué (MOU)", 
+            "Doué (SUR)", 
+            "Festoyeur", 
+            "Instinct de survie", 
+            "Mains blanches", 
+            "Second souffle", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: []
+    },
+    {
+        name: "Prévôt/Collecteur d'impôts",
+        skills: [
+            "Commerce", 
+            "Discours", 
+            "Droits et usages", 
+            "Estimation", 
+            "Fouille", 
+            "Lettres", 
+            "Noblesse et politique", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Dévoué serviteur", 
+            "Doué (CNS)/Doué (SOC)", 
+            "Doué (VOL)", 
+            "Mémoire sans faille", 
+            "Prudent", 
+            "Sain d'esprit/Second souffle", 
+            "Sixième sens", 
+            "Solidité", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            `${epee}`
+        ],
+        inventory: [
+            "un cheval avec selle et harnais", 
+            "un livre de comptes", 
+            "une main de papier (20 pages) avec plumes et encre"
+        ]
+    },
+    {
+        name: "Péager/Éclusier",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Commerce", 
+            "Discours", 
+            "Droit et usages", 
+            "Estimation", 
+            "Fouille", 
+            "Intimidation", 
+            "Milieu nature (au choix)", 
+            "Natation", 
+            "Repérage"
+        ],
+        talents: [
+            "Bagarre", 
+            "Doué (END)", 
+            "Doué (PER)", 
+            "Doué (SUR)", 
+            "Esquive", 
+            "Festoyeur", 
+            "Guérison rapide", 
+            "Nyctalopie", 
+            "Sixième sens", 
+            "Solidité"
+        ],
+        armor: [
+            
+        ],
+        weapons: [
+            `${armesdemelee}`, `${armureslegeres}`
+        ],
+        inventory: []
+    },
+    
+    {
+        name: "Prévôt/Collecteur d'impôts",
+        skills: [
+            "Commerce", 
+            "Discours", 
+            "Droits et usages", 
+            "Estimation", 
+            "Fouille", 
+            "Lettres", 
+            "Noblesse et politique", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Dévoué serviteur", 
+            "Doué (CNS)/Doué (SOC)", 
+            "Doué (VOL)", 
+            "Mémoire sans faille", 
+            "Prudent", 
+            "Sain d'esprit/Second souffle", 
+            "Sixième sens", 
+            "Solidité", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            "épée courte (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "un cheval avec selle et harnais", 
+            "un livre de comptes", 
+            "une main de papier (20 pages) avec plumes et encre"
+        ]
+    },
+    // 2 : Artistocrates et nobles      (8-15)
+
+    {
+        name: "Bailli/Vidame",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (au choix)",
+            "Discours",
+            "Droit et usages",
+            "Équitation",
+            "Gestion",
+            "Intimidation",
+            "Noblesse et politique",
+            "Persuasion",
+            "Renseignements"
+        ],
+        talents: [
+            "Calme",
+            "Coups puissants/Coup précis",
+            "Dévoué serviteur",
+            "Doué (CNS)/Doué (SOC)",
+            "Prudent",
+            "Riposte",
+            "Second souffle",
+            "Sixième sens",
+            "Solidité",
+            "Tireur d'élite/Tir précis"
+        ],
+        armor: [
+            `${armureslegeres}/${armuresmoyennes}`
+        ],
+        weapons: [
+            `${armesdemelee}`,
+            `${armesadistance}`,
+        ],
+        inventory: []
+    },
+    {
+        name: "Chevalier du vol",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (au choix)",
+            "Courage",
+            "Déplacement silencieux",
+            "Équitation",
+            "Intimidation",
+            "Lettres",
+            "Noblesse et politique",
+            "Persuasion",
+            "Repérage"
+        ],
+        talents: [
+            "Coup précis",
+            "Coups puissants",
+            "Coup de maître",
+            "Dévoué serviteur/Festoyeur",
+            "Fascination/Panache",
+            "Maître d'armes",
+            "Maîtrise du bouclier/Port d'armure",
+            "Résilience/Riposte",
+            "Solidité",
+            "Vivacité"
+        ],
+        armor: [
+            `${armuresmoyennes}`
+        ],
+        weapons: [
+            `${lances}`,
+            `${boucliers}`
+        ],
+        inventory: [
+            "un costume de voyage"
+        ]
+    },
+    {
+        name: "Chevalier",
+        skills: [
+            "Arme à distance (arc)/Arme à distance (arbalète)",
+            "Arme lourde (au choix)",
+            "Arme de mêlée (au choix)",
+            "Commandement",
+            "Courage",
+            "Équitation",
+            "Intimidation",
+            "Noblesse et politique",
+            "Pugilat",
+            "Stratégie"
+        ],
+        talents: [
+            "Bagarre/Festoyeur",
+            "Coups précis",
+            "Coups puissants",
+            "Coup de maître/Dévoué serviteur",
+            "Maître d'armes",
+            "Maîtrise du bouclier",
+            "Panache/Port d'armure",
+            "Résilience/Riposte",
+            "Sauvegarde",
+            "Solidité"
+        ],
+        armor: [
+            "armure de plates (protection+5)"
+        ],
+        weapons: [
+            "masse d'armes (RU+*FOR*+0)",
+            `${lances}`,
+            "épée longue (RU+*FOR*+0)",
+            "bouclier (protection+2)/écu (protection+2)"
+        ],
+        inventory: [
+            "destrier fidèle et bien dressé (remplace le cheval)"
+        ]
+    },
+    {
+        name: "Courtisan/Flagorneur",
+        skills: [
+            "Arts",
+            "Danse/Lettres",
+            "Charme",
+            "Diplomatie",
+            "Discours",
+            "Écoute/Jeux",
+            "Noblesse et politique",
+            "Persuasion",
+            "Renseignements",
+            "Repérage"
+        ],
+        talents: [
+            "Dévoué serviteur",
+            "Distraction",
+            "Doué (CNS)/Doué (PER)",
+            "Doué (SOC)",
+            "Fascination",
+            "Inoffensif",
+            "Mensonge éhonté",
+            "Polyglotte",
+            "Provocation/Prudent",
+            "Relations"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "épée d'apparat/nécessaire de maquillage",
+            "deux autres costumes de cour très élégants aux couleurs et ornements différents",
+            "deux fioles de parfum",
+            "bijoux d'une valeur de 5d10 pièces d'or",
+            "main de papier (20 feuilles)",
+            "plume et encrier"
+        ]
+    },
+    {
+        name: "Dépravé",
+        skills: [
+            "Arme de mêlée (au choix)",
+            "Charme",
+            "Déguisement",
+            "Discours",
+            "Jeux",
+            "Lettres/Persuasion",
+            "Renseignements",
+            "Résistance à l'alcool",
+            "Se cacher",
+            "Sexualité"
+        ],
+        talents: [
+            "Bagarre/Dévoué serviteur",
+            "Doué (END)",
+            "Doué (SOC)",
+            "Esquive",
+            "Festoyeur",
+            "Provocation",
+            "Relations",
+            "Mensonge éhonté/Riposte",
+            "Second souffle",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            "dague (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "un costume de vilain pour passer inaperçu",
+            "un costume de cour usé",
+            "une fiole de parfum à moitié vide",
+            "trois dés en os",
+            "une bouteille de bon vin"
+        ]
+    },
+    {
+        name: "Gentilhomme/Hobereau",
+        skills: [
+            "Arme de mêlée (épée)",
+            "Arme à distance (au choix)",
+            "Charme",
+            "Courage",
+            "Discours",
+            "Équitation",
+            "Intimidation",
+            "Jeux",
+            "Lettres",
+            "Noblesse et politique"
+        ],
+        talents: [
+            "Coups précis/Coups puissants",
+            "Dévoué serviteur",
+            "Doué (SOC)",
+            "Esquive",
+            "Festoyeur",
+            "Panache",
+            "Provocation",
+            "Réflexes éclairs",
+            "Riposte",
+            "Solidité/Vivacité"
+        ],
+        armor: [
+            "pourpoint de cuir (protection+1)"
+        ],
+        weapons: [
+            "dague de bonne qualité (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "un costume de voyage",
+            "une fiole de parfum",
+            "trois dés en os"
+        ]
+    },
+    {
+        name: "Diplomate/Conseiller",
+        skills: [
+            "Charme",
+            "Diplomatie",
+            "Discours",
+            "Droit et usages",
+            "Histoire",
+            "Langue étrangère",
+            "Lettres",
+            "Noblesse et politique",
+            "Persuasion",
+            "Renseignements"
+        ],
+        talents: [
+            "Calme",
+            "Confiance en soi",
+            "Dévoué serviteur",
+            "Doué (CNS)/Doué (PER)",
+            "Doué (VOL)/Doué (SOC)",
+            "Inoffensif",
+            "Mémoire sans faille",
+            "Mensonge éhonté",
+            "Polyglotte/Prudent",
+            "Relations"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "deux habits de cour de grande qualité",
+            "une fiole de parfum",
+            "des bijoux d'une valeur de 2d10 pièces d'or"
+        ]
+    },
+    {
+        name: "Noble de robe",
+        skills: [
+            "Charme",
+            "Commerce",
+            "Discours",
+            "Droit et usages",
+            "Écoute",
+            "Histoire",
+            "Lettres",
+            "Noblesse et politique",
+            "Persuasion",
+            "Religion"
+        ],
+        talents: [
+            "Calme",
+            "Dévoué serviteur",
+            "Doué (CNS)",
+            "Doué (SOC)",
+            "Doué (VOL)",
+            "Esprit de compétition",
+            "Fascination",
+            "Inoffensif",
+            "Mémoire sans faille",
+            "Relations"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un costume de magistrat",
+            "deux livres de droit",
+            "une main de papier (20 pages)",
+            "une plume et un encrier"
+        ]
+    },
+
+    // 3 : Artisans et commerçants      (16-23)
+    {
+        name: "Aubergiste/Tavernier",
+        skills: [
+            "Commerce",
+            "Cuisine",
+            "Droit et usages",
+            "Intuition",
+            "Légendes",
+            "Persuasion",
+            "Pugilat",
+            "Renseignements",
+            "Repérage",
+            "Résistance à l'alcool"
+        ],
+        talents: [
+            "Bagarre",
+            "Calme",
+            "Distraction",
+            "Doué (END)/Doué (SOC)",
+            "Festoyeur",
+            "Guérison rapide",
+            "Inspiration",
+            "Mensonge éhonté/Polyglotte",
+            "Provocation",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "costume de bourgeois",
+            "livre de comptes",
+            "bonne bouteille d'alcool"
+        ]
+    },
+    {
+        name: "Chirurgien-barbier",
+        skills: [
+            "Arme de mêlée (Couteaux)",
+            "Cheveux et barbe",
+            "Commerce",
+            "Courage",
+            "Intuition",
+            "Persuasion",
+            "Premiers soins",
+            "Repérage",
+            "Résistance aux maladies",
+            "Résistance à l'alcool"
+        ],
+        talents: [
+            "Calme",
+            "Coup adroit",
+            "Doué (END)",
+            "Doué (HAB)",
+            "Doué (VOL)",
+            "Mains blanches",
+            "Sain d'esprit",
+            "Sauvegarde",
+            "Second souffle",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            "hachoir (RU+*FOR*+0)"
+        ],
+        inventory: [
+            "rasoir",
+            "ciseaux",
+            "bandages",
+            "nécessaire antipoison",
+            "bouteille d'alcool fort",
+            "corde de 10 mètres",
+            "torche et boîte d'amadou"
+        ]
+    },
+      {
+        name: "Charpentier",
+        skills: [
+            "Architecture", 
+            "Attelages", 
+            "Commerce", 
+            "Droit et usages", 
+            "Estimation", 
+            "Milieu naturel (au choix)", 
+            "Renseignements", 
+            "Repérage", 
+            "Travail du bois", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Calme", 
+            "Dévoué serviteur", 
+            "Doué (END)", 
+            "Doué (HAB)", 
+            "Esprit de compétition", 
+            "Guérison rapide", 
+            "Inoffensif", 
+            "Second souffle", 
+            "Solidité", 
+            "Travail d'équipe"
+        ],
+        armor: [],
+        weapons: [
+            "marteau (RU+*FOR*-2)"
+        ],
+        inventory: [
+            "clous", 
+            "outils de charpentier", 
+            "lanterne"
+        ],
+      },
+      {
+        name: "Colporteur/Itinérant",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Attelages", 
+            "Commerce", 
+            "Estimation", 
+            "Milieu naturel (au choix)", 
+            "Persuasion", 
+            "Orientation", 
+            "Renseignements", 
+            "Repérage", 
+            "Soins des animaux"
+        ],
+        talents: [
+            "Calme", 
+            "Chance insolente/Confiance en soi", 
+            "Distraction", 
+            "Doué (SOC)/Doué (SUR)", 
+            "Fascination", 
+            "Inoffensif", 
+            "Polyglotte", 
+            "Provocation/Prudent", 
+            "Relations", 
+            "Second souffle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "costume de bourgeois", 
+            "livres de comptes", 
+            "mule et carriole", 
+            "2d10 articles de peu de valeur"],
+      },
+      {
+        name: "Forgeron/Armurier",
+        skills: [
+            "Arme lourde (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Commerce", 
+            "Droit et usages", 
+            "Persuasion", 
+            "Pugilat", 
+            "Repérage", 
+            "Résistance à la chaleur", 
+            "Travail du métal", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Calme", 
+            "Coup adroit", 
+            "Coups précis", 
+            "Doué (END)", 
+            "Doué (FOR)", 
+            "Doué (HAB)", 
+            "Maîtrise du bouclier", 
+            "Port d'armure", 
+            "Second souffle", 
+            "Solidité"
+        ],
+        armor: [
+            `${armureslegeres}/${armuresmoyennes}`
+        ],
+        weapons: [
+            "marteau (RU+*FOR*-2)", 
+            `${armesdemelee}`, 
+            `${armesdemelee}`
+        ],
+        inventory: [],
+      },
+      {
+        name: "Manouvrier/Portefaix",
+        skills: [
+            "Escalade", 
+            "Jeux", 
+            "Pugilat", 
+            "Repérage", 
+            "Résistance à l'alcool", 
+            "Résistance aux maladies", 
+            "Souffle", 
+            "Travail d'un matériau (au choix)", 
+            "Travail d'un matériau (au choix)", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Calme", 
+            "Doué (END)", 
+            "Doué (FOR)", 
+            "Doué (VOL)", 
+            "Festoyeur", 
+            "Gardien", 
+            "Guérison rapide", 
+            "Sauvegarde", 
+            "Solidité", 
+            "Travail d'équipe"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "bouteille de mauvais vin"
+        ],
+      },
+      {
+        name: "Marchand/Négociant",
+        skills: [
+            "Charme", 
+            "Commerce", 
+            "Discours", 
+            "Droits et usages", 
+            "Estimation", 
+            "Intuition", 
+            "Lettres", 
+            "Persuasion", 
+            "Renseignements", 
+            "Travail d'un matériau (au choix)"
+        ],
+        talents: [
+            "Compagnon animal/Dévoué serviteur", 
+            "Distraction", 
+            "Doué (SOC)", 
+            "Doué (CNS)/Doué (HAB)", 
+            "Fascination", 
+            "Inoffensif", 
+            "Mensonge éhonté/Sain d'esprit", 
+            "Polyglotte", 
+            "Prudent", 
+            "Relations"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "deux costumes de bourgeois", 
+            "livre de comptes", 
+            "plume et encrier", 
+            "1d10 parchemins", 
+            "2d10 articles à vendre de peu de valeur"
+        ],
+      },
+      {
+        name: "Mineur",
+        skills: [
+            "Arme de mêlée (pioche)/Arme de mêlée (marteau)", 
+            "Courage", "Écoute", 
+            "Jeux", 
+            "Milieu naturel (montagne)/Milieu naturel (forêt)", 
+            "Pugilat", 
+            "Résistance à l'alcool",
+            "Résistance aux maladies", 
+            "Travail de la pierre", 
+            "Travaux de force"
+
+        ],
+        talents: [
+            "Calme", 
+            "Chance insolente", 
+            "Doué (END)", 
+            "Doué (FOR)", 
+            "Festoyeur", 
+            "Gardien", 
+            "Guérison rapide", 
+            "Nyctalopie", 
+            "Sauvegarde", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            "pioche (RU+*FOR*+0)"
+        ],
+        inventory: [
+            "lanterne"
+        ],
+      },
+
+    // 4 : Bandits                      (24-31)
+    {
+        name: "Assassin/Tueur à gages",
+        skills: [
+            "Acrobaties", 
+            "Arme à distance (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Crochetage", 
+            "Course/Contorsion", 
+            "Déplacement silencieux", 
+            "Escalade", 
+            "Poisons", 
+            "Repérage", 
+            "Se cacher"
+        ],
+        talents: [
+            "Calme", 
+            "Coup en traître", 
+            "Coups précis/Tir précis", 
+            "Doué (DIS)", 
+            "Doué (MOU)", 
+            "Esquive/Réflexes éclairs", 
+            "Insaisissable", 
+            "Mensonge éhonté/Nyctalopie", 
+            "Pattes de chat/Sauvegarde", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            "arme de mêlée (au choix)", 
+            "un pistolet à poudre (RU+4) avec 10 munitions"
+        ],
+        inventory: [
+            "trois petites fioles de poison", 
+            "un masque", 
+            "des bottes de cuir souple"
+        ],
+    },
+    {
+        name: "Détrousseur/Truand",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (légère au choix)",
+            "Arme de mêlée (au choix)",
+            "Déplacement silencieux",
+            "Estimation",
+            "Fouille",
+            "Intimidation",
+            "Pugilat",
+            "Repérage",
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre",
+            "Coups puissants",
+            "Distraction",
+            "Doué (END)/Doué (FOR)",
+            "Guérison rapide",
+            "Nyctalopie",
+            "Riposte",
+            "Second souffle",
+            "Surnombre",
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            "un objet extorqué il y a quelques jours (de petite valeur, à décider avec le MJ)",
+            "des osselets ou trois dés en os"
+        ],
+        inventory: []
+    },
+    {
+        name: "Bandit de grand chemin",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (au choix)",
+            "Déplacement silencieux",
+            "Équitation",
+            "Fouille",
+            "Intimidation",
+            "Milieu naturel (au choix)",
+            "Persuasion",
+            "Repérage",
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre/Compagnon animal",
+            "Coup du prédateur",
+            "Coups puissants",
+            "Panache",
+            "Esquive/Guérison rapide",
+            "Inspiration",
+            "Solidité/Surnombre",
+            "Tireur d'élite",
+            "Tir du chasseur",
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            "pistolet à poudre (RU+4) avec 10 munitions"
+        ],
+        inventory: [
+            "un cheval avec sa selle et son harnais",
+            "un masque"
+        ]
+    },
+    {
+        name: "Hors-la-loi/Rebelle",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (au choix)",
+            "Déplacement silencieux",
+            "Équitation",
+            "Fouille",
+            "Intimidation",
+            "Milieu naturel (au choix)",
+            "Persuasion",
+            "Repérage",
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre/Calme",
+            "Coups puissants",
+            "Doué (MOU)/Doué (SUR)",
+            "Dévoué serviteur/Inspiration",
+            "Panache",
+            "Réflexes éclairs",
+            "Second souffle",
+            "Surnombre",
+            "Tir du chasseur",
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            "un capuchon",
+            "trois torches",
+            "une boîte d'amadou"
+        ],
+        inventory: []
+    },
+    {
+        name: "Pirate",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (au choix)",
+            "Escalade",
+            "Jeux",
+            "Natation",
+            "Navigation",
+            "Noeuds",
+            "Orientation",
+            "Résistance à l'alcool",
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Bagarre",
+            "Coups précis",
+            "Doué (END)",
+            "Doué (SUR)",
+            "Esquive",
+            "Festoyeur",
+            "Pattes de chat",
+            "Instinct de survie",
+            "Sauvagerie",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une corde de 10 mètres et un grappin",
+            "une lanterne",
+            "une bouteille d'alcool"
+        ]
+    },
+    {
+        name: "Ribaud",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (au choix)",
+            "Equitation",
+            "Fouille",
+            "Intimidation",
+            "Milieu naturel (au choix)",
+            "Pistage",
+            "Pugilat",
+            "Repérage",
+            "Se cacher"
+        ],
+        talents: [
+            "Calme",
+            "Compagnon animal",
+            "Coup en traître",
+            "Doué (PER)",
+            "Doué (SUR)",
+            "Instinct de survie",
+            "Second souffle",
+            "Solidité",
+            "Surnombre",
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une torche"
+        ]
+    },
+
+
+
+        {
+        name: "Racketteur",
+        skills: [
+            "Arme à distance (au choix)",
+            "Arme de mêlée (au choix)",
+            "Déplacement silencieux",
+            "Fouille",
+            "Intimidation",
+            "Persuasion",
+            "Pugilat",
+            "Renseignements",
+            "Repérage",
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre",
+            "Calme/Coups puissants",
+            "Confiance en soi",
+            "Coup en traître",
+            "Dévoué serviteur/Mensonge éhonté",
+            "Doué (FOR)",
+            "Esquive",
+            "Nyctalopie",
+            "Solidité",
+            "Surnombre"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "1d10 pièces d'argent",
+            "un long manteau"
+        ]
+    },
+    {
+        name: "Voleur de bétail",
+        skills: [
+            "Animaux",
+            "Arme à distance (légère)",
+            "Arme légère (au choix)",
+            "Attelages",
+            "Course",
+            "Déplacement silencieux",
+            "Équitation",
+            "Milieu naturel (au choix)",
+            "Repérage",
+            "Se cacher"
+        ],
+        talents: [
+            "Chance insolente",
+            "Compagnon animal",
+            "Coup en traître",
+            "Doué (DIS)",
+            "Doué (SUR)",
+            "Instinct de survie/Réflexes éclairs",
+            "Nyctalopie",
+            "Solidité",
+            "Tir du chasseur",
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une corde de 10 mètres",
+            "une lanterne",
+            "un sifflet en terre cuite"
+        ]
+    },
+
+
+    // 5 : Bateleurs et saltimbanques   (32-39)
+
+    {
+        name: "Acrobate/Jongleur",
+        skills: [
+            "Acrobaties",
+            "Charme",
+            "Contorsion",
+            "Déguisement",
+            "Discours",
+            "Escalade",
+            "Équitation",
+            "Jonglerie",
+            "Noeuds",
+            "Premiers soins"
+        ],
+        talents: [
+            "Calme",
+            "Coup acrobatique",
+            "Doué (MOU)",
+            "Doué (END)",
+            "Esprit de compétition",
+            "Esquive",
+            "Pattes de chat",
+            "Réflexes éclairs",
+            "Spectacle",
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "1d10 balles de jonglage",
+            "liquide de cracheur de feu",
+            "cinq torches",
+            "un briquet à amadou"
+        ]
+    },
+    {
+        name: "Diseur de bonne aventure",
+        skills: [
+            "Domaine magique (divination)",
+            "Charme",
+            "Chiromancie",
+            "Commerce",
+            "Écoute",
+            "Intuition",
+            "Légendes",
+            "Persuasion",
+            "Repérage",
+            "Taromancie"
+        ],
+        talents: [
+            "Calme",
+            "Chance insolente/Confiance en soi",
+            "Doué (PER)",
+            "Doué (SOC)/Doué (VOL)",
+            "Fascination",
+            "Inoffensif",
+            "Inspiration",
+            "Magie invisible",
+            "Mémoire sans faille/Nyctalopie",
+            "Mensonge éhonté"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "boule de cristal/jeu de Tarot ancien",
+            "divers foulards donnant un air mystérieux",
+            "un rat de compagnie rusé/un hibou de compagnie rusé/un chat noir de compagnie rusé"
+        ]
+    },
+    {
+        name: "Comédien/Ventriloque",
+        skills: [
+            "Arts",
+            "Charme",
+            "Comédie",
+            "Déguisement",
+            "Discours",
+            "Intuition",
+            "Légendes",
+            "Lettres",
+            "Résistance aux privations",
+            "Ventriloquie"
+        ],
+        talents: [
+            "Confiance en soi",
+            "Chance insolente/Panache",
+            "Distraction",
+            "Doué (CNS)/Doué (SOC)",
+            "Fascination",
+            "Inspiration",
+            "Inoffensif",
+            "Mensonge éhonté/Mémoire sans faille",
+            "Provocation/Relations",
+            "Spectacle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "costume de bourgeois usé",
+            "trois masques",
+            "trois costumes de scènes colorés",
+            "nécessaire de maquillage",
+            "plume et encrier",
+            "main de papier (20 pages)",
+            "une épée de théâtre inoffensive"
+        ]
+    },
+    {
+        name: "Dresseur",
+        skills: [
+            "Animaux",
+            "Arme de mêlée (arme contondante ou fouet)",
+            "Courage",
+            "Dressage",
+            "Equitation",
+            "Milieu naturel (au choix)",
+            "Premiers soins",
+            "Résistance aux maladies",
+            "Résistance aux poisons",
+            "Soins des animaux"
+        ],
+        talents: [
+            "Bagarre",
+            "Calme",
+            "Compagnon animal",
+            "Coup du prédateur",
+            "Doué (SUR)",
+            "Esquive",
+            "Instinct de survie",
+            "Solidité",
+            "Spectacle",
+            "Vivacité"
+        ],
+        armor: [
+            "gambison (protection+1)/plastron de cuir (protection+1)"
+        ],
+        weapons: [
+            "fouet (RU+*FOR*-2)"
+        ],
+        inventory: [
+            "un ou plusieurs animaux dressés (à décider avec le MJ)",
+            "nécessaire antipoison",
+            "gants rembourrés"
+        ]
+    },
+
+    {
+        name: "Lanceur",
+        skills: [
+            "Arme à distance (couteaux de lancer)", 
+            "Arme légère (couteau)", 
+            "Charme", 
+            "Comédie", 
+            "Courage", 
+            "Déguisement", 
+            "Discours", 
+            "Intimidation", 
+            "Premiers soins", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Chance insolente", 
+            "Doué (PER)", 
+            "Esprit de compétition", 
+            "Réflexes éclairs", 
+            "Tir ciblé", 
+            "Tir précis", 
+            "Tireur d'élite", 
+            "Spectacle", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            "1d10 couteaux de lancer (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "une corde de dix mètres", 
+            "un bandeau (pour se cacher les yeux)", 
+            "trois torches"
+        ]
+    },
+    {
+        name: "Ménestrel/Musicien",
+        skills: [
+            "Charme", 
+            "Comédie", 
+            "Discours", 
+            "Jeux", 
+            "Légendes", 
+            "Lettres", 
+            "Musique et chant", 
+            "Renseignements", 
+            "Résistance aux privations", 
+            "Se cacher"
+        ],
+        talents: [
+            "Chance insolente/Confiance en soi", 
+            "Distraction", 
+            "Doué (HAB)", 
+            "Doué (PER)", 
+            "Doué (SOC)", 
+            "Inoffensif", 
+            "Inspiration", 
+            "Mensonge éhonté", 
+            "Réflexes éclairs", 
+            "Spectacle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un costume de cour usé", 
+            "un costume vert de spectacle", 
+            "deux instruments de musique au choix (flûte, mandoline, tambourin, luth…)"
+        ]
+    },
+    {
+        name: "Lutteur",
+        skills: [
+            "Acrobaties", 
+            "Arme légère (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Charme", 
+            "Escalade", 
+            "Intimidation", 
+            "Jeux", 
+            "Pugilat", 
+            "Résistance aux maladies", 
+            "Résistance aux privations/Travaux de force"
+        ],
+        talents: [
+            "Bagarre", 
+            "Coups puissants", 
+            "Coups précis", 
+            "Doué (END)", 
+            "Doué (FOR)", 
+            "Esquive", 
+            "Guérison rapide", 
+            "Riposte", 
+            "Second souffle", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${batons}`
+        ],
+        inventory: [
+            "un costume de scène seyant", 
+            "des gants de cuir"
+        ]
+    },
+    {
+        name: "Prestidigitateur/Escamoteur",
+        skills: [
+            "Charme", 
+            "Discours", 
+            "Dissimulation d'objets", 
+            "Intuition", 
+            "Jeux", 
+            "Légendes", 
+            "Passe-passe", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage"
+        ],
+        talents: [
+            "Coup adroit/Coup en traître", 
+            "Distraction", 
+            "Doué (HAB)", 
+            "Doué (SOC)", 
+            "Fascination", 
+            "Inspiration", 
+            "Panache", 
+            "Prudent", 
+            "Spectacle", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "costume de bourgeois", 
+            "un jeu de cartes normal et un autre truqué", 
+            "trois dés en os"
+        ]
+    },
+
+
+    // 6 : Érudits et lettrés           (40-47)
+
+    {
+        name: "Apothicaire/Herboriste",
+        skills: [
+            "Botanique", 
+            "Commerce", 
+            "Légendes", 
+            "Lettres", 
+            "Médecine", 
+            "Milieu naturel (au choix)", 
+            "Poisons", 
+            "Potions et remèdes", 
+            "Premiers soins", 
+            "Résistance aux poisons"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Dévoué serviteur", 
+            "Doué (CNS)", 
+            "Doué (HAB)/Doué (SUR)", 
+            "Inoffensif", 
+            "Mains blanches", 
+            "Prudent", 
+            "Relations", 
+            "Second souffle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "livre de comptes", 
+            "besace contenant 2d10 herbes médicinales ou nocives (au choix)", 
+            "herbier", 
+            "mortier", 
+            "pilon et 1d10 grands bocaux"
+        ]
+    },
+    {
+        name: "Avocat/Procureur",
+        skills: [
+            "Charme", 
+            "Discours", 
+            "Droit et usages", 
+            "Histoire", 
+            "Intimidation", 
+            "Intuition", 
+            "Lettres", 
+            "Noblesse et politique", 
+            "Persuasion", 
+            "Renseignements"
+        ],
+        talents: [
+            "Dévoué serviteur", 
+            "Distraction", 
+            "Doué (CNS)", 
+            "Doué (SOC)", 
+            "Doué (VOL)", 
+            "Esprit de compétition", 
+            "Fascination", 
+            "Inoffensif", 
+            "Mémoire sans faille", 
+            "Relations"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "deux livres de droit", 
+            "costume d'avoué (selon la région)"
+        ]
+    },
+    {
+        name: "Architecte",
+        skills: [
+            "Architecture", 
+            "Commerce", 
+            "Droit et usages", 
+            "Histoire", 
+            "Noblesse et politique", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage", 
+            "Travail de la pierre", 
+            "Travail du bois"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Dévoué serviteur", 
+            "Doué (CNS)/Doué (HAB)", 
+            "Doué (PER)/Doué (SOC)", 
+            "Esprit de compétition", 
+            "Mémoire sans faille", 
+            "Polyglotte", 
+            "Prudent/Sain d'esprit", 
+            "Relations"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "costume de cour", 
+            "instruments de mesure"
+        ]
+    },
+    {
+        name: "Cartographe",
+        skills: [
+            "Cartographie", 
+            "Diplomatie", 
+            "Histoire", 
+            "Langue étrangère (au choix)", 
+            "Lettres", 
+            "Milieu naturel (au choix)", 
+            "Navigation", 
+            "Noblesse et politique", 
+            "Orientation", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Dévoué serviteur", 
+            "Doué (CNS)/Doué (HAB)", 
+            "Doué (PER)", 
+            "Esprit de compétition", 
+            "Mémoire sans faille", 
+            "Polyglotte", 
+            "Prudent", 
+            "Relations"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "deux costumes de cour", 
+            "outils de cartographe"
+        ]
+    },
+
+    {
+        name: "Estudiant",
+        skills: [
+            "Arts ou Droit et usages", 
+            "Histoire ou Lettres", 
+            "Médecine ou Religion", 
+            "Charme", 
+            "Jeux", 
+            "Persuasion", 
+            "Pugilat", 
+            "Renseignements", 
+            "Résistance à l'alcool", 
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre", 
+            "Chance insolente", 
+            "Distraction", 
+            "Doué (CNS)/Doué (END)", 
+            "Doué (SOC)", 
+            "Festoyeur", 
+            "Guérison rapide/Mensonge éhonté", 
+            "Mémoire sans faille", 
+            "Provocation", 
+            "Second souffle"
+        ],
+        armor: [],
+        weapons: [
+            "couteau (RU+*FOR*-1)/gourdin (RU+*FOR*-2)"
+        ],
+        inventory: [
+            "bouteille de vin", 
+            "trois dés en os/un jeu de cartes"
+        ]
+    },
+    {
+        name: "Médecin/Docteur",
+        skills: [
+            "Botanique", 
+            "Commerce", 
+            "Intuition", 
+            "Lettres", 
+            "Médecine", 
+            "Persuasion", 
+            "Potions", 
+            "Premiers soins", 
+            "Repérage", 
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Dévoué serviteur", 
+            "Doué (CNS)", 
+            "Doué (HAB)/Doué (VOL)", 
+            "Mains blanches", 
+            "Mémoire sans faille", 
+            "Relations", 
+            "Sain d'esprit", 
+            "Second souffle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un costume bourgeois de qualité", 
+            "une besace contenant des outils de médecin (lancettes, urinoir, aiguilles)", 
+            "un masque à bec"
+        ]
+    },
+    {
+        name: "Ingénieur/Inventeur",
+        skills: [
+            "Armes à distance (armes à feu)", 
+            "Armes de mêlée (au choix)", 
+            "Commerce", 
+            "Droit et usages", 
+            "Ingénierie", 
+            "Légendes", 
+            "Persuasion", 
+            "Repérage", 
+            "Travail d'un matériau (au choix)", 
+            "Travail d'un matériau (au choix)"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Dévoué serviteur", 
+            "Doué (CNS)/Doué (HAB)", 
+            "Esprit de compétition", 
+            "Inoffensif", 
+            "Mémoire sans faille", 
+            "Polyglotte", 
+            "Prudent", 
+            "Relations/Sauvegarde"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "instruments de mesure"
+        ]
+    },
+    {
+        name: "Scribe/Écrivain public",
+        skills: [
+            "Commerce", 
+            "Droit et usages", 
+            "Écoute", 
+            "Histoire", 
+            "Langue étrangère (au choix)", 
+            "Légendes", 
+            "Lettres", 
+            "Persuasion", 
+            "Religion", 
+            "Renseignements"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Distraction", 
+            "Doué (CNS)", 
+            "Doué (HAB)/Doué (PER)", 
+            "Doué (SOC)", 
+            "Inoffensif", 
+            "Mémoire sans faille", 
+            "Polyglotte", 
+            "Relations/Sain d'esprit"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une écritoire portative", 
+            "de la cire à cacheter", 
+            "2 plumes", 
+            "deux mains de papier et un encrier supplémentaire"
+        ]
+    },
+
+
+    // 7 : Filous et roublards          (45-55)
+
+    {
+        name: "Agitateur/Anarchiste",
+        skills: [
+            "Arme de mêlée ou à distance légère (au choix)", 
+            "Charme", 
+            "Courage", 
+            "Discours", 
+            "Intuition", 
+            "Lettres/Noblesse et politique", 
+            "Persuasion", 
+            "Pugilat", 
+            "Renseignements", 
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre", 
+            "Chance insolente/Panache", 
+            "Distraction", 
+            "Doué (SOC)/Doué (VOL)", 
+            "Esquive", 
+            "Fascination", 
+            "Insaisissable", 
+            "Maîtrise de la poudre", 
+            "Provocation", 
+            "Second souffle/Mensonge éhonté"
+        ],
+        armor: [],
+        weapons: [
+            "costume de bourgeois", 
+            "2d10 tracts incitant à la rébellion", 
+            "deux torches"
+        ],
+        inventory: []
+    },
+    {
+        name: "Charlatan/Escroc",
+        skills: [
+            "Charme", 
+            "Commerce", 
+            "Course", 
+            "Dissimulation d'objets", 
+            "Légendes", 
+            "Lettres", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage", 
+            "Se cacher"
+        ],
+        talents: [
+            "Chance insolente", 
+            "Distraction", 
+            "Confiance en soi/Doué (CNS)", 
+            "Doué (SOC)", 
+            "Esquive", 
+            "Fascination", 
+            "Inoffensif", 
+            "Mensonge éhonté", 
+            "Panache", 
+            "Polyglotte/Provocation"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "costume de bourgeois usé", 
+            "1d10 articles d'escroqueries ou de contrefaçons tels que des remèdes, des poudres miracles, des fausses reliques, des laissez-passer"
+        ]
+    },
+    {
+        name: "Cambrioleur/Monte-en-l'air",
+        skills: [
+            "Arme à distance (au choix)", 
+            "Arme légère (au choix)", 
+            "Crochetage", 
+            "Déplacement silencieux", 
+            "Dissimulation d'objets", 
+            "Écoute", 
+            "Escalade", 
+            "Fouille", 
+            "Repérage", 
+            "Se cacher"
+        ],
+        talents: [
+            "Calme", 
+            "Chance insolente", 
+            "Coup acrobatique/Coup en traître", 
+            "Doué (DIS)", 
+            "Doué (HAB)", 
+            "Doué (MOU)", 
+            "Esquive", 
+            "Insaisissable", 
+            "Pattes de chat", 
+            "Réflexes éclairs/Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            "jeu de crochets", 
+            "paire de gants noirs", 
+            "corde de 10 mètres et grappin"
+        ],
+        inventory: []
+    },
+    {
+        name: "Contrebandier/Receleur",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Commerce", 
+            "Déplacement silencieux", 
+            "Dissimulation d'objets", 
+            "Droit et usages", 
+            "Estimation", 
+            "Persuasion", 
+            "Renseignements", 
+            "Repérage", 
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre", 
+            "Calme", 
+            "Confiance en soi", 
+            "Coup en traître", 
+            "Doué (DIS)", 
+            "Doué (SOC)", 
+            "Esquive", 
+            "Nyctalopie", 
+            "Mensonge éhonté/Sixième sens", 
+            "Solidité/Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemeleesimples}/${armesdetrait}`, 
+            "barque contenant 2d10 marchandises non déclarées/barque contenant 2d10 marchandises illégales de peu de valeur/chariot contenant 2d10 marchandises non déclarées/chariot contenant 2d10 marchandises illégales de peu de valeur"
+        ],
+        inventory: []
+    },
+
+    {
+        name: "Espion",
+        skills: [
+            "Charme", 
+            "Crochetage", 
+            "Déplacement silencieux", 
+            "Déguisement", 
+            "Écoute", 
+            "Fouille", 
+            "Noblesse et politique", 
+            "Renseignements", 
+            "Repérage", 
+            "Se cacher"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Coup en traître", 
+            "Doué (DIS)", 
+            "Doué (PER)", 
+            "Doué (SOC)", 
+            "Fascination", 
+            "Mensonge éhonté/Nyctalopie", 
+            "Réflexes éclairs/Vivacité", 
+            "Relations/Sixième sens"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "costume au choix (bourgeois ou noble)", 
+            "nécessaire à maquillage", 
+            "plume et encrier", 
+            "1d10 parchemins"
+        ]
+    },
+    {
+        name: "Pilleur de tombes",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Contorsion", 
+            "Courage", 
+            "Crochetage", 
+            "Déplacement silencieux", 
+            "Dissimulation d'objets", 
+            "Pièges", 
+            "Résistance aux maladies", 
+            "Se cacher", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Calme", 
+            "Chance insolente", 
+            "Doué (END)", 
+            "Doué (VOL)", 
+            "Esquive", 
+            "Guérison rapide", 
+            "Nyctalopie", 
+            "Pattes de chat", 
+            "Résilience", 
+            "Solidité"
+        ],
+        armor: [ 
+            `${armureslegeres}`
+        ],
+        weapons: [
+            `${armesdemeleesimples}`
+        ],
+        inventory: [
+            "une corde de 10 mètres et un grappin", 
+            "une lanterne et une pelle"
+        ]
+    },
+    {
+        name: "Joueur professionnel",
+        skills: [
+            "Charme", 
+            "Course", 
+            "Dissimulation d'objets", 
+            "Droit et usages", 
+            "Intuition", 
+            "Jeux", 
+            "Persuasion", 
+            "Pugilat", 
+            "Renseignements", 
+            "Repérage"
+        ],
+        talents: [
+            "Chance insolente", 
+            "Coup adroit", 
+            "Distraction", 
+            "Doué (HAB)/Doué (SOC)", 
+            "Esquive", 
+            "Fascination", 
+            "Festoyeur", 
+            "Mensonge éhonté", 
+            "Panache", 
+            "Provocation"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un costume de bourgeois", 
+            "des bijoux d'une valeur de 2d10 pièces d'or", 
+            "trois dés en os", 
+            "un paquet de cartes", 
+            "des bottes en cuir"
+        ]
+    },
+    {
+        name: "Tire-laine/Vide-gousset",
+        skills: [
+            "Acrobaties", 
+            "Arme de mêlée ou à distance légère (au choix)", 
+            "Course", 
+            "Déplacement silencieux", 
+            "Dissimulation d'objets", 
+            "Escalade", 
+            "Passe-passe", 
+            "Repérage", 
+            "Se cacher", 
+            "Vol à la tire"
+        ],
+        talents: [
+            "Chance insolente", 
+            "Coup acrobatique/Coup en traître", 
+            "Doué (DIS)", 
+            "Doué (HAB)", 
+            "Doué (PER)", 
+            "Esquive", 
+            "Insaisissable", 
+            "Pattes de chat", 
+            "Réflexes éclairs", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un objet volé il y a une semaine (de petite valeur, à décider avec le MJ)"
+        ]
+    },
+
+
+    // 8 : Forestiers et paysans        (56-63)
+
+    {
+        name: "Batelier",
+        skills: [
+            "Canotage", 
+            "Commerce", 
+            "Langue étrangère (au choix)", 
+            "Milieu naturel (au choix)", 
+            "Natation", 
+            "Navigation", 
+            "Orientation", 
+            "Renseignements", 
+            "Repérage", 
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Doué (PER)", 
+            "Doué (SUR)", 
+            "Esquive", 
+            "Gardien", 
+            "Instinct de survie", 
+            "Sauvegarde", 
+            "Sixième sens", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "barque", 
+            "filet"
+        ]
+    },
+    {
+        name: "Bûcheron",
+        skills: [
+            "Arme de mêlée (haches & masses)", 
+            "Milieu naturel (au choix)", 
+            "Milieu naturel (forêt)", 
+            "Premiers soins", 
+            "Pugilat", 
+            "Orientation", 
+            "Résistance à l'alcool", 
+            "Résistance aux maladies", 
+            "Résistance aux poisons", 
+            "Travail du bois/Travaux de force"
+        ],
+        talents: [
+            "Calme", 
+            "Compagnon animal", 
+            "Coup du prédateur", 
+            "Coups puissants", 
+            "Doué (END)", 
+            "Doué (FOR)", 
+            "Doué (SUR)", 
+            "Instinct de survie", 
+            "Sauvagerie", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            "cognée (RU+*FOR*+0)"
+        ],
+        inventory: [
+            "quelques plantes médicinales contre le poison"
+        ]
+    },
+    {
+        name: "Berger/Pâtre",
+        skills: [
+            "Animaux", 
+            "Arme de tir (fronde)", 
+            "Écoute", 
+            "Élevage", 
+            "Milieu naturel (au choix)", 
+            "Orientation", 
+            "Pistage", 
+            "Repérage", 
+            "Résistance aux maladies", 
+            "Soins des animaux"
+        ],
+        talents: [
+            "Calme", 
+            "Compagnon animal", 
+            "Doué (END)/Doué (MOU)", 
+            "Doué (PER)", 
+            "Doué (SUR)", 
+            "Esquive", 
+            "Instinct de survie", 
+            "Guérison rapide/Solidité", 
+            "Sauvegarde", 
+            "Tir du chasseur"
+        ],
+        armor: [
+            
+        ],
+        weapons: [
+            "fronde (RU+*FOR*-1) et 10 munitions"
+        ],
+        inventory: [
+            "gilet de laine",
+            "bonne couverture", 
+            "flûte", 
+            "chien de garde aux poils longs"
+        ]
+    },
+    {
+        name: "Chasseur/Trappeur",
+        skills: [
+            "Animaux", 
+            "Botanique", 
+            "Arme à distance (arc)", 
+            "Arme de mêlée (couteaux)", 
+            "Déplacement silencieux", 
+            "Milieu naturel (au choix)", 
+            "Orientation", 
+            "Pièges", 
+            "Pistage", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Compagnon animal", 
+            "Coup du prédateur", 
+            "Doué (DIS)", 
+            "Doué (SUR)", 
+            "Esquive/Festoyeur", 
+            "Instinct de survie", 
+            "Second souffle", 
+            "Tir du chasseur", 
+            "Tir précis"
+        ],
+        armor: [],
+        weapons: [
+            "arc long (RU+*FOR*+0) et 10 flèches"
+        ],
+        inventory: [
+            "deux collets", 
+            "un nécessaire antipoison"
+        ]
+    },
+    {
+        name: "Guide-convoyeur",
+        skills: [
+            "Arme à distance (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Attelages", 
+            "Écoute", 
+            "Équitation", 
+            "Milieu naturel (au choix)", 
+            "Milieu naturel (au choix)/Courage", 
+            "Orientation", 
+            "Premiers soins", 
+            "Repérage"
+        ],
+        talents: [
+            "Calme", 
+            "Coup du prédateur", 
+            "Doué (PER)", 
+            "Doué (SUR)", 
+            "Gardien", 
+            "Instinct de survie", 
+            "Riposte", 
+            "Solidité", 
+            "Sixième sens/Sauvegarde", 
+            "Tir du chasseur"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "cheval avec selle et harnais", 
+            "corde", 
+            "lanterne", 
+            "sifflet en terre cuite"
+        ]
+    },
+    {
+        name: "Paysan/Journalier",
+        skills: [
+            "Agriculture", 
+            "Animaux", 
+            "Course", 
+            "Milieu naturel (au choix)", 
+            "Milieu naturel (au choix)/Orientation", 
+            "Pugilat", 
+            "Renseignements", 
+            "Repérage", 
+            "Résistance aux privations", 
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Bagarre", 
+            "Esquive", 
+            "Calme", 
+            "Compagnon animal", 
+            "Doué (END)", 
+            "Doué (HAB)/Doué (SUR)", 
+            "Festoyeur", 
+            "Inoffensif", 
+            "Instinct de survie", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            "fronde (RU+*FOR*-1)/fourche (RU+*FOR*-1)"
+        ],
+        inventory: []
+    },
+    {
+        name: "Marin",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Canotage/Courage", 
+            "Escalade", 
+            "Jeux", 
+            "Navigation", 
+            "Natation", 
+            "Noeuds/Orientation", 
+            "Pugilat", 
+            "Résistance à l'alcool", 
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Bagarre", 
+            "Chance insolente", 
+            "Doué (END)", 
+            "Doué (HAB)", 
+            "Festoyeur", 
+            "Instinct de survie", 
+            "Second souffle", 
+            "Sauvegarde", 
+            "Solidité", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemeleesimples}`
+        ],
+        inventory: [
+            "corde de 10 mètres et grappin", 
+            "bouteille d'alcool"
+        ]
+    },
+    {
+        name: "Pêcheur",
+        skills: [
+            "Canotage", 
+            "Milieu naturel (au choix)", 
+            "Natation", 
+            "Navigation", 
+            "Orientation", 
+            "Pêche", 
+            "Renseignements", 
+            "Repérage", 
+            "Résistance aux maladies", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Calme", 
+            "Chance insolente", 
+            "Compagnon animal", 
+            "Doué (END)", 
+            "Doué (HAB)", 
+            "Doué (PER)", 
+            "Doué (SUR)", 
+            "Festoyeur/Inoffensif", 
+            "Instinct de survie", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "barque", 
+            "canne à pêche", 
+            "fil et hameçons", 
+            "filet"
+        ]
+    },
+
+
+    // 9 : Guerriers et bretteurs       (64-71)
+    {
+        name: "Archer/Arbalestrier",
+        skills: [
+            "Arme à distance (arc)", 
+            "Arme à distance (arbalète)", 
+            "Arme de mêlée (au choix)", 
+            "Course", 
+            "Déplacement silencieux", 
+            "Équitation", 
+            "Premiers soins", 
+            "Repérage", 
+            "Se cacher", 
+            "Stratégie/Vigilance"
+        ],
+        talents: [
+            "Calme", 
+            "Doué (MOU)", 
+            "Doué (PER)", 
+            "Prudent/Recharge rapide", 
+            "Réflexes éclairs", 
+            "Solidité", 
+            "Tir ciblé", 
+            "Tireur d'élite", 
+            "Tir précis", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "trois torches", 
+            "un briquet à amadou"
+        ]
+    },
+    {
+        name: "Chasseur de primes",
+        skills: [
+            "Arme à distance (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Course", 
+            "Déplacement silencieux", 
+            "Équitation", 
+            "Milieu naturel (au choix)/Renseignements", 
+            "Pièges", 
+            "Pistage", 
+            "Repérage", 
+            "Se cacher"
+        ],
+        talents: [
+            "Calme", 
+            "Coups précis", 
+            "Doué (DIS)", 
+            "Doué (PER)", 
+            "Nyctalopie", 
+            "Résilience", 
+            "Riposte", 
+            "Second souffle/Sixième sens", 
+            "Tir précis", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un cheval avec sa selle et son harnais", 
+            "une torche", 
+            "une corde de 10 mètres", 
+            "un filet"
+        ]
+    },
+    {
+        name: "Champion/Gladiateur",
+        skills: [
+            "Acrobaties", 
+            "Arme à distance (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Courage", 
+            "Intimidation", 
+            "Premiers soins", 
+            "Pugilat", 
+            "Vigilance"
+        ],
+        talents: [
+            "Bagarre", 
+            "Coup de maître", 
+            "Coups précis", 
+            "Coups puissants", 
+            "Doué (END)/Doué (FOR)", 
+            "Esquive/Maîtrise du bouclier", 
+            "Maître d'armes", 
+            "Sauvagerie", 
+            "Second souffle", 
+            "Port d'armure/Vivacité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemelee}`
+        ],
+        inventory: [
+            "des bandages"
+        ]
+    },
+    {
+        name: "Combattant des tunnels",
+        skills: [
+            "Arme à distance (arbalète)", 
+            "Arme de mêlée (au choix)", 
+            "Déplacement silencieux", 
+            "Écoute", 
+            "Milieu naturel (montagnes)", 
+            "Orientation", 
+            "Pugilat", 
+            "Repérage", 
+            "Résistance aux maladies", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Bagarre", 
+            "Coups précis", 
+            "Coups puissants", 
+            "Doué (END)", 
+            "Maîtrise du bouclier", 
+            "Nyctalopie", 
+            "Port d'armure", 
+            "Second souffle", 
+            "Recharge rapide/Sixième sens", 
+            "Solidité/Tir précis"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une lanterne", 
+            "des fourrures", 
+            "une corde de 10 mètres et un grappin"
+        ]
+    },
+
+    {
+        name: "Garde de corps/Estafier",
+        skills: [
+            "Arme de mêlée lourde (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Courage", 
+            "Course", 
+            "Intimidation", 
+            "Jeux", 
+            "Pugilat", 
+            "Repérage", 
+            "Résistance à l'alcool", 
+            "Résistance aux poisons"
+        ],
+        talents: [
+            "Bagarre", 
+            "Calme", 
+            "Coups puissants", 
+            "Coups précis", 
+            "Doué (END)/Doué (FOR)", 
+            "Gardien", 
+            "Riposte", 
+            "Second souffle", 
+            "Solidité/Sixième sens", 
+            "Sauvegarde"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un costume de bourgeois", 
+            "des bandages", 
+            "une lanterne"
+        ]
+    },
+    {
+        name: "Tueur de monstres",
+        skills: [
+            "Arme lourde (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Courage", 
+            "Déplacement silencieux", 
+            "Milieu naturel (au choix)", 
+            "Pistage", 
+            "Repérage", 
+            "Résistance à la magie", 
+            "Résistance aux maladies", 
+            "Résistance aux poisons"
+        ],
+        talents: [
+            "Bagarre", 
+            "Coups puissants", 
+            "Doué (END)", 
+            "Doué (PER)", 
+            "Maître d'armes", 
+            "Maîtrise du bouclier", 
+            "Sauvagerie", 
+            "Sixième sens", 
+            "Solidité", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "la tête d'un ennemi animal au combat/la tête d'un humanoïde tué au combat/la tête d'un monstre tué au combat"
+        ]
+    },
+    {
+        name: "Mercenaire",
+        skills: [
+            "Arme à distance (au choix)", 
+            "Arme lourde (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Commandement", 
+            "Équitation", 
+            "Intimidation", 
+            "Milieu naturel (au choix)", 
+            "Premiers soins", 
+            "Pugilat", 
+            "Stratégie"
+        ],
+        talents: [
+            "Bagarre", 
+            "Coup de maître", 
+            "Coups puissants", 
+            "Coups précis", 
+            "Doué (FOR)", 
+            "Esquive/Maîtrise du bouclier", 
+            "Maître d'armes", 
+            "Riposte", 
+            "Solidité", 
+            "Sauvegarde/Tir précis"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une bouteille d'alcool"
+        ]
+    },
+    {
+        name: "Spadassin/Duelliste",
+        skills: [
+            "Acrobaties", 
+            "Arme à distance (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Charme", 
+            "Courage", 
+            "Deux armes", 
+            "Intimidation", 
+            "Jeux", 
+            "Premiers soins"
+        ],
+        talents: [
+            "Bagarre", 
+            "Calme", 
+            "Coup de maître", 
+            "Coups puissants", 
+            "Maître d'armes", 
+            "Réflexes éclairs", 
+            "Riposte", 
+            "Second souffle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un costume de cour", 
+            "des bandages", 
+            "trois dés en os", 
+            "une bonne bouteille de vin"
+        ]
+    },
+
+    // 10 : Hommes d'armes et soldats   (72-79)
+
+    {
+        name: "Artilleur/Pétardier",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Armes à distance (arme à poudre)", 
+            "Bombardes et explosifs", 
+            "Canons et balistes", 
+            "Courage", 
+            "Premiers soins", 
+            "Repérage", 
+            "Résistance à la chaleur", 
+            "Stratégie", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Calme", 
+            "Doué (END)", 
+            "Doué (VOL)", 
+            "Guérison rapide", 
+            "Maîtrise de la poudre", 
+            "Recharge rapide", 
+            "Second souffle", 
+            "Solidité", 
+            "Tireur d'élite", 
+            "Tir ciblé"
+        ],
+        armor: [],
+        weapons: [
+            `${armesapoudre}`
+        ],
+        inventory: []
+    },
+    {
+        name: "Cavalier",
+        skills: [
+            "Arme à distance (au choix)", 
+            "Arme lourde (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Commandement", 
+            "Équitation", 
+            "Intimidation", 
+            "Orientation", 
+            "Premiers soins", 
+            "Soins des animaux", 
+            "Stratégie"
+        ],
+        talents: [
+            "Compagnon animal", 
+            "Coup acrobatique", 
+            "Coups puissants", 
+            "Doué (MOU)", 
+            "Esprit de compétition", 
+            "Esquive/Maîtrise du bouclier", 
+            "Maître d'armes", 
+            "Réflexes éclairs", 
+            "Riposte", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${lances}`, 
+            `${armesdetir}`
+        ],
+        inventory: [
+            "un cheval avec sa selle et son harnais"
+        ]
+    },
+    {
+        name: "Bourreau",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Courage", 
+            "Intimidation", 
+            "Premiers soins", 
+            "Pugilat", 
+            "Renseignements", 
+            "Résistance à l'alcool", 
+            "Résistance aux maladies", 
+            "Torture", 
+            "Travaux de force"
+        ],
+        talents: [
+            "Bagarre", 
+            "Brute/Calme", 
+            "Coups puissants", 
+            "Doué (END)/Doué (FOR)", 
+            "Doué (VOL)", 
+            "Guérison rapide", 
+            "Résilience", 
+            "Sain d'esprit", 
+            "Sauvegarde", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${hachesàdeuxmains}`
+        ],
+        inventory: [
+            "vêtements de vilain", 
+            "une corde de 10 mètres", 
+            "une cagoule noire de bourreau"
+        ]
+    },
+    {
+        name: "Éclaireur",
+        skills: [
+            "Animaux", 
+            "Arme à distance (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Déplacement silencieux", 
+            "Equitation", 
+            "Milieu naturel (au choix)", 
+            "Milieu naturel (au choix)", 
+            "Pièges", 
+            "Pistage", 
+            "Se cacher"
+        ],
+        talents: [
+            "Calme", 
+            "Coup du prédateur", 
+            "Doué (MOU)", 
+            "Doué (PER)", 
+            "Doué (SUR)", 
+            "Esquive", 
+            "Instinct de survie", 
+            "Sixième sens", 
+            "Solidité", 
+            "Tir du chasseur"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdetir}`
+        ],
+        inventory: []
+    },
+
+    {
+        name: "Garde",
+        skills: [
+            "Arme à distance (arc ou arbalète)", 
+            "Arme de mêlée (au choix)", 
+            "Commandement", 
+            "Course", 
+            "Fouille", 
+            "Intimidation", 
+            "Pugilat", 
+            "Repérage", 
+            "Résistance à l'alcool", 
+            "Stratégie"
+        ],
+        talents: [
+            "Bagarre", 
+            "Calme", 
+            "Coups puissants", 
+            "Doué (END)/Doué (MOU)", 
+            "Doué (PER)", 
+            "Gardien", 
+            "Maîtrise du bouclier", 
+            "Second souffle", 
+            "Sixième sens/Sauvegarde", 
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdhast}`, 
+            `${boucliers}`, 
+            "un casque à plume (protection+1)"
+        ],
+        inventory: []
+    },
+    {
+        name: "Patrouilleur/Garde-route",
+        skills: [
+            "Arme à distance (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Écoute", 
+            "Équitation", 
+            "Intimidation", 
+            "Milieu naturel (au choix)", 
+            "Orientation", 
+            "Pièges", 
+            "Pistage", 
+            "Repérage"
+        ],
+        talents: [
+            "Bagarre", 
+            "Calme", 
+            "Coup du prédateur", 
+            "Coups puissants", 
+            "Doué (MOU)", 
+            "Doué (PER)", 
+            "Instinct de survie", 
+            "Sixième sens", 
+            "Solidité", 
+            "Tir du chasseur"
+        ],
+        armor: [],
+        weapons: [
+            `${armesadistance}`,
+            "bouclier en bois (protection+1)"
+        ],
+        inventory: [
+            "un cheval avec sa selle et son harnais", 
+            "une corde de 10 mètres et un grappin", 
+            "une lanterne"
+        ]
+    },
+    {
+        name: "Limier",
+        skills: [
+            "Arme de mêlée (au choix)", 
+            "Crochetage/Droit et usages", 
+            "Déplacement silencieux", 
+            "Fouille", 
+            "Intimidation", 
+            "Repérage", 
+            "Intuition", 
+            "Renseignements", 
+            "Se cacher", 
+            "Torture/Vigilance"
+        ],
+        talents: [
+            "Calme", 
+            "Confiance en soi", 
+            "Coups précis", 
+            "Doué (DIS)/Doué (PER)", 
+            "Mémoire sans faille", 
+            "Nyctalopie", 
+            "Prudent", 
+            "Sain d'esprit/Second souffle", 
+            "Sixième sens", 
+            "Vivacité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "Une cape sombre", 
+            "une lanterne"
+        ]
+    },
+    {
+        name: "Soldat",
+        skills: [
+            "Arme lourde (au choix)", 
+            "Arme de mêlée (au choix)", 
+            "Commandement", 
+            "Course", 
+            "Escalade", 
+            "Intimidation", 
+            "Jeux", 
+            "Milieu naturel (au choix)", 
+            "Résistance à l'alcool", 
+            "Stratégie"
+        ],
+        talents: [
+            "Bagarre", 
+            "Coups précis", 
+            "Coups puissants", 
+            "Cri de guerre", 
+            "Doué (END)/Doué (FOR)", 
+            "Doué (VOL)", 
+            "Maître d'armes", 
+            "Maîtrise du bouclier", 
+            "Second souffle", 
+            "Sauvegarde/Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdhast}`, 
+            "casque (protection+1)"
+        ],
+        inventory: []
+    },
+
+    // 11 : Magiciens et thaumaturges   (80-87)
+
+    {
+        name: "Alchimiste",
+        skills: [
+            "Domaine magique (alchimie)",
+            "Bombardes et explosifs",
+            "Botanique",
+            "Légendes",
+            "Lettres",
+            "Milieu naturel (au choix)",
+            "Occultisme",
+            "Poisons",
+            "Potions et remèdes"
+        ],
+        talents: [
+            "Calme",
+            "Dévoué serviteur",
+            "Doué (CNS)",
+            "Doué (VOL)",
+            "Magie destructrice",
+            "Magie invisible",
+            "Magie sanglante",
+            "Maîtrise de la poudre",
+            "Nyctalopie",
+            "Souffle de vie"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "1d10 potions",
+            "remèdes ou poisons déjà préparés (à décider avec le MJ)"
+        ]
+    },
+    {
+        name: "Élémentaliste",
+        skills: [
+            `${domaineElementaire}`,
+            `${domaineElementaire}`,
+            "Courage",
+            "Écoute",
+            "Milieu naturel (au choix)",
+            "Milieu naturel (au choix)",
+            "Occultisme",
+            "Orientation",
+            "Repérage",
+            "Résistance à la magie"
+        ],
+        talents: [
+            "Calme",
+            "Compagnon animal/Coup du prédateur",
+            "Doué (SUR)/Doué (VOL)",
+            "Instinct de survie",
+            "Magie destructrice",
+            "Magie innée",
+            "Magie sanglante",
+            "Nyctalopie",
+            "Solidité",
+            "Sort fétiche"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "un bâton de marche gravé des quatre symboles élémentaires triangulaires"
+        ]
+    },
+    {
+        name: "Astrologue/Devin",
+        skills: [
+            "Domaine magique (divination)",
+            "Astrologie",
+            "Discours",
+            "Légendes",
+            "Lettres",
+            "Milieu naturel (au choix)",
+            "Occultisme",
+            "Persuasion",
+            "Potions et remèdes",
+            "Résistance à la magie"
+        ],
+        talents: [
+            "Calme",
+            "Chance insolente",
+            "Doué (CNS)/Doué (PER)",
+            "Doué (VOL)",
+            "Esprit gardien",
+            "Fascination",
+            "Magie invisible",
+            "Magie sanglante",
+            "Nyctalopie",
+            "Sixième sens"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "jeu de tarot divinatoire",
+            "précis d'astrologie"
+        ]
+    },
+    {
+        name: "Illusionniste",
+        skills: [
+            "Domaine magique (illusions)",
+            `${domaineMagique}`,
+            "Charme",
+            "Discours",
+            "Intuition",
+            "Légendes",
+            "Lettres",
+            "Occultisme",
+            "Passe-passe",
+            "Résistance à la magie"
+        ],
+        talents: [
+            "Chance insolente",
+            "Coup surnaturel",
+            "Distraction",
+            "Doué (CNS)/Doué (SOC)",
+            "Panache",
+            "Magie contrôlée",
+            "Magie innée",
+            "Magie invisible",
+            "Mensonge éhonté",
+            "Nyctalopie/Spectacle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "jeu de cartes",
+            "baguette d'illusionniste en bois"
+        ]
+    },
+
+    {
+        name: "Juge-mage",
+        skills: [
+            `${domaineMagique}`,
+            `${domaineMagique}`,
+            "Discours",
+            "Fouille",
+            "Intuition",
+            "Lettres/Occultisme",
+            "Noblesse et politique",
+            "Persuasion",
+            "Renseignements",
+            "Repérage"
+        ],
+        talents: [
+            "Calme",
+            "Dévoué serviteur",
+            "Doué (CNS)/Doué (PER)",
+            "Esprit gardien",
+            "Magie contrôlée",
+            "Magie innée",
+            "Magie invisible",
+            "Mémoire sans faille",
+            "Nyctalopie/Sain d'esprit",
+            "Sort fétiche"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "livre de loi",
+            "main de papier (20 pages)",
+            "plume et encrier"
+        ]
+    },
+    {
+        name: "Nécromancien",
+        skills: [
+            "Domaine magique (nécromancie)",
+            `${domaineMagique}`,
+            "Histoire",
+            "Légendes",
+            "Médecine",
+            "Occultisme",
+            "Premiers soins",
+            "Religion",
+            "Résistance aux maladies",
+            "Résistance à la magie"
+        ],
+        talents: [
+            "Calme",
+            "Compagnon animal",
+            "Doué (END)/Doué (VOL)",
+            "Esprit gardien",
+            "Magie contrôlée",
+            "Magie destructrice",
+            "Magie innée",
+            "Magie insidieuse",
+            "Magie sanglante",
+            "Résistance magique"
+        ],
+        armor: [],
+        weapons: [
+            "stylet (RU+*FOR*-2)"
+        ],
+        inventory: []
+    },
+    {
+        name: "Magelame",
+        skills: [
+            `${domaineMagique}`,
+            `${domaineMagique}`,
+            "Acrobaties",
+            "Arme de mêlée (au choix)",
+            "Arme de mêlée (épée)",
+            "Légendes",
+            "Lettres",
+            "Occultisme",
+            "Résistance à la magie",
+            "Travail du métal"
+        ],
+        talents: [
+            "Confiance en soi",
+            "Coup surnaturel",
+            "Coups précis",
+            "Esquive",
+            "Maître d'armes",
+            "Magie destructrice",
+            "Magie sanglante",
+            "Réflexes éclairs",
+            "Riposte",
+            "Vivacité"
+        ],
+        armor: [
+            "plastron de cuir (protection+1)"
+        ],
+        weapons: [
+            `${epeequalitesuperieure}`,
+        ],
+        inventory: [
+            "un habit de cour",
+            "un habit de bourgeois",
+            "un chapeau à plumes",
+            "des gants"
+        ]
+    },
+    {
+        name: "Sorcier",
+        skills: [
+            `${domaineMagique}`,
+            `${domaineMagique}`,
+            "Botanique",
+            "Courage",
+            "Légendes",
+            "Lettres",
+            "Occultisme",
+            "Potions et remèdes",
+            "Résistance à la magie",
+            "Se cacher"
+        ],
+        talents: [
+            "Calme/Coup surnaturel",
+            "Compagnon animal/Dévoué serviteur",
+            "Doué (CNS)/Doué (VOL)",
+            "Esprit gardien",
+            "Magie contrôlée/Magie destructrice",
+            "Magie sanglante",
+            "Magie invisible",
+            "Magie innée",
+            "Nyctalopie",
+            "Sort fétiche"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une amulette",
+            "une bague gravée de symboles occultes/une baguette de bois gravée de symboles occultes"
+        ]
+    },
+
+    // 12 : Parias et miséreux          (88-95)
+
+    {
+        name: "Chiffonier",
+        skills: [
+            "Arme légère (au choix)",
+            "Faire pitié",
+            "Fouille",
+            "Milieu naturel (au choix)",
+            "Pugilat",
+            "Renseignements",
+            "Repérage",
+            "Résistance aux privations",
+            "Résistance aux maladies",
+            "Se cacher"
+        ],
+        talents: [
+            "Bagarre",
+            "Compagnon animal",
+            "Doué (END)",
+            "Doué (PER)",
+            "Doué (SUR)",
+            "Inoffensif",
+            "Instinct de survie",
+            "Nyctalopie/Sauvegarde",
+            "Second souffle",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "une carriole",
+            "trois besaces contenant divers objets trouvés dans les ordures"
+        ]
+    },
+    {
+        name: "Mendiant",
+        skills: [
+            "Arme de mêlée légère (au choix)",
+            "Déplacement silencieux",
+            "Faire pitié",
+            "Fouille",
+            "Persuasion",
+            "Pugilat",
+            "Renseignements",
+            "Repérage",
+            "Résistance aux maladies",
+            "Résistance aux privations/Se cacher"
+        ],
+        talents: [
+            "Compagnon animal",
+            "Coup en traître",
+            "Distraction",
+            "Doué (DIS)",
+            "Doué (END)",
+            "Doué (PER)",
+            "Inoffensif",
+            "Insaisissable",
+            "Instinct de survie/Réflexes éclairs",
+            "Nyctalopie"
+        ],
+        armor: [],
+        weapons: [
+            "bâton (RU+*FOR*-2)"
+        ],
+        inventory: [
+            "une sébile"
+        ]
+    },
+    {
+        name: "Égoutier",
+        skills: [
+            "Arme légère (au choix)",
+            "Contorsion",
+            "Courage",
+            "Déplacement silencieux",
+            "Écoute",
+            "Escalade",
+            "Natation",
+            "Orientation/Vigilance",
+            "Repérage",
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Combat au sol/Sauvegarde",
+            "Compagnon animal",
+            "Doué (END)",
+            "Doué (SUR)",
+            "Doué (VOL)",
+            "Esquive",
+            "Instinct de survie",
+            "Nyctalopie",
+            "Solidité"
+        ],
+        armor: [
+            `${batons}`
+        ],
+        weapons: [],
+        inventory: [
+            "une lanterne",
+            "une corde de 10 mètres",
+            "une étoffe pour le nez",
+            "des hautes bottes de cuir souple"
+        ]
+    },
+    {
+        name: "Prostitué",
+        skills: [
+            "Charme",
+            "Contorsion",
+            "Danse",
+            "Écoute",
+            "Renseignements",
+            "Repérage",
+            "Résistance aux maladies",
+            "Résistance aux privations",
+            "Se cacher",
+            "Sexualité"
+        ],
+        talents: [
+            "Calme",
+            "Distraction",
+            "Doué (DIS)",
+            "Doué (END)",
+            "Doué (SOC)",
+            "Fascination",
+            "Mensonge éhonté",
+            "Provocation",
+            "Relations",
+            "Résilience"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "des habits affriolants",
+            "un nécessaire à maquillage",
+            "une fiole de parfum à moitié vide"
+        ]
+    },
+    {
+        name: "Ratier",
+        skills: [
+            "Animaux",
+            "Arme de mêlée (légère au choix)",
+            "Contorsion",
+            "Déplacement silencieux",
+            "Écoute",
+            "Pièges",
+            "Pistage",
+            "Repérage",
+            "Résistance aux maladies",
+            "Résistance aux poisons"
+        ],
+        talents: [
+            "Calme",
+            "Combat au sol",
+            "Compagnon animal",
+            "Coup du prédateur",
+            "Doué (END)",
+            "Doué (PER)",
+            "Doué (SUR)",
+            "Instinct de survie",
+            "Nyctalopie",
+            "Second souffle"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemeleelegere}`
+        ],
+        inventory: [
+            "perche où sont cloués 1d10 rats",
+            "lanterne",
+            "corde de 10 mètres",
+            "chien petit mais vicieux/deux chats dressés",
+            "sifflet en terre cuite",
+            "boulettes de pain empoisonnées"
+        ]
+    },
+    {
+        name: "Trafiquant de cadavres",
+        skills: [
+            "Arme de mêlée (au choix)",
+            "Déplacement silencieux",
+            "Légendes",
+            "Premiers soins",
+            "Repérage",
+            "Résistance à la magie",
+            "Résistance aux maladies",
+            "Résistance aux poisons",
+            "Se cacher",
+            "Travaux de force"
+        ],
+        talents: [
+            "Calme",
+            "Combat au sol",
+            "Coup en traître",
+            "Doué (DIS)",
+            "Doué (END)",
+            "Doué (VOL)",
+            "Nyctalopie",
+            "Résilience",
+            "Second souffle",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemeleelegere}`
+        ],
+        inventory: [
+            "pèlerine sombre",
+            "gants",
+            "étoffe cache-nez",
+            "pelle",
+            "carriole"
+        ]
+    },
+    {
+        name: "Rebouteux",
+        skills: [
+            `${domaineMagique}`,
+            "Animaux",
+            "Botanique",
+            "Légendes",
+            "Milieu naturel (au choix)",
+            "Potions et remèdes",
+            "Poisons",
+            "Premiers soins",
+            "Résistance aux maladies",
+            "Se cacher"
+        ],
+        talents: [
+            "Calme",
+            "Doué (END)",
+            "Doué (SUR)",
+            "Esprit gardien/Instinct de survie",
+            "Guérison rapide",
+            "Mains blanches",
+            "Magie contrôlée",
+            "Magie invisible",
+            "Magie sanglante",
+            "Nyctalopie"
+        ],
+        armor: [],
+        weapons: [
+            "bâton de marche"
+        ],
+        inventory: [
+            "besace contenant poudres, onguents et ingrédients étranges"
+        ]
+    },
+    {
+        name: "Vagabond",
+        skills: [
+            "Arme de mêlée (au choix)",
+            "Arme de tir (au choix)",
+            "Course",
+            "Escalade",
+            "Milieu naturel (au choix)",
+            "Natation",
+            "Orientation",
+            "Repérage",
+            "Résistance aux privations",
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Calme",
+            "Chance insolente",
+            "Compagnon animal",
+            "Distraction/Esquive",
+            "Doué (END)/Doué (SUR)",
+            "Festoyeur",
+            "Guérison rapide",
+            "Instinct de survie",
+            "Nyctalopie",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemeleelegere}`
+        ],
+        inventory: [
+            "un bâton de marche"
+        ]
+    },
+
+    // 13 : Religieux et prêtres        (96-103)
+
+    {
+        name: "Chasseur de mages/Purgiste",
+        skills: [
+            `${domaineReligion}`,
+            "Arme de mêlée ou Arme à distance (au choix)",
+            "Équitation",
+            "Occultisme",
+            "Persuasion",
+            "Religion",
+            "Renseignements",
+            "Repérage",
+            "Résistance à la magie",
+            "Torture"
+        ],
+        talents: [
+            "Calme",
+            "Coup surnaturel",
+            "Résistance magique",
+            "Doué (PER)",
+            "Doué (VOL)",
+            "Esprit gardien",
+            "Magie contrôlée",
+            "Mémoire sans faille/Sain d'esprit",
+            "Solidité",
+            "Souffle de vie"
+        ],
+        armor: [
+            `${armureslegeres}`
+        ],
+        weapons: [
+            `${armesdemelee}`,
+            `${armesadistance}`,
+        ],
+        inventory: [
+            "livre saint",
+            "cheval avec selle et harnais",
+            "torche",
+            "corde de dix mètres"
+        ]
+    },
+    {
+        name: "Fanatique",
+        skills: [
+            "Arme de mêlée (au choix)",
+            "Courage",
+            "Discours",
+            "Occultisme",
+            "Persuasion",
+            "Premiers soins",
+            "Pugilat",
+            "Religion",
+            "Résistance aux privations",
+            "Résistance à la magie"
+        ],
+        talents: [
+            "Bagarre/Calme",
+            "Coups puissants",
+            "Cri de guerre",
+            "Doué (END)",
+            "Doué (VOL)",
+            "Gardien",
+            "Inspiration",
+            "Résilience",
+            "Sauvegarde",
+            "Solidité"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemeleelegere}`
+        ],
+        inventory: [
+            "un livre saint",
+            "une torche ou un tambourin"
+        ]
+    },
+    {
+        name: "Druide",
+        skills: [
+            "Domaine magique (animalisme)",
+            `${domaineElementaire}`,
+            "Animaux",
+            "Botanique",
+            "Légendes",
+            "Milieu naturel (au choix)",
+            "Orientation/Pistage",
+            "Potions et remèdes",
+            "Résistance aux maladies",
+            "Résistance aux poisons"
+        ],
+        talents: [
+            "Calme",
+            "Compagnon animal",
+            "Coup du prédateur/Coup surnaturel",
+            "Doué (SUR)/Doué (VOL)",
+            "Fascination",
+            "Instinct de survie",
+            "Magie innée",
+            "Magie sanglante",
+            "Solidité",
+            "Sort fétiche"
+        ],
+        armor: [],
+        weapons: [
+            "serpe bien aiguisée (RU+*FOR*-1)/couteau bien aiguisé (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "bâton orné d'une tête d'animal sculptée",
+            "fourrure",
+            "nécessaire anti-poison"
+        ]
+    },
+    {
+        name: "Moine/Nonne",
+        skills: [
+            "Arts",
+            "Astrologie",
+            "Botanique",
+            "Histoire",
+            "Lettres",
+            "Potions et remèdes",
+            "Premiers soins",
+            "Religion",
+            "Résistance aux maladies",
+            "Travail d'un matériau (au choix)"
+        ],
+        talents: [
+            "Calme",
+            "Doué (CNS)",
+            "Doué (HAB)",
+            "Doué (VOL)",
+            "Mains blanches",
+            "Mémoire sans faille",
+            "Polyglotte/Sain d'esprit",
+            "Sommeil léger",
+            "Résistance magique",
+            "Second souffle"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "livre saint",
+            "livre sur un domaine précis (Histoire, Religion, Botanique…)",
+            "deux mains de papier (20 pages)",
+            "deux plumes et encrier",
+            "1d10 bougies",
+            "plantes médicinales/mule"
+        ]
+    },
+    {
+        name: "Initié",
+        skills: [
+            `${domaineReligion}`,
+            `${domaineReligion}`,
+            "Courage",
+            "Diplomatie",
+            "Histoire/Légendes",
+            "Lettres/Persuasion",
+            "Premiers soins",
+            "Religion",
+            "Résistance à la magie",
+            "Résistance aux maladies"
+        ],
+        talents: [
+            "Calme",
+            "Doué (CNS)/Doué (VOL)",
+            "Esprit gardien",
+            "Mains blanches",
+            "Magie innée",
+            "Polyglotte",
+            "Résilience",
+            "Résistance magique",
+            "Sain d'esprit",
+            "Sort fétiche/Souffle de vie"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "livre saint",
+            "une main de papier (20 pages)",
+            "une plume et un encrier",
+            "1d10 bougies"
+        ]
+    },
+    {
+        name: "Prêcheur/Missionnaire",
+        skills: [
+            "Charme",
+            "Discours",
+            "Écoute",
+            "Intuition",
+            "Lettres",
+            "Noblesse et politique",
+            "Persuasion",
+            "Renseignements",
+            "Religion",
+            "Se cacher"
+        ],
+        talents: [
+            "Calme",
+            "Chance insolente/Mensonge éhonté",
+            "Dévoué serviteur",
+            "Doué (CNS)",
+            "Doué (SOC)",
+            "Doué (VOL)",
+            "Fascination",
+            "Inoffensif",
+            "Inspiration",
+            "Polyglotte"
+        ],
+        armor: [],
+        weapons: [],
+        inventory: [
+            "trois livres saints",
+            "une main de papier (20 pages)",
+            "une plume et un encrier"
+        ]
+    },
+    {
+        name: "Inquisiteur",
+        skills: [
+            `${domaineReligion}`,
+            "Arme de mêlée (au choix)",
+            "Courage",
+            "Intimidation",
+            "Intuition",
+            "Occultisme/Persuasion",
+            "Religion",
+            "Repérage",
+            "Renseignements",
+            "Torture"
+        ],
+        talents: [
+            "Calme",
+            "Coups puissants",
+            "Doué (CNS)/Doué (VOL)",
+            "Esprit gardien",
+            "Magie innée",
+            "Résilience",
+            "Résistance magique",
+            "Sain d'esprit",
+            "Solidité",
+            "Souffle de vie"
+        ],
+        armor: [],
+        weapons: [
+            `${armesdemeleesimples}`
+        ],
+        inventory: [
+            "livre saint",
+            "main de papier (20 pages)",
+            "plume et encrier",
+            "1d10 bougies"
+        ]
+    },
+    {
+        name: "Templier/Chevalier d'Abel",
+        skills: [
+            "Arme lourde (au choix)",
+            "Arme de mêlée (au choix)",
+            "Courage",
+            "Diplomatie",
+            "Équitation",
+            "Lettres/Repérage",
+            "Premiers soins",
+            "Religion",
+            "Résistance à la magie",
+            "Stratégie"
+        ],
+        talents: [
+            "Calme",
+            "Coups puissants/Tireur d'élite",
+            "Coup surnaturel",
+            "Doué (END)",
+            "Doué (VOL)",
+            "Gardien",
+            "Maîtrise du bouclier",
+            "Maître d'armes/Port d'armure",
+            "Résilience",
+            "Solidité/Souffle de vie"
+        ],
+        armor: [
+            `${armuresmoyennes}/${armureslourdes}`
+        ],
+        weapons: [
+            `${armesdemelee}`,
+            `${armesdemelee}`,
+            `${boucliers}/arc (RU+*FOR*+0) et 10 flèches`
+        ],
+        inventory: [
+            "livre saint",
+            "un cheval avec sa selle et son harnais",
+            "une lanterne"
+        ]
+    }
+
+
+
+]
+

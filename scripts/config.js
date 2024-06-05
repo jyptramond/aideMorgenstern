@@ -467,7 +467,6 @@ const carrieres = [
 
 
 
-
 const metiers = [
 
     // 1 : Agents et domestiques        (0-7)

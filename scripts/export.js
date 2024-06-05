@@ -14,11 +14,11 @@ export function changeScreenRatio() {
 
         if (fullWindow.classList.contains("phoneRatio")) {
             fullWindow.classList.remove("phoneRatio");
-            this.innerHTML = `<i class="fa-solid fa-mobile-screen is-bigger">`
+            this.innerHTML = `<i class="fa-solid fa-mobile-screen button-size">`
         }
         else {
             fullWindow.classList.add("phoneRatio") ;
-            this.innerHTML = `<i class="fa-solid fa-display is-bigger">`
+            this.innerHTML = `<i class="fa-solid fa-display button-size">`
         }
     });
 }
