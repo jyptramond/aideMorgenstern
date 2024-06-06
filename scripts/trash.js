@@ -71,3 +71,37 @@ position = finalStr.indexOf("£")
         }
 
     // Finalement on retourne la valeur modifiée
+
+
+
+
+
+
+
+
+
+
+
+
+
+    for (let i = 0 ; i < keys.length ; i++) {
+        if (correctingCombat > 0) {
+            // chaque point prélevé en COM compte double
+            // si les points prélevés en COM sont sup. à 0 ET que COM est inférieure à MAG
+            if (profile[0] > 0 && character.stats.mag.value > profile[0]) {
+            
+                    // DEBUG : console.log("MAGIE/COMBAT init... tentative sur... "+y[i]+" : "+abrevCaracteristiques[y[i]]+" ---> vaut "+profilApprentissageMagie[y[i]])
+
+                    if (profile[y[i]] >= 5) {
+                        // DEBUG : console.log("correcteur -5 aux points prélevés à "+profilApprentissageMagie[y[i]]+" "+abrevCaracteristiques[y[i]])
+                        profile[y[i]] -= 5
+                        correctingCombat -= 5
+                    } 
+            }
+            // si les points prélevés en COM sont sup. à 0 et que la MAG est égale aux pts prélevés en COM
+            else if (profile[0] > 0 && character.stats.mag.value === profile[0]) {
+                    character.stats.mag.value += profile[0]
+                    correctingCombat = 0
+            }
+        }
+    }

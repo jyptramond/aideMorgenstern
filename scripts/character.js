@@ -33,24 +33,26 @@ function createCharacter() {
         getArchetype(character, config);
         getTraits(character);
         getJob(character, config);
-        getMagicRank(character)
-        getMagic(character);
 
+        getMagicStat(character);
+        magicImpact(character);
+
+        console.log(character);
         if (config.role !== 0) {
             getTitle(character);
         }
-
         getAbilities(character);
+        sortAbilities(character);
         getMainAttributes(character);
         getEquipment(character);
 
         // étapes supplémentaires si le PJ pratique la magie
         if (character.stats.mag.value > 0) {
-            let tricksbook = getSpellbook(toursDeMagie);
-            let spellsbook = getSpellbook(sortileges);
+            let listOfTricks = getBook(character, tricks);
+            let listOfSpells = getBook(character, spells);
             //afficherGrimoire()
-            getTricks(character, tricksbook)
-            getSpells(character, spellsbook)
+            getPowers(character, character.tricks, listOfTricks)
+            getPowers(character, character.spells, listOfSpells)
         } 
 
         return character
@@ -119,6 +121,11 @@ function getRace(character, config) {
     }
 
     character.race = origine[character.raceID][0];
+}
+
+
+function sortAbilities(character) {
+    character.abilities.sort((a, b) => b - a);
 }
 
 
@@ -623,19 +630,19 @@ function getFromList(character, id, stuff) {
 function getAbilities(character) {
 
     character.abilitiesSum = indice(character.stats.cns.value)-1
-    let isWizard = checkMagic(character);
+    let isWizard = checkWizardry(character);
 
         // si le PJ a un score de magie positif...
         if (character.stats.mag.value > 0 ) {
             
-            getAbilitiesWizard(isWizard, character);   
+            becomingWizard(character, isWizard);   
             
         }
         else {
             // SI LE PJ N'EST PAS UN MAGE !
             // remplit un tableau avec les 20 atouts possibles        
 
-            let abilities = getAbilitiesFromData(character) ;
+            let abilities = getAbilitiesArray(character, 0) ;
 
             for (let i = 0 ; i < character.abilitiesSum ; i++) {
                 character.abilities.push(stringrandom(abilities[i]))
@@ -644,7 +651,8 @@ function getAbilities(character) {
         }
 }
 
-function getAbilitiesFromData(character) {
+        // omet les atouts magiques puisqu'ils sont ajoutés différements
+function getAbilitiesArray(character) {
 
     let abilities = []
 
@@ -653,13 +661,18 @@ function getAbilitiesFromData(character) {
     }
 
     for (let talent of jobs[character.jobID].talents) {
-        abilities.push(talent);
+        if (talent.indexOf('Domaine magique') === -1) {
+            abilities.push(talent);
+        }
     }
 
     shuffle(abilities)
 
     return abilities
 }
+
+
+
 
 function getMainAttributes(character) {
 

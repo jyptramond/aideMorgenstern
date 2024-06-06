@@ -76,20 +76,18 @@ function displayStatInfo(property, name) {
 
 function displayMagic(character) {
 
-    if (valeurMagie >= 10) {
         // afficher le grimoire de tours de magie
-        for (i = 0 ; i < grimTours.length ; i++) {
-            let nouveauTours = document.createElement("li")
-            nouveauTours.textContent = character.tricks[i]
-            document.getElementById("tricks-list").appendChild(nouveauTours)
+        for (i = 0 ; i < character.tricks.length ; i++) {
+            let newTricks = document.createElement("li")
+            newTricks.textContent = character.tricks[i].name
+            document.getElementById("tricks-list").appendChild(newTricks)
         }
-        for (i = 0 ; i < grimSortileges.length ; i++) {
-            let nouveauSorts = document.createElement("li")
-            nouveauSorts.innerHTML = replaceIco(character.spells[i]);
-            document.getElementById("spells-list").appendChild(nouveauSorts)
+        for (i = 0 ; i < character.spells.length ; i++) {
+            let newSpells = document.createElement("li")
+            newSpells.innerHTML = replaceIco(character.spells[i].name);
+            document.getElementById("spells-list").appendChild(newSpells)
         }
-        }
-    
+
     // afficher la magie
     let baliseMagie = document.getElementsByClassName("magie")
 
@@ -141,11 +139,11 @@ function recapCharacteristics(character) {
         document.getElementById("COMP").innerHTML =     `((${character.sum.race}+
                                                         ${character.sum.roll}+
                                                         ${character.sum.archetype})-
-                                                        (${character.magic.value}-
-                                                        ${comDecrease}))
-                                                        +${character.magic.value}=
+                                                        (${character.stats.mag.value}-
+                                                        ${character.sum.comDecrease}))
+                                                        +${character.stats.mag.value}=
                                                         ${character.sum.resultBis}+
-                                                        ${character.magic.value}
+                                                        ${character.stats.mag.value}
                                                         (${character.sum.final})`
     }
     else {

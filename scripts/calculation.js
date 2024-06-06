@@ -169,6 +169,20 @@ function stringrandom(str) {
     }
 
 
+
+    function extractDomain(str) {
+        let start = str.indexOf('(');
+        let end = str.indexOf(')');
+        
+        // Vérifie si les parenthèses ont été trouvées
+        if (start !== -1 && end !== -1 && start < end) {
+            return str.slice(start + 1, end);
+        }
+        // Retourne null si les parenthèses ne sont pas trouvées ou dans le mauvais ordre
+        return null;
+    }
+
+
 /**
  * Retirer les doublons d'un array
  * 
