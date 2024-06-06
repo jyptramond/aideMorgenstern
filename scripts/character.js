@@ -10,23 +10,38 @@
  * 
  */
 
+
+function initConfig() {
+    let config = {
+        name: 0,
+        race: 0,
+        archetype: 0,
+        group: 0,
+        job: 0,
+        mode: 0,
+        role: 0
+    } 
+
+    getConfig(config);
+
+    return config
+}
+
 function createCharacter() {
             
-        // fonction de redondance pour être sûr que tout est vierge à la création d'un personnage
-        initCharacter();
-        resetCharacter();
+        let config = initConfig();
+        let character = initCharacter();
 
-        // -1 pour aléatoire (archétype, métiers, peuple)
-        getRace(configPeuple);
-        getFate(configPeuple);
-        getSecondaryAttributes(configPeuple);
-        getName(configPrenom);
-        getAge();
+        getRace(character, config);
+        getFate(character);
+        getSecondaryAttributes(character);
+        getName(character, config);
+        getAge(character);
 
         //genererCompetences();
         switch (configMode) {
             case 0:
-                genererCompetences();
+                getCharacteristics(character);
                 break;
             case 1:
                 genererCompetencesTirage(configMode);
@@ -36,139 +51,31 @@ function createCharacter() {
                 break;
         }
 
-        getArchetype(configArchetype);
-        getJob(configGroupe, configCarriere);
-        getMagicRank()
-        getMagic();
+        getArchetype(character, config);
+        getJob(character, config);
+        getMagicRank(character)
+        getMagic(character);
 
         if (configRole !== 0) {
-            getPrestigiousTitle();
+            getPrestigiousTitle(character);
         }
 
-        getAbilities();
-        getMainAttributes();
-        getEquipment();
+        getAbilities(character);
+        getMainAttributes(character);
+        getEquipment(character);
 
         // étapes supplémentaires si le PJ pratique la magie
-        if (valeurMagie > 0) {
-            grimoireToursDeMagie = getSpellbook(toursDeMagie);
-            grimoireSortilege = getSpellbook(sortileges);
+        if (character.stats.mag.value > 0) {
+            let tricksbook = getSpellbook(toursDeMagie);
+            let spellsbook = getSpellbook(sortileges);
             //afficherGrimoire()
-            getTricks()
-            getSpells()
+            getTricks(character, tricksbook)
+            getSpells(character, spellsbook)
         } 
+
+        return character
 }
 
-
-
-
-/**
- * Cette fonction permet de générer des spécialistes, des champions, des héros mineurs et des héros majeurs
- * 
- */
-
-function getPrestigiousTitle() {
-
-let x = 0
-
-    if (configRole === 1) {
-        increaseSpecialist(5, "spec.")
-    }
-
-    if (configRole === 2) {
-        increaseFightStats(10, "champ.");
-        increaseOtherStats(1,10, "champ.")
-    }
-
-    if (configRole === 3) {
-        increaseFightStats(20, "héros min.");
-        increaseOtherStats(2,20, "héros min.")
-    }
-
-    if (configRole === 4) {
-        increaseFightStats(30,  "héros maj.");
-        increaseOtherStats(3,30,  "héros maj.")
-    }
-}
-
-
-function increaseSpecialist(howMuch, who) {
-    if (valeurMagie <= 10) { 
-        x = aleatoire(2)
-        if (x === 1) {
-            valeursCaracteristiques[0] += howMuch
-            modifCaracteristiques[0][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
-        } else {
-            valeursCaracteristiques[10] += howMuch
-            modifCaracteristiques[10][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
-        }
-    } else {
-        valeurMagie += howMuch
-        modifCaracteristiques[12][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
-    }
-
-    do {
-        x = aleatoire(valeursCaracteristiques.length)
-    } while (x === 0 || x === 10)
-    
-    valeursCaracteristiques[x] += howMuch*2
-    modifCaracteristiques[x][2] = `${who} (<span class="is-green strong">+${howMuch*2}</span>)`
-}
-
-
-function increaseFightStats(howMuch, who) {
-    if (valeurMagie <= 10) {
-        valeursCaracteristiques[0] += howMuch
-        modifCaracteristiques[0][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
-        valeursCaracteristiques[3] += howMuch
-        modifCaracteristiques[3][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-        valeursCaracteristiques[4] += howMuch
-        modifCaracteristiques[4][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-        valeursCaracteristiques[10] += howMuch
-        modifCaracteristiques[10][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-    } else {
-        valeurMagie += howMuch
-        modifCaracteristiques[12][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-        valeursCaracteristiques[1] += howMuch
-        modifCaracteristiques[1][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-        valeursCaracteristiques[11] += howMuch
-        modifCaracteristiques[11][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-    }
-}
-
-
-function increaseOtherStats(howMany, howMuch, who) {
-
-    let x = 0
-    let y = 0
-    let z = 0
-
-    if (valeurMagie >= 10) {
-        do {
-            x = aleatoire(valeursCaracteristiques.length)
-            y = aleatoire(valeursCaracteristiques.length)
-            z = aleatoire(valeursCaracteristiques.length)
-        } while (x === 1 || x === 11 || y === 1 || y === 11 || z === 1 || z === 11 ||x === y || y === z || z === x)
-    } else {
-        do {
-            x = aleatoire(valeursCaracteristiques.length)
-            y = aleatoire(valeursCaracteristiques.length)
-            z = aleatoire(valeursCaracteristiques.length)
-        } while (x === 0 || x === 3 || x === 4 || x === 10 || y === 0 || y === 3 || y === 4 || y === 10 || z === 0 || z === 3 || z === 4 || z === 10 || x === y || y === z || z === x)
-    }
-
-    valeursCaracteristiques[x] += howMuch
-    modifCaracteristiques[x][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-
-    if (howMany > 1) {
-        valeursCaracteristiques[y] += howMuch
-        modifCaracteristiques[y][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-    }
-    if (howMany > 2) {
-        valeursCaracteristiques[z] += howMuch
-        modifCaracteristiques[z][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-    }
-}
 
 
 /**
@@ -179,10 +86,10 @@ function increaseOtherStats(howMany, howMuch, who) {
  *  
  */
 
-function getRace(peuple) {
+function getRace(character, config) {
 
     // tirage du peuple
-    if (peuple === -2) {
+    if (config.race === -2) {
     let y = aleatoire(100)+1
 
     // sélectionne un peuple selon la répartition statistique des peuples
@@ -191,103 +98,106 @@ function getRace(peuple) {
 
                 switch (i) {
                     case 0 : 
-                        peuple = 0
+                        character.raceID = 0;
                         break ;
                     case 1 : 
-                        peuple = 3
+                        character.raceID = 3;
                         break ;
                     case 2 : 
-                        peuple = 4
+                        character.raceID = 4;
                         break ;
                     case 3 : 
-                        peuple = 5
+                        character.raceID = 5;
                         break ;
                     case 4 : 
-                        peuple = 7
+                        character.raceID = 7;
                         break ;
                     case 5 : 
-                        peuple = 8
+                        character.raceID = 8;
                         break ;
                     case 6 : 
-                        peuple = 6
+                        character.raceID = 9;
                         break ;
                     case 7 : 
-                        peuple = 2
+                        character.raceID = 2;
                         break ;
                     case 8 : 
-                        peuple = 1
+                        character.raceID = 1;
                         break ;
                 }
             }
         }
     }
 
-    if (peuple === -1) {
+    if (config.race === -1) {
         let y = aleatoire(origine.length)
-        peuple = y
+        character.raceID = y
     }
 
-    attributsPrincipaux[6] = peuple
-    attributsPrincipaux[1] = origine[peuple][0]
+    if (config.race >= 0) {
+        character.raceID = config.race
+    }
+
+    character.race = origine[character.raceID][0];
 }
 
 
 
-function getFate(peuple) {
+function getFate(character) {
         // le destin
-        if (peuple === 0 || peuple === 3) {
-            attributsSecondaires[5][1] = 3 ;
+        if (character.race === 0 || character.race === 3) {
+           character.fate = 3 ;
         } else {
-            attributsSecondaires[5][1] = 2 ;
+           character.fate = 2 ;
         }
 }
 
-function getSecondaryAttributes(peuple) {
+function getSecondaryAttributes(character) {
 
-    switch (peuple) {
+    switch (character.race) {
 
         case 0 :    //humain
             break ;
 
         case 1 :    //elfe
-            attributsSecondaires[6][1] = "Nyctalopie"
+            character.special = "Nyctalopie"
             break ;
 
         case 2 :    //nain
-            attributsSecondaires[1][1] += 1 // PV 
-            attributsSecondaires[3][1] += 1 // SF 
-            attributsSecondaires[6][1] = "PV+1, SF+1"
-            attributsSecondaires[1][3] = 1 // PV add.
-            attributsSecondaires[3][3] = 1 // SF add.
+            character.pv.sum += 1 // PV 
+            character.sf.sum += 1 // SF 
+            character.special = "PV+1, SF+1"
+            character.pv.bonus = 1 // PV add.
+            character.sf.bonus = 1 // SF add.
             break ;
 
         case 3 :    //halfelin
             break ;
             
         case 4 :    //elvin
-            attributsSecondaires[6][1] = "Nyctalopie"
+            character.special = "Nyctalopie"
             break ;
 
         case 5 :    //hudvàr
-            attributsSecondaires[1][1] += 1 // PV
-            attributsSecondaires[3][1] += 1 // SF
-            attributsSecondaires[6][1] = "PV+1, SF+1"
-            attributsSecondaires[1][3] = 1 // PV add.
-            attributsSecondaires[3][3] = 1 // SF add.
+            character.pv.sum += 1 // PV
+            character.sf.sum += 1 // SF
+            character.special = "PV+1, SF+1"
+            character.pv.bonus = 1 // PV add.
+            character.sf.bonus = 1 // SF add.
             break ;
 
         case 6 :    //ogrin
-            attributsSecondaires[6][1] = `PV+2,<br>Rés. aux maladies`
-            attributsSecondaires[3][1] += 2 // SF : idem
-            attributsSecondaires[1][3] = 2 // PV add.
+            character.special = `PV+2,<br>Rés. aux maladies`
+            character.pv.sum += 2 // SF : idem
+            character.pv.bonus = 2 // PV add.
             break ;
 
         case 7 :    //orquin
-            attributsSecondaires[6][1] = `Nyctalopie,<br>Rés. aux maladies`
+            character.special = `Nyctalopie,<br>Rés. aux maladies`
             break ;
 
         case 8 :    //morvelin
-            attributsSecondaires[6][1] = `Nyctalopie,<br>Rés. aux maladies`
+            character.special = `Nyctalopie,<br>Rés. aux maladies`
             break ;
     }
 }
@@ -297,9 +207,9 @@ function getSecondaryAttributes(peuple) {
  * 
  */
 
-function getName(p) {
+function getName(character, config) {
 
-    if (p === -1) {
+    if (config.name === -1) {
             // choix d'une liste de prénoms
         let x = aleatoire(prenoms.length)
             // choix du masculin ou féminin
@@ -307,13 +217,13 @@ function getName(p) {
             // choix du prénom
         let i = aleatoire(prenoms[x][y].length)
     
-        attributsPrincipaux[0] = prenoms[x][y][i]
+        character.name = prenoms[x][y][i]
     }
 
     // choix aléatoire en fonction du peuple
-    if (p === -2) {
+    if (config.name === -2) {
 
-        switch (attributsPrincipaux[6]) {
+        switch (character.race) {
             case 1: 
                 x = 10;
                 break;
@@ -341,17 +251,17 @@ function getName(p) {
         // choix du prénom
     let i = aleatoire(prenoms[x][y].length)
 
-    attributsPrincipaux[0] = prenoms[x][y][i]
+    character.name = prenoms[x][y][i]
     }
 
 
-    if (p >= 0) {
+    if (config.name >= 0) {
             // choix du masculin ou féminin
         let y = aleatoire(prenoms[p].length)
             // choix du prénom
         let i = aleatoire(prenoms[p][y].length)
         
-        attributsPrincipaux[0] = prenoms[p][y][i]
+        character.name = prenoms[p][y][i]
     }
 }
 
@@ -362,50 +272,49 @@ function getName(p) {
  *
  */
 
-function getAge() {
+function getAge(character) {
 
     // attributsPrincipaux[3] = age
 
-    switch (attributsPrincipaux[6]) {
+    switch (character.race) {
         case 0 :
             //humain
-            attributsPrincipaux[3] = aleatoire(33)+12
+            character.age = aleatoire(33)+12
             break ;
         case 1 :
             //elfe
-            attributsPrincipaux[3] = aleatoire(288)+12
+            character.age = aleatoire(288)+12
             break ;
         case 2 :
             //nain
-            attributsPrincipaux[3] = aleatoire(88)+12
+            character.age = aleatoire(88)+12
             break ;
         case 3 :
             //halfelin
-            attributsPrincipaux[3] = aleatoire(68)+12
+            character.age = aleatoire(68)+12
             break ;
         case 4 :
             //elvin
-            attributsPrincipaux[3] = aleatoire(48)+12
+            character.age = aleatoire(48)+12
             break ;
         case 5 :
             //hudvàr
-            attributsPrincipaux[3] = aleatoire(58)+12
+            character.age = aleatoire(58)+12
             break ;
         case 6 :
             //ogrin
-            attributsPrincipaux[3] = aleatoire(28)+12
+            character.age = aleatoire(28)+12
             break ;
         case 7 :
             //orquin
-            attributsPrincipaux[3] = aleatoire(28)+12
+            character.age = aleatoire(28)+12
             break ;
         case 8 :
             //orquin
-            attributsPrincipaux[3] = aleatoire(38)+12
+            character.age = aleatoire(38)+12
             break ;
         
     }
-
 }
 
 
@@ -418,92 +327,64 @@ function getAge() {
  *
  */
 
-function genererCompetences() {
+function getCharacteristics(character) {
 
-let sommeCaracteristiques = 0
+let sum = 0
+let characteristics = []
 let pool = 120
 let y = 0 // le tableau des caractéristiques    
 let i = 0
 
 
+    // pour chaque caractéristique on attribue une valeur aléatoire (0, 5, 10, 15 ou 20)
+    for (i = 0; i < 12; i++) {
 
-        // pour chaque caractéristique on attribue une valeur aléatoire (0, 5, 10, 15 ou 20)
-        for (i = 0; i < 12; i++) {
-
-                // s'il reste plus de 20 points dans la pool on tire un nombre aléatoire
-                if (pool >= 20) { 
-                    y = (aleatoire(5))*5; 
-                } 
-                // sinon on met juste le reste dans la caractéristique en cours
-                else {  
-                    y = pool  
-                }
-        
-            valeursCaracteristiques[i] = y       
-            // puis on diminue la pool d'un chiffre équivalent 
-            pool -= y 
+        // s'il reste plus de 20 points dans la pool on tire un nombre aléatoire
+        if (pool >= 20) { 
+            y = (aleatoire(5))*5; 
+        } 
+        // sinon on met juste le reste dans la caractéristique en cours
+        else {  
+            y = pool  
         }
 
-
-        for (i = 0; i < 12 ; i++) {
-            sommeCaracteristiques += valeursCaracteristiques[i];
-          }
-
-        // si la somme des caractéristiques n'est pas égale à 120, on lance une nouvelle création
-        if (sommeCaracteristiques !== 120) {
-            genererCompetences()
-        } else {
-            
-            shuffle(valeursCaracteristiques)
-
-            for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
-                attributsSecondaires[10][6] += valeursCaracteristiques[i]
-            }
-            
-            for (i = 0; i < valeursCaracteristiques.length; i++) {
-                valeursCaracteristiques[i] += origine[attributsPrincipaux[6]][i+1] ;
-                attributsSecondaires[10][1] += valeursCaracteristiques[i]
-              }
+        characteristics[i] = y       
+        // puis on diminue la pool d'un chiffre équivalent 
+        pool -= y 
         }
+
+    for (i = 0; i < 12 ; i++) {
+        sum += characteristics[i];
+    }
+
+    // si la somme des caractéristiques n'est pas égale à 120, on lance une nouvelle création
+    if (sum !== 120) {
+        getCharacteristics(character)
+    } 
+    else 
+    {
+                
+    shuffle(characteristics)
+
+    for (i = 0 ; i < characteristics.length ; i++) {
+        character.sum.roll += characteristics[i]
+    }
+
+    for (i = 0; i < characteristics.length; i++) {
+        characteristics[i] += origine[character.raceID][i+1] ;
+        character.sum.base += characteristics[i]
+        }
+    }
+
+    i = 0;
+    for (let key in keys) {
+        if (character.stats.hasOwnProperty(key)) {
+            character.stats[key].value = characteristics[i];
+            i++;
+        }
+    }
 }
 
-
-
-/**
- * Générer les compétences du personnage
- * Un personnage dispose de 120 points à répartir parmi ses 12 caractéristiques (sans compter la magie)
- *
- */
-
-function genererCompetencesTirage(x) {
-
-    let y = 0 // le tableau des caractéristiques    
-    let i = 0
-
-            // pour chaque caractéristique on attribue une valeur égale à 2d10
-            for (i = 0; i < 12; i++) {
-
-                if (x === 1) {
-                    y = (lancerD10()+lancerD10()) 
-                } 
-                else if (x === 2) {
-                    y = aleatoire(5)*5
-                }
-
-                valeursCaracteristiques[i] = y  
-            }
-
-            for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
-                attributsSecondaires[10][6] += valeursCaracteristiques[i]
-            }
-
-            // on modifie les variables globales par rapport aux résultats
-            for (let i = 0; i < valeursCaracteristiques.length; i++) {
-                valeursCaracteristiques[i] += origine[attributsPrincipaux[6]][i+1] ;
-                attributsSecondaires[10][1] += valeursCaracteristiques[i]
-            }
-            
-    }
 
 
 
@@ -516,40 +397,50 @@ function genererCompetencesTirage(x) {
  *  
  */
 
-function getArchetype(i) {
+function getArchetype(character, config) {
 
-    if (i === -1) {
-        i = aleatoire(archetype.length)
+    let i = 0;
+
+    if (config.archetype === -1) {
+        character.archetypeID = aleatoire(newArchetype.length);
+        character.archetype = newArchetype[character.archetypeID].name;
     }
-
-let v = []
-let y = []
-
-    attributsPrincipaux[2] = archetype[i][0]
+    else {
+        character.archetype = newArchetype[config.archetype].name;
+        character.archetypeID = config.archetype;
+    }
 
     // applique les modificateurs de caractéristiques de l'archétype un par un
-    for (let x = 0 ; x < archetype[i][1].length ; x++) {
-        v[x] = stringrandom(archetype[i][1][x])
-        incrementerCaracteristiques(v[x])
+    for (i = 0 ; i < newArchetype[character.archetypeID].bonus.length ; i++) {
+
+        bonusArchetype(character, stringrandom(newArchetype[character.archetypeID].bonus[i]))
+
     }
 
-    // tire deux vices et vertus selon l'archétype. Si les deux sont identiques, il y a relance
-    while (y[0] === y[1]) {
 
-        // si il y a deux entrées vices et vertus dans le tableau
-        if (archetype[i][2][1]) {
-            y[0] = stringrandom(archetype[i][2][0])
-            y[1] = stringrandom(archetype[i][2][1])
-        }
-        // si il n'y en a qu'une seule
-        else {
-            y[0] = stringrandom(archetype[i][2][0])
-            y[1] = stringrandom(archetype[i][2][0])
-        }
-    }
+}
 
-    attributsPrincipaux[4] = y[0]
-    attributsPrincipaux[5] = y[1]
+
+function getTraits(character) {
+
+    let y = []
+        // tire deux vices et vertus selon l'archétype. Si les deux sont identiques, il y a relance
+        while (y[0] === y[1]) {
+
+            // si il y a deux entrées vices et vertus dans le tableau
+            if (archetype[i][2][1]) {
+                y[0] = stringrandom(archetype[i][2][0])
+                y[1] = stringrandom(archetype[i][2][1])
+            }
+            // si il n'y en a qu'une seule
+            else {
+                y[0] = stringrandom(archetype[i][2][0])
+                y[1] = stringrandom(archetype[i][2][0])
+            }
+        }
+    
+        character.traits[0] = y[0]
+        character.traits[1] = y[1]
 }
 
 
@@ -565,9 +456,9 @@ let y = []
  * 
  */
 
-function incrementerCaracteristiques(str) {
+function bonusArchetype(character, str) {
 
-let competence
+let characteristic
 let operateur
 let x   // valeur d'incrémentation/décrémentation
 let z
@@ -588,25 +479,29 @@ x = str.slice(z+1)
 
 // récupérer la caractéristiques
 
-competence = str.slice(0, z)
+characteristic = str.slice(0, z)
+
 
     for (let i = 0 ; i < nomsCaracteristiques.length ; i++) {
-        if (competence === abrevCaracteristiques[i]) {
+        if (characteristic === abrevCaracteristiques[i]) {
+
+            let property = findProperty(character, i)
+
             if (operateur === "+") {
                 //console.log(`la valeur de ${abrevCaracteristiques[i]} a été incrémenté de ${x}`)
-                valeursCaracteristiques[i] += Number(x)
-                modifCaracteristiques[i][0] = `archétype (<span class="is-green strong">+${x}</span>)`
-                attributsSecondaires[10][2] += Number(x)
+                property.value += Number(x)
+                property.archetype = `archétype (<span class="is-green strong">+${x}</span>)`
+                character.sum.archetype += Number(x)
             }
             else {
                 //console.log(`la valeur de ${abrevCaracteristiques[i]} a été décrémenté de ${x}`)
-                valeursCaracteristiques[i] -= Number(x) 
-                modifCaracteristiques[i][0] = `archétype (<span class="is-red strong">-${x}</span>)`
-                attributsSecondaires[10][2] -= Number(x)
+                property.value -= Number(x) 
+                property.archetype = `archétype (<span class="is-red strong">-${x}</span>)`
+                character.sum.archetype -= Number(x)
             }
         }}
 
-//console.log(competence, operateur, x)
+//console.log(characteristic, operateur, x)
 
 }
 
@@ -622,45 +517,46 @@ competence = str.slice(0, z)
  * 
  */
 
-function getJob(x, xx) {
+function getJob(character, config) {
     
     // si tout est aléatoire
-    if (x === -2 && xx === -1) {
+    if (config.group === -2 && config.job === -1) {
 
         let y = aleatoire(100)+1
 
         // sélectionne un métier selon la répartition statistique des métiers
-        for (let i = 0 ; i < repartitionMetiers[attributsPrincipaux[6]].length ; i++) {
+        for (let i = 0 ; i < repartitionMetiers[character.raceID].length ; i++) {
             
-            if (y >= repartitionMetiers[attributsPrincipaux[6]][i][0] && y <= repartitionMetiers[attributsPrincipaux[6]][i][1]) {
-                x = i ;
+            if (y >= repartitionMetiers[character.raceID][i][0] && y <= repartitionMetiers[character.raceID][i][1]) {
+                config.group = i ;
             }
         }
 
         // tirer un métier au hasard parmi la branche
-        xx = (aleatoire(8))+(8*(x))
+        config.job = (aleatoire(8))+(8*(x))
     }
 
-    if (x === -1 && xx === -1 ) {
-        x = aleatoire(carrieres.length)
-        xx = (aleatoire(8))+(8*(x))
+    if (config.group === -1 && xx === -1 ) {
+        config.group = aleatoire(carrieres.length)
+        config.job = (aleatoire(8))+(8*(config.group))
     }
 
    
     // si BRANCHE CHOISE && METIER ALEATOIRE
-    if (x >= 0 && xx === -1) {
-        xx = (aleatoire(8))+(8*(x))
+    if (config.group >= 0 && config.job === -1) {
+        config.job = (aleatoire(8))+(8*(config.group))
     }
 
     // si BRANCHE ALEATOIRE && METIER CHOISI
-    if (x < 0 && xx !== -1) {
-        x = Math.floor(xx/8)
+    if (config.group < 0 && config.job !== -1) {
+        config.group = Math.floor(config.job/8)
     }
 
     // afficher le métier
-    attributsSecondaires[7][1] = x
-    attributsSecondaires[8][1] = xx
- 
+    character.groupID = config.group;
+    character.group = groups[config.group].name;
+    character.jobID = config.job;
+    character.job = stringrandom(jobs[config.job].name);
 }
 
 
@@ -669,27 +565,21 @@ function getJob(x, xx) {
  * 
  */
 
-function getEquipment() {
+function getEquipment(character) {
 
-let i
-let x = 0
-    
-    for (i = 1 ; i < carrieres[attributsSecondaires[7][1]].length ; i++) {
+    for (let i = 0 ; i < groups[character.groupID].inventory.length ; i++) {
 
         //générer l'équipement de la branche de métiers
-        equipement[i] = faireCalcul(stringrandom(carrieres[attributsSecondaires[7][1]][i]))
-        x++
+        character.equipment.push(faireCalcul(character, stringrandom(groups[character.groupID].inventory[i])));
     }
 
-        x++
-
-    for (i = 21 ; i < metiers[attributsSecondaires[8][1]].length ; i++) {
+    i = 0;
+    for (i = 21 ; i < jobs[character.jobID].inventory.length ; i++) {
 
         //générer l'équipement additionnel du métier
-        equipement[x] = faireCalcul(stringrandom(metiers[attributsSecondaires[8][1]][i]))
+        character.equipment.push(faireCalcul(character, stringrandom(jobs[character.jobID].inventory[i])));
         x++
     }
-    equipement.splice(0,1)
 }
 
 
@@ -701,34 +591,39 @@ let x = 0
  * 
  */
 
-function getAbilities() {
+function getAbilities(character) {
 
-    attributsSecondaires[9][1] = indice(valeursCaracteristiques[1])-1
-    let i
-    let pjEstUnMage = checkMagic()
-    let x = []
+    character.abilitiesSum = indice(character.stats.cns.value)-1
+    let pjEstUnMage = checkMagic(character)
+    let array = [];
 
         // si le PJ a un score de magie positif...
-        if (valeurMagie > 0 ) {
+        if (character.stats.mag.value > 0 ) {
             // ... et suit une carrière de mage...
             if (pjEstUnMage) {
 
-                getAbilitiesWizard();
+                atouts = getAbilitiesWizard();
             } 
             else {
 
-                getAbilitiesNonWizard();   
+                atouts = getAbilitiesNonWizard();   
             } 
         }
         else {
             // SI LE PJ N'EST PAS UN MAGE !
             // remplit un tableau avec les 20 atouts possibles        
-            for (let i = 0 ; i < 20 ; i++) {
-                x[i] = metiers[attributsSecondaires[8][1]][i+1]
+
+            for (let skill of jobs[character.jobID].skills) {
+                array.push(skill);
             }
-            shuffle(x)
-            for (i = 0 ; i < attributsSecondaires[9][1] ; i++) {
-                atouts[i] = stringrandom(x[i])
+
+            for (let talent of jobs[character.jobID].talents) {
+                array.push(talent);
+            }
+
+            shuffle(array)
+            for (let i = 0 ; i < character.abilitiesSum ; i++) {
+                character.abilities.push(stringrandom(array[i]))
                 //console.log(atouts[i])
             } 
         }
@@ -750,11 +645,11 @@ let x = []
 
         // ... on génère une liste d'atouts qui omet les domaines magiques et...
     for (i = 2 ; i < 20 ; i++) {
-        x[i] = metiers[attributsSecondaires[8][1]][i+1]
+        x[i] = metiers[character.jobID][i+1]
     }
 
         // ... son premier atout est un domaine magique...
-    atouts[0] = stringrandom(metiers[attributsSecondaires[8][1]][1])
+    atouts[0] = stringrandom(metiers[character.jobID][1])
 
 
         // on supprime les deux premiers éléments (car vides) de la liste des atouts
@@ -762,12 +657,12 @@ let x = []
     shuffle(x)
 
         // ... et si sa magie est égale à 50 (et qu'il peut avoir 2 atouts) alors il possède un second domaine de magie !
-        if (valeurMagie >= 50 && attributsSecondaires[9][1] > 1) {
+        if (character.magic.value >= 50 && character.abilitiesSum > 1) {
             
             if (magicienDuoVar === true) {
                 // on vérifie qu'il n'y ai pas de doublon
                 do {
-                    atouts[1] = stringrandom(metiers[attributsSecondaires[8][1]][2])
+                    atouts[1] = stringrandom(metiers[character.jobID][2])
                 }
                 while (atouts[1] === atouts[0])
     
@@ -790,7 +685,7 @@ let x = []
 
         }
 
-        if (valeurMagie >= 70 && attributsSecondaires[9][1] > 2) {
+        if (character.magic.value >= 70 && character.abilitiesSum > 2) {
             do {
                atouts[2]=stringrandom(domaineMagique)
             }
@@ -799,7 +694,7 @@ let x = []
         } 
     
     // tirer les atouts suivants en vérifiant qu'aucun atout n'est un doublon du premier atout (domaine magique)
-    for (i = 0 ; i < attributsSecondaires[9][1]-z ; i++) {
+    for (i = 0 ; i < character.abilitiesSum-z ; i++) {
         atouts[i+z] = stringrandom(x[i])
     }
 }
@@ -822,7 +717,7 @@ let z = 0
     // si le PJ est MAGE sans suivre une carrière de mage
     atouts[0]=stringrandom(domaineMagique)
 
-     if (valeurMagie >= 50 && attributsSecondaires[9][1] > 1) {
+     if (character.magic.value >= 50 && character.abilitiesSum > 1) {
          do {
             atouts[1]=stringrandom(domaineMagique)
          }
@@ -833,7 +728,7 @@ let z = 0
     z = 1 ;
     }
 
-    if (valeurMagie >= 70 && attributsSecondaires[9][1] > 2) {
+    if (character.magic.value >= 70 && character.abilitiesSum > 2) {
         do {
            atouts[2]=stringrandom(domaineMagique)
         }
@@ -843,12 +738,12 @@ let z = 0
 
     // remplit un tableau avec les 20 atouts possibles        
     for (let i = 0 ; i < 20 ; i++) {
-        x[i] = metiers[attributsSecondaires[8][1]][i+1]
+        x[i] = metiers[character.jobID][i+1]
     }
 
      shuffle(x)
      
-    for (i = 0 ; i < attributsSecondaires[9][1]-z; i++) {
+    for (i = 0 ; i < character.abilitiesSum-z; i++) {
          atouts[i] = stringrandom(x[i]) // WARNING ? atouts[i+z] = stringrandom(x[i])
         }
     }
@@ -860,20 +755,20 @@ let z = 0
  * 
  */
 
-function checkMagic() {
+function checkMagic(character) {
 
     let x = false
     let i = 0
 
     for (i = 0 ; i < magicienDuo.length ; i++) {
-        if (attributsSecondaires[8][1] === magicienDuo[i]) {
+        if (character.jobID === magicienDuo[i]) {
             x = true
             magicienDuoVar = true
         }
     }
 
     for (i = 0 ; i < magicienMono.length ; i++) {
-        if (attributsSecondaires[8][1] === magicienMono[i]) {
+        if (character.jobID === magicienMono[i]) {
             x = true
         }
     }
@@ -891,7 +786,7 @@ function checkMagic() {
  * 
  */
 
-function getMagicRank() {
+function getMagicRank(character) {
 
     let pjEstUnMage = 0
     let magCat1 = (aleatoire(10)+1)*5
@@ -913,23 +808,23 @@ function getMagicRank() {
             x = aleatoire(100) 
                 if (x === 99) { /////////////////////////////////////////////////////////////////////////////// CETTE VALEUR DOIT ÊTRE (x === 99)
                     pjEstUnMage = 1
-                    valeurMagie = magCat1
+                    character.magic.value = magCat1
                 }
         }
 
         // mage catégorie 2
         for (i = 0 ; i < magicienMono.length ; i++) {
-                if (attributsSecondaires[8][1] === magicienMono[i]) {
+                if (character.jobID === magicienMono[i]) {
                     pjEstUnMage = 2
-                    valeurMagie = magCat2[1]
+                    character.magic.value = magCat2[1]
                 }
             }
     
         // mage catégorie 3
         for (i = 0 ; i < magicienDuo.length ; i++) {
-                if (attributsSecondaires[8][1] === magicienDuo[i]) {
+                if (character.jobID === magicienDuo[i]) {
                     pjEstUnMage = 3
-                    valeurMagie = magCat2[1]
+                    character.magic.value = magCat2[1]
                 }
             }
 }
@@ -942,7 +837,7 @@ function getMagicRank() {
  * 
  */
 
-function getMagic() {
+function getMagic(character) {
 
 // initiatilisation des catégories de mages
     
@@ -954,7 +849,7 @@ let ajusterCombat = 0
 let y = []
 let poolDeMagie = 0
 
-poolDeMagie = valeurMagie
+poolDeMagie = character.stats.mag.value
 
     // on ne peut prélever plus de 10% dans une caractéristique
         for (i = 0 ; i < profilApprentissageMagie.length ; i++) {
@@ -972,7 +867,7 @@ poolDeMagie = valeurMagie
     
     shuffle(profilApprentissageMagie)
     ajusterCombat = profilApprentissageMagie[0]
-    attributsSecondaires[10][4] = ajusterCombat
+    character.sum.comDecrease = ajusterCombat
 
 
     for (ii = 1 ; ii < 12 ; ii++) {
@@ -989,7 +884,7 @@ poolDeMagie = valeurMagie
         if (ajusterCombat > 0) {
                 // chaque point prélevé en COM compte double
                 // si les points prélevés en COM sont sup. à 0 ET que COM est inférieure à MAG
-                if (profilApprentissageMagie[0] > 0 && valeurMagie > profilApprentissageMagie[0]) {
+                if (profilApprentissageMagie[0] > 0 && character.magic.value > profilApprentissageMagie[0]) {
                 
                         // DEBUG : console.log("MAGIE/COMBAT init... tentative sur... "+y[i]+" : "+abrevCaracteristiques[y[i]]+" ---> vaut "+profilApprentissageMagie[y[i]])
 
@@ -1000,25 +895,33 @@ poolDeMagie = valeurMagie
                         } 
                 }
                 // si les points prélevés en COM sont sup. à 0 et que la MAG est égale aux pts prélevés en COM
-                else if (profilApprentissageMagie[0] > 0 && valeurMagie === profilApprentissageMagie[0]) {
-                        valeurMagie += profilApprentissageMagie[0]
+                else if (profilApprentissageMagie[0] > 0 && character.magic.value === profilApprentissageMagie[0]) {
+                        character.magic.value += profilApprentissageMagie[0]
                         ajusterCombat = 0
                 }
         }
     }
 
-    // verifierMagieEtCombat()
-    
+
+    i = 0
+    for (let key of keys) {
+        if (character.stats.hasOwnProperty(key)) {
+
+            if (profilApprentissageMagie[i] !== 0) {
+                // DEBUG : console.log(`"correction de ${profilApprentissageMagie[i]} à la stat ${abrevCaracteristiques[i]}`)
+                character.stats[key].value -= profilApprentissageMagie[i]
+                character.stats[key].magic = `magie (<span class="is-red strong">-${profilApprentissageMagie[i]}</span>)`
+            }
+            else {
+                character.stats[key].magic = ""
+            }
+            i++;
+        }
+    }
+
     // applique le profil d'apprentissage de la magie aux caractéristiques
     for (i = 0 ; i < profilApprentissageMagie.length ; i++) {
-        if (profilApprentissageMagie[i] !== 0) {
-            // DEBUG : console.log(`"correction de ${profilApprentissageMagie[i]} à la stat ${abrevCaracteristiques[i]}`)
-            valeursCaracteristiques[i] -= profilApprentissageMagie[i]
-            modifCaracteristiques[i][1] = `magie (<span class="is-red strong">-${profilApprentissageMagie[i]}</span>)`
-        }
-        else {
-            modifCaracteristiques[i][1] = ""
-        }
+
     }
 }
 
@@ -1074,7 +977,7 @@ let grimoire = []
     for (i = 0 ; i < mode.length ; i++) {
         for (ii = 0 ; ii < mode[i][1].length ; ii++) {
 
-            if (valeurMagie >= mode[i][2]) {
+            if (character.magic.value >= mode[i][2]) {
                 // DEBUG : console.log("... initialisation : recherche d'un sort...")
                     if (mode[i][1][ii] === domaine1) {
                         grimoire[x] = mode[i][0][0]
@@ -1112,31 +1015,31 @@ let grimoire = []
  * 
  */
 
-function getSpells() {
+function getSpells(character, spellsbook) {
 
-shuffle(grimoireSortilege)
+shuffle(spellsbook)
 // DEBUG : console.log(array)
-let x = attributsSecondaires[9][1]+1
+let x = character.abilitiesSum+1
 // quel est le plus court entre le grimoire et la capacité d'apprentissage
     if (grimoireSortilege.length < x) {
     x = grimoireSortilege.length
     }
     for (let i = 0 ; i < x ; i++) {
-        grimSortileges[i] = grimoireSortilege[i]
+        character.spells[i] = spellsbook[i]
     }
 }
 
-function getTricks() {
+function getTricks(character, book) {
 
-    shuffle(grimoireToursDeMagie)
+    shuffle(book)
     // DEBUG : console.log(array)
-    let x = attributsSecondaires[9][1]+1
+    let x = character.abilitiesSum+1
     // quel est le plus court entre le grimoire et la capacité d'apprentissage
         if (grimoireToursDeMagie.length < x) {
         x = grimoireToursDeMagie.length
         }
         for (let i = 0 ; i < x ; i++) {
-            grimTours[i] = grimoireToursDeMagie[i]
+            character.tricks[i] = tricksbook[i]
         }
     }
 
@@ -1151,34 +1054,44 @@ function getTricks() {
  */
 
 
-function getMainAttributes() {
+function getMainAttributes(character) {
+    let i = 0;
 
-    let i = 0
 
     // initiative
-    attributsSecondaires[0][1] = indice(valeursCaracteristiques[0])+indice(valeursCaracteristiques[6])+indice(valeursCaracteristiques[7])
+    character.initiative = indice(character.stats.com.value)+indice(character.stats.mou.value)+indice(character.stats.per.value);
 
     // vitalité
-    attributsSecondaires[1][2] = Math.floor((valeursCaracteristiques[4]/5)+(valeursCaracteristiques[3]/5)+indice(valeursCaracteristiques[11]))
-    attributsSecondaires[1][1] = attributsSecondaires[1][2]+attributsSecondaires[1][3]
+    character.pv.base = Math.floor((character.stats.for.value/5)+(character.stats.end.value5)+indice(character.stats.vol.value));
+    character.pv.sum = character.pv.base + character.pv.bonus;
 
     // seuil de blessure
-    attributsSecondaires[2][1] = Math.floor(attributsSecondaires[1][1]/2)
+    character.sb = Math.floor(character.pv.sum/2);
 
     // sang-froid
-    attributsSecondaires[3][2] = Math.floor((valeursCaracteristiques[11]/5)+(valeursCaracteristiques[1]/5)+indice(valeursCaracteristiques[0]))
-    attributsSecondaires[3][1] = attributsSecondaires[3][2]+attributsSecondaires[3][3]
+    character.sf.base = Math.floor((character.stats.vol.value/5)+(character.stats.cns.value/5)+indice(character.stats.com.value));
+    character.sf.sum = character.sf.base + character.sf.bonus;
 
     // instabilité
-    attributsSecondaires[4][1] = Math.floor(attributsSecondaires[3][1]/4)
+    character.instability = Math.floor(character.sf.sum/4)
 
     // total : [initiale + archétype] - [magie - mod combat] = total final
-    for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
-        attributsSecondaires[10][3] += valeursCaracteristiques[i]
+    i = 0
+    for (let key in keys) {
+        if (character.stats.hasOwnProperty(key)) {
+            character.sum.sum12 += character.stats[key].value
+            i++;
+        }
     }
-    attributsSecondaires[10][5] = (attributsSecondaires[10][1] + attributsSecondaires[10][2]) - (valeurMagie - attributsSecondaires[10][4]) ;
+
+    character.sum.resultBeforeMagic = 
+                    (character.sum.base + 
+                    character.sum.archetype) - 
+                    (character.stats.mag.value - 
+                    character.sum.comDecrease) ;
 
 }
+
 
 
 
@@ -1189,56 +1102,326 @@ function getMainAttributes() {
 
 function initCharacter() {
 
-    let i = 0
- 
+        let character = {
+            name : "",
+            traits: [],
+            race: "",
+            archetype: "",
+            age: "",
+            group: "",
+            job: "",
+            raceID: 0,
+            archetypeID: 0,
+            groupID: 0,
+            jobID: 0,
+
+            pv: {
+                base: 0,
+                bonus: 0,
+                sum: 0,
+            },
+            sf: {
+                base: 0,
+                bonus: 0,
+                sum: 0,
+            },
+            initiative: "",
+            fate: "",
+            sb: "",
+            instability: "",
+            special: "",
+            abilitiesSum: 0,
+            abilities: [],
+            weapons: [],
+            equipment: [],
+            // caractéristiques :
+            stats : {
+                com: {
+                    id: 0,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                cns: {
+                    id: 1,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                dis: {
+                    id: 2,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                end: {
+                    id: 3,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                for: {
+                    id: 4,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                hab: {
+                    id: 5,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                mou: {
+                    id: 6,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                per: {
+                    id: 7,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                soc: {
+                    id: 8,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                sur: {
+                    id: 9,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                tir: {
+                    id: 10,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                vol: {
+                    id: 11,
+                    value: 0,
+                    archetype: 0,
+                    magic: 0,
+                    title: 0,
+                },
+                mag:  {
+                    id: 12,
+                    value: 0,
+                    title: 0,
+                }
+            },
+
+            
+
+            sum: { 
+                race: 0,
+                roll: 0,                //10-6
+                archetype: 0,           //10-2
+                comDecrease: 0,         //10-4
+                base: 0,                //10-1
+                resultBeforeMagic: 0,   //10-5 (initial + archetype) - (character.magic - magieDue)
+                sum12: 0,               //10-3 somme de toutes les caractéristiques
+                final: 0,
+                
+                
+
+            },
     
-        for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
-            valeursCaracteristiques[i] =0
+            tricks: [],
+            spells: [],
         }
 
-    
-        // a priori cette partie est rendondante et pourrait être retirée sans altération
-        for (i = 0 ; i < modifCaracteristiques.length ; i++) {
-            modifCaracteristiques[i][0] = ""
-            modifCaracteristiques[i][1] = ""
-            modifCaracteristiques[i][2] = ""
-        }
-        
-        valeurMagie = 0
-    
-        for (i = 0 ; i < grimoireSortilege.length ; i++) {
-            grimoireSortilege[i] = ""
-        }
-    
-        for (i = 0 ; i < grimoireToursDeMagie.length ; i++) {
-            grimoireToursDeMagie[i] = ""
-        }
-
-        atouts = []
-        
-        equipement = []
-        magicienDuoVar = false ;
-
-        grimSortileges= []
-        grimTours = []
-
-        attributsSecondaires = [
-            /*0*/ ["Initiative : ", 0],                                      
-            /*1*/ ["Vitalité : ", 0,0,0], // intitulé, pv final, pv de base, pv supplémentaire avec la race
-            /*2*/ ["Seuil de blessure : ", 0],
-            /*3*/ ["Sang-Froid : ", 0,0,0],  // intitulé, sf final, sf de base, sf supplémentaire avec la race
-            /*4*/ ["Instabilité : ", 0],
-            /*5*/ ["Destin : ", 0],
-            /*6*/ ["Spécial : ", ""],
-
-            /*7*/ ["Branche : ", ""],
-            /*8*/ ["Metiers : ", ""],
-            /*9*/ ["Atouts : ", 0],
-            /*10*/["Total : ",0,0,0,0,0,0]
-        ]
-
-        attributsPrincipaux = ["", "", "", 0, "", ""]
-    
+        return character
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+ * Cette fonction permet de générer des spécialistes, des champions, des héros mineurs et des héros majeurs
+ * 
+ */
+
+function getPrestigiousTitle() {
+
+    let x = 0
+    
+        if (configRole === 1) {
+            increaseSpecialist(5, "spec.")
+        }
+    
+        if (configRole === 2) {
+            increaseFightStats(10, "champ.");
+            increaseOtherStats(1,10, "champ.")
+        }
+    
+        if (configRole === 3) {
+            increaseFightStats(20, "héros min.");
+            increaseOtherStats(2,20, "héros min.")
+        }
+    
+        if (configRole === 4) {
+            increaseFightStats(30,  "héros maj.");
+            increaseOtherStats(3,30,  "héros maj.")
+        }
+    }
+    
+    
+    function increaseSpecialist(howMuch, who) {
+        if (character.magic.value <= 10) { 
+            x = aleatoire(2)
+            if (x === 1) {
+                valeursCaracteristiques[0] += howMuch
+                modifCaracteristiques[0][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
+            } else {
+                valeursCaracteristiques[10] += howMuch
+                modifCaracteristiques[10][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
+            }
+        } else {
+            character.magic.value += howMuch
+            modifCaracteristiques[12][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
+        }
+    
+        do {
+            x = aleatoire(valeursCaracteristiques.length)
+        } while (x === 0 || x === 10)
+        
+        valeursCaracteristiques[x] += howMuch*2
+        modifCaracteristiques[x][2] = `${who} (<span class="is-green strong">+${howMuch*2}</span>)`
+    }
+    
+    
+    function increaseFightStats(howMuch, who) {
+        if (character.magic.value <= 10) {
+            valeursCaracteristiques[0] += howMuch
+            modifCaracteristiques[0][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
+            valeursCaracteristiques[3] += howMuch
+            modifCaracteristiques[3][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+            valeursCaracteristiques[4] += howMuch
+            modifCaracteristiques[4][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+            valeursCaracteristiques[10] += howMuch
+            modifCaracteristiques[10][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+        } else {
+            character.magic.value += howMuch
+            modifCaracteristiques[12][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+            valeursCaracteristiques[1] += howMuch
+            modifCaracteristiques[1][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+            valeursCaracteristiques[11] += howMuch
+            modifCaracteristiques[11][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+        }
+    }
+    
+    
+    function increaseOtherStats(howMany, howMuch, who) {
+    
+        let x = 0
+        let y = 0
+        let z = 0
+    
+        if (character.magic.value >= 10) {
+            do {
+                x = aleatoire(valeursCaracteristiques.length)
+                y = aleatoire(valeursCaracteristiques.length)
+                z = aleatoire(valeursCaracteristiques.length)
+            } while (x === 1 || x === 11 || y === 1 || y === 11 || z === 1 || z === 11 ||x === y || y === z || z === x)
+        } else {
+            do {
+                x = aleatoire(valeursCaracteristiques.length)
+                y = aleatoire(valeursCaracteristiques.length)
+                z = aleatoire(valeursCaracteristiques.length)
+            } while (x === 0 || x === 3 || x === 4 || x === 10 || y === 0 || y === 3 || y === 4 || y === 10 || z === 0 || z === 3 || z === 4 || z === 10 || x === y || y === z || z === x)
+        }
+    
+        valeursCaracteristiques[x] += howMuch
+        modifCaracteristiques[x][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+    
+        if (howMany > 1) {
+            valeursCaracteristiques[y] += howMuch
+            modifCaracteristiques[y][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+        }
+        if (howMany > 2) {
+            valeursCaracteristiques[z] += howMuch
+            modifCaracteristiques[z][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+/**
+ * Générer les compétences du personnage
+ * Un personnage dispose de 120 points à répartir parmi ses 12 caractéristiques (sans compter la magie)
+ *
+ */
+
+function genererCompetencesTirage(x) {
+
+    let y = 0 // le tableau des caractéristiques    
+    let i = 0
+
+            // pour chaque caractéristique on attribue une valeur égale à 2d10
+            for (i = 0; i < 12; i++) {
+
+                if (x === 1) {
+                    y = (lancerD10()+lancerD10()) 
+                } 
+                else if (x === 2) {
+                    y = aleatoire(5)*5
+                }
+
+                valeursCaracteristiques[i] = y  
+            }
+
+            for (i = 0 ; i < valeursCaracteristiques.length ; i++) {
+                attributsSecondaires[10][6] += valeursCaracteristiques[i]
+            }
+
+            // on modifie les variables globales par rapport aux résultats
+            for (let i = 0; i < valeursCaracteristiques.length; i++) {
+                valeursCaracteristiques[i] += origine[attributsPrincipaux[6]][i+1] ;
+                attributsSecondaires[10][1] += valeursCaracteristiques[i]
+            }
+            
+    }

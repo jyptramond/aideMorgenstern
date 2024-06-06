@@ -6,6 +6,28 @@
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
+
+
+function findProperty(obj, target) {
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+                if (obj[key].id === target) {
+                    return obj[key];
+                } else {
+                    let found = findProperty(obj[key], target);
+                    if (found) {
+                        return found;
+                    }
+                }
+            }
+        }
+    }
+    return null;
+}
+
+
+
 /**
  * Cette fonction mélange un array avec la méthode Fisher-Yates shuffle
  * 
@@ -42,7 +64,7 @@ function shuffle(array) {
  *
  */
 
-function faireCalcul(str) {
+function faireCalcul(character, str) {
 
     // init des variables nécessaires
     let x = str.indexOf("d10")
@@ -79,6 +101,35 @@ function faireCalcul(str) {
     let competence = str.slice(position+2, position+5)
 
         for (let i = 0 ; i < abrevCaracteristiques.length ; i++) {
+
+
+
+            i = 0;
+            for (let key in allkeys) {
+                if (character.characteristics.hasOwnProperty(key)) {
+
+
+                        // si on calcule on calcule une chaîne d'une type : "1d10+*CNS"
+                        if (abrevCaracteristiques[i] === competence && calculDegats === -1) {    
+                            //DEBUG: console.log("correspondance (via mode £+*XXX*)"+abrevCaracteristiques[i]+" avec "+competence+" soit i = "+i+" et valeur d10: "+valeurd10+"soit + "+indice(valeursCaracteristiques[i]))
+                            finalStr = newStr.replace(`£+*${competence}*`, valeurd10 + indice(key.value))
+                        
+                        } 
+
+                        // si on calcule les dégâts d'une arme, soit une chaîne du type : "RU+*FOR*+1"
+                        else if (abrevCaracteristiques[i] === competence && calculDegats !== -1) {
+                            //DEBUG: console.log("correspondance (via mode RU+*XXX*+x)"+abrevCaracteristiques[i]+" avec "+competence+" soit i = "+i)
+                                let y = str.slice(position+6, position+8) // l'opérateur et le chiffre
+                                finalStr = newStr.replace(`RU+*${competence}*${y}`,"RU+"+eval(`${indice(key.value)}${y}`))
+                        }
+
+
+
+                    character.characteristics[key].value = characteristics[i];
+                    i++;
+                }
+            }
+
 
 
             // si on calcule on calcule une chaîne d'une type : "1d10+*CNS"

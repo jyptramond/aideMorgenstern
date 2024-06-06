@@ -1,3 +1,128 @@
+
+const newArchetype = [
+    {
+        name: "Aigle",
+        bonus: ["CNS+5/PER+5", "VOL+5"],
+        traits: ["Orgueilleux", "Envieux/Travailleur/Sobre/Prudent/Loyal"]
+    },
+    {
+        name: "Âne",
+        bonus: ["END+5", "HAB+5/SUR+5", "VOL+5", "CNS-5/MOU-5"],
+        traits: ["Humble", "Travailleur/Chaste/Prudent/Clément/Loyal"]
+    },
+    {
+        name: "Cerf",
+        bonus: ["SOC+5", "VOL+5", "SUR+5/MOU+5", "DIS-5/TIR-5"],
+        traits: ["Loyal", "Orgueilleux/Bienveillant/Clément/Généreux/Valeureux"]
+    },
+    {
+        name: "Chat",
+        bonus: ["DIS+5", "PER+5", "MOU+5", "FOR-5/VOL-5"],
+        traits: ["Cruel/Envieux/Lâche/Paresseux/Prudent/Trompeur"]
+    },
+    {
+        name: "Chien",
+        bonus: ["END+5", "PER+5", "SOC+5", "DIS-5/HAB-5"],
+        traits: ["Bienveillant/Généreux/Gourmand/Clément/Loyal/Valeureux"]
+    },
+    {
+        name: "Coq",
+        bonus: ["COM+5", "SOC+5", "DIS-5/HAB-5"],
+        traits: ["Orgueilleux/Colérique/Luxurieux/Envieux/Loyal/Valeureux"]
+    },
+    {
+        name: "Corbeau",
+        bonus: ["CNS+5", "DIS+5/SUR+5", "VOL+5", "SOC-5"],
+        traits: ["Cruel/Humble/Chaste/Sobre/Prudent/Envieux"]
+    },
+    {
+        name: "Fourmi",
+        bonus: ["CNS+5/DIS+5", "HAB+5", "VOL+5", "PER-5/SOC-5"],
+        traits: ["Travailleur", "Avare/Humble/Chaste/Sobre/Prudent"]
+    },
+    {
+        name: "Hibou",
+        bonus: ["CNS+10", "HAB+5/PER+5", "SOC+5/VOL+5", "COM-5"],
+        traits: ["Travailleur", "Orgueilleux/Chaste/Prudent/Envieux/Loyal"]
+    },
+    {
+        name: "Hyène",
+        bonus: ["COM+5", "DIS+5/MOU+5", "FOR-5/VOL-5"],
+        traits: ["Cruel", "Colérique/Envieux/Lâche/Humble/Trompeur"]
+    },
+    {
+        name: "Lapin",
+        bonus: ["DIS+5", "MOU+5", "PER+5", "SOC+10", "COM-5", "FOR-5"],
+        traits: ["Bienveillant/Lâche/Prudent/Luxurieux/Clément/Humble"]
+    },
+    {
+        name: "Lion",
+        bonus: ["COM+5", "FOR+5", "SOC+5", "CNS-5/HAB-5", "DIS-5"],
+        traits: ["Orgueilleux", "Paresseux/Luxurieux/Colérique/Loyal/Valeureux"]
+    },
+    {
+        name: "Loup",
+        bonus: ["COM+5", "PER+5/SUR+5", "SOC-5"],
+        traits: ["Colérique", "Cruel/Sobre/Loyal/Envieux/Valeureux"]
+    },
+    {
+        name: "Mouton",
+        bonus: ["HAB+5", "PER+5", "SOC+5", "VOL-5"],
+        traits: ["Humble", "Travailleur/Prudent/Lâche/Clément/Chaste"]
+    },
+    {
+        name: "Ours",
+        bonus: ["FOR+5", "END+5", "PER+5/SUR+5", "CNS-5/DIS-5"],
+        traits: ["Gourmand/Colérique/Bienveillant/Clément/Loyal/Valeureux"]
+    },
+    {
+        name: "Paon",
+        bonus: ["SOC+10", "CNS+5/PER+5", "FOR-5"],
+        traits: ["Envieux/Orgueilleux/Paresseux/Luxurieux/Lâche/Trompeur"]
+    },
+    {
+        name: "Porc",
+        bonus: ["FOR+5", "END+5", "SOC+5", "MOU-5/CNS-5"],
+        traits: ["Gourmand", "Colérique/Généreux/Luxurieux/Bienveillant/Paresseux"]
+    },
+    {
+        name: "Rat",
+        bonus: ["DIS+5", "CNS+5/VOL+5", "END+5/SUR+5", "FOR-5"],
+        traits: ["Avare/Cruel/Envieux/Prudent/Chaste/Trompeur"]
+    },
+    {
+        name: "Renard",
+        bonus: ["DIS+5/HAB+5", "MOU+5", "SOC+5", "END-5/FOR-5"],
+        traits: ["Trompeur","Paresseux/Gourmand/Prudent/Envieux/Lâche"]
+    },
+    {
+        name: "Serpent",
+        bonus: ["CNS+5", "SOC+5", "VOL+5", "MOU-5/PER-5"],
+        traits: ["Trompeur/Cruel/Envieux/Prudent/Travailleur/Sobre"]
+    },
+    {
+        name: "Singe",
+        bonus: ["MOU+10", "SOC+5", "VOL-5"],
+        traits: ["Généreux/Paresseux/Lâche/Bienveillant/Clément/Trompeur"]
+    },
+    {
+        name: "Souris",
+        bonus: ["DIS+10", "HAB+5", "MOU+5", "SOC+5", "COM-5", "FOR-5"],
+        traits: ["Bienveillant", "Lâche/Généreux/Humble/Clément/Loyal"]
+    },
+    {
+        name: "Taureau",
+        bonus: ["COM+5", "END+5", "FOR+5", "DIS-5", "CNS-5/HAB-5"],
+        traits: ["Orgueilleux/Colérique/Luxurieux/Gourmand/Clément/Valeureux"]
+    },
+    {
+        name: "Vautour",
+        bonus: ["CNS+5/END+5", "PER+5", "VOL+5", "MOU-5/SOC-5"],
+        traits: ["Avare/Humble/Sobre/Prudent/Cruel/Trompeur"]
+    }
+];
+
+
 const tricks = [
     {
         name: "Agacement",
@@ -2267,6 +2392,190 @@ const spells = [
         description: "Vous lancez ce sort sur *MAG* cibles qui marcheront d’un bon pas et regagneront tous 1 point de Vitalité et 1 point de Sang-froid supplémentaire par jour."
     }
 ]
+
+
+
+const groups = [
+    {
+        name: "Agents et domestiques",
+        armor: "",
+        weapons : [
+            `${armesdemeleelegere}`
+        ],
+        inventory: [
+            "vêtements de roturier en bon état",
+            "livrée/tablier",
+            "gourde d'eau/gourde de vin"
+        ],
+        money: "bourse contenant 1d10+*SOC* pièces d'argent"
+    },
+    {
+        name: "Aristocrates et nobles",
+        armor: "",
+        weapons: [
+            "dague (RU+*FOR*-1)/épée courte (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "élégant costume de cour", 
+            "cheval avec sa selle et son harnais"
+        ],
+        money: "bourse contenant 2d10+*SOC* pièces d'or" 
+    },
+    {
+        name: "Artisans et commerçants",
+        armor: "",
+        weapons: [
+            `${armesdemeleelegere}`
+        ],
+        inventory: [
+            "vêtements de roturier", 
+            "gourde d'eau/gourde de vin", 
+            "besace contenant une fine couverture, un bol en bois et 1d10 rations de voyage (pain, fromage, fruits)"
+        ],
+        money: "bourse avec 1d10+*HAB* pièces d'argent/bourse avec 1d10+*SOC* pièces d'argent"
+    },
+    {
+        name: "Bandits et brigands",
+        armor : `${armureslegeres}`,
+        weapons : [
+            "couteau (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "vêtements de vilains sales", 
+            "sac en toile contenant un bol en bois, et 1d10 rations (volées à sa dernière victime)",
+            "gourde d'eau/gourde de vin"
+        ],
+        money: "bourse avec 1d10+*COM* pièces d'argent/bourse avec 1d10+*TIR* pièces d'argent"
+    },
+    {
+        name: "Bateleurs et saltimbanques",
+        armor: "",
+        weapons: [],
+        inventory: [
+            "vêtements de vilain défraîchis", 
+            "sac en toile contenant un bol en bois, et 1d10 rations", 
+            "gourde d'eau/gourde de vin"
+        ],
+        money: "bourse avec 1d10+*HAB* pièces d'argent/bourse avec 1d10+*SOC* pièces d'argent"
+    },
+    {
+        name: "Érudits et lettrés",
+        armor: "",
+        weapons: [],
+        inventory: [
+            "costume de bourgeois", 
+            "nécessaire d'écriture, 1d10 parchemins", 
+            "trois plumes et deux encriers, main de papier (20 pages)", 
+            "£+*CNS* livres reliés", "bésicles", 
+            "gibecière avec couverture, bol en bois, et 1d10 rations supérieures", 
+            "gourde contenant du bon vin"
+        ],
+        money: "bourse contenant 1d10+*CNS* pièces d'or"
+    },
+    {
+        name: "Filous et roublards",
+        armor: "",
+        weapons: [
+            `${armesdemeleelegere}`, 
+            "couteau (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "vêtements de vilains usés/vêtements de vilains sales", 
+            "sac en toile contenant un bol en bois, et 1d10 ration(s)", 
+            "gourde d'eau/gourde de vin"
+        ],
+        money: "bourse avec 1d10+*HAB* pièces d'argent/bourse avec 1d10+*DIS* pièces d'argent/bourse avec 1d10+*SOC* pièces d'argent"
+    },
+    {
+        name: "Forestiers et paysans",
+        armor: "",
+        weapons: [
+            `${armesdemeleelegere}`, 
+            "couteau (RU+*FOR*-1)/Animal de compagnie"
+        ],
+        inventory: [
+            "vêtements de vilain", 
+            "bâton de marche", 
+            "gourde d'eau/gourde de vin", 
+            "gibecière contenant une fine couverture, un bol en bois et 1d10 ration(s) de voyage", 
+        ],
+        money: "1d10+*HAB* pièces de cuivre/1d10+*END* pièces de cuivre"
+    },
+    {
+        name: "Guerriers et bretteurs",
+        armor: `${armureslegeres}/${armuresmoyennes}`,
+        weapons: [
+            `${armesdemelee}`, 
+            "couteau (RU+*FOR*-1)", 
+            `${armesdetir}/bouclier en bois (protection+1)`
+        ],
+        inventory: [
+            "vêtements de voyage", 
+            "sac en toile contenant un bol en bois, et 1d10 rations", 
+            "gourde d'eau/gourde de vin"
+        ],
+        money: "bourse contenant 1d10+*COM* pièces d'argent/bourse contenant 1d10+*TIR* pièces d'argent"
+    },
+    {
+        name: "Hommes d'armes et soldats",
+        armor: `${armureslegeres}/${armuresmoyennes}`,
+        weapons: [
+            `${armesdemelee}`, 
+            "couteau (RU+*FOR*-1)", 
+            `${armesdetir}/${boucliers}`
+        ],
+        inventory: [
+            "casaque militaire", 
+            "vêtements de voyage", 
+            "sac en toile contenant un bol en bois, et 1d10 ration(s)", 
+            "gourde d'eau/gourde de vin"
+        ],
+        money: "bourse contenant 1d10+*COM* pièces d'argent/bourse contenant 1d10+*TIR* pièces d'argent"
+    },
+    {
+        name: "Magiciens et thaumaturges",
+        armor: "",
+        weapons: [],
+        inventory: [
+            "costume de bourgeois", 
+            "main de papier (20 pages), plume et encrier", 
+            "£+*CNS* livres occultes reliés", 
+            "1d10+*MAG* ingrédients utiles à leur savoir (patte d'animaux, poudres, herbes, sang d'animal...)", 
+            "gibecière contenant une couverture, un col en bois et 1d10 rations de bonne qualité", 
+            "gourde contenant du bon vin"
+        ],
+        money: "bourse avec 1d10+*MAG* pièces d'or"
+    },
+    {
+        name: "Parias et miséreux",
+        armor: "",
+        weapons: [
+            "couteau (RU+*FOR*-1)/gourdin (RU+*FOR*-1)"
+        ],
+        inventory: [
+            "harde de gueux", 
+            "sac en toile contenant un bol en bois et 1d10 ration(s) de piètre qualité", 
+            "gourde d'eau/gourde de mauvais vin"
+        ],
+        money: "£+*END* pièce(s) de cuivres"
+    },
+    {
+        name: "Religieux et prêtres",
+        armor: "",
+        weapons: [],
+        inventory: [
+            "robe de la couleur autorisée par le culte/froc de la couleur autorisée par le culte", 
+            "vêtements de voyage", 
+            "symbole sacré", 
+            "chapelet", 
+            "sac en toile contenant un bol en bois et 1d10 ration(s)", 
+            "gourde d'eau/gourde de vin"
+        ],
+        money: "bourse avec 1d10+*CNS* pièces d'argent"
+    }
+]
+
+
 
 const jobs = [
    

@@ -1,10 +1,8 @@
-function generate() {
+function generateButtonListener() {
 
     document.getElementById('generer').addEventListener("click", function(event) {
 
-        getConfig();
         createCharacter();
-        displayCharacter()
     });
 }
 
@@ -25,7 +23,7 @@ function rotateButton(target) {
     });
 }
 
-function customHeader() {
+function customHeader(character) {
 
     let config = {
         ALLOWED_TAGS: false,
@@ -37,16 +35,16 @@ function customHeader() {
     let champTexte = DOMPurify.sanitize(document.getElementById("champTexte").value, config);
 
     if (!champTexte && !champAge) {
-        baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
+        baliseIdentite.innerHTML = `${character.name}, ${character.race} <span class="sub-h1">(${character.archetype}, ${character.age} ans)</span>`
     }
     else if (champTexte && champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${champAge} ans)</span>`
+        baliseIdentite.innerHTML = `${champTexte}, ${character.race} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
     }
     else if (champTexte && !champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${attributsPrincipaux[3]} ans)</span>`
+        baliseIdentite.innerHTML = `${champTexte}, ${character.race} <span class="sub-h1">(${character.archetype}, ${attributsPrincipaux[3]} ans)</span>`
     }
     else if (!champTexte && champAge) {
-        baliseIdentite.innerHTML = `${attributsPrincipaux[0]}, ${attributsPrincipaux[1]} <span class="sub-h1">(${attributsPrincipaux[2]}, ${champAge} ans)</span>`
+        baliseIdentite.innerHTML = `${character.name}, ${character.race} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
     }
 }
 
@@ -61,4 +59,31 @@ function userInput(target, targetID, inputLength) {
 
         customHeader();
     });
+}
+
+
+/** 
+ *  Menu configuration
+ * 
+ */
+
+function getConfig(config) {
+
+    config.name = configFromSelect('selectName', configPrenom);
+    config.archetype = configFromSelect('selectArchetype', configArchetype);
+    config.race = configFromSelect('selectPeuple', configPeuple);
+    config.group = configFromSelect('selectGroupe', configGroupe);
+    config.mode = configFromSelect('selectMode', configMode);
+    config.role = configFromSelect('selectRole', configRole);
+
+let job = parseInt(document.getElementById('selectCarriere').value);
+if (!isNaN(job)) {
+    // DEBUG : console.log('valueCarriere:', valueCarriere);
+    if (job !== -1) {
+        config.job= (8*config.group)+job
+    }
+    else {
+        config.job = -1
+    }
+} 
 }

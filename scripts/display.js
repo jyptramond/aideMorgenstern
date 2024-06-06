@@ -1,64 +1,78 @@
-function displayCharacteristic(tagID, tagValue,  i) {
-    let tag = document.getElementById(tagID);
-    tag.textContent = tagValue;
-    let tagInfo = document.getElementById(tagID+"info")
-    tagInfo.innerHTML = `${modifCaracteristiques[i][0]} ${modifCaracteristiques[i][1]} ${modifCaracteristiques[i][2]}`
-}
-
-
-function displayCharacteristics() {
-
-    for (let i = 0 ; i < 12 ; i++) {
-        displayCharacteristic(abrevCaracteristiques[i], valeursCaracteristiques[i], i);
-    }
-        displayCharacteristic("MAG", valeurMagie, 12);
-
-}
 
 
 /** 
  *  Fonction pour afficher les valeurs dans la console
- * 
  */
 
-function displayCharacter() {
+function displayCharacter(character) {
 
     let i = 0
+    console.log(character);
+    customHeader(character);
+    displayAllCharacteristic(character);
 
-    customHeader();
-    displayCharacteristics();
+    document.getElementById("vices").textContent = `${character.traits[0]}+1, ${character.traits[1]}+1`
 
-    document.getElementById("vices").textContent = `${attributsPrincipaux[4]}+1, ${attributsPrincipaux[5]}+1`
+    document.getElementById("CARR").innerHTML = `<span class="strong">${character.job}</span>`
+    displayVitals(character.pv, "PV");
+    displayVitals(character.sf, "SF");
+    document.getElementById("INIT").textContent = character.initiative;
+    document.getElementById("DEST").textContent = character.fate;
+    document.getElementById("SB").textContent = character.sb;
+    document.getElementById("INST").textContent = character.instability;
+    document.getElementById("SPE").innerHTML = character.special;
+    recapCharacteristics(character)
 
-    document.getElementById("CARR").innerHTML = `<span class="strong">${stringrandom(metiers[attributsSecondaires[8][1]][0])}</span>`
-    getVitals(attributsSecondaires[1], "PV");
-    getVitals(attributsSecondaires[3], "SF");
-    document.getElementById("INIT").textContent = attributsSecondaires[0][1]
-    document.getElementById("DEST").textContent = attributsSecondaires[5][1]
-    document.getElementById("SB").textContent = attributsSecondaires[2][1]
-    document.getElementById("INST").textContent = attributsSecondaires[4][1]
-    document.getElementById("SPE").innerHTML = attributsSecondaires[6][1]
-    recapCharacteristics()
+    displayAttributes(character);
+    displayEquipment(character);
 
-    displayAttributes();
-    displayEquipment();
-
-    if (valeurMagie > 0) {
-        displayMagic();
+    if (character.stats.mag.value > 0) {
+        displayMagic(character);
     }
 }
 
-function displayMagic() {
+function displayAllCharacteristic(character) {
+
+    let i = 0;
+    for (let key in keys) {
+        if (character.stats.hasOwnProperty(key)) {
+            displayCharacteristic(character, abrevCaracteristiques[i], character.stats[key].value, i);
+            i++;
+        }
+    }
+    displayCharacteristic(character, "MAG", character.stats.mag.value, 12)
+}
+
+
+function displayCharacteristic(character, tagID, tagValue,  i) {
+    let tag = document.getElementById(tagID);
+    tag.textContent = tagValue;
+    let tagInfo = document.getElementById(tagID+"info")
+
+    for (let key in keys) {
+        if (character.stats.hasOwnProperty(key)) {
+            tagInfo.innerHTML = `${character.stats[key].archetype} ${character.stats[key].magic} ${character.stats[key].title}`
+            character.stats[key].value
+            i++;
+        }
+    }
+    
+}
+
+
+
+function displayMagic(character) {
+
     if (valeurMagie >= 10) {
         // afficher le grimoire de tours de magie
         for (i = 0 ; i < grimTours.length ; i++) {
             let nouveauTours = document.createElement("li")
-            nouveauTours.textContent = grimTours[i]
+            nouveauTours.textContent = character.tricks[i]
             document.getElementById("tricks-list").appendChild(nouveauTours)
         }
         for (i = 0 ; i < grimSortileges.length ; i++) {
             let nouveauSorts = document.createElement("li")
-            nouveauSorts.innerHTML = replaceIco(grimSortileges[i]);
+            nouveauSorts.innerHTML = replaceIco(character.spells[i]);
             document.getElementById("spells-list").appendChild(nouveauSorts)
         }
         }
@@ -73,10 +87,10 @@ function displayMagic() {
 }
 
 
-function displayEquipment() {
-    for (let i = 0 ; i < equipement.length ; i++) {   
+function displayEquipment(character) {
+    for (let i = 0 ; i < character.equipment.length ; i++) {   
         let nouvelEquipement = document.createElement("li");
-        nouvelEquipement.textContent = equipement[i];
+        nouvelEquipement.textContent = character.equipment[i];
         document.getElementById("listeEquipement").appendChild(nouvelEquipement);
     }
     // DEBUG : console.log("equipement.length"+equipement.length)
@@ -86,43 +100,58 @@ function displayEquipment() {
 function displayAttributes() {
     for (let i = 0 ; i < atouts.length ; i++) {
         let nouvelAtout = document.createElement("li")
-        nouvelAtout.textContent = atouts[i]
+        nouvelAtout.textContent = character.abilities[i]
         document.getElementById("listeAtouts").appendChild(nouvelAtout)
     }
 }
 
 
 
-function getVitals(attribute, ID) {
+function displayVitals(attribute, ID) {
     if (attribute[3] !== 0) {
-        document.getElementById(ID).textContent = attribute[1]
-        document.getElementById(ID+"info").textContent = ` (${attribute[2]}+${attribute[3]})`
+        document.getElementById(ID).textContent = attribute.sum
+        document.getElementById(ID+"info").textContent = ` (${attribute.base}+${attribute.bonus})`;
     } else {
-        document.getElementById(ID).textContent = attribute[1]
+        document.getElementById(ID).textContent = attribute.sum;
         document.getElementById(ID+"info").innerHTML = ""
     }
 }
 
 
 
-function recapCharacteristics() {
-    // attribut secondaire [10][1] : 120 + profil de répartion du peuple
+function recapCharacteristics(character) {
     // valeur de base = [10][1]-[10][6] : valeur de base
+
+    // attribut secondaire [10][1] : 120 + profil de répartion du peuple
     // attribut secondaire [10][2] : modification apportée par l'archétype
     // attribut secondaire [10][3] : somme de toutes les caractéristiques
     // attribut secondaire [10][4] : magie prélevée sur le combat
     // attribut secondaire [10][5] : issu du calcul suivant : (initial + archétype) - (magie - magie prélevée sur le combat)
     // attributs secondaire[10][6] : pts de compétences sup.
 
-    let valeurDeBase = attributsSecondaires[10][1] - attributsSecondaires[10][6]
-    let valeursTotales = attributsSecondaires[10][5] + valeurMagie
+    character.sum.race = character.sum.base - character.sum.roll
+    character.sum.final = character.sum.resultBeforeMagic + character.stats.mag.value
 
-    if (valeurMagie > 0) {
-        document.getElementById("COMP").innerHTML = `((${valeurDeBase}+${attributsSecondaires[10][6]}+${attributsSecondaires[10][2]})-(${valeurMagie}-${attributsSecondaires[10][4]}))+${valeurMagie}=${attributsSecondaires[10][3]}+${valeurMagie}(${valeursTotales})`
+    if (character.stats.mag.value > 0) {
+        document.getElementById("COMP").innerHTML =     `((${character.sum.race}+
+                                                        ${character.sum.roll}+
+                                                        ${character.sum.archetype})-
+                                                        (${character.magic.value}-
+                                                        ${comDecrease}))
+                                                        +${character.magic.value}=
+                                                        ${character.sum.resultBis}+
+                                                        ${character.magic.value}
+                                                        (${character.sum.final})`
     }
     else {
-        document.getElementById("COMP").innerHTML = `${valeurDeBase}+${attributsSecondaires[10][6]}+${attributsSecondaires[10][2]}=${attributsSecondaires[10][3]}(${attributsSecondaires[10][5]})`
+        document.getElementById("COMP").innerHTML =     `${character.sum.race}+
+                                                        ${character.sum.roll}+
+                                                        ${character.sum.archetype}=
+                                                        ${character.sum.sum12}
+                                                        (${character.sum.final})`
     }
+
+    return character
 }
 
 
@@ -134,39 +163,6 @@ function configFromSelect(srcID, config) {
     return data
 }
 
-/** 
- *  Menu configuration
- * 
- */
-
-function getConfig() {
-
-    configPrenom = configFromSelect('selectName', configPrenom);
-    configArchetype = configFromSelect('selectArchetype', configArchetype);
-    configPeuple = configFromSelect('selectPeuple', configPeuple);
-    configGroupe = configFromSelect('selectGroupe', configGroupe);
-    configMode = configFromSelect('selectMode', configMode);
-    configRole = configFromSelect('selectRole', configRole);
-
-// console.log('configPrenom : '+configPrenom);
-// console.log('configArchetype : '+configArchetype);
-// console.log('configPeuple : '+configPeuple);
-// console.log('configGroupe : '+configGroupe);
-// console.log('configMode : '+configMode);
-// console.log('configRole : '+configRole);
-
-let valueCarriere = document.getElementById('selectCarriere').value;
-valueCarriere = parseInt(valueCarriere);
-if (!isNaN(valueCarriere)) {
-    // DEBUG : console.log('valueCarriere:', valueCarriere);
-    if (valueCarriere !== -1) {
-        configCarriere = (8*configGroupe)+valueCarriere
-    }
-    else {
-        configCarriere = -1
-    }
-} 
-}
 
 
 /** 
@@ -174,8 +170,7 @@ if (!isNaN(valueCarriere)) {
  * 
  */
 
-function afficherSelectionCarriere() {
-
+function displayJobSelection() {
 
     document.getElementById('selectGroupe').addEventListener('change', function(event) {
 
@@ -201,8 +196,6 @@ function afficherSelectionCarriere() {
         else {
             baliseCarriere.innerHTML = `<option value="-1">Aléatoire</option>`
         }
-    
-        
         });
 
 }
@@ -292,7 +285,7 @@ function displayNotes() {
  */
 
 
-function resetCharacter() {
+function resetDisplay() {
 
     document.getElementById("listeAtouts").innerHTML = "";
     document.getElementById("listeEquipement").innerHTML = "";
@@ -315,9 +308,9 @@ function takeScreenshotWeb() {
 
         let baliseCocherNotes = document.getElementById("cocherNotes");
         if (baliseCocherNotes.checked) {
-            var textarea = document.getElementById('champNotes');
-            var text = textarea.value;
-            var textSave = text;
+            let textarea = document.getElementById('champNotes');
+            let text = textarea.value;
+            let textSave = text;
             textarea.value =""
         } 
 
@@ -329,7 +322,7 @@ function takeScreenshotWeb() {
             } 
 
             // Créer un lien pour télécharger l'image
-            var link = document.createElement('a');
+            let link = document.createElement('a');
             link.href = canvas.toDataURL('image/jpeg');
 
             // Déterminer le nom de fichier basé sur le contenu du textarea et d'autres variables
