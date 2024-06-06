@@ -10,25 +10,31 @@ function displayCharacter(character) {
     console.log(character);
     customHeader(character);
     displayAllStats(character);
+
     if (character.stats.mag.value > 0) {
         displayMagic(character);
     }
 
-    document.getElementById("vices").textContent = `${character.traits[0]}+1, ${character.traits[1]}+1`
-
-    document.getElementById("CARR").innerHTML = `<span class="strong">${character.job}</span>`
     displayVitals(character.pv, "PV");
     displayVitals(character.sf, "SF");
-    document.getElementById("INIT").textContent = character.initiative;
-    document.getElementById("DEST").textContent = character.fate;
-    document.getElementById("SB").textContent = character.sb;
-    document.getElementById("INST").textContent = character.instability;
-    document.getElementById("SPE").innerHTML = character.special;
+
+    displayAttributes(character);
 
     displayAbilities(character);
     displayEquipment(character);
     
     recapCharacteristics(character)
+}
+
+
+function displayAttributes(character) {
+    document.getElementById("vices").textContent = `${character.traits[0]}+1, ${character.traits[1]}+1`
+    document.getElementById("CARR").innerHTML = `<span class="strong">${character.job}</span>`
+    document.getElementById("INIT").textContent = character.initiative;
+    document.getElementById("DEST").textContent = character.fate;
+    document.getElementById("SB").textContent = character.sb;
+    document.getElementById("INST").textContent = character.instability;
+    document.getElementById("SPE").innerHTML = character.special;
 }
 
 function displayAllStats(character) {
@@ -40,14 +46,31 @@ function displayAllStats(character) {
 }
 
 
+
+
+
 function displayStat(property, tagID) {
     let tag = document.getElementById(tagID);
     tag.textContent = property.value;
     let tagInfo = document.getElementById(tagID+"info")
-    tagInfo.innerHTML = `${property.archetype} ${property.magic} ${property.title}`
+
+
+    let bonusArchetype = displayStatInfo(property.archetype, "archétype");
+    let bonusMagic = displayStatInfo(property.magic, "magie");
+    let bonusTitle = displayStatInfo(property.title, "titre");
+
+    tagInfo.innerHTML = `${bonusArchetype} ${bonusMagic} ${bonusTitle}`
 }
     
+function displayStatInfo(property, name) {
+    let bonus = "";
 
+    if (property !== 0) {
+        property > 0 ?  bonus = `${name} (<span class="is-green strong">+${property}</span>)<br>` : 
+                        bonus = `${name} (<span class="is-red strong">${property}</span>)<br>` ;
+        }
+        return bonus
+}
 
 
 
@@ -90,8 +113,6 @@ function displayEquipment(character) {
 function displayAbilities(character) {
     for (let i = 0 ; i < character.abilitiesSum ; i++) {
         let abilities = document.createElement("li")
-        console.log('hello wolrd')
-        console.log(character.abilities[i])
         abilities.textContent = character.abilities[i]
         document.getElementById("listeAtouts").appendChild(abilities)
     }
@@ -101,8 +122,8 @@ function displayAbilities(character) {
 
 function displayVitals(attribute, ID) {
     if (attribute[3] !== 0) {
+        document.getElementById(ID+"info").textContent = ` (${attribute.base}+${attribute.bonus})  `;
         document.getElementById(ID).textContent = attribute.sum
-        document.getElementById(ID+"info").textContent = ` (${attribute.base}+${attribute.bonus})`;
     } else {
         document.getElementById(ID).textContent = attribute.sum;
         document.getElementById(ID+"info").innerHTML = ""
@@ -112,14 +133,6 @@ function displayVitals(attribute, ID) {
 
 
 function recapCharacteristics(character) {
-    // valeur de base = [10][1]-[10][6] : valeur de base
-
-    // attribut secondaire [10][1] : 120 + profil de répartion du peuple
-    // attribut secondaire [10][2] : modification apportée par l'archétype
-    // attribut secondaire [10][3] : somme de toutes les caractéristiques
-    // attribut secondaire [10][4] : magie prélevée sur le combat
-    // attribut secondaire [10][5] : issu du calcul suivant : (initial + archétype) - (magie - magie prélevée sur le combat)
-    // attributs secondaire[10][6] : pts de compétences sup.
 
     character.sum.race = character.sum.rollrace - character.sum.roll
     character.sum.final = character.sum.resultBeforeMagic + character.stats.mag.value
