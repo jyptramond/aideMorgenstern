@@ -2642,7 +2642,7 @@ const jobs = [
             "Solidité", 
             "Tir du chasseur"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "coutelas (RU+*FOR*-1)"
         ],
@@ -2677,9 +2677,7 @@ const jobs = [
             "Solidité", 
             "Tir du chasseur"
         ],
-        armor: [
-            
-        ],
+        armor: "",
         weapons: [
             `${armesdetir}`
         ],
@@ -2715,9 +2713,7 @@ const jobs = [
             "Second souffle", 
             "Vivacité"
         ],
-        armor: [
-            
-        ],
+        armor: "",
         weapons: [
             `${armesdemeleelegere}/${armesdemeleeordinaire}`
         ],
@@ -2752,7 +2748,7 @@ const jobs = [
             "Second souffle", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: []
     },
@@ -2782,7 +2778,7 @@ const jobs = [
             "Solidité", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${epee}`
         ],
@@ -2818,9 +2814,7 @@ const jobs = [
             "Sixième sens", 
             "Solidité"
         ],
-        armor: [
-            
-        ],
+        armor: "",
         weapons: [
             `${armesdemelee}`, `${armureslegeres}`
         ],
@@ -2853,7 +2847,7 @@ const jobs = [
             "Solidité", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "épée courte (RU+*FOR*-1)"
         ],
@@ -3002,7 +2996,7 @@ const jobs = [
             "Provocation/Prudent",
             "Relations"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "épée d'apparat/nécessaire de maquillage",
@@ -3039,7 +3033,7 @@ const jobs = [
             "Second souffle",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "dague (RU+*FOR*-1)"
         ],
@@ -3115,7 +3109,7 @@ const jobs = [
             "Polyglotte/Prudent",
             "Relations"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "deux habits de cour de grande qualité",
@@ -3149,7 +3143,7 @@ const jobs = [
             "Mémoire sans faille",
             "Relations"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un costume de magistrat",
@@ -3186,7 +3180,7 @@ const jobs = [
             "Provocation",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "costume de bourgeois",
@@ -3220,7 +3214,7 @@ const jobs = [
             "Second souffle",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "hachoir (RU+*FOR*+0)"
         ],
@@ -3260,7 +3254,7 @@ const jobs = [
             "Solidité", 
             "Travail d'équipe"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "marteau (RU+*FOR*-2)"
         ],
@@ -3296,7 +3290,7 @@ const jobs = [
             "Relations", 
             "Second souffle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "costume de bourgeois", 
@@ -3366,7 +3360,7 @@ const jobs = [
             "Solidité", 
             "Travail d'équipe"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "bouteille de mauvais vin"
@@ -3398,7 +3392,7 @@ const jobs = [
             "Prudent", 
             "Relations"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "deux costumes de bourgeois", 
@@ -3434,7 +3428,7 @@ const jobs = [
             "Sauvegarde", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "pioche (RU+*FOR*+0)"
         ],
@@ -3470,7 +3464,7 @@ const jobs = [
             "Pattes de chat/Sauvegarde", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "arme de mêlée (au choix)", 
             "un pistolet à poudre (RU+4) avec 10 munitions"
@@ -3507,7 +3501,7 @@ const jobs = [
             "Surnombre",
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "un objet extorqué il y a quelques jours (de petite valeur, à décider avec le MJ)",
             "des osselets ou trois dés en os"
@@ -3540,7 +3534,7 @@ const jobs = [
             "Tir du chasseur",
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "pistolet à poudre (RU+4) avec 10 munitions"
         ],
@@ -3575,7 +3569,7 @@ const jobs = [
             "Tir du chasseur",
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "un capuchon",
             "trois torches",
@@ -3609,7 +3603,7 @@ const jobs = [
             "Sauvagerie",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une corde de 10 mètres et un grappin",
@@ -3643,7 +3637,7 @@ const jobs = [
             "Surnombre",
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une torche"
@@ -3678,7 +3672,7 @@ const jobs = [
             "Solidité",
             "Surnombre"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "1d10 pièces d'argent",
@@ -3711,7 +3705,7 @@ const jobs = [
             "Tir du chasseur",
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une corde de 10 mètres",
@@ -3749,7 +3743,7 @@ const jobs = [
             "Spectacle",
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "1d10 balles de jonglage",
@@ -3784,7 +3778,7 @@ const jobs = [
             "Mémoire sans faille/Nyctalopie",
             "Mensonge éhonté"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "boule de cristal/jeu de Tarot ancien",
@@ -3818,7 +3812,7 @@ const jobs = [
             "Provocation/Relations",
             "Spectacle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "costume de bourgeois usé",
@@ -3895,7 +3889,7 @@ const jobs = [
             "Spectacle", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "1d10 couteaux de lancer (RU+*FOR*-1)"
         ],
@@ -3931,7 +3925,7 @@ const jobs = [
             "Réflexes éclairs", 
             "Spectacle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un costume de cour usé", 
@@ -3965,7 +3959,7 @@ const jobs = [
             "Second souffle", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${batons}`
         ],
@@ -4000,7 +3994,7 @@ const jobs = [
             "Spectacle", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "costume de bourgeois", 
@@ -4038,7 +4032,7 @@ const jobs = [
             "Relations", 
             "Second souffle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "livre de comptes", 
@@ -4074,7 +4068,7 @@ const jobs = [
             "Mémoire sans faille", 
             "Relations"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "deux livres de droit", 
@@ -4107,7 +4101,7 @@ const jobs = [
             "Prudent/Sain d'esprit", 
             "Relations"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "costume de cour", 
@@ -4140,7 +4134,7 @@ const jobs = [
             "Prudent", 
             "Relations"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "deux costumes de cour", 
@@ -4174,7 +4168,7 @@ const jobs = [
             "Provocation", 
             "Second souffle"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "couteau (RU+*FOR*-1)/gourdin (RU+*FOR*-2)"
         ],
@@ -4209,7 +4203,7 @@ const jobs = [
             "Sain d'esprit", 
             "Second souffle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un costume bourgeois de qualité", 
@@ -4243,7 +4237,7 @@ const jobs = [
             "Prudent", 
             "Relations/Sauvegarde"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "instruments de mesure"
@@ -4275,7 +4269,7 @@ const jobs = [
             "Polyglotte", 
             "Relations/Sain d'esprit"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une écritoire portative", 
@@ -4314,7 +4308,7 @@ const jobs = [
             "Provocation", 
             "Second souffle/Mensonge éhonté"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "costume de bourgeois", 
             "2d10 tracts incitant à la rébellion", 
@@ -4348,7 +4342,7 @@ const jobs = [
             "Panache", 
             "Polyglotte/Provocation"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "costume de bourgeois usé", 
@@ -4381,7 +4375,7 @@ const jobs = [
             "Pattes de chat", 
             "Réflexes éclairs/Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "jeu de crochets", 
             "paire de gants noirs", 
@@ -4415,7 +4409,7 @@ const jobs = [
             "Mensonge éhonté/Sixième sens", 
             "Solidité/Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemeleesimples}/${armesdetrait}`, 
             "barque contenant 2d10 marchandises non déclarées/barque contenant 2d10 marchandises illégales de peu de valeur/chariot contenant 2d10 marchandises non déclarées/chariot contenant 2d10 marchandises illégales de peu de valeur"
@@ -4449,7 +4443,7 @@ const jobs = [
             "Réflexes éclairs/Vivacité", 
             "Relations/Sixième sens"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "costume au choix (bourgeois ou noble)", 
@@ -4521,7 +4515,7 @@ const jobs = [
             "Panache", 
             "Provocation"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un costume de bourgeois", 
@@ -4557,7 +4551,7 @@ const jobs = [
             "Réflexes éclairs", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un objet volé il y a une semaine (de petite valeur, à décider avec le MJ)"
@@ -4593,7 +4587,7 @@ const jobs = [
             "Sixième sens", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "barque", 
@@ -4626,7 +4620,7 @@ const jobs = [
             "Sauvagerie", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "cognée (RU+*FOR*+0)"
         ],
@@ -4699,7 +4693,7 @@ const jobs = [
             "Tir du chasseur", 
             "Tir précis"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "arc long (RU+*FOR*+0) et 10 flèches"
         ],
@@ -4734,7 +4728,7 @@ const jobs = [
             "Sixième sens/Sauvegarde", 
             "Tir du chasseur"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "cheval avec selle et harnais", 
@@ -4769,7 +4763,7 @@ const jobs = [
             "Instinct de survie", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "fronde (RU+*FOR*-1)/fourche (RU+*FOR*-1)"
         ],
@@ -4801,7 +4795,7 @@ const jobs = [
             "Solidité", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemeleesimples}`
         ],
@@ -4836,7 +4830,7 @@ const jobs = [
             "Instinct de survie", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "barque", 
@@ -4874,7 +4868,7 @@ const jobs = [
             "Tir précis", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "trois torches", 
@@ -4907,7 +4901,7 @@ const jobs = [
             "Tir précis", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un cheval avec sa selle et son harnais", 
@@ -4942,7 +4936,7 @@ const jobs = [
             "Second souffle", 
             "Port d'armure/Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemelee}`
         ],
@@ -4976,7 +4970,7 @@ const jobs = [
             "Recharge rapide/Sixième sens", 
             "Solidité/Tir précis"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une lanterne", 
@@ -5011,7 +5005,7 @@ const jobs = [
             "Solidité/Sixième sens", 
             "Sauvegarde"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un costume de bourgeois", 
@@ -5045,7 +5039,7 @@ const jobs = [
             "Solidité", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "la tête d'un ennemi animal au combat/la tête d'un humanoïde tué au combat/la tête d'un monstre tué au combat"
@@ -5077,7 +5071,7 @@ const jobs = [
             "Solidité", 
             "Sauvegarde/Tir précis"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une bouteille d'alcool"
@@ -5107,7 +5101,7 @@ const jobs = [
             "Riposte", 
             "Second souffle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un costume de cour", 
@@ -5145,7 +5139,7 @@ const jobs = [
             "Tireur d'élite", 
             "Tir ciblé"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesapoudre}`
         ],
@@ -5177,7 +5171,7 @@ const jobs = [
             "Riposte", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${lances}`, 
             `${armesdetir}`
@@ -5212,7 +5206,7 @@ const jobs = [
             "Sauvegarde", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${hachesàdeuxmains}`
         ],
@@ -5248,7 +5242,7 @@ const jobs = [
             "Solidité", 
             "Tir du chasseur"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdetir}`
         ],
@@ -5281,7 +5275,7 @@ const jobs = [
             "Sixième sens/Sauvegarde", 
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdhast}`, 
             `${boucliers}`, 
@@ -5315,7 +5309,7 @@ const jobs = [
             "Solidité", 
             "Tir du chasseur"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesadistance}`,
             "bouclier en bois (protection+1)"
@@ -5352,7 +5346,7 @@ const jobs = [
             "Sixième sens", 
             "Vivacité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "Une cape sombre", 
@@ -5385,7 +5379,7 @@ const jobs = [
             "Second souffle", 
             "Sauvegarde/Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdhast}`, 
             "casque (protection+1)"
@@ -5420,7 +5414,7 @@ const jobs = [
             "Nyctalopie",
             "Souffle de vie"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "1d10 potions",
@@ -5453,7 +5447,7 @@ const jobs = [
             "Solidité",
             "Sort fétiche"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "un bâton de marche gravé des quatre symboles élémentaires triangulaires"
@@ -5485,7 +5479,7 @@ const jobs = [
             "Nyctalopie",
             "Sixième sens"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "jeu de tarot divinatoire",
@@ -5518,7 +5512,7 @@ const jobs = [
             "Mensonge éhonté",
             "Nyctalopie/Spectacle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "jeu de cartes",
@@ -5552,7 +5546,7 @@ const jobs = [
             "Nyctalopie/Sain d'esprit",
             "Sort fétiche"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "livre de loi",
@@ -5586,7 +5580,7 @@ const jobs = [
             "Magie sanglante",
             "Résistance magique"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "stylet (RU+*FOR*-2)"
         ],
@@ -5657,7 +5651,7 @@ const jobs = [
             "Nyctalopie",
             "Sort fétiche"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une amulette",
@@ -5693,7 +5687,7 @@ const jobs = [
             "Second souffle",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "une carriole",
@@ -5726,7 +5720,7 @@ const jobs = [
             "Instinct de survie/Réflexes éclairs",
             "Nyctalopie"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "bâton (RU+*FOR*-2)"
         ],
@@ -5796,7 +5790,7 @@ const jobs = [
             "Relations",
             "Résilience"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "des habits affriolants",
@@ -5830,7 +5824,7 @@ const jobs = [
             "Nyctalopie",
             "Second souffle"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemeleelegere}`
         ],
@@ -5869,7 +5863,7 @@ const jobs = [
             "Second souffle",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemeleelegere}`
         ],
@@ -5907,7 +5901,7 @@ const jobs = [
             "Magie sanglante",
             "Nyctalopie"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "bâton de marche"
         ],
@@ -5941,7 +5935,7 @@ const jobs = [
             "Nyctalopie",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemeleelegere}`
         ],
@@ -6018,7 +6012,7 @@ const jobs = [
             "Sauvegarde",
             "Solidité"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemeleelegere}`
         ],
@@ -6053,7 +6047,7 @@ const jobs = [
             "Solidité",
             "Sort fétiche"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             "serpe bien aiguisée (RU+*FOR*-1)/couteau bien aiguisé (RU+*FOR*-1)"
         ],
@@ -6089,7 +6083,7 @@ const jobs = [
             "Résistance magique",
             "Second souffle"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "livre saint",
@@ -6126,7 +6120,7 @@ const jobs = [
             "Sain d'esprit",
             "Sort fétiche/Souffle de vie"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "livre saint",
@@ -6161,7 +6155,7 @@ const jobs = [
             "Inspiration",
             "Polyglotte"
         ],
-        armor: [],
+        armor: "",
         weapons: [],
         inventory: [
             "trois livres saints",
@@ -6195,7 +6189,7 @@ const jobs = [
             "Solidité",
             "Souffle de vie"
         ],
-        armor: [],
+        armor: "",
         weapons: [
             `${armesdemeleesimples}`
         ],

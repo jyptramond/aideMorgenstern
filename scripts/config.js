@@ -2,7 +2,9 @@ function generateButtonListener() {
 
     document.getElementById('generer').addEventListener("click", function(event) {
 
-        createCharacter();
+        resetDisplay();
+        let character = createCharacter();
+        displayCharacter(character);
     });
 }
 

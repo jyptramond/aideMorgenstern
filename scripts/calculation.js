@@ -26,7 +26,22 @@ function findProperty(obj, target) {
     return null;
 }
 
-
+function findPropertyByName(obj, targetName) {
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            if (key === targetName) {
+                return obj[key];
+            }
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+                let found = findPropertyByName(obj[key], targetName);
+                if (found) {
+                    return found;
+                }
+            }
+        }
+    }
+    return null;
+}
 
 /**
  * Cette fonction mélange un array avec la méthode Fisher-Yates shuffle
@@ -55,118 +70,53 @@ function shuffle(array) {
 
 
 
-/** 
- * 
- * Cette fonction va calculer les notations des types suivants : "RU+*FOR*1","1d10+*CNS" ou "5d10"
- * Attention : cette fonction ne calcule les jets de dés que jusqu'à 9d10
- * 
- * @param {string} str : la chaîne de caractère que l'on veut analyser
- *
- */
 
-function faireCalcul(character, str) {
-
-    // init des variables nécessaires
-    let x = str.indexOf("d10")
-    let newStr = str
-    let finalStr
-    let valeurd10 = 0
+function rollDices(str) {
     let numberOfDice = 0
-
-
+    let index = str.indexOf("d10")
+    let sum = 0
     // on recherche si la mention 1d10 ou 2d10 existe dans la chaîne de caractère.
     // Cette mention est remplacé par un caractère £ pour mieux le repérer ensuite. On lance les dés associés
+    // Attention : cette fonction ne calcule les jets de dés que jusqu'à 9d10
 
-    if (x !== -1) {
-        numberOfDice = Number(str.slice(x-1,x))
+    do {
+        sum += lancerD10()
+        numberOfDice--
+    } 
+    while (numberOfDice > 0)
+
+    if (index !== -1) {
+        numberOfDice = Number(str.slice(index-1,index))
             //DEBUG : console.log(numberOfDice)
-        newStr = str.replace(`${numberOfDice}`+"d10", '£')
-
-            do 
-                {
-                    valeurd10 += lancerD10()
-                    numberOfDice--
-                } while (numberOfDice > 0)
+        str = str.replace(`${numberOfDice}`+"d10", `${sum}`)
     }
 
-    //DEBUG : console.log(numberOfDice)
+    return str
+}
 
 
-    // on recherche si la mention +* et RU existent dans la chaîne de caractère
-    let position = str.indexOf("+*")
-    let calculDegats = str.indexOf("RU")
+function weaponsDamage(str) {
 
-    // Si oui on déclenche la suite qui remplace une mention du type £+*XXX* par le résultat au calcul associé SI la mention RU était absente
-    if (position !== -1)  {
-    let competence = str.slice(position+2, position+5)
-
-        for (let i = 0 ; i < abrevCaracteristiques.length ; i++) {
+}
 
 
+/** 
+ * Cette fonction va calculer les notations des types suivants : "RU+*FOR*1","1d10+*CNS" ou "5d10"
+ * 
+ * 
+ * @param {string} str : la chaîne de caractère que l'on veut analyser
+ */
 
-            i = 0;
-            for (let key in allkeys) {
-                if (character.characteristics.hasOwnProperty(key)) {
+function translate(character, str) {
 
-
-                        // si on calcule on calcule une chaîne d'une type : "1d10+*CNS"
-                        if (abrevCaracteristiques[i] === competence && calculDegats === -1) {    
-                            //DEBUG: console.log("correspondance (via mode £+*XXX*)"+abrevCaracteristiques[i]+" avec "+competence+" soit i = "+i+" et valeur d10: "+valeurd10+"soit + "+indice(valeursCaracteristiques[i]))
-                            finalStr = newStr.replace(`£+*${competence}*`, valeurd10 + indice(key.value))
-                        
-                        } 
-
-                        // si on calcule les dégâts d'une arme, soit une chaîne du type : "RU+*FOR*+1"
-                        else if (abrevCaracteristiques[i] === competence && calculDegats !== -1) {
-                            //DEBUG: console.log("correspondance (via mode RU+*XXX*+x)"+abrevCaracteristiques[i]+" avec "+competence+" soit i = "+i)
-                                let y = str.slice(position+6, position+8) // l'opérateur et le chiffre
-                                finalStr = newStr.replace(`RU+*${competence}*${y}`,"RU+"+eval(`${indice(key.value)}${y}`))
-                        }
+    // init des variables nécessaires
 
 
-
-                    character.characteristics[key].value = characteristics[i];
-                    i++;
-                }
-            }
+    str = rollDices(str);
+   // str = weaponsDamage(str);
 
 
-
-            // si on calcule on calcule une chaîne d'une type : "1d10+*CNS"
-            if (abrevCaracteristiques[i] === competence && calculDegats === -1) {    
-                //DEBUG: console.log("correspondance (via mode £+*XXX*)"+abrevCaracteristiques[i]+" avec "+competence+" soit i = "+i+" et valeur d10: "+valeurd10+"soit + "+indice(valeursCaracteristiques[i]))
-                    if (i === 12) {
-                        finalStr = newStr.replace(`£+*${competence}*`, valeurd10 + indice(valeurMagie))
-                    } else {
-                        finalStr = newStr.replace(`£+*${competence}*`, valeurd10 + indice(valeursCaracteristiques[i]))
-                    } 
-            } 
-
-            // si on calcule les dégâts d'une arme, soit une chaîne du type : "RU+*FOR*+1"
-            else if (abrevCaracteristiques[i] === competence && calculDegats !== -1) {
-                //DEBUG: console.log("correspondance (via mode RU+*XXX*+x)"+abrevCaracteristiques[i]+" avec "+competence+" soit i = "+i)
-                    let y = str.slice(position+6, position+8) // l'opérateur et le chiffre
-                    finalStr = newStr.replace(`RU+*${competence}*${y}`,"RU+"+eval(`${indice(valeursCaracteristiques[i])}${y}`))
-            }
-        }
-    }
-
-        if (finalStr !== undefined) {
-            newStr = finalStr
-        } else {
-            finalStr = newStr
-        }
-
-// On remplace seulement £ par le calcul du résultat du dé
-position = finalStr.indexOf("£")
-
-        if (valeurd10 !== 0 && position !== -1) {
-            //DEBUG (parfois doublon): console.log("correspondance (via mode xd10) et valeur d10: "+valeurd10)
-            finalStr = finalStr.replace('£', valeurd10)
-        }
-
-    // Finalement on retourne la valeur modifiée
-    return finalStr
+    return str
     }
 
 

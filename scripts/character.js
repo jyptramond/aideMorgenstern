@@ -41,7 +41,7 @@ function createCharacter() {
         //genererCompetences();
         switch (configMode) {
             case 0:
-                getCharacteristics(character);
+                getStats(character);
                 break;
             case 1:
                 genererCompetencesTirage(configMode);
@@ -52,6 +52,7 @@ function createCharacter() {
         }
 
         getArchetype(character, config);
+        getTraits(character);
         getJob(character, config);
         getMagicRank(character)
         getMagic(character);
@@ -274,9 +275,7 @@ function getName(character, config) {
 
 function getAge(character) {
 
-    // attributsPrincipaux[3] = age
-
-    switch (character.race) {
+    switch (character.raceID) {
         case 0 :
             //humain
             character.age = aleatoire(33)+12
@@ -313,7 +312,6 @@ function getAge(character) {
             //orquin
             character.age = aleatoire(38)+12
             break ;
-        
     }
 }
 
@@ -327,14 +325,13 @@ function getAge(character) {
  *
  */
 
-function getCharacteristics(character) {
+function getStats(character) {
 
 let sum = 0
-let characteristics = []
+let stats = []
 let pool = 120
 let y = 0 // le tableau des caractéristiques    
 let i = 0
-
 
     // pour chaque caractéristique on attribue une valeur aléatoire (0, 5, 10, 15 ou 20)
     for (i = 0; i < 12; i++) {
@@ -348,44 +345,62 @@ let i = 0
             y = pool  
         }
 
-        characteristics[i] = y       
+        stats[i] = y       
         // puis on diminue la pool d'un chiffre équivalent 
         pool -= y 
-        }
+    }
 
     for (i = 0; i < 12 ; i++) {
-        sum += characteristics[i];
+        sum += stats[i];
     }
 
     // si la somme des caractéristiques n'est pas égale à 120, on lance une nouvelle création
     if (sum !== 120) {
-        getCharacteristics(character)
+        getStats(character)
     } 
-    else 
-    {
-                
-    shuffle(characteristics)
+    else {  
 
-    for (i = 0 ; i < characteristics.length ; i++) {
-        character.sum.roll += characteristics[i]
-    }
+        shuffle(stats)
+        getSum(character, stats);
+        checkStatsSum(stats);
+        addRaceStats(character, stats)
 
-    for (i = 0; i < characteristics.length; i++) {
-        characteristics[i] += origine[character.raceID][i+1] ;
-        character.sum.base += characteristics[i]
-        }
-    }
-
-    i = 0;
-    for (let key in keys) {
-        if (character.stats.hasOwnProperty(key)) {
-            character.stats[key].value = characteristics[i];
-            i++;
-        }
     }
 }
 
+function getSum(character, stats) {
+    for (let i = 0 ; i < keys.length ; i++) {
+        character.sum.roll += stats[i]
+    }
+}
 
+function addRaceStats(character, stats) {
+
+    for (i = 0; i < stats.length; i++) {
+        character.sum.race += origine[character.raceID][i+1] ;
+        stats[i] += origine[character.raceID][i+1] ;
+        }
+        character.sum.rollrace = character.sum.roll + character.sum.race;
+
+    for (i = 0 ; i < keys.length ; i++) {
+        //console.log(keys[i])
+        let property = findPropertyByName(character, keys[i])
+        //console.log(property.value);
+        property.value += stats[i];
+        //console.log(property.value);
+    }
+    //console.log(character.sum.rollrace)
+}
+
+
+function checkStatsSum(stats) {
+    let mySum = 0;
+    console.log(stats)
+        for (i = 0 ; i < stats.length ; i++) {
+            mySum += stats[i];
+        }
+    console.log("somme : "+mySum)
+}
 
 
 /**
@@ -416,31 +431,31 @@ function getArchetype(character, config) {
         bonusArchetype(character, stringrandom(newArchetype[character.archetypeID].bonus[i]))
 
     }
-
-
 }
 
 
 function getTraits(character) {
 
-    let y = []
+    let trait1 = "";
+    let trait2 = "";
+
         // tire deux vices et vertus selon l'archétype. Si les deux sont identiques, il y a relance
-        while (y[0] === y[1]) {
+        while (trait1 === trait2) {
 
             // si il y a deux entrées vices et vertus dans le tableau
-            if (archetype[i][2][1]) {
-                y[0] = stringrandom(archetype[i][2][0])
-                y[1] = stringrandom(archetype[i][2][1])
+            if (newArchetype[character.archetypeID].traits.length === 2) {
+                trait1 = stringrandom(newArchetype[character.archetypeID].traits[0])
+                trait2 = stringrandom(newArchetype[character.archetypeID].traits[1])
             }
             // si il n'y en a qu'une seule
             else {
-                y[0] = stringrandom(archetype[i][2][0])
-                y[1] = stringrandom(archetype[i][2][0])
+                trait1 = stringrandom(newArchetype[character.archetypeID].traits[0])
+                trait2 = stringrandom(newArchetype[character.archetypeID].traits[0])
             }
         }
     
-        character.traits[0] = y[0]
-        character.traits[1] = y[1]
+        character.traits[0] = trait1;
+        character.traits[1] = trait2;
 }
 
 
@@ -485,13 +500,14 @@ characteristic = str.slice(0, z)
     for (let i = 0 ; i < nomsCaracteristiques.length ; i++) {
         if (characteristic === abrevCaracteristiques[i]) {
 
-            let property = findProperty(character, i)
+            let property = findPropertyByName(character, keys[i])
 
             if (operateur === "+") {
                 //console.log(`la valeur de ${abrevCaracteristiques[i]} a été incrémenté de ${x}`)
                 property.value += Number(x)
                 property.archetype = `archétype (<span class="is-green strong">+${x}</span>)`
                 character.sum.archetype += Number(x)
+                
             }
             else {
                 //console.log(`la valeur de ${abrevCaracteristiques[i]} a été décrémenté de ${x}`)
@@ -519,7 +535,7 @@ characteristic = str.slice(0, z)
 
 function getJob(character, config) {
     
-    // si tout est aléatoire
+    // LOGIQUE
     if (config.group === -2 && config.job === -1) {
 
         let y = aleatoire(100)+1
@@ -528,35 +544,36 @@ function getJob(character, config) {
         for (let i = 0 ; i < repartitionMetiers[character.raceID].length ; i++) {
             
             if (y >= repartitionMetiers[character.raceID][i][0] && y <= repartitionMetiers[character.raceID][i][1]) {
-                config.group = i ;
+                character.groupID = i ;
             }
         }
 
         // tirer un métier au hasard parmi la branche
-        config.job = (aleatoire(8))+(8*(x))
+        character.jobID = (aleatoire(8))+(8*(character.groupID))
     }
 
+        // Aléatoire
     if (config.group === -1 && xx === -1 ) {
-        config.group = aleatoire(carrieres.length)
-        config.job = (aleatoire(8))+(8*(config.group))
+        character.groupID = aleatoire(groups.length)
+        character.jobID = (aleatoire(8))+(8*(character.groupID))
     }
 
    
     // si BRANCHE CHOISE && METIER ALEATOIRE
     if (config.group >= 0 && config.job === -1) {
-        config.job = (aleatoire(8))+(8*(config.group))
+        character.groupID = config.group;
+        character.jobID = (aleatoire(8))+(8*(config.group));
     }
 
     // si BRANCHE ALEATOIRE && METIER CHOISI
     if (config.group < 0 && config.job !== -1) {
-        config.group = Math.floor(config.job/8)
+        character.jobID = config.job
+        character.groupID = Math.floor(character.jobID/8)
     }
 
-    // afficher le métier
-    character.groupID = config.group;
-    character.group = groups[config.group].name;
-    character.jobID = config.job;
-    character.job = stringrandom(jobs[config.job].name);
+    // afficher le métier=
+    character.group = groups[character.groupID].name;
+    character.job = stringrandom(jobs[character.jobID].name);
 }
 
 
@@ -566,21 +583,46 @@ function getJob(character, config) {
  */
 
 function getEquipment(character) {
+    let stuff = ""
 
-    for (let i = 0 ; i < groups[character.groupID].inventory.length ; i++) {
+    getFromList(character, groups[character.groupID].inventory, character.equipment);
+    getFromList(character, groups[character.groupID].weapons, character.weapons);
+    stuff = getFromList(character, groups[character.groupID].money, character.money);
+    character.money = stuff;
 
-        //générer l'équipement de la branche de métiers
-        character.equipment.push(faireCalcul(character, stringrandom(groups[character.groupID].inventory[i])));
+    getFromList(character, jobs[character.jobID].inventory, character.equipment);
+    getFromList(character, jobs[character.jobID].weapons, character.weapons);
+
+    stuff = getFromList(character, groups[character.groupID].armor, character.armor);
+    
+    if (character.armor !== "") {
+        stuff = getFromList(character, jobs[character.jobID].armor, character.armor);
     }
-
-    i = 0;
-    for (i = 21 ; i < jobs[character.jobID].inventory.length ; i++) {
-
-        //générer l'équipement additionnel du métier
-        character.equipment.push(faireCalcul(character, stringrandom(jobs[character.jobID].inventory[i])));
-        x++
-    }
+    character.armor = stuff;
 }
+
+
+function getFromList(character, id, stuff) {
+
+            console.log("///////////////////////////////////")
+        if (Array.isArray(stuff)) {
+            for (let i = 0 ; i < id.length ; i++) {
+                //générer l'équipement de la branche de métiers
+                
+                //console.log(id[i]);
+                stuff.push(translate(character, stringrandom(id[i])));
+                //console.log("# "+translate(character, stringrandom(id[i])));
+
+            }
+        }
+        else {
+            //console.log(id)
+            stuff = `${translate(character, stringrandom(id))}`;
+            //console.log("# "+stuff)
+            return stuff
+        }
+}
+
 
 
 /**
@@ -1055,8 +1097,6 @@ function getTricks(character, book) {
 
 
 function getMainAttributes(character) {
-    let i = 0;
-
 
     // initiative
     character.initiative = indice(character.stats.com.value)+indice(character.stats.mou.value)+indice(character.stats.per.value);
@@ -1076,16 +1116,14 @@ function getMainAttributes(character) {
     character.instability = Math.floor(character.sf.sum/4)
 
     // total : [initiale + archétype] - [magie - mod combat] = total final
-    i = 0
-    for (let key in keys) {
-        if (character.stats.hasOwnProperty(key)) {
-            character.sum.sum12 += character.stats[key].value
-            i++;
+
+        for(let i = 0 ; i < keys.length ; i++) {
+            let property = findPropertyByName(character, keys[i])
+            character.sum.sum12 += property.value;
         }
-    }
 
     character.sum.resultBeforeMagic = 
-                    (character.sum.base + 
+                    (character.sum.rollrace + 
                     character.sum.archetype) - 
                     (character.stats.mag.value - 
                     character.sum.comDecrease) ;
@@ -1110,6 +1148,12 @@ function initCharacter() {
             age: "",
             group: "",
             job: "",
+
+            weapons: [],
+            equipment: [],
+            armor: "",
+            money: "",
+
             raceID: 0,
             archetypeID: 0,
             groupID: 0,
@@ -1132,96 +1176,106 @@ function initCharacter() {
             special: "",
             abilitiesSum: 0,
             abilities: [],
-            weapons: [],
-            equipment: [],
+
             // caractéristiques :
             stats : {
                 com: {
-                    id: 0,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 cns: {
-                    id: 1,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 dis: {
-                    id: 2,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 end: {
-                    id: 3,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 for: {
-                    id: 4,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 hab: {
-                    id: 5,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 mou: {
-                    id: 6,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 per: {
-                    id: 7,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 soc: {
-                    id: 8,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 sur: {
-                    id: 9,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 tir: {
-                    id: 10,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 vol: {
-                    id: 11,
                     value: 0,
+                    roll: 0,
+                    race: 0,
                     archetype: 0,
                     magic: 0,
                     title: 0,
                 },
                 mag:  {
-                    id: 12,
                     value: 0,
                     title: 0,
                 }
@@ -1232,9 +1286,9 @@ function initCharacter() {
             sum: { 
                 race: 0,
                 roll: 0,                //10-6
+                rollrace: 0,                //10-1
                 archetype: 0,           //10-2
                 comDecrease: 0,         //10-4
-                base: 0,                //10-1
                 resultBeforeMagic: 0,   //10-5 (initial + archetype) - (character.magic - magieDue)
                 sum12: 0,               //10-3 somme de toutes les caractéristiques
                 final: 0,

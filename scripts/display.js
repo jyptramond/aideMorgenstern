@@ -9,7 +9,10 @@ function displayCharacter(character) {
     let i = 0
     console.log(character);
     customHeader(character);
-    displayAllCharacteristic(character);
+    displayAllStats(character);
+    if (character.stats.mag.value > 0) {
+        displayMagic(character);
+    }
 
     document.getElementById("vices").textContent = `${character.traits[0]}+1, ${character.traits[1]}+1`
 
@@ -21,43 +24,30 @@ function displayCharacter(character) {
     document.getElementById("SB").textContent = character.sb;
     document.getElementById("INST").textContent = character.instability;
     document.getElementById("SPE").innerHTML = character.special;
-    recapCharacteristics(character)
 
-    displayAttributes(character);
+    displayAbilities(character);
     displayEquipment(character);
-
-    if (character.stats.mag.value > 0) {
-        displayMagic(character);
-    }
-}
-
-function displayAllCharacteristic(character) {
-
-    let i = 0;
-    for (let key in keys) {
-        if (character.stats.hasOwnProperty(key)) {
-            displayCharacteristic(character, abrevCaracteristiques[i], character.stats[key].value, i);
-            i++;
-        }
-    }
-    displayCharacteristic(character, "MAG", character.stats.mag.value, 12)
-}
-
-
-function displayCharacteristic(character, tagID, tagValue,  i) {
-    let tag = document.getElementById(tagID);
-    tag.textContent = tagValue;
-    let tagInfo = document.getElementById(tagID+"info")
-
-    for (let key in keys) {
-        if (character.stats.hasOwnProperty(key)) {
-            tagInfo.innerHTML = `${character.stats[key].archetype} ${character.stats[key].magic} ${character.stats[key].title}`
-            character.stats[key].value
-            i++;
-        }
-    }
     
+    recapCharacteristics(character)
 }
+
+function displayAllStats(character) {
+
+    for (let i=0 ; i < allkeys.length ; i++) {
+        let property = findPropertyByName(character, allkeys[i])
+        displayStat(property, abrevCaracteristiques[i])
+    }
+}
+
+
+function displayStat(property, tagID) {
+    let tag = document.getElementById(tagID);
+    tag.textContent = property.value;
+    let tagInfo = document.getElementById(tagID+"info")
+    tagInfo.innerHTML = `${property.archetype} ${property.magic} ${property.title}`
+}
+    
+
 
 
 
@@ -97,11 +87,13 @@ function displayEquipment(character) {
 }
 
 
-function displayAttributes() {
-    for (let i = 0 ; i < atouts.length ; i++) {
-        let nouvelAtout = document.createElement("li")
-        nouvelAtout.textContent = character.abilities[i]
-        document.getElementById("listeAtouts").appendChild(nouvelAtout)
+function displayAbilities(character) {
+    for (let i = 0 ; i < character.abilitiesSum ; i++) {
+        let abilities = document.createElement("li")
+        console.log('hello wolrd')
+        console.log(character.abilities[i])
+        abilities.textContent = character.abilities[i]
+        document.getElementById("listeAtouts").appendChild(abilities)
     }
 }
 
@@ -129,7 +121,7 @@ function recapCharacteristics(character) {
     // attribut secondaire [10][5] : issu du calcul suivant : (initial + archétype) - (magie - magie prélevée sur le combat)
     // attributs secondaire[10][6] : pts de compétences sup.
 
-    character.sum.race = character.sum.base - character.sum.roll
+    character.sum.race = character.sum.rollrace - character.sum.roll
     character.sum.final = character.sum.resultBeforeMagic + character.stats.mag.value
 
     if (character.stats.mag.value > 0) {

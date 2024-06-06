@@ -13,8 +13,8 @@ function generator() {
     userInput(champAge, "champAge",5);
     takeScreenshotWeb();
     rotateButton("generer");
-    resetDisplay();
     
+    resetDisplay();
     let character = createCharacter();
     displayCharacter(character);
 }

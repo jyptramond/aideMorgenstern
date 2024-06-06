@@ -20,22 +20,20 @@ let champTexte = ""
 
 const keys = ["com", "cns", "dis", "end", "for", "hab", "mou", "per", "soc", "sur", "tir", "vol"];
 
-const allkeys = ["com", "cns", "dis", "end", "for", "hab", "mou", "per", "soc", "sur", "tir", "vol", "mag"];
-
-const nomsCaracteristiques = [
-    "Combat",
-    "Connaissances",
-    "Discrétion",
-    "Endurance",
-    "Force",
-    "Habileté",
-    "Mouvement",
-    "Perception",
-    "Sociabilité",
-    "Survie",
-    "Tir",
-    "Volonté"
-]
+const allkeys = [
+    "com", 
+    "cns", 
+    "dis", 
+    "end", 
+    "for", 
+    "hab", 
+    "mou", 
+    "per", 
+    "soc", 
+    "sur", 
+    "tir", 
+    "vol", 
+    "mag"];
 
 const abrevCaracteristiques = [
     "COM",
@@ -52,6 +50,24 @@ const abrevCaracteristiques = [
     "VOL",
     "MAG"
 ]
+
+
+const nomsCaracteristiques = [
+    "Combat",
+    "Connaissances",
+    "Discrétion",
+    "Endurance",
+    "Force",
+    "Habileté",
+    "Mouvement",
+    "Perception",
+    "Sociabilité",
+    "Survie",
+    "Tir",
+    "Volonté"
+]
+
+
 
 // Les catégories de magiciens
 
