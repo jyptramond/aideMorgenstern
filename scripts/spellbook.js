@@ -128,7 +128,7 @@ const cards = document.querySelectorAll(".notsaved");
             
             for (let element of savedElements) {
                 console.log(element.firstChild.textContent)
-                if (element.firstChild.textContent === cards[i].firstChild.textContent || cards[i].firstChild.textContent === 'Ajouté au grimoire !') {
+                if (element.firstChild.textContent === cards[i].firstChild.textContent || cards[i].firstChild.innerHTML === '<i class="fa-solid fa-book-bookmark full-size"></i>') {
                     isDuplicate = true;
                 }
             }
@@ -148,7 +148,11 @@ const cards = document.querySelectorAll(".notsaved");
 function cardRemove(src) {
     
     if (src.classList.contains('notsaved')) {
-        src.innerHTML = `<h3>Ajouté au grimoire !</h3>`;
+        src.innerHTML = `<span><i class="fa-solid fa-book-bookmark full-size"></i></span>`;
+        src.classList.add('addedToSpellbook');
+    }
+    else {
+        src.innerHTML = `<span><i class="fa-solid fa-trash-can full-size"></i></span>`;
         src.classList.add('addedToSpellbook');
     }
 

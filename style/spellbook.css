@@ -55,26 +55,15 @@ article.fade {
     opacity: 0 !important;
     
 }
-  
-#myTricksDiv article:hover,
-#mySpellsDiv article:hover {
-    filter: sepia(50%) hue-rotate(100deg); /* Rotate the hue by 180 degrees */
-    transition: filter 0.3s ease; /* Smooth transition effect */
-}
-
-#mySpellbook article:hover {
-    filter: sepia(50%) hue-rotate(300deg); /* Rotate the hue by 180 degrees */
-    transition: filter 0.3s ease; /* Smooth transition effect */
-}
 
 #fullWindow article,
 #fullWindow div article {
-    border: solid black 1px;
+    border: none;
     padding: 1rem;
     margin: 0.5rem;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 275px;
-    background-image: url('../images/paper.jpg');
+    background-color: var(--color-black-transparent-dark);
     background-size:auto;
 }
 
