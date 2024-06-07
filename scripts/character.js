@@ -40,8 +40,9 @@ function createCharacter() {
 
 
         if (config.role !== 0) {
-            getTitle(character);
+            getTitle(character, config);
         }
+
         getAbilities(character);
         getMainAttributes(character);
         getEquipment(character);
@@ -491,20 +492,18 @@ value = str.slice(z+1)
 
 stat = str.slice(0, z)
 
-    for (let i = 0 ; i < nomsCaracteristiques.length ; i++) {
-        if (stat === abrevCaracteristiques[i]) {
+    for (let i = 0 ; i < keys.length ; i++) {
+        if (stat === allkeys[i]) {
 
             let property = findPropertyByName(character, keys[i])
 
             if (operateur === "+") {
-                //console.log(`la valeur de ${abrevCaracteristiques[i]} a été incrémenté de ${x}`)
                 property.value += Number(value)
                 property.archetype = Number(value)
                 character.sum.archetype += Number(value)
                 
             }
             else {
-                //console.log(`la valeur de ${abrevCaracteristiques[i]} a été décrémenté de ${x}`)
                 property.value -= Number(value) 
                 property.archetype = -Number(value)
                 character.sum.archetype -= Number(value)

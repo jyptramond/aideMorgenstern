@@ -48,7 +48,7 @@ function displayAllStats(character) {
 
     for (let i=0 ; i < allkeys.length ; i++) {
         let property = findPropertyByName(character, allkeys[i])
-        displayStat(property, abrevCaracteristiques[i])
+        displayStat(property, allkeys[i])
     }
 }
 
@@ -69,18 +69,26 @@ function displayStat(property, tagID) {
     if (property.magic !== undefined) {
         magicInfo = displayStatInfo(property.magic, "magie");
     }
-    let titleInfo = displayStatInfo(property.title, "titre");
+    let titleInfo = displayStatInfo(property.title, "titre", property.whatTitle);
 
     tagInfo.innerHTML = `${archetypeInfo} ${magicInfo} ${titleInfo}`
 }
     
-function displayStatInfo(property, name) {
+function displayStatInfo(property, name, what) {
     let bonus = "";
 
-    if (property !== 0) {
-        property > 0 ?  bonus = `${name} (<span class="is-green strong">+${property}</span>)<br>` : 
-                        bonus = `${name} (<span class="is-red strong">${property}</span>)<br>` ;
+    if (name !== "titre") {
+        if (property !== 0) {
+            property > 0 ?  bonus = `${name} (<span class="is-green strong">+${property}</span>)<br>` : 
+                            bonus = `${name} (<span class="is-red strong">${property}</span>)<br>` ;
+            }
+    }
+    else {
+        if (property !== 0) {
+            bonus = `${what} (<span class="is-green strong">+${property}</span>)<br>` ;
         }
+    }
+
         return bonus
 }
 

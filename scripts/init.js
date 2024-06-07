@@ -51,6 +51,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             cns: {
                 value: 0,
@@ -59,6 +60,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             dis: {
                 value: 0,
@@ -67,6 +69,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             end: {
                 value: 0,
@@ -75,6 +78,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             for: {
                 value: 0,
@@ -83,6 +87,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             hab: {
                 value: 0,
@@ -91,6 +96,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             mou: {
                 value: 0,
@@ -99,6 +105,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             per: {
                 value: 0,
@@ -107,6 +114,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             soc: {
                 value: 0,
@@ -115,6 +123,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             sur: {
                 value: 0,
@@ -123,6 +132,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             tir: {
                 value: 0,
@@ -131,6 +141,7 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             vol: {
                 value: 0,
@@ -139,10 +150,12 @@ function initCharacter() {
                 archetype: 0,
                 magic: 0,
                 title: 0,
+                whatTitle: "",
             },
             mag:  {
                 value: 0,
                 title: 0,
+                whatTitle: "",
             }
         },
 

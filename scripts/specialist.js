@@ -3,109 +3,119 @@
  * 
  */
 
-   function getTitle() {
+   function getTitle(character, config) {
 
     let x = 0
     
-        if (configRole === 1) {
-            increaseSpecialist(5, "spec.")
+        if (config.role === 1) {
+            increaseSpecialist(character, 5, "spec.")
         }
     
-        if (configRole === 2) {
-            increaseFightStats(10, "champ.");
-            increaseOtherStats(1,10, "champ.")
+        if (config.role === 2) {
+            increaseFightStats(character, 10, "champ.");
+            increaseOtherStats(character, 1, 10, "champ.")
         }
     
-        if (configRole === 3) {
-            increaseFightStats(20, "héros min.");
-            increaseOtherStats(2,20, "héros min.")
+        if (config.role === 3) {
+            increaseFightStats(character, 20, "héros min.");
+            increaseOtherStats(character, 2, 20, "héros min.")
         }
     
-        if (configRole === 4) {
-            increaseFightStats(30,  "héros maj.");
-            increaseOtherStats(3,30,  "héros maj.")
+        if (config.role === 4) {
+            increaseFightStats(character, 30,  "héros maj.");
+            increaseOtherStats(character, 3, 30,  "héros maj.")
         }
     }
     
     
-    function increaseSpecialist(howMuch, who) {
+    function increaseSpecialist(character, howMuch, who) {
 
-        let x = 0;
+        let i = 0;
 
-        if (character.magic.value <= 10) { 
+        if (character.stats.mag.value <= 10) { 
             x = aleatoire(2)
             if (x === 1) {
-                valeursCaracteristiques[0] += howMuch
-                modifCaracteristiques[0][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
+                increaseAnyStat(character.stats.com, howMuch, who) ;
             } else {
-                valeursCaracteristiques[10] += howMuch
-                modifCaracteristiques[10][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
+                increaseAnyStat(character.stats.tir, howMuch, who) ;
             }
         } else {
-            character.magic.value += howMuch
-            modifCaracteristiques[12][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
+            increaseAnyStat(character.stats.mag, howMuch, who) ;
         }
     
         do {
-            x = aleatoire(valeursCaracteristiques.length)
-        } while (x === 0 || x === 10)
+            i = aleatoire(keys.length)
+        } while (i === 0 || i === 10)
         
-        valeursCaracteristiques[x] += howMuch*2
-        modifCaracteristiques[x][2] = `${who} (<span class="is-green strong">+${howMuch*2}</span>)`
+        let property = findPropertyByName(character, keys[i])  
+        
+        increaseAnyStat(property, howMuch*2, who) ;
+    }
+
+
+    function increaseAnyStat(property, howMuch,who) {
+        property.value += howMuch ;
+        property.title = howMuch ;
+        property.whatTitle= who ;
     }
     
     
-    function increaseFightStats(howMuch, who) {
-        if (character.magic.value <= 10) {
-            valeursCaracteristiques[0] += howMuch
-            modifCaracteristiques[0][2] = `${who} (<span class="is-green strong">+${howMuch}</span>)`
-            valeursCaracteristiques[3] += howMuch
-            modifCaracteristiques[3][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-            valeursCaracteristiques[4] += howMuch
-            modifCaracteristiques[4][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-            valeursCaracteristiques[10] += howMuch
-            modifCaracteristiques[10][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-        } else {
-            character.magic.value += howMuch
-            modifCaracteristiques[12][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-            valeursCaracteristiques[1] += howMuch
-            modifCaracteristiques[1][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
-            valeursCaracteristiques[11] += howMuch
-            modifCaracteristiques[11][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+    function increaseFightStats(character, howMuch, who) {
+        if (character.stats.mag.value <= 10) {
+            increaseAnyStat(character.stats.com, howMuch, who) ;
+            increaseAnyStat(character.stats.end, howMuch, who) ;
+            increaseAnyStat(character.stats.for, howMuch, who) ;
+            increaseAnyStat(character.stats.tir, howMuch, who) ;
+
+        } 
+        else {
+            increaseAnyStat(character.stats.mag, howMuch, who) ;
+            increaseAnyStat(character.stats.cns, howMuch, who) ;
+            increaseAnyStat(character.stats.vol, howMuch, who) ;
         }
     }
     
     
-    function increaseOtherStats(howMany, howMuch, who) {
+    function increaseOtherStats(character, howMany, howMuch, who) {
     
         let x = 0
         let y = 0
         let z = 0
     
-        if (character.magic.value >= 10) {
+        if (character.stats.mag.value >= 10) {
             do {
-                x = aleatoire(valeursCaracteristiques.length)
-                y = aleatoire(valeursCaracteristiques.length)
-                z = aleatoire(valeursCaracteristiques.length)
-            } while (x === 1 || x === 11 || y === 1 || y === 11 || z === 1 || z === 11 ||x === y || y === z || z === x)
+                x = aleatoire(keys.length)
+                y = aleatoire(keys.length)
+                z = aleatoire(keys.length)
+            } while (   x === 1 || y === 1 || z === 1 || 
+                        x === 11 || y === 11 || z === 11 ||
+                        x === y || y === z || z === x)
         } else {
             do {
-                x = aleatoire(valeursCaracteristiques.length)
-                y = aleatoire(valeursCaracteristiques.length)
-                z = aleatoire(valeursCaracteristiques.length)
-            } while (x === 0 || x === 3 || x === 4 || x === 10 || y === 0 || y === 3 || y === 4 || y === 10 || z === 0 || z === 3 || z === 4 || z === 10 || x === y || y === z || z === x)
+                x = aleatoire(keys.length)
+                y = aleatoire(keys.length)
+                z = aleatoire(keys.length)
+            } while (   x === 0 || y === 0 || z === 0 || 
+                        x === 3 || y === 3 || z === 3 || 
+                        x === 4 || y === 4 || z === 4 || 
+                        x === 10 || y === 10 || z === 10 || 
+                        x === y || y === z || z === x)
         }
     
-        valeursCaracteristiques[x] += howMuch
-        modifCaracteristiques[x][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+            let property = findPropertyByName(character, keys[x])  
+            increaseAnyStat(property, howMuch, who) ;
     
         if (howMany > 1) {
-            valeursCaracteristiques[y] += howMuch
-            modifCaracteristiques[y][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+
+            let property = findPropertyByName(character, keys[y])  
+            increaseAnyStat(property, howMuch, who) ;
+
         }
         if (howMany > 2) {
-            valeursCaracteristiques[z] += howMuch
-            modifCaracteristiques[z][2] = `${who}  (<span class="is-green strong">+${howMuch}</span>)`
+
+            let property = findPropertyByName(character, keys[z])  
+            increaseAnyStat(property, howMuch, who) ;
+
         }
     }
 

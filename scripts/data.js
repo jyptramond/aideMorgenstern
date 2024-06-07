@@ -91,7 +91,20 @@ const domaineReligion = "Domaine magique (protection)/Domaine magique (châtimen
 
 
 
-const keys = ["com", "cns", "dis", "end", "for", "hab", "mou", "per", "soc", "sur", "tir", "vol"];
+const keys = [
+    "com", 
+    "cns", 
+    "dis", 
+    "end", 
+    "for", 
+    "hab", 
+    "mou", 
+    "per", 
+    "soc", 
+    "sur", 
+    "tir", 
+    "vol"
+];
 
 const allkeys = [
     "com", 
@@ -106,39 +119,9 @@ const allkeys = [
     "sur", 
     "tir", 
     "vol", 
-    "mag"];
+    "mag"
+];
 
-const abrevCaracteristiques = [
-    "COM",
-    "CNS",
-    "DIS",
-    "END",
-    "FOR",
-    "HAB",
-    "MOU",
-    "PER",
-    "SOC",
-    "SUR",
-    "TIR",
-    "VOL",
-    "MAG"
-]
-
-
-const nomsCaracteristiques = [
-    "Combat",
-    "Connaissances",
-    "Discrétion",
-    "Endurance",
-    "Force",
-    "Habileté",
-    "Mouvement",
-    "Perception",
-    "Sociabilité",
-    "Survie",
-    "Tir",
-    "Volonté"
-]
 
 
 
