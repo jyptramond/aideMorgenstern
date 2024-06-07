@@ -241,7 +241,7 @@ function getName(character, config) {
                 x = aleatoire(9)
         }
 
-        // choix du masculin ou féminin
+        // choix de l'origine
     let y = aleatoire(prenoms[x].length)
         // choix du prénom
     let i = aleatoire(prenoms[x][y].length)
@@ -252,11 +252,11 @@ function getName(character, config) {
 
     if (config.name >= 0) {
             // choix du masculin ou féminin
-        let y = aleatoire(prenoms[p].length)
+        let y = aleatoire(prenoms[config.name].length)
             // choix du prénom
-        let i = aleatoire(prenoms[p][y].length)
+        let i = aleatoire(prenoms[config.name][y].length)
         
-        character.name = prenoms[p][y][i]
+        character.name = prenoms[config.name][y][i]
     }
 }
 

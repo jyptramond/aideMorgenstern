@@ -95,17 +95,23 @@ function displayMagicItems(property, id) {
     // afficher le grimoire de tours de magie
     for (i = 0 ; i < property.length ; i++) {
         let element = document.createElement("li");
+
+        const configDOMPurify = {
+            ALLOWED_TAGS: false,
+            ALLOWED_ATTR: false
+        };
+
         
         if (id === 'spells-list') {
             if (property[i].difficulty >= 0) {
-                element.textContent = `${property[i].name} (+${property[i].difficulty})`;
+                element.textContent = DOMPurify.sanitize(`${property[i].name} (+${property[i].difficulty})`, configDOMPurify);
             }
             else {
-                element.textContent = `${property[i].name} (${property[i].difficulty})`;
+                element.textContent = DOMPurify.sanitize(`${property[i].name} (${property[i].difficulty})`, configDOMPurify);
             }
         }
         else {
-            element.textContent = `${property[i].name}`;
+            element.textContent = DOMPurify.sanitize(`${property[i].name}`, configDOMPurify);
         }
             
         
@@ -246,41 +252,54 @@ function configFromSelect(srcID, config) {
 }
 
 
+function displayJobs() {
+
+    let baliseCarriere = document.getElementById('selectCarriere')
+    let valueGroupe = document.getElementById('selectGroupe').value;
+    valueGroupe = parseInt(valueGroupe);
+
+    if (valueGroupe >= 0) {
+
+    let newOptions =   `<option value="-1">Aléatoire</option>
+                        <option value="0">${jobs[(8*valueGroupe)+0].name}</option>
+                        <option value="1">${jobs[(8*valueGroupe)+1].name}</option>
+                        <option value="2">${jobs[(8*valueGroupe)+2].name}</option>
+                        <option value="3">${jobs[(8*valueGroupe)+3].name}</option>
+                        <option value="4">${jobs[(8*valueGroupe)+4].name}</option>
+                        <option value="5">${jobs[(8*valueGroupe)+5].name}</option>
+                        <option value="6">${jobs[(8*valueGroupe)+6].name}</option>
+                        <option value="7">${jobs[(8*valueGroupe)+7].name}</option>` 
+
+    baliseCarriere.innerHTML = newOptions
+    }
+    else {
+        baliseCarriere.innerHTML = `<option value="-1">Aléatoire</option>`
+    }
+}
+
+
+
+
 
 /** 
  *  Fonction pour afficher les carrières suivant le choix de groupe
  * 
  */
 
-function displayJobSelection() {
+function displayJobsOnClick() {
+
+
+    let baliseJob = document.getElementById('selectCarriere');
+    let save = parseInt(baliseJob.value) ;
+    
+        displayJobs();
+
+    baliseJob.value = save ;
 
     document.getElementById('selectGroupe').addEventListener('change', function(event) {
-
-        let baliseCarriere = document.getElementById('selectCarriere')
-        let valueGroupe = document.getElementById('selectGroupe').value;
-        valueGroupe = parseInt(valueGroupe);
-    
-        if (valueGroupe >= 0) {
-    
-        let newOptions =   `<option value="-1">Aléatoire</option>
-                            <option value="0">${jobs[(8*valueGroupe)+0].name}</option>
-                            <option value="1">${jobs[(8*valueGroupe)+1].name}</option>
-                            <option value="2">${jobs[(8*valueGroupe)+2].name}</option>
-                            <option value="3">${jobs[(8*valueGroupe)+3].name}</option>
-                            <option value="4">${jobs[(8*valueGroupe)+4].name}</option>
-                            <option value="5">${jobs[(8*valueGroupe)+5].name}</option>
-                            <option value="6">${jobs[(8*valueGroupe)+6].name}</option>
-                            <option value="7">${jobs[(8*valueGroupe)+7].name}</option>` 
-    
-        baliseCarriere.innerHTML = newOptions
-        }
-        else {
-            baliseCarriere.innerHTML = `<option value="-1">Aléatoire</option>`
-        }
-        });
-
+        displayJobs();
+});
 }
-
 
 
 
@@ -390,8 +409,15 @@ function resetDisplay() {
 }
 
 
-function getUserInputs(character, id, property) {
-    let input = document.getElementById(id).value; 
+function getUserInputs(id, property) {
+
+    const configDOMPurify = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+
+    let input = DOMPurify.sanitize(document.getElementById(id).value, configDOMPurify);
     if (input === "") {
         input = property;
     } 
@@ -402,9 +428,6 @@ function getUserInputs(character, id, property) {
 
 function takeScreenshotWeb(character) {
 
-    let userName = getUserInputs(character, 'champTexte', character.name) ;
-    let userAge = getUserInputs(character, 'champAge', character.age) ;
-
     document.getElementById('save').addEventListener('click', function(event) {
 
         let baliseCocherNotes = document.getElementById("cocherNotes");
@@ -412,7 +435,6 @@ function takeScreenshotWeb(character) {
         let text;
 
         if (baliseCocherNotes.checked) {
-            console.log("hello world");
             textarea = document.getElementById('champNotes');
             text = textarea.value;
             textarea.value = "";

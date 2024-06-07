@@ -2,22 +2,32 @@ import { toggleNav, changeScreenRatio, toggleConfig } from './export.js';
 
 
 function generator() {
+
+
+    let job = parseInt(document.getElementById('selectCarriere').value);
+    console.log(job);
+
+
+  
+    displayJobsOnClick();
+
     toggleNav();
     changeScreenRatio();
     toggleConfig();
     generateButtonListener();
-    displayJobSelection();
     displayDetailedView();
     displayNotes();
-    userInput(champTexte, "champTexte",30);
-    userInput(champAge, "champAge",5);
+
     rotateButton("generer");
     
     resetDisplay();
     let character = createCharacter();
+    userInput(character, champTexte, "champTexte",30);
+    userInput(character, champAge, "champAge",5);
     displayCharacter(character);
-
     
+
+
     takeScreenshotWeb(character);
 }
 

@@ -127,7 +127,7 @@ const cards = document.querySelectorAll(".notsaved");
             let savedElements = document.querySelectorAll("#mySpellbook article")
             
             for (let element of savedElements) {
-                console.log(element.firstChild.textContent)
+                //console.log(element.firstChild.textContent)
                 if (element.firstChild.textContent === cards[i].firstChild.textContent || cards[i].firstChild.innerHTML === '<i class="fa-solid fa-book-bookmark full-size"></i>') {
                     isDuplicate = true;
                 }
@@ -295,12 +295,12 @@ function getSpells(data) {
 
 function theFilter() {
 
-    let config = {
+    let configDOMPurify = {
         ALLOWED_TAGS: false,
         ALLOWED_ATTR: false
     };
 
-let data = DOMPurify.sanitize(userSearch.value.toLowerCase(), config);
+let data = DOMPurify.sanitize(userSearch.value.toLowerCase(), configDOMPurify);
 
 let filteredTricks = getTricks(data);
 let filteredSpells = getSpells(data);

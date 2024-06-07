@@ -27,31 +27,31 @@ function rotateButton(target) {
 
 function customHeader(character) {
 
-    let config = {
-        ALLOWED_TAGS: false,
-        ALLOWED_ATTR: false
-    };
+
 
     let baliseIdentite = document.getElementById("identite");
-    let champAge = DOMPurify.sanitize(document.getElementById("champAge").value, config);
-    let champTexte = DOMPurify.sanitize(document.getElementById("champTexte").value, config);
 
-    if (!champTexte && !champAge) {
+    let userName = getUserInputs('champTexte', character.name) ;
+    let userAge = getUserInputs('champAge', character.age) ;
+
+
+
+    if (!userName && !champAge) {
         baliseIdentite.innerHTML = `${character.name}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${character.age} ans)</span>`
     }
-    else if (champTexte && champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
+    else if (userName && champAge) {
+        baliseIdentite.innerHTML = `${userName}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${userAge} ans)</span>`
     }
-    else if (champTexte && !champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${attributsPrincipaux[3]} ans)</span>`
+    else if (userName && !champAge) {
+        baliseIdentite.innerHTML = `${userName}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${character.age} ans)</span>`
     }
-    else if (!champTexte && champAge) {
-        baliseIdentite.innerHTML = `${character.name}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
+    else if (!userName && champAge) {
+        baliseIdentite.innerHTML = `${character.name}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${userAge} ans)</span>`
     }
 }
 
 
-function userInput(target, targetID, inputLength) {
+function userInput(character, target, targetID, inputLength) {
     target = document.getElementById(targetID);
     target.addEventListener('input', function() {
             // Si la longueur de la valeur du champ de texte dépasse 20 caractères, raccourcir la valeur
@@ -59,7 +59,7 @@ function userInput(target, targetID, inputLength) {
             target.value = target.value.slice(0, inputLength);
         }
 
-        customHeader();
+        customHeader(character);
     });
 }
 
@@ -81,6 +81,7 @@ function getConfig(config) {
     config.role = configFromSelect('selectRole');
 
 let job = parseInt(document.getElementById('selectCarriere').value);
+
 if (!isNaN(job)) {
     // DEBUG : console.log('valueCarriere:', valueCarriere);
     if (job !== -1) {

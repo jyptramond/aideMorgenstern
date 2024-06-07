@@ -239,13 +239,13 @@ function becomingWizard(character, domainsInJob) {
     
     let filteredArray = filterByDomains(character, domains, book)
 
-    console.log(filteredArray);
+    //console.log(filteredArray);
 
     if (mode === "spells") {
         filteredArray = filterByDifficulty(character, filteredArray)
     }
 
-    console.log(filteredArray);
+    //console.log(filteredArray);
     
     filteredArray = removeDuplicates(filteredArray) ;
     
