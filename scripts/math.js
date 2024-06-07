@@ -8,23 +8,6 @@
 
 
 
-function findProperty(obj, target) {
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            if (typeof obj[key] === 'object' && obj[key] !== null) {
-                if (obj[key].id === target) {
-                    return obj[key];
-                } else {
-                    let found = findProperty(obj[key], target);
-                    if (found) {
-                        return found;
-                    }
-                }
-            }
-        }
-    }
-    return null;
-}
 
 function findPropertyByName(obj, targetName) {
     for (let key in obj) {

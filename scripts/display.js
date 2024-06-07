@@ -12,6 +12,8 @@ function displayCharacter(character) {
     displayAllStats(character);
 
     if (character.stats.mag.value > 0) {
+        displayMagicItems(character.tricks, "tricks-list");
+        displayMagicItems(character.spells, "spells-list");
         displayMagic(character);
     }
 
@@ -22,6 +24,11 @@ function displayCharacter(character) {
 
     displayAbilities(character);
     displayEquipment(character);
+
+    if (character.weapons.length >0 || character.armor !== "") { 
+    displayWeaponsItems(character);
+    displayWeapons(character);
+    }
     
     recapCharacteristics(character)
 }
@@ -54,12 +61,17 @@ function displayStat(property, tagID) {
     tag.textContent = property.value;
     let tagInfo = document.getElementById(tagID+"info")
 
+    let magicInfo = "";
+    let archetypeInfo = "";
+    if (property.archetype !== undefined) {
+        archetypeInfo = displayStatInfo(property.archetype, "archétype");
+    }
+    if (property.magic !== undefined) {
+        magicInfo = displayStatInfo(property.magic, "magie");
+    }
+    let titleInfo = displayStatInfo(property.title, "titre");
 
-    let bonusArchetype = displayStatInfo(property.archetype, "archétype");
-    let bonusMagic = displayStatInfo(property.magic, "magie");
-    let bonusTitle = displayStatInfo(property.title, "titre");
-
-    tagInfo.innerHTML = `${bonusArchetype} ${bonusMagic} ${bonusTitle}`
+    tagInfo.innerHTML = `${archetypeInfo} ${magicInfo} ${titleInfo}`
 }
     
 function displayStatInfo(property, name) {
@@ -73,33 +85,76 @@ function displayStatInfo(property, name) {
 }
 
 
+function displayMagicItems(property, id) {
+    // afficher le grimoire de tours de magie
+    for (i = 0 ; i < property.length ; i++) {
+        let element = document.createElement("li");
+        
+        if (id === 'spells-list') {
+            if (property[i].difficulty >= 0) {
+                element.textContent = `${property[i].name} (+${property[i].difficulty})`;
+            }
+            else {
+                element.textContent = `${property[i].name} (${property[i].difficulty})`;
+            }
+        }
+        else {
+            element.textContent = `${property[i].name}`;
+        }
+            
+        
+        document.getElementById(id).appendChild(element);
+    }
+}
 
 function displayMagic(character) {
-
-        // afficher le grimoire de tours de magie
-        for (i = 0 ; i < character.tricks.length ; i++) {
-            let newTricks = document.createElement("li")
-            newTricks.textContent = character.tricks[i].name
-            document.getElementById("tricks-list").appendChild(newTricks)
-        }
-        for (i = 0 ; i < character.spells.length ; i++) {
-            let newSpells = document.createElement("li")
-            newSpells.innerHTML = replaceIco(character.spells[i].name);
-            document.getElementById("spells-list").appendChild(newSpells)
-        }
-
     // afficher la magie
     let baliseMagie = document.getElementsByClassName("magie")
 
     for (let element of baliseMagie) {
-        element.classList.remove("do-not-display")
+        if (!element.classList.contains("expert")) {
+            element.classList.remove("do-not-display");
+        }
+    }
+}
+
+
+function displayWeaponsItems(character) {
+        
+    let array = [];
+    // afficher le grimoire de tours de magie
+
+    if (character.weapons.length > 0) {
+        for (let i = 0 ; i < character.weapons.length ; i++) {
+            array.push(character.weapons[i]);
+        }
     }
 
+    if (character.armor.length > 0) {
+        array.push(character.armor);
+    }
+
+    array.sort((a, b) => a - b);
+
+    for (i = 0 ; i < array.length ; i++) {
+        let element = document.createElement("li");   
+        element.textContent = `${array[i]}`;
+        document.getElementById('weapons-list').appendChild(element);
+    }     
+}
+
+
+function displayWeapons(character) {
+    // afficher les armes
+    document.getElementById("weapons").classList.remove("do-not-display");
 }
 
 
 function displayEquipment(character) {
-    for (let i = 0 ; i < character.equipment.length ; i++) {   
+
+    character.equipment.sort((a, b) => a.localeCompare(b));
+
+    for (i = 0 ; i < character.equipment.length ; i++) {   
         let nouvelEquipement = document.createElement("li");
         nouvelEquipement.textContent = character.equipment[i];
         document.getElementById("listeEquipement").appendChild(nouvelEquipement);
@@ -109,6 +164,7 @@ function displayEquipment(character) {
 
 
 function displayAbilities(character) {
+
     for (let i = 0 ; i < character.abilitiesSum ; i++) {
         let abilities = document.createElement("li")
         abilities.textContent = character.abilities[i]
@@ -142,7 +198,7 @@ function recapCharacteristics(character) {
                                                         (${character.stats.mag.value}-
                                                         ${character.sum.comDecrease}))
                                                         +${character.stats.mag.value}=
-                                                        ${character.sum.resultBis}+
+                                                        ${character.sum.sum12}+
                                                         ${character.stats.mag.value}
                                                         (${character.sum.final})`
     }
@@ -177,7 +233,6 @@ function displayJobSelection() {
 
     document.getElementById('selectGroupe').addEventListener('change', function(event) {
 
-        let baliseGroupe = document.getElementById('selectGroupe')
         let baliseCarriere = document.getElementById('selectCarriere')
         let valueGroupe = document.getElementById('selectGroupe').value;
         valueGroupe = parseInt(valueGroupe);
@@ -185,14 +240,14 @@ function displayJobSelection() {
         if (valueGroupe >= 0) {
     
         let newOptions =   `<option value="-1">Aléatoire</option>
-                            <option value="0">${metiers[(8*valueGroupe)+0][0]}</option>
-                            <option value="1">${metiers[(8*valueGroupe)+1][0]}</option>
-                            <option value="2">${metiers[(8*valueGroupe)+2][0]}</option>
-                            <option value="3">${metiers[(8*valueGroupe)+3][0]}</option>
-                            <option value="4">${metiers[(8*valueGroupe)+4][0]}</option>
-                            <option value="5">${metiers[(8*valueGroupe)+5][0]}</option>
-                            <option value="6">${metiers[(8*valueGroupe)+6][0]}</option>
-                            <option value="7">${metiers[(8*valueGroupe)+7][0]}</option>` 
+                            <option value="0">${jobs[(8*valueGroupe)+0].name}</option>
+                            <option value="1">${jobs[(8*valueGroupe)+1].name}</option>
+                            <option value="2">${jobs[(8*valueGroupe)+2].name}</option>
+                            <option value="3">${jobs[(8*valueGroupe)+3].name}</option>
+                            <option value="4">${jobs[(8*valueGroupe)+4].name}</option>
+                            <option value="5">${jobs[(8*valueGroupe)+5].name}</option>
+                            <option value="6">${jobs[(8*valueGroupe)+6].name}</option>
+                            <option value="7">${jobs[(8*valueGroupe)+7].name}</option>` 
     
         baliseCarriere.innerHTML = newOptions
         }
@@ -293,9 +348,15 @@ function resetDisplay() {
     document.getElementById("listeAtouts").innerHTML = "";
     document.getElementById("listeEquipement").innerHTML = "";
     document.getElementById("tricks-list").innerHTML = "";
-    document.getElementById("spells-list").innerHTML = ""
+    document.getElementById("spells-list").innerHTML = "";
+    document.getElementById("weapons-list").innerHTML = "";
 
     baliseMagie = document.getElementsByClassName("magie")
+
+    let baliseWeapons = document.getElementById("weapons");
+    if (!baliseWeapons.classList.contains("do-not-display")) {
+        baliseWeapons.classList.add("do-not-display");
+    }
 
     for (let element of baliseMagie) {
         if (!element.classList.contains("do-not-display")) {
@@ -305,23 +366,40 @@ function resetDisplay() {
 }
 
 
+function getUserInputs(character, id, property) {
+    let input = document.getElementById(id).value; 
+    if (input === "") {
+        input = property;
+    } 
+    return input
+}
 
-function takeScreenshotWeb() {
+
+
+function takeScreenshotWeb(character) {
+
+    let userName = getUserInputs(character, 'champTexte', character.name) ;
+    let userAge = getUserInputs(character, 'champAge', character.age) ;
+
     document.getElementById('save').addEventListener('click', function(event) {
 
         let baliseCocherNotes = document.getElementById("cocherNotes");
+        let textarea;
+        let text;
+
         if (baliseCocherNotes.checked) {
-            let textarea = document.getElementById('champNotes');
-            let text = textarea.value;
-            let textSave = text;
-            textarea.value =""
+            console.log("hello world");
+            textarea = document.getElementById('champNotes');
+            text = textarea.value;
+            textarea.value = "";
         } 
+
 
         html2canvas(document.getElementById('content')).then(function(canvas) {
             
             
             if (baliseCocherNotes.checked) {
-                drawTextArea(canvas, textarea, text);
+                drawTextArea(canvas, text);
             } 
 
             // Créer un lien pour télécharger l'image
@@ -329,12 +407,8 @@ function takeScreenshotWeb() {
             link.href = canvas.toDataURL('image/jpeg');
 
             // Déterminer le nom de fichier basé sur le contenu du textarea et d'autres variables
-            var filename;
-            if (champTexte.value.length > 0) {
-                filename = `Brigandyne-${champTexte.value}-${attributsPrincipaux[1]}.jpeg`;
-            } else {
-                filename = `Brigandyne-${attributsPrincipaux[0]}-${attributsPrincipaux[1]}.jpeg`;
-            }
+            const filename = `${userName}-${character.race}-${character.archetype}-${userAge}-Brigandyne.jpeg`;
+            
             link.download = filename;
 
             document.body.appendChild(link);
@@ -351,49 +425,46 @@ function takeScreenshotWeb() {
     });
 }
 
-// Fonction pour dessiner le contenu du textarea sur le canvas avec le retour automatique à la ligne
-function drawTextArea(canvas, textarea, text) {
-    var ctx = canvas.getContext('2d');
-    var lines = text.split('\n');
+// Function to draw the content of the textarea on the canvas with automatic line break
+function drawTextArea(canvas, text) {
+    let ctx = canvas.getContext('2d');
+    let lines = text.split('\n');
 
-    // Définir la police et la couleur de remplissage
-    ctx.font = ' 16px "Segoe UI"';
+    // Define font and fill color
+    ctx.font = '16px "Segoe UI"';
     ctx.fillStyle = '#000';
-    
 
-    // Obtenir les coordonnées de l'emplacement du champTexte dans le document
-    var textareaRect = textarea.getBoundingClientRect();
-    var textareaX = textareaRect.left;
-    var textareaY = textareaRect.top;
+    // Get the absolute position of the textarea on the webpage
+    let textarea = document.getElementById('champNotes');
+    let textareaRect = textarea.getBoundingClientRect();
+    let textareaX = window.scrollX + textareaRect.left; // Absolute X position
+    let textareaY = window.scrollY + textareaRect.top;  // Absolute Y position
 
-    
+    // Define variables for text positioning
+    let x = textareaX + 20; // Horizontal position relative to textarea
+    let y = textareaY + 30; // Vertical position relative to textarea
+    let maxWidth = textareaRect.width - 20; // Maximum width for text based on textarea width
 
-// Définir les variables pour le positionnement du texte
-var x = textareaX + 10; // Position horizontale relative à l'emplacement du champTexte
-var y = textareaY + 20; // Position verticale relative à l'emplacement du champTexte
-var maxWidth = textareaRect.width - 20; // Largeur maximale pour le texte en fonction de la largeur du champTexte
-
-// Dessiner chaque ligne de texte avec le retour automatique à la ligne proportionnel à la largeur du champTexte
-lines.forEach(function(line) {
-    var words = line.split(' ');
-    var lineText = '';
-    words.forEach(function(word, index) {
-        var testLine = lineText + word + ' ';
-        var metrics = ctx.measureText(testLine);
-        var testWidth = metrics.width;
-        if (testWidth > maxWidth && index > 0) {
-            ctx.fillText(lineText, x, y);
-            lineText = word + ' ';
-            y += 20; // Espacement vertical entre les lignes
-        } else {
-            lineText = testLine;
-        }
+    // Draw each line of text with automatic line break proportional to the textarea width
+    lines.forEach(function(line) {
+        let words = line.split(' ');
+        let lineText = '';
+        words.forEach(function(word, index) {
+            let testLine = lineText + word + ' ';
+            let metrics = ctx.measureText(testLine);
+            let testWidth = metrics.width;
+            if (testWidth > maxWidth && index > 0) {
+                ctx.fillText(lineText, x, y);
+                lineText = word + ' ';
+                y += 20; // Vertical spacing between lines
+            } else {
+                lineText = testLine;
+            }
+        });
+        ctx.fillText(lineText, x, y);
+        y += 20; // Vertical spacing between lines
     });
-    ctx.fillText(lineText, x, y);
-    y += 20; // Espacement vertical entre les lignes
-});
 }
-
 
 
 

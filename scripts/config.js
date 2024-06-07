@@ -64,6 +64,8 @@ function userInput(target, targetID, inputLength) {
 }
 
 
+
+
 /** 
  *  Menu configuration
  * 
@@ -71,12 +73,12 @@ function userInput(target, targetID, inputLength) {
 
 function getConfig(config) {
 
-    config.name = configFromSelect('selectName', configPrenom);
-    config.archetype = configFromSelect('selectArchetype', configArchetype);
-    config.race = configFromSelect('selectPeuple', configPeuple);
-    config.group = configFromSelect('selectGroupe', configGroupe);
-    config.mode = configFromSelect('selectMode', configMode);
-    config.role = configFromSelect('selectRole', configRole);
+    config.name = configFromSelect('selectName');
+    config.archetype = configFromSelect('selectArchetype');
+    config.race = configFromSelect('selectPeuple');
+    config.group = configFromSelect('selectGroupe');
+    config.mode = configFromSelect('selectMode');
+    config.role = configFromSelect('selectRole');
 
 let job = parseInt(document.getElementById('selectCarriere').value);
 if (!isNaN(job)) {
@@ -88,4 +90,12 @@ if (!isNaN(job)) {
         config.job = -1
     }
 } 
+}
+
+
+
+
+function configFromSelect(srcID) {
+    let data = parseInt(document.getElementById(srcID).value);
+    return data
 }

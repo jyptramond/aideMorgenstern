@@ -20,9 +20,6 @@
     grid-template-columns: 2.5fr 3fr 4fr;    
 }
 
-#notes {
-    padding:0 1rem 1rem 1rem;
-}
 
 #fullWindow {
     margin-right : 250px;
@@ -124,20 +121,22 @@ td + td {
 #listeAtouts, 
 #listeEquipement,
 #tricks-list,
-#spells-list {
+#spells-list,
+#weapons-list {
     margin: 0 0 0 20px; /* décale les listes sur le côté*/
     padding: 10px;
 }
 
 #equipements div,
 #atouts div,
-#spellbook div {
+#spellbook div,
+#weapons div {
     border-collapse: collapse;
     background-color: var(--color-black-transparent-dark);
 }
 
 #equipements div {
-    min-height: 10rem;
+    min-height: 2rem;
     width:100%
 }
 
@@ -159,10 +158,18 @@ tr:nth-child(even) {
 background-color: var(--color-black-transparent-light);
 }
 
+#notes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:10px;
+}
+
 #champNotes {
     background-color: var(--color-black-transparent-dark);
     border:none;
-    width: 100% ;
+    box-sizing: border-box;
+    width:100%;
     padding: 10px;
     resize: vertical;
     font-family:"Segoe UI";
@@ -185,8 +192,8 @@ background-color: var(--color-black-transparent-light);
 h2 {
     text-align: center;
     width:100%;
+    margin-bottom: 0px;
     font-size: 1.2rem;
-    padding:5px;
     font-family: Book Antiqua;
 }
 
@@ -196,10 +203,6 @@ p {
     margin: 0 0 20px 0;
 }
 
-
-ul li {
-    margin-bottom: 0.5rem;
-}
 
 
 /**

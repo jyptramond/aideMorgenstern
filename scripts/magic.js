@@ -1,12 +1,11 @@
-function becomingWizard(character, isWizard) {
-    console.log("becomingWizard")
-    let magicKnowledge = getMagicKnowledge(character) ;
+function becomingWizard(character, domainsInJob) {
+    let magicScope = checkMagicScope(character) ;
 
-    let domains = getDomains(character, isWizard);
+    let domains = getDomains(character, domainsInJob);
            
     let abilities = getAbilitiesArray(character)
 
-    getAbilitiesWizard(character, magicKnowledge, abilities, domains)
+    getAbilitiesWizard(character, magicScope, abilities, domains)
 }
     
     
@@ -25,12 +24,11 @@ function becomingWizard(character, isWizard) {
         let magCat1 = (aleatoire(10)+1)*5
         let magCat2 = [(aleatoire(10)+1)*5,(aleatoire(10)+1)*5]
         magCat2.sort((a, b) => b - a);
-        console.log(magCat2)
         
-        let isWizard = checkWizardry(character);
+        let domainsInJob = checkDomainsInJob(character);
 
             // mage catégorie 1 (1 chance sur 100)
-            if (isWizard === 0) {
+            if (domainsInJob === 0) {
                 x = aleatoire(100) 
                     if (x === 66) {
                         character.stats.mag.value = magCat1
@@ -38,7 +36,7 @@ function becomingWizard(character, isWizard) {
             }
     
 
-            if (isWizard > 0) {
+            if (domainsInJob > 0) {
                 character.stats.mag.value = magCat2[0]
             }
     }
@@ -54,66 +52,65 @@ function becomingWizard(character, isWizard) {
      * 
      */
     
-    function checkWizardry(character) {
+    function checkDomainsInJob(character) {
     
-        let isWizard = 0 ;
+        let domainsInJob = 0 ;
     
         for (let i = 0 ; i < knowsTwoDomains.length ; i++) {
             if (character.jobID === knowsTwoDomains[i]) {
-                isWizard = 2 ;
+                domainsInJob = 2 ;
             }
         }
     
         for (i = 0 ; i < knowsOneDomain.length ; i++) {
             if (character.jobID === knowsOneDomain[i]) {
-                isWizard = 1 ;
+                domainsInJob = 1 ;
             }
         }
     
-        return isWizard
+        return domainsInJob
     }
 
 
-    function getMagicKnowledge(character) {
+    function checkMagicScope(character) {
 
-        let magicKnowledge = 0;
+        let magicScope = 0;
 
         if (character.stats.mag.value < 50) {
-            magicKnowledge = 1;
+            magicScope = 1;
         }
         else if (character.stats.mag.value >= 50 && character.stats.mag.value < 70) {
-            magicKnowledge = 2;
+            magicScope = 2;
         }
         else if (character.stats.mag.value >= 70) {
-            magicKnowledge = 3;
+            magicScope = 3;
         }
 
-        if (magicKnowledge > character.abilitiesSum) {
-            magicKnowledge = character.abilitiesSum;
+        if (magicScope > character.abilitiesSum) {
+            magicScope = character.abilitiesSum;
         }
 
-        return magicKnowledge
+        return magicScope
     }
 
 
  
-    function getAbilitiesWizard(character, magicKnowledge, abilities, domains) {
-        for (let i = 0 ; i < magicKnowledge ; i++) {
+    function getAbilitiesWizard(character, magicScope, abilities, domains) {
+        for (let i = 0 ; i < magicScope ; i++) {
             character.abilities[i] = domains[i];
         }
 
-        for (i = magicKnowledge ; i < character.abilitiesSum; i++) {
+        for (i = magicScope ; i < character.abilitiesSum; i++) {
             character.abilities[i] = stringrandom(abilities[i])
         }
     }    
 
 
 
-    function getDomains(character, isWizard) {
+    function getDomains(character, domainsInJob) {
         let domains = []
-        console.log(character.jobID)
         do {
-            switch (isWizard) {
+            switch (domainsInJob) {
                 case 0 :
                     domains[0] = stringrandom(domaineMagique)
                     domains[1] = stringrandom(domaineMagique)
@@ -131,6 +128,7 @@ function becomingWizard(character, isWizard) {
                     domains[2] = stringrandom(domaineMagique)
                     break;
             }
+            console.log(domains);
         }
         while (domains[0] === domains[1] && domains[1] === domains[2] && domains[2] === domains[0])
 
@@ -194,7 +192,6 @@ function becomingWizard(character, isWizard) {
                     profile[i] -= 5
                     correction -= 5
                 } 
-                console.log("correction : "+correction);
             }
         }
         else if (character.stats.mag.value === profile[0]) {
@@ -218,27 +215,52 @@ function becomingWizard(character, isWizard) {
     
 
 
+    function findDomains(character) {
+
+        let magicScope = checkMagicScope(character);
+        let domains = []
+
+        for (let i = 0 ; i < magicScope ; i++) {
+            domains[i] = extractDomain(character.abilities[i]);
+        }
+
+        return domains
+    }
+
 
 
     /**
      * Générer les sortilèges ou les tours de magie
      */
     
-    function getBook(character, book) {
+    function getBook(character, book, mode) {
         
-    let domains = [];
-    let filteredArray = [];
+    let domains = findDomains(character);
+    
+    let filteredArray = filterByDomains(character, domains, book)
 
-        let magicKnowledge = getMagicKnowledge(character);
+    console.log(filteredArray);
 
-        for (let i = 0 ; i < magicKnowledge ; i++) {
-            domains[i] = extractDomain(character.abilities[i]);
-        }
-        console.log(domains)
+    if (mode === "spells") {
+        filteredArray = filterByDifficulty(character, filteredArray)
+    }
 
-        switch (magicKnowledge) {
+    console.log(filteredArray);
+    
+    filteredArray = removeDuplicates(filteredArray) ;
+    
+        return filteredArray
+    }
+    
+    function filterByDomains(character, domains, book) {
+
+        let array = [];
+
+        let magicScope = checkMagicScope(character);
+
+        switch (magicScope) {
             case 1 :
-                filteredArray = book.filter(array => 
+                array = book.filter(array => 
                     Array.isArray(array.type) && array.type.some(type => 
                         typeof type === 'string' && 
                             type.toLowerCase().includes(domains[0].toLowerCase())
@@ -246,7 +268,7 @@ function becomingWizard(character, isWizard) {
                     );
                 break;
             case 2 :
-                filteredArray = book.filter(array => 
+                array = book.filter(array => 
                     Array.isArray(array.type) && array.type.some(type => 
                         typeof type === 'string' && (
                             type.toLowerCase().includes(domains[0].toLowerCase()) || 
@@ -256,7 +278,7 @@ function becomingWizard(character, isWizard) {
                 );
                 break;
             case 3 :
-                filteredArray = book.filter(array => 
+                array = book.filter(array => 
                     Array.isArray(array.type) && array.type.some(type => 
                         typeof type === 'string' && 
                         type.toLowerCase().includes(domains[0].toLowerCase()) || 
@@ -266,17 +288,21 @@ function becomingWizard(character, isWizard) {
                 );
                 break;
         }
-        
-        filteredArray = removeDuplicates(filteredArray) ;
-    
-        return filteredArray
-    }
-    
 
+        return array
+
+    }
+
+
+
+
+
+    function filterByDifficulty(character, array) {
+        return array.filter(spell => (character.stats.mag.value + spell.difficulty) >= 40);
+    }
 
     
     function getPowers(character, property, book) {
-    console.log(property)
     shuffle(book);
     // DEBUG : console.log(array)
     let knownItems = character.abilitiesSum + 1 ;
@@ -287,6 +313,7 @@ function becomingWizard(character, isWizard) {
         for (let i = 0 ; i < knownItems ; i++) {
             property.push(book[i]);
         }
+        property.sort((a, b) => b.difficulty - a.difficulty);
     }
     
     

@@ -208,71 +208,68 @@ const archetype = [
     let armesdetrait = `${armesdetir}/${armesapoudre}`
 
 
-        // les batons
-    let batons = "bâton noueux (RU+*FOR*-1)/bâton ferré (RU+*FOR*-1)"
+    // les batons
+const batons = "bâton noueux (RU+*FOR*-1)/bâton ferré (RU+*FOR*-1)"
 
-       // les armes d'hast
-    let armesdhast = "attrappe-hommes (RU+*FOR*-2)/bâton ferré (RU+*FOR*-1)/bâton noueux (RU+*FOR*-1)/faux (RU+*FOR*+0)/fauchard (RU+*FOR*+0)/fourche (RU+*FOR*-1)/hallebarde (RU+*FOR*+0)/bardiche (RU+*FOR*+0)/lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)/pertusiane(RU+*FOR*+0)"
+    // les armes d'hast
+const armesdhast = "attrappe-hommes (RU+*FOR*-2)/bâton ferré (RU+*FOR*-1)/bâton noueux (RU+*FOR*-1)/faux (RU+*FOR*+0)/fauchard (RU+*FOR*+0)/fourche (RU+*FOR*-1)/hallebarde (RU+*FOR*+0)/bardiche (RU+*FOR*+0)/lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)/pertusiane(RU+*FOR*+0)"
 
-        // les lances
-    let lances = "lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)"
+    // les lances
+const lances = "lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)"
 
-        // les haches
-    let haches =  "hachette (RU+*FOR*-1)/hache (RU+*FOR*+0)/cognée (RU+*FOR*+0)/hache du clan (RU+*FOR*+1)/hache de guerre (RU+*FOR*+2)"
+    // les haches
+const haches =  "hachette (RU+*FOR*-1)/hache (RU+*FOR*+0)/cognée (RU+*FOR*+0)/hache du clan (RU+*FOR*+1)/hache de guerre (RU+*FOR*+2)"
 
-        // les haches à deux mains
-    let hachesàdeuxmains = "une hache de guerre (RU+*FOR*+2)/hache (RU+*FOR*+0)"
+    // les haches à deux mains
+const hachesàdeuxmains = "une hache de guerre (RU+*FOR*+2)/hache (RU+*FOR*+0)"
 
-        // les épées
-    let epee = "brise-lames (RU+*FOR*-1)/dragonne (RU+*FOR*+0)/épée bâtarde (RU+*FOR*+0 ou (RU+*FOR*+1 à deux mains)/épée courte (RU+*FOR*-1)/épée large (RU+*FOR*+0)/sabre (RU+*FOR*+0)/épée longue (RU+*FOR*+0)/espadon (RU+*FOR*+2)/flamberge (RU+*FOR*+2)/main gauche (RU+*FOR*-1)/rapière (RU+*FOR*+0)"    
+    // les épées
+const epee = "brise-lames (RU+*FOR*-1)/dragonne (RU+*FOR*+0)/épée bâtarde (RU+*FOR*+0 ou (RU+*FOR*+1 à deux mains)/épée courte (RU+*FOR*-1)/épée large (RU+*FOR*+0)/sabre (RU+*FOR*+0)/épée longue (RU+*FOR*+0)/espadon (RU+*FOR*+2)/flamberge (RU+*FOR*+2)/main gauche (RU+*FOR*-1)/rapière (RU+*FOR*+0)"    
 
-        // les épées de qualité supérieure
-    let epeequalitesuperieure = "épée bâtarde de qualité supérieure (RU+*FOR*+0, +1 à 2 mains)/épée large de qualité supérieure (RU+*FOR*+0)/sabre de qualité supérieure (RU+*FOR*+0)/épée longue de qualité supérieure (RU+*FOR*+0)/espadon de qualité supérieure (RU+*FOR*+2)/flamberge de qualité supérieure (RU+*FOR*+2)/rapière de qualité supérieure (RU+*FOR*+0)"    
-  
-
+    // les épées de qualité supérieure
+const epeequalitesuperieure = "épée bâtarde de qualité supérieure (RU+*FOR*+0, +1 à 2 mains)/épée large de qualité supérieure (RU+*FOR*+0)/sabre de qualité supérieure (RU+*FOR*+0)/épée longue de qualité supérieure (RU+*FOR*+0)/espadon de qualité supérieure (RU+*FOR*+2)/flamberge de qualité supérieure (RU+*FOR*+2)/rapière de qualité supérieure (RU+*FOR*+0)"    
 
 
 
 
-        // les armes de mêlée légère
-    let armesdemeleelegere = "cestes (RU+*FOR*-2)/griffes (RU+*FOR*-2)/gourdin (RU+*FOR*-2)/stylet (RU+*FOR*-2)/fouet (RU+*FOR*-2)/racine-fouet (RU+*FOR*-2)/attrappe-homme (RU+*FOR*-2)/couteau (RU+*FOR*-1)/poignard (RU+*FOR*-1)/dague (RU+*FOR*-1)/miséricorde (RU+*FOR*-1)/brise-lames (RU+*FOR*-1)/épée courte (RU+*FOR*-1)/main gauche (RU+*FOR*-1)/hachette (RU+*FOR*-1)/bâton ferré (RU+*FOR*-1)/bâton noueux (RU+*FOR*-1)/fourche (RU+*FOR*-1)"
-
-        // les armes de mêlée ordinaire
-    let armesdemeleeordinaire = "dragonne (RU+*FOR*+0)/épée bâtarde (RU+*FOR*+0)/épée large (RU+*FOR*+0)/sabre (RU+*FOR*+0)/épée longue (RU+*FOR*+0)/rapière (RU+*FOR*+0)/hache (RU+*FOR*+0)/cognée (RU+*FOR*+0)/masse d'armes (RU+*FOR*+0)/masse épineuse (RU+*FOR*+0)/faux (RU+*FOR*+0)/fauchard (RU+*FOR*+0)/hallebarde (RU+*FOR*+0)/bardiche (RU+*FOR*+0)/lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)/pertusiane (RU+*FOR*+0)"
-
-        // les armes de guerre
-    let armesdeguerre = "hache du clan (RU+*FOR*+1)/fléau d'armes (RU+*FOR*+1)/marteau de guerre (RU+*FOR*+0)/"
-
-    let armeslourdes = "espadon (RU+*FOR*+2)/flamberge (RU+*FOR*+2)/hache de guerre (RU+*FOR*+2)"
-
-        // les armes de mêlée (toutes)
-    let armesdemelee = `${armesdemeleelegere}/${armesdemeleeordinaire}/${armesdeguerre}/${armeslourdes}`       
-
-        // les armes de mêlée simples
-    let armesdemeleesimples = `${armesdemeleelegere}/${armesdemeleeordinaire}`   
 
 
+    // les armes de mêlée légère
+const armesdemeleelegere = "cestes (RU+*FOR*-2)/griffes (RU+*FOR*-2)/gourdin (RU+*FOR*-2)/stylet (RU+*FOR*-2)/fouet (RU+*FOR*-2)/racine-fouet (RU+*FOR*-2)/attrappe-homme (RU+*FOR*-2)/couteau (RU+*FOR*-1)/poignard (RU+*FOR*-1)/dague (RU+*FOR*-1)/miséricorde (RU+*FOR*-1)/brise-lames (RU+*FOR*-1)/épée courte (RU+*FOR*-1)/main gauche (RU+*FOR*-1)/hachette (RU+*FOR*-1)/bâton ferré (RU+*FOR*-1)/bâton noueux (RU+*FOR*-1)/fourche (RU+*FOR*-1)"
 
-        // les armures légères
-    let armureslegeres = "gambison (protection+1)/fourrures (protection+1)/plastron de cuir (protection+1)"
-    
-        //les armures moyennes
-    let armuresmoyennes = "broigne (protection+2)/brigandine (protection+2)/cotte de plaques (protection+2)/cuirasse (protection+3)" 
-    
-        //les armures lourdes
-    let armureslourdes = "cottes de mailles (protection+3)/haubert (protection+3)/demi-plaques (protection+4)/armures de plates (protection+5)/harnois (protection+5)/armures de plates alourdie (protection+6)"
+    // les armes de mêlée ordinaire
+const armesdemeleeordinaire = "dragonne (RU+*FOR*+0)/épée bâtarde (RU+*FOR*+0)/épée large (RU+*FOR*+0)/sabre (RU+*FOR*+0)/épée longue (RU+*FOR*+0)/rapière (RU+*FOR*+0)/hache (RU+*FOR*+0)/cognée (RU+*FOR*+0)/masse d'armes (RU+*FOR*+0)/masse épineuse (RU+*FOR*+0)/faux (RU+*FOR*+0)/fauchard (RU+*FOR*+0)/hallebarde (RU+*FOR*+0)/bardiche (RU+*FOR*+0)/lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)/pertusiane (RU+*FOR*+0)"
 
-        //les boucliers 
-    let boucliers = "petit bouclier (protection+1)/boche (protection+1)/rondache (protection+1)/bouclier (protection+2)/écu (protection+2)"    
+    // les armes de guerre
+const armesdeguerre = "hache du clan (RU+*FOR*+1)/fléau d'armes (RU+*FOR*+1)/marteau de guerre (RU+*FOR*+0)/"
+
+const armeslourdes = "espadon (RU+*FOR*+2)/flamberge (RU+*FOR*+2)/hache de guerre (RU+*FOR*+2)"
+
+    // les armes de mêlée (toutes)
+const armesdemelee = `${armesdemeleelegere}/${armesdemeleeordinaire}/${armesdeguerre}/${armeslourdes}`       
+
+    // les armes de mêlée simples
+const armesdemeleesimples = `${armesdemeleelegere}/${armesdemeleeordinaire}`   
 
 
 
-// Les domaines magiques
+    // les armures légères
+const armureslegeres = "gambison (protection+1)/fourrures (protection+1)/plastron de cuir (protection+1)"
 
+    //les armures moyennes
+const armuresmoyennes = "broigne (protection+2)/brigandine (protection+2)/cotte de plaques (protection+2)/cuirasse (protection+3)" 
+
+    //les armures lourdes
+const armureslourdes = "cottes de mailles (protection+3)/haubert (protection+3)/demi-plaques (protection+4)/armures de plates (protection+5)/harnois (protection+5)/armures de plates alourdie (protection+6)"
+
+    //les boucliers 
+const boucliers = "petit bouclier (protection+1)/boche (protection+1)/rondache (protection+1)/bouclier (protection+2)/écu (protection+2)"    
+
+
+
+    // Les domaines magiques
 const domaineMagique = "Domaine magique (air)/Domaine magique (animalisme)/Domaine magique (châtiment)/Domaine magique (divination)/Domaine magique (eau)/Domaine magique (enchantements)/Domaine magique (feu)/Domaine magique (guerre)/Domaine magique (illusions)/Domaine magique (mentalisme)/Domaine magique (nécromancie)/Domaine magique (ombre)/Domaine magique (protection)/Domaine magique (terre)/Domaine magique (voyage)/Domaine magique (alchimie)"
-
 const domaineElementaire = "Domaine magique (eau)/Domaine magique (terre)/Domaine magique (feu)/Domaine magique (air)"
-
 const domaineReligion = "Domaine magique (protection)/Domaine magique (châtiment)"
 
 

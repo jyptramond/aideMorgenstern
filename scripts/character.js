@@ -8,6 +8,7 @@
 
 function createCharacter() {
             
+    
         let config = initConfig();
         let character = initCharacter();
 
@@ -37,26 +38,32 @@ function createCharacter() {
         getMagicStat(character);
         magicImpact(character);
 
-        console.log(character);
+
         if (config.role !== 0) {
             getTitle(character);
         }
         getAbilities(character);
-        sortAbilities(character);
         getMainAttributes(character);
         getEquipment(character);
 
-        // étapes supplémentaires si le PJ pratique la magie
-        if (character.stats.mag.value > 0) {
-            let listOfTricks = getBook(character, tricks);
-            let listOfSpells = getBook(character, spells);
-            //afficherGrimoire()
+        // tours de magie
+        if (character.stats.mag.value >= 10 && character.abilitiesSum >= 1) {
+            let listOfTricks = getBook(character, tricks, "tricks");
             getPowers(character, character.tricks, listOfTricks)
-            getPowers(character, character.spells, listOfSpells)
         } 
+
+        //sortilèges
+        if (character.stats.mag.value >= 20 && character.abilitiesSum >= 1) {
+
+            let listOfSpells = getBook(character, spells, "spells");
+            getPowers(character, character.spells, listOfSpells)
+        }
+
+        sortAbilities(character);
 
         return character
 }
+
 
 
 
@@ -98,7 +105,7 @@ function getRace(character, config) {
                         character.raceID = 8;
                         break ;
                     case 6 : 
-                        character.raceID = 9;
+                        character.raceID = 6;
                         break ;
                     case 7 : 
                         character.raceID = 2;
@@ -125,7 +132,7 @@ function getRace(character, config) {
 
 
 function sortAbilities(character) {
-    character.abilities.sort((a, b) => b - a);
+    character.abilities.sort((a, b) => a.localeCompare(b));
 }
 
 
@@ -141,7 +148,6 @@ function getFate(character) {
 
 function getSecondaryAttributes(character) {
 
-    console.log(character.raceID)
     switch (character.raceID) {
 
         case 0 :    //humain
@@ -386,11 +392,9 @@ function addRaceStats(character, stats) {
 
 function checkStatsSum(stats) {
     let mySum = 0;
-    console.log(stats)
         for (i = 0 ; i < stats.length ; i++) {
             mySum += stats[i];
         }
-    console.log("somme : "+mySum)
 }
 
 
@@ -506,8 +510,6 @@ stat = str.slice(0, z)
                 character.sum.archetype -= Number(value)
             }
         }}
-console.log(x)
-//console.log(characteristic, operateur, x)
 
 }
 
@@ -563,8 +565,6 @@ function getJob(character, config) {
 
     getJobByGroup(character,config) ;
 
-    console.log(character.groupID)
-    console.log(character.jobID)
     // afficher le métier=
     character.group = groups[character.groupID].name;
     character.job = stringrandom(jobs[character.jobID].name);
@@ -589,9 +589,10 @@ function getEquipment(character) {
 
     stuff = getFromList(character, groups[character.groupID].armor, character.armor);
     
-    if (character.armor !== "") {
+    if (character.armor.length === 0) {
         stuff = getFromList(character, jobs[character.jobID].armor, character.armor);
     }
+    
     character.armor = stuff;
 }
 
@@ -630,7 +631,7 @@ function getFromList(character, id, stuff) {
 function getAbilities(character) {
 
     character.abilitiesSum = indice(character.stats.cns.value)-1
-    let isWizard = checkWizardry(character);
+    let isWizard = checkDomainsInJob(character);
 
         // si le PJ a un score de magie positif...
         if (character.stats.mag.value > 0 ) {
@@ -657,17 +658,20 @@ function getAbilitiesArray(character) {
     let abilities = []
 
     for (let skill of jobs[character.jobID].skills) {
+        if (skill.indexOf('Domaine magique') === -1) {
         abilities.push(skill);
+        }
     }
 
     for (let talent of jobs[character.jobID].talents) {
-        if (talent.indexOf('Domaine magique') === -1) {
             abilities.push(talent);
-        }
     }
 
     shuffle(abilities)
 
+    console.log("abilities without Domaine Magique")
+    console.log(abilities)
+    
     return abilities
 }
 

@@ -157,9 +157,6 @@ function initCharacter() {
             resultBeforeMagic: 0,  
             sum12: 0,               
             final: 0,
-            
-            
-
         },
 
         tricks: [],
@@ -172,12 +169,13 @@ function initCharacter() {
 
 
 function initConfig() {
+
     let config = {
-        name: 0,
-        race: 0,
-        archetype: 0,
-        group: 0,
-        job: 0,
+        name: -2,
+        archetype: -1,
+        race: -2,
+        group: -2,
+        job: -1,
         mode: 0,
         role: 0
     } 

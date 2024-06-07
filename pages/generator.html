@@ -16,13 +16,12 @@
 
     <!-- Scripts-->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="../scripts/old-data.js" defer></script>
     <script src="../scripts/data.js" defer></script>
 
     <script src="../scripts/display.js" defer></script>
     <script src="../scripts/character.js" defer></script>
     <script src="../scripts/init.js" defer></script>
-    <script src="../scripts/calculation.js" defer></script>
+    <script src="../scripts/math.js" defer></script>
     <script src="../scripts/magic.js" defer></script>
     <script src="../scripts/specialist.js" defer></script>
     <script src="../scripts/config.js" defer></script>
@@ -265,14 +264,14 @@
                                 <tr><td>Endurance (END)</td>        <td id="ENDinfo" class="expert do-not-display is-smaller"></td><td id="END">0</td></tr>
                                 <tr><td>Force (FOR)</td>            <td id="FORinfo" class="expert do-not-display is-smaller"></td><td id="FOR">0</td></tr>
                                 <tr><td>Habileté (HAB)</td>         <td id="HABinfo" class="expert do-not-display is-smaller"></td><td id="HAB">0</td></tr>
-                                <tr class="magie"><td>Magie (MAG)</td>            <td id="MAGinfo" class="expert is-smaller"></td><td id="MAG">0</td></tr>
+                                
                                 <tr><td>Mouvement (MOU)</td>        <td id="MOUinfo" class="expert do-not-display is-smaller"></td><td id="MOU">0</td></tr>
                                 <tr><td>Perception (PER)</td>       <td id="PERinfo" class="expert do-not-display is-smaller"></td><td id="PER">0</td></tr>
                                 <tr><td>Sociabilité (SOC)</td>      <td id="SOCinfo" class="expert do-not-display is-smaller"></td><td id="SOC">0</td></tr>
                                 <tr><td>Survie (SUR)</td>           <td id="SURinfo" class="expert do-not-display is-smaller"></td><td id="SUR">0</td></tr>
                                 <tr><td>Tir (TIR)</td>              <td id="TIRinfo" class="expert do-not-display is-smaller"></td><td id="TIR">0</td></tr>
                                 <tr><td>Volonté (VOL)</td>          <td id="VOLinfo" class="expert do-not-display is-smaller"></td><td id="VOL">0</td></tr>
-                                
+                                <tr class="magie"><td>Magie (MAG)</td>            <td id="MAGinfo" class="expert is-smaller do-not-display"></td><td id="MAG">0</td></tr>
                             </tbody>
                         </table>
 
@@ -280,8 +279,15 @@
 
                     <div class="column">
 
+                        <div id="weapons">
+                            <h2><i class="fa-solid fa-shield-halved"></i> Équipements</h2>
+                            <div>
+                                <ul id="weapons-list"></ul>
+                            </div>
+                        </div>
+
                         <div id="equipements">
-                            <h2><i class="fa-solid fa-sack-xmark"></i> Équipements</h2>
+                            <h2><i class="fa-solid fa-sack-xmark"></i> Inventaire</h2>
                             <div>
                                 <ul id="listeEquipement"></ul>
                             </div>
