@@ -134,6 +134,7 @@ td + td {
 #spellbook div,
 #weapons div {
     background-color: var(--color-black-transparent-dark);
+    border-radius: 10px;
 }
 
 #equipements div {
