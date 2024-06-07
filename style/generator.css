@@ -119,6 +119,7 @@ td + td {
 }
 
 #listeAtouts, 
+#listeTresor,
 #listeEquipement,
 #tricks-list,
 #spells-list,
@@ -127,6 +128,7 @@ td + td {
     padding: 10px;
 }
 
+#tresor div,
 #equipements div,
 #atouts div,
 #spellbook div,
@@ -211,5 +213,5 @@ p {
 
 
  #generer i {
-    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    transition: transform 0.25s ease-in-out; /* Smooth transition */
  } 

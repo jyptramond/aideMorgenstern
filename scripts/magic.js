@@ -313,7 +313,7 @@ function becomingWizard(character, domainsInJob) {
         for (let i = 0 ; i < knownItems ; i++) {
             property.push(book[i]);
         }
-        property.sort((a, b) => b.difficulty - a.difficulty);
+        property.sort((a, b) => a.name.localeCompare(b.name));
     }
     
     

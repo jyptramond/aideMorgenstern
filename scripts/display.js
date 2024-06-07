@@ -23,6 +23,7 @@ function displayCharacter(character) {
 
     displayAbilities(character);
     displayEquipment(character);
+    displayGold(character);
 
     if (character.weapons.length >0 || character.armor !== "") { 
     displayWeaponsItems(character);
@@ -155,6 +156,8 @@ function displayWeapons(character) {
 }
 
 
+
+
 function displayEquipment(character) {
 
     let nouvelEquipement ;
@@ -166,12 +169,20 @@ function displayEquipment(character) {
         nouvelEquipement.textContent = character.equipment[i];
         document.getElementById("listeEquipement").appendChild(nouvelEquipement);
     }
+    
+}
+
+
+function displayGold(character) {
+
+    let nouvelEquipement ;
+
     if (character.money !== "") {
+        nouvelEquipement = document.createElement("li");
         nouvelEquipement.textContent = character.money;
-        document.getElementById("listeEquipement").appendChild(nouvelEquipement);
+        document.getElementById("listeTresor").appendChild(nouvelEquipement);
     }
-        
-    // DEBUG : console.log("equipement.length"+equipement.length)
+    
 }
 
 

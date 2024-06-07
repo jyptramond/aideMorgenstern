@@ -15,7 +15,7 @@ function rotateButton(target) {
 
         let icon = document.querySelector('#'+target+" i")
 
-        amount += 360;
+        amount += 180;
 
         if (icon) {
             icon.style.transform = `rotate(${amount}deg)`;
