@@ -1,9 +1,7 @@
 
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////// LES ARMES & DOMAINES MAGIQUES /////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
@@ -198,7 +196,7 @@ const repartitionMetiers = [
 
 
 
-const newArchetype = [
+const archetype = [
     {
         name: "Aigle",
         bonus: ["CNS+5/PER+5", "VOL+5"],
@@ -2620,7 +2618,7 @@ const groups = [
             "costume de bourgeois", 
             "nécessaire d'écriture, 1d10 parchemins", 
             "trois plumes et deux encriers, main de papier (20 pages)", 
-            "£+*CNS* livres reliés", "bésicles", 
+            "*CNS* livres reliés", "bésicles", 
             "gibecière avec couverture, bol en bois, et 1d10 rations supérieures", 
             "gourde contenant du bon vin"
         ],
@@ -2693,7 +2691,7 @@ const groups = [
         inventory: [
             "costume de bourgeois", 
             "main de papier (20 pages), plume et encrier", 
-            "£+*CNS* livres occultes reliés", 
+            "*CNS* livres occultes reliés", 
             "1d10+*MAG* ingrédients utiles à leur savoir (patte d'animaux, poudres, herbes, sang d'animal...)", 
             "gibecière contenant une couverture, un col en bois et 1d10 rations de bonne qualité", 
             "gourde contenant du bon vin"
@@ -2711,7 +2709,7 @@ const groups = [
             "sac en toile contenant un bol en bois et 1d10 ration(s) de piètre qualité", 
             "gourde d'eau/gourde de mauvais vin"
         ],
-        money: "£+*END* pièce(s) de cuivres"
+        money: "*END* pièce(s) de cuivres"
     },
     {
         name: "Religieux et prêtres",

@@ -71,7 +71,38 @@ function rollDices(str) {
     if (index !== -1) {
         numberOfDice = Number(str.slice(index-1,index))
             //DEBUG : console.log(numberOfDice)
-        str = str.replace(`${numberOfDice}`+"d10", `${sum}`)
+        str = str.replace(`${numberOfDice}`+"d10", `${sum}¤`)
+    }
+
+    index = str.indexOf('¤+')
+
+    if (index === -1) {
+        str = str.replace('¤', '')
+    }
+
+
+    return str
+}
+
+
+function indiceStat(character, str) {
+
+    let index = str.indexOf("*") ;
+
+    if (index !== -1) {
+
+        let stat = str.slice(index+1,index+4).toLowerCase();
+        
+        let property = findPropertyByName(character, stat);
+
+        stat = stat.toUpperCase();
+
+        str = str.replace(`*${stat}*`, `§${indice(property.value)}`);
+
+        if (str.indexOf('+§') === -1) {
+            str = str.replace(`§`, ``) ;
+        }
+
     }
 
     return str
@@ -80,13 +111,51 @@ function rollDices(str) {
 
 function weaponsDamage(str) {
 
+    let result = 0;
+
+    let index = str.indexOf('§') ;
+    str = str.replace('§','')
+    let calcul = str.slice(index, index+3)
+    let operator = calcul.slice(1,2);
+    let number1 = calcul.slice(0,1);
+    let number2 = calcul.slice(2,3);
+
+    if (operator === '+') {
+        result = Number(number1) + Number(number2) ;
+    }
+    else {
+        result = Number(number1) - Number(number2) ;
+    }
+
+
+    str = str.replace(calcul, result) ;
+
+    return str
+}
+
+
+function dicePlusStat(str) {
+
+    let index = str.indexOf('¤') ;
+
+    str = str.replace(`¤+§`, `+`);
+
+    let calcul = str.slice(index-1, index+2)
+
+    let number1 = calcul.slice(0, 1)
+    let number2 = calcul.slice(2, 3)
+
+    let result = Number(number1) + Number(number2) ;
+
+    str = str.replace(`${calcul}`,`${result}`);
+
+    return str
 }
 
 
 /** 
- * Cette fonction va calculer les notations des types suivants : "RU+*FOR*1","1d10+*CNS" ou "5d10"
- * 
- * 
+ * Cette fonction va calculer les notations des types suivants : "RU+*FOR*+1",//"1d10+*CNS*" ou //"5d10"
+ *  
  * @param {string} str : la chaîne de caractère que l'on veut analyser
  */
 
@@ -94,9 +163,21 @@ function translate(character, str) {
 
     // init des variables nécessaires
 
+    if (str.indexOf('d10') !== -1) {
+        str = rollDices(str);
+    }
 
-    str = rollDices(str);
-   // str = weaponsDamage(str);
+    if (str.indexOf("*") !== -1) {
+        str = indiceStat(character, str);
+    }
+
+    if (str.indexOf('RU+§') !== -1) {
+        str = weaponsDamage(str);
+    }
+
+    if (str.indexOf('¤+§') !== -1) {
+        str = dicePlusStat(str);
+    }
 
 
     return str

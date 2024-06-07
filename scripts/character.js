@@ -12,7 +12,7 @@ function createCharacter() {
         let config = initConfig();
         let character = initCharacter();
 
-        getRace(character, config);
+        getOrigin(character, config);
         getFate(character);
         getSecondaryAttributes(character);
         getName(character, config);
@@ -76,10 +76,10 @@ function createCharacter() {
  *  
  */
 
-function getRace(character, config) {
+function getOrigin(character, config) {
 
     // tirage du peuple
-    if (config.race === -2) {
+    if (config.origin === -2) {
     let y = aleatoire(100)+1
 
     // sélectionne un peuple selon la répartition statistique des peuples
@@ -88,47 +88,47 @@ function getRace(character, config) {
 
                 switch (i) {
                     case 0 : 
-                        character.raceID = 0;
+                    character.originID = 0;
                         break ;
                     case 1 : 
-                        character.raceID = 3;
+                    character.originID = 3;
                         break ;
                     case 2 : 
-                        character.raceID = 4;
+                    character.originID = 4;
                         break ;
                     case 3 : 
-                        character.raceID = 5;
+                    character.originID = 5;
                         break ;
                     case 4 : 
-                        character.raceID = 7;
+                    character.originID = 7;
                         break ;
                     case 5 : 
-                        character.raceID = 8;
+                    character.originID = 8;
                         break ;
                     case 6 : 
-                        character.raceID = 6;
+                    character.originID = 6;
                         break ;
                     case 7 : 
-                        character.raceID = 2;
+                    character.originID = 2;
                         break ;
                     case 8 : 
-                        character.raceID = 1;
+                    character.originID = 1;
                         break ;
                 }
             }
         }
     }
 
-    if (config.race === -1) {
+    if (config.origin === -1) {
         let y = aleatoire(origine.length)
-        character.raceID = y
+        character.originID = y
     }
 
-    if (config.race >= 0) {
-        character.raceID = config.race
+    if (config.origin >= 0) {
+        character.originID = config.origin
     }
 
-    character.race = origine[character.raceID][0];
+    character.origin = origine[character.originID][0];
 }
 
 
@@ -140,7 +140,7 @@ function sortAbilities(character) {
 
 function getFate(character) {
         // le destin
-        if (character.raceID === 0 || character.raceID === 3) {
+        if (character.originID === 0 || character.originID === 3) {
            character.fate = 3 ;
         } else {
            character.fate = 2 ;
@@ -149,7 +149,7 @@ function getFate(character) {
 
 function getSecondaryAttributes(character) {
 
-    switch (character.raceID) {
+    switch (character.originID) {
 
         case 0 :    //humain
             break ;
@@ -218,7 +218,7 @@ function getName(character, config) {
     // choix aléatoire en fonction du peuple
     if (config.name === -2) {
 
-        switch (character.race) {
+        switch (character.origin) {
             case 1: 
                 x = 10;
                 break;
@@ -269,7 +269,7 @@ function getName(character, config) {
 
 function getAge(character) {
 
-    switch (character.raceID) {
+    switch (character.originID) {
         case 0 :
             //humain
             character.age = aleatoire(33)+12
@@ -357,7 +357,7 @@ let i = 0
         shuffle(stats)
         getStatsInfo(character, stats);
         checkStatsSum(stats);
-        addRaceStats(character, stats)
+        addOriginStats(character, stats)
 
     }
 }
@@ -365,29 +365,25 @@ let i = 0
 function getStatsInfo(character, stats) {
     for (let i = 0 ; i < keys.length ; i++) {
         character.sum.roll += stats[i];
-        character.sum.race += origine[character.raceID][i+1] ;
+        character.sum.origin += origine[character.originID][i+1] ;
 
         let property = findPropertyByName(character, keys[i]);
         property.roll = stats[i];
-        property.race = origine[character.raceID][i+1] ;
+        property.origin = origine[character.originID][i+1] ;
     }
-        character.sum.rollrace = character.sum.roll + character.sum.race;
+        character.sum.rollorigin = character.sum.roll + character.sum.origin;
 }
 
-function addRaceStats(character, stats) {
+function addOriginStats(character, stats) {
 
     for (i = 0; i < stats.length; i++) {
-        stats[i] += origine[character.raceID][i+1] ;
+        stats[i] += origine[character.originID][i+1] ;
         }
         
     for (i = 0 ; i < keys.length ; i++) {
-        //console.log(keys[i])
         let property = findPropertyByName(character, keys[i])
-        //console.log(property.value);
         property.value += stats[i];
-        //console.log(property.value);
     }
-    //console.log(character.sum.rollrace)
 }
 
 
@@ -413,18 +409,18 @@ function getArchetype(character, config) {
     let i = 0;
 
     if (config.archetype === -1) {
-        character.archetypeID = aleatoire(newArchetype.length);
-        character.archetype = newArchetype[character.archetypeID].name;
+        character.archetypeID = aleatoire(archetype.length);
+        character.archetype = archetype[character.archetypeID].name;
     }
     else {
-        character.archetype = newArchetype[config.archetype].name;
+        character.archetype = archetype[config.archetype].name;
         character.archetypeID = config.archetype;
     }
 
     // applique les modificateurs de caractéristiques de l'archétype un par un
-    for (i = 0 ; i < newArchetype[character.archetypeID].bonus.length ; i++) {
+    for (i = 0 ; i < archetype[character.archetypeID].bonus.length ; i++) {
 
-        bonusArchetype(character, stringrandom(newArchetype[character.archetypeID].bonus[i]))
+        bonusArchetype(character, stringrandom(archetype[character.archetypeID].bonus[i]))
 
     }
 }
@@ -439,14 +435,14 @@ function getTraits(character) {
         while (trait1 === trait2) {
 
             // si il y a deux entrées vices et vertus dans le tableau
-            if (newArchetype[character.archetypeID].traits.length === 2) {
-                trait1 = stringrandom(newArchetype[character.archetypeID].traits[0])
-                trait2 = stringrandom(newArchetype[character.archetypeID].traits[1])
+            if (archetype[character.archetypeID].traits.length === 2) {
+                trait1 = stringrandom(archetype[character.archetypeID].traits[0])
+                trait2 = stringrandom(archetype[character.archetypeID].traits[1])
             }
             // si il n'y en a qu'une seule
             else {
-                trait1 = stringrandom(newArchetype[character.archetypeID].traits[0])
-                trait2 = stringrandom(newArchetype[character.archetypeID].traits[0])
+                trait1 = stringrandom(archetype[character.archetypeID].traits[0])
+                trait2 = stringrandom(archetype[character.archetypeID].traits[0])
             }
         }
     
@@ -490,7 +486,7 @@ value = str.slice(z+1)
 
 // récupérer la caractéristiques
 
-stat = str.slice(0, z)
+stat = str.slice(0, z).toLowerCase() ;
 
     for (let i = 0 ; i < keys.length ; i++) {
         if (stat === allkeys[i]) {
@@ -519,17 +515,14 @@ function getJobLogic(character) {
         
             let y = aleatoire(100)+1 ;
             // sélectionne un métier selon la répartition statistique des métiers
-            for (let i = 0 ; i < repartitionMetiers[character.raceID].length ; i++) { 
+            for (let i = 0 ; i < repartitionMetiers[character.originID].length ; i++) { 
                 
-                if (y >= repartitionMetiers[character.raceID][i][0] && y <= repartitionMetiers[character.raceID][i][1]) {
-                    console.log("c'est ici : "+i)
+                if (y >= repartitionMetiers[character.originID][i][0] && y <= repartitionMetiers[character.originID][i][1]) {
                     character.groupID = i ;
-                    console.log(character.groupID)
                 }
             }
             // tirer un métier au hasard parmi la branche
             character.jobID = (aleatoire(8))+(8*(character.groupID));
-            console.log(character.jobID)
 }
 
 
@@ -598,21 +591,17 @@ function getEquipment(character) {
 
 function getFromList(character, id, stuff) {
 
-            console.log("///////////////////////////////////")
         if (Array.isArray(stuff)) {
             for (let i = 0 ; i < id.length ; i++) {
-                //générer l'équipement de la branche de métiers
                 
                 //console.log(id[i]);
                 stuff.push(translate(character, stringrandom(id[i])));
-                //console.log("# "+translate(character, stringrandom(id[i])));
 
             }
         }
         else {
             //console.log(id)
             stuff = `${translate(character, stringrandom(id))}`;
-            //console.log("# "+stuff)
             return stuff
         }
 }
@@ -668,8 +657,8 @@ function getAbilitiesArray(character) {
 
     shuffle(abilities)
 
-    console.log("abilities without Domaine Magique")
-    console.log(abilities)
+    //console.log("abilities without Domaine Magique")
+    //console.log(abilities)
     
     return abilities
 }
@@ -704,7 +693,7 @@ function getMainAttributes(character) {
         }
 
     character.sum.resultBeforeMagic = 
-                    (character.sum.rollrace + 
+                    (character.sum.rollorigin + 
                     character.sum.archetype) - 
                     (character.stats.mag.value - 
                     character.sum.comDecrease) ;
@@ -739,9 +728,9 @@ function getStatsByRoll(character, config) {
             for (i = 0; i < keys.length; i++) {
 
                 let property = findPropertyByName(character, keys[i])
-                property.value += origine[character.raceID][i+1] ;
-                character.sum.race += origine[character.raceID][i+1] ;
+                property.value += origine[character.originID][i+1] ;
+                character.sum.origin += origine[character.originID][i+1] ;
             }
-                character.sum.rollrace = character.sum.race + character.sum.roll ;
+                character.sum.rollorigin = character.sum.origin + character.sum.roll ;
             
     }

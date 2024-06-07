@@ -8,7 +8,7 @@ function initCharacter() {
     let character = {
         name : "",
         traits: [],
-        race: "",
+        origin: "",
         archetype: "",
         age: "",
         group: "",
@@ -19,7 +19,7 @@ function initCharacter() {
         armor: "",
         money: "",
 
-        raceID: 0,
+        originID: 0,
         archetypeID: 0,
         groupID: 0,
         jobID: 0,
@@ -47,7 +47,7 @@ function initCharacter() {
             com: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -56,7 +56,7 @@ function initCharacter() {
             cns: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -65,7 +65,7 @@ function initCharacter() {
             dis: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -74,7 +74,7 @@ function initCharacter() {
             end: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -83,7 +83,7 @@ function initCharacter() {
             for: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -92,7 +92,7 @@ function initCharacter() {
             hab: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -101,7 +101,7 @@ function initCharacter() {
             mou: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -110,7 +110,7 @@ function initCharacter() {
             per: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -119,7 +119,7 @@ function initCharacter() {
             soc: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -128,7 +128,7 @@ function initCharacter() {
             sur: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -137,7 +137,7 @@ function initCharacter() {
             tir: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -146,7 +146,7 @@ function initCharacter() {
             vol: {
                 value: 0,
                 roll: 0,
-                race: 0,
+                origin: 0,
                 archetype: 0,
                 magic: 0,
                 title: 0,
@@ -162,9 +162,9 @@ function initCharacter() {
         
 
         sum: { 
-            race: 0,
+            origin: 0,
             roll: 0,          
-            rollrace: 0,     
+            rollorigin: 0,     
             archetype: 0,          
             comDecrease: 0,       
             resultBeforeMagic: 0,  
@@ -186,7 +186,7 @@ function initConfig() {
     let config = {
         name: -2,
         archetype: -1,
-        race: -2,
+        origin: -2,
         group: -2,
         job: -1,
         mode: 0,

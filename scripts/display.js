@@ -6,8 +6,7 @@
 
 function displayCharacter(character) {
 
-    let i = 0
-    console.log(character);
+    let i = 0;
     customHeader(character);
     displayAllStats(character);
 
@@ -51,8 +50,6 @@ function displayAllStats(character) {
         displayStat(property, allkeys[i])
     }
 }
-
-
 
 
 
@@ -160,13 +157,20 @@ function displayWeapons(character) {
 
 function displayEquipment(character) {
 
+    let nouvelEquipement ;
+
     character.equipment.sort((a, b) => a.localeCompare(b));
 
     for (i = 0 ; i < character.equipment.length ; i++) {   
-        let nouvelEquipement = document.createElement("li");
+        nouvelEquipement = document.createElement("li");
         nouvelEquipement.textContent = character.equipment[i];
         document.getElementById("listeEquipement").appendChild(nouvelEquipement);
     }
+    if (character.money !== "") {
+        nouvelEquipement.textContent = character.money;
+        document.getElementById("listeEquipement").appendChild(nouvelEquipement);
+    }
+        
     // DEBUG : console.log("equipement.length"+equipement.length)
 }
 
@@ -196,11 +200,11 @@ function displayVitals(attribute, ID) {
 
 function recapCharacteristics(character) {
 
-    character.sum.race = character.sum.rollrace - character.sum.roll
+    character.sum.origin = character.sum.rollorigin - character.sum.roll
     character.sum.final = character.sum.resultBeforeMagic + character.stats.mag.value
 
     if (character.stats.mag.value > 0) {
-        document.getElementById("COMP").innerHTML =     `((${character.sum.race}+
+        document.getElementById("COMP").innerHTML =     `((${character.sum.origin}+
                                                         ${character.sum.roll}+
                                                         ${character.sum.archetype})-
                                                         (${character.stats.mag.value}-
@@ -211,7 +215,7 @@ function recapCharacteristics(character) {
                                                         (${character.sum.final})`
     }
     else {
-        document.getElementById("COMP").innerHTML =     `${character.sum.race}+
+        document.getElementById("COMP").innerHTML =     `${character.sum.origin}+
                                                         ${character.sum.roll}+
                                                         ${character.sum.archetype}=
                                                         ${character.sum.sum12}
@@ -415,7 +419,7 @@ function takeScreenshotWeb(character) {
             link.href = canvas.toDataURL('image/jpeg');
 
             // Déterminer le nom de fichier basé sur le contenu du textarea et d'autres variables
-            const filename = `${userName}-${character.race}-${character.archetype}-${userAge}-Brigandyne.jpeg`;
+            const filename = `${userName}-${character.origin}-${character.archetype}-${userAge}-Brigandyne.jpeg`;
             
             link.download = filename;
 

@@ -37,16 +37,16 @@ function customHeader(character) {
     let champTexte = DOMPurify.sanitize(document.getElementById("champTexte").value, config);
 
     if (!champTexte && !champAge) {
-        baliseIdentite.innerHTML = `${character.name}, ${character.race} <span class="sub-h1">(${character.archetype}, ${character.age} ans)</span>`
+        baliseIdentite.innerHTML = `${character.name}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${character.age} ans)</span>`
     }
     else if (champTexte && champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${character.race} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
+        baliseIdentite.innerHTML = `${champTexte}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
     }
     else if (champTexte && !champAge) {
-        baliseIdentite.innerHTML = `${champTexte}, ${character.race} <span class="sub-h1">(${character.archetype}, ${attributsPrincipaux[3]} ans)</span>`
+        baliseIdentite.innerHTML = `${champTexte}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${attributsPrincipaux[3]} ans)</span>`
     }
     else if (!champTexte && champAge) {
-        baliseIdentite.innerHTML = `${character.name}, ${character.race} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
+        baliseIdentite.innerHTML = `${character.name}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${champAge} ans)</span>`
     }
 }
 
@@ -75,7 +75,7 @@ function getConfig(config) {
 
     config.name = configFromSelect('selectName');
     config.archetype = configFromSelect('selectArchetype');
-    config.race = configFromSelect('selectPeuple');
+    config.origin = configFromSelect('selectPeuple');
     config.group = configFromSelect('selectGroupe');
     config.mode = configFromSelect('selectMode');
     config.role = configFromSelect('selectRole');

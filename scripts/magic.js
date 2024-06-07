@@ -128,7 +128,7 @@ function becomingWizard(character, domainsInJob) {
                     domains[2] = stringrandom(domaineMagique)
                     break;
             }
-            console.log(domains);
+            //console.log(domains);
         }
         while (domains[0] === domains[1] && domains[1] === domains[2] && domains[2] === domains[0])
 
