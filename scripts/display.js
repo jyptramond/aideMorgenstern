@@ -369,6 +369,7 @@ function displayNotes() {
 function resetDisplay() {
 
     document.getElementById("listeAtouts").innerHTML = "";
+    document.getElementById("listeTresor").innerHTML = "";
     document.getElementById("listeEquipement").innerHTML = "";
     document.getElementById("tricks-list").innerHTML = "";
     document.getElementById("spells-list").innerHTML = "";

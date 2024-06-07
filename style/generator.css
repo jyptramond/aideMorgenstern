@@ -133,7 +133,6 @@ td + td {
 #atouts div,
 #spellbook div,
 #weapons div {
-    border-collapse: collapse;
     background-color: var(--color-black-transparent-dark);
 }
 
