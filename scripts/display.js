@@ -33,6 +33,47 @@ function displayCharacter(character) {
     recapCharacteristics(character)
 }
 
+function setUserInputs(str, id) {
+
+    if (str) {
+        document.getElementById(id).value = str ;
+    }
+}
+
+
+
+function customHeader(character) {
+
+
+    let input = getUserInputs('champTexte')
+    if (input) {
+        character.name.value = input ;
+        character.name.input = input ;
+    }
+    else {
+        character.name.value = character.name.original
+        character.name.input = "" ;
+    }
+    
+    input = getUserInputs('champAge')
+    if (input) {
+        character.age.value = input ;
+        character.age.input = input ;
+    }
+    else {
+        character.age.value = character.age.original
+        character.age.input = "" ;
+    }
+
+    setObjectAsCookie("character-cookie", character, 360);
+
+    let baliseIdentite = document.getElementById("identite");
+
+    baliseIdentite.innerHTML = `${character.name.value}, ${character.origin} <span class="sub-h1">(${character.archetype}, ${character.age.value} ans)</span>`
+
+}
+
+
 
 function displayAttributes(character) {
     document.getElementById("vices").textContent = `${character.traits[0]}+1, ${character.traits[1]}+1`
@@ -409,108 +450,6 @@ function resetDisplay() {
 }
 
 
-function getUserInputs(id, property) {
-
-    const configDOMPurify = {
-        ALLOWED_TAGS: false,
-        ALLOWED_ATTR: false
-    };
-
-
-    let input = DOMPurify.sanitize(document.getElementById(id).value, configDOMPurify);
-    if (input === "") {
-        input = property;
-    } 
-    return input
-}
-
-
-
-function takeScreenshotWeb(character) {
-
-    document.getElementById('save').addEventListener('click', function(event) {
-
-        let baliseCocherNotes = document.getElementById("cocherNotes");
-        let textarea;
-        let text;
-
-        if (baliseCocherNotes.checked) {
-            textarea = document.getElementById('champNotes');
-            text = textarea.value;
-            textarea.value = "";
-        } 
-
-
-        html2canvas(document.getElementById('content')).then(function(canvas) {
-            
-            
-            if (baliseCocherNotes.checked) {
-                drawTextArea(canvas, text);
-            } 
-
-            // Créer un lien pour télécharger l'image
-            let link = document.createElement('a');
-            link.href = canvas.toDataURL('image/jpeg');
-
-            // Déterminer le nom de fichier basé sur le contenu du textarea et d'autres variables
-            const filename = `${userName}-${character.origin}-${character.archetype}-${userAge}-Brigandyne.jpeg`;
-            
-            link.download = filename;
-
-            document.body.appendChild(link);
-
-            // Déclencher le téléchargement
-            link.click();
-
-            // Supprimer l'élément de lien
-            document.body.removeChild(link);
-        });
-        
-    textarea.value = text;
-
-    });
-}
-
-// Function to draw the content of the textarea on the canvas with automatic line break
-function drawTextArea(canvas, text) {
-    let ctx = canvas.getContext('2d');
-    let lines = text.split('\n');
-
-    // Define font and fill color
-    ctx.font = '16px "Segoe UI"';
-    ctx.fillStyle = '#000';
-
-    // Get the absolute position of the textarea on the webpage
-    let textarea = document.getElementById('champNotes');
-    let textareaRect = textarea.getBoundingClientRect();
-    let textareaX = window.scrollX + textareaRect.left; // Absolute X position
-    let textareaY = window.scrollY + textareaRect.top;  // Absolute Y position
-
-    // Define variables for text positioning
-    let x = textareaX + 20; // Horizontal position relative to textarea
-    let y = textareaY + 30; // Vertical position relative to textarea
-    let maxWidth = textareaRect.width - 20; // Maximum width for text based on textarea width
-
-    // Draw each line of text with automatic line break proportional to the textarea width
-    lines.forEach(function(line) {
-        let words = line.split(' ');
-        let lineText = '';
-        words.forEach(function(word, index) {
-            let testLine = lineText + word + ' ';
-            let metrics = ctx.measureText(testLine);
-            let testWidth = metrics.width;
-            if (testWidth > maxWidth && index > 0) {
-                ctx.fillText(lineText, x, y);
-                lineText = word + ' ';
-                y += 20; // Vertical spacing between lines
-            } else {
-                lineText = testLine;
-            }
-        });
-        ctx.fillText(lineText, x, y);
-        y += 20; // Vertical spacing between lines
-    });
-}
 
 
 

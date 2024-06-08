@@ -1,11 +1,93 @@
-import { toggleNav, changeScreenRatio, toggleConfig } from './export.js';
-
-toggleNav();
-changeScreenRatio();
-toggleConfig();
-
 let difficultyFilter = -30;
 let lastSelectedOptionId = 'ascending';
+
+let myCustomSpellbook = [] ;
+
+
+
+
+function launch() {
+
+    generateMySpellbook();
+
+    //console.log(cookieExists("character-cookie"));
+    if (cookieExists("spellbook-cookie")) {
+        myCustomSpellbook = getObjectFromCookie("spellbook-cookie") ;
+
+        console.log(myCustomSpellbook)
+        if (myCustomSpellbook[0]) {
+            displayCustomSpellbookFromCookie(myCustomSpellbook)
+        }
+    }
+
+    toggleNav();
+    changeScreenRatio();
+    toggleConfig();
+    userFiltering();
+    userTypeFiltering();
+    userDifficultyFiltering();
+    difficultySorting();
+    theFilter();
+    displaySpellbook();
+    displayTricksAndSpells();
+    customizeSpellbookName();
+    takeScreenshotWeb();
+
+}
+
+launch();
+
+
+function displayCustomSpellbookFromCookie(spellbook) {
+
+    const myDiv = document.getElementById("mySpellbook");
+    let savedElement
+
+    for(let i = 0 ; i < spellbook.length ; i++) {
+
+        let elementToFind = spellbook[i] ;
+        let type = spellbook[i].slice(0,1) ;
+        let foundObject = [...spells, ...tricks].find(obj => obj.id === elementToFind);
+        
+        if (type === 't') {
+            //displaySpell(i)
+            savedElement = displayTrick(foundObject, myDiv)
+            savedElement.classList.remove("notsaved");
+            attachListener(savedElement);
+            createRecap(savedElement);
+        } 
+        else {
+            //displayTrick(i)
+            savedElement = displaySpell(foundObject, myDiv)
+            savedElement.classList.remove("notsaved");
+            attachListener(savedElement);
+            createRecap(savedElement);
+        }
+
+        console.log(savedElement)
+
+
+
+    }
+}
+
+
+function attachListener(savedElement) {
+    savedElement.addEventListener("click", function(event) {
+        let allRecapElements = document.querySelectorAll("aside ul li");
+        for (let element of allRecapElements) {
+            if (element.textContent === savedElement.firstChild.textContent) {
+                element.remove();
+                theFilter();
+                break;
+            }
+        }
+        
+        removeFromCustomSpellbook(savedElement);
+        cardRemove(savedElement);
+    })
+
+}
 
 
 function generateMySpellbook() {
@@ -29,33 +111,47 @@ function generateTricks(tricks) {
     const tricksDiv = document.createElement("div");
     tricksTitle.innerText = "TOURS DE MAGIE";
 
+    searchArea.appendChild(tricksTitle);
+    searchArea.appendChild(tricksDiv)
+
     tricksTitle.id = "myTricksTitle";
     tricksDiv.id = "myTricksDiv";
 
-    for (let y = 0 ; y < tricks.length ; y++) {
-        const trick = tricks[y];
+    for (let i = 0 ; i < tricks.length ; i++) {
 
-        // Création d’une balise dédiée à un sortilège
-        const trickCard = document.createElement("article");
-        trickCard.classList.add("notsaved");
-        trickCard.classList.add("card-effect");
-        
-        const nameTrick = document.createElement("h3");
-        nameTrick.innerHTML = `${trick.name}`;
+        let trick = tricks[i]
 
-        const descriptionTrick = document.createElement("p");
-        descriptionTrick.classList.add("description-spell");
-        descriptionTrick.innerHTML = `${trick.description}`;
-
-        // On rattache la balise article a la section Fiches
-            searchArea.appendChild(tricksTitle);
-            searchArea.appendChild(tricksDiv)
-
-            tricksDiv.appendChild(trickCard);
-            trickCard.appendChild(nameTrick);
-            trickCard.appendChild(descriptionTrick);
+        displayTrick(trick, tricksDiv)
     }
     }
+
+
+
+function displayTrick(trick, tricksDiv) {
+
+    // Création d’une balise dédiée à un sortilège
+    const trickCard = document.createElement("article");
+    trickCard.classList.add("notsaved");
+    trickCard.classList.add("card-effect");
+    
+    const nameTrick = document.createElement("h3");
+    nameTrick.innerHTML = `${trick.name}`;
+
+    const descriptionTrick = document.createElement("p");
+    descriptionTrick.classList.add("description-spell");
+    descriptionTrick.innerHTML = `${trick.description}`;
+
+    // On rattache la balise article a la section Fiches
+
+
+        tricksDiv.appendChild(trickCard);
+        trickCard.appendChild(nameTrick);
+        trickCard.appendChild(descriptionTrick);
+
+        return trickCard
+}
+
+
 
 
 function generateSpells(spells) {
@@ -64,11 +160,24 @@ function generateSpells(spells) {
     const spellsDiv = document.createElement("div");
     spellsTitle.innerText = "SORTILÈGES";
 
+    searchArea.appendChild(spellsTitle);
+    searchArea.appendChild(spellsDiv);
+
     spellsTitle.id = "mySpellsTitle";
     spellsDiv.id = "mySpellsDiv";
 
 for (let i = 0 ; i < spells.length ; i++) {
-    const spell = spells[i];
+
+    let spell = spells[i]
+
+    //console.log(spells[i]);
+    displaySpell(spell, spellsDiv)
+
+}
+}
+
+
+function displaySpell(spell, spellsDiv) {
 
     // Création d’une balise dédiée à un sortilège
     const spellCard = document.createElement("article");
@@ -100,9 +209,7 @@ for (let i = 0 ; i < spells.length ; i++) {
 
 
 
-    // On rattache la balise article a la section Fiches
-        searchArea.appendChild(spellsTitle);
-        searchArea.appendChild(spellsDiv);
+    // On rattache la balise article a la section Fiche
 
         spellsDiv.appendChild(spellCard);
 
@@ -114,8 +221,10 @@ for (let i = 0 ; i < spells.length ; i++) {
         spellCard.appendChild(headerSpell);
         spellCard.appendChild(descriptionSpell);
 
+        return spellCard
 }
-}
+
+
 
 function savingCard() {
 const cards = document.querySelectorAll(".notsaved");
@@ -171,13 +280,15 @@ function createRecap(src) {
 function createClone(src) {
     const clonedElement = src.cloneNode(true);
     clonedElement.classList.add("card-effect");
-    clonedElement.classList.remove("notsaved")
+    clonedElement.classList.remove("notsaved");
 
-    const mySpellbook = document.getElementById("mySpellbook")
+    const mySpellbook = document.getElementById("mySpellbook");
     mySpellbook.appendChild(clonedElement);
 
+    addToCustomSpellbook(clonedElement) ;
+
     clonedElement.addEventListener("click", function(event) {
-        let allRecapElements = document.querySelectorAll("aside ul li")
+        let allRecapElements = document.querySelectorAll("aside ul li");
         for (let element of allRecapElements) {
             if (element.textContent === clonedElement.firstChild.textContent) {
                 element.remove();
@@ -185,9 +296,14 @@ function createClone(src) {
                 break;
             }
         }
+        
+        removeFromCustomSpellbook(clonedElement);
         cardRemove(clonedElement);
     })
 }
+
+
+
 
 
 function userTypeFiltering() {
@@ -539,13 +655,45 @@ function difficultySorting() {
     });
 }
 
-userFiltering();
-userTypeFiltering();
-userDifficultyFiltering();
-difficultySorting();
-theFilter();
-generateMySpellbook();
-displaySpellbook();
-displayTricksAndSpells();
-customizeSpellbookName();
-takeScreenshotWeb();
+
+
+
+function addToCustomSpellbook(element) {
+
+    const configDOMPurify = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+
+    let elementToFind = element.firstChild.textContent;
+    let foundObject = [...spells, ...tricks].find(obj => DOMPurify.sanitize(obj.name, configDOMPurify) === elementToFind);
+
+    myCustomSpellbook.push(foundObject.id) ;
+    console.log(myCustomSpellbook)
+
+    setObjectAsCookie("spellbook-cookie", myCustomSpellbook, 360);
+}
+
+
+
+function removeFromCustomSpellbook(element) {
+
+    const configDOMPurify = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+    console.log(element)
+
+    let elementToFind = element.firstChild.textContent;
+    console.log("elementToFind : "+elementToFind)
+    let foundObject = [...spells, ...tricks].find(obj => DOMPurify.sanitize(obj.name, configDOMPurify) === elementToFind);
+    console.log("foundObject : "+foundObject+" ("+foundObject.id+")")
+    
+    myCustomSpellbook = myCustomSpellbook.filter(obj => obj !== foundObject.id);
+
+    console.log(myCustomSpellbook)
+
+    setObjectAsCookie("spellbook-cookie", myCustomSpellbook, 360);
+}

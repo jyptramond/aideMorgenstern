@@ -323,270 +323,315 @@ const archetype = [
 const tricks = [
     {
         name: "Agacement",
+        id: "t1",
         alt:"",
         type: ["Animalisme", "Guerre"],
         description: "Vous aiguillez des insectes vers *MAG* cibles. Des mouches peuvent tournoyer autour de la tête d’un cheval, une guêpe effrayer un enfant, un hanneton bourdonner quand un archer décoche sa flèche, etc. Si une cible rate un test de VOL, elle subit 1 Désavantage pour ce tour."
     },
     {
         name: "Aide-mémoire",
+        id: "t2",
         alt: ["aide mémoire", "aide memoire"],
         type: ["Châtiment"],
         description: "La cible gagne 1 Avantage aux tests de CNS pendant *MAG* tours."
     },
     {
         name: "Apaisement",
+        id: "t3",
         alt:"",
         type: ["Eau", "Mentalisme"],
         description: "Vous apaisez la colère d’une personne. Cela ne la rendra pas aimable pour autant, mais diminuera sa colère d’un « cran ». Ce tour dure une heure. Il peut aussi apaiser la tristesse de quelqu’un (ce qui a pour effet de le réconforter sans avoir à réussir un test de SOC – cf Regain du Sang-froid)."
     },
     {
         name: "Baie nourrissante",
+        id: "t4",
         alt:"",
         type: ["Protection", "Terre", "Voyage"],
         description: "Ce sort enchante une baie (ou un fruit fraîchement cueilli), qui fait regagner immédiatement 1 PV. En manger plusieurs n’a aucun effet supplémentaire."
     },
     {
         name: "Balai enchanté",
+        id: "t5",
         alt:"",
         type: ["Enchantements"],
         description: "Ce tour de magie anime un balais ou un plumeau, qui nettoiera une habitation pendant une heure."
     },
     {
         name: "Belle figure",
+        id: "t6",
         alt:"",
         type: ["Illusions"],
         description: "La cible gagne 1 Avantage aux tests de SOC pendant *MAG* tours."
     },
     {
         name: "Brise légère",
+        id: "t7",
         alt:"brise legere",
         type: ["Air"],
         description: "Un vent frais procure une sensation de bien-être durant une heure à toute l’équipe (+1 point de SF pour tous, sauf s’il fait froid ; limité à une augmentation par jour). La brise n’est pas assez forte pour éteindre une torche, mais peut souffler plusieurs bougies."
     },
     {
         name: "Bruine",
+        id: "t8",
         alt:"",
         type: ["Eau"],
         description: "Vous transformez l’humidité de l’air en une pluie fine sur une zone de *MAG* m de rayon. Utile dans les journées de canicule ou pour détruire les pages d’un livre… Ce tour dure une heure maximum."
     },
     {
         name: "Catalepsie",
+        id: "t9",
         alt:"",
         type: ["Guerre", "Nécromancie"],
         description: "Vous plongez dans un état de catalepsie pendant *MAG* heures, qui vous fait passer pour mort. Conscient, vous ne pouvez cependant ni voir, ni agir. Seul un test de MAG réussi peut détecter la supercherie."
     },
     {
         name: "Connaissance<br>des objets magiques",
+        id: "t10",
         alt:"connaissance des objets magiques",
         type: ["Enchantements", "Alchimie"],
         description: "Ce sort permet de détecter tous les objets magiques autour de vous pendant *MAG* minutes. De plus, il vous permet de connaître exactement le pouvoir d’un tel objet, mais il vous faudra le porter (casque sur la tête, amulette autour du cou, bottes aux pieds, etc.)."
     },
     {
         name: "Connaissance des potions",
+        id: "t11",
         alt:"",
         type: ["Enchantements", "Alchimie"],
         description: "Vous reconnaissez les potions et préparations alchimiques lorsque vous en voyez une, leurs effets et comment vous en prémunir (si ce moyen est possible et connu des alchimistes)."
     },
     {
         name: "Connaissance du temps écoulé",
+        id: "t12",
         alt:"connaissance du temps ecoule",
         type: ["Châtiment", "Divination", "Mentalisme"],
         description: "Ce tour a une double utilité : connaître l’âge d’une chose ou d’une personne, et connaître le temps exact qui s’est écoulé à partir d’un moment précis."
     },
     {
         name: "Cri animal",
+        id: "t13",
         alt:"",
         type: ["Animalisme"],
         description: "Ce sort permet d’imiter le bruit ou le cri d’un animal précis (un chat, un oiseau, un rat, un loup…) pendant *MAG* minutes. Vous pouvez choisir si ce bruit est plutôt celui d’un mâle ou d’une femelle et son but : chasse, reproduction, avertissement..."
     },
     {
         name: "Désagrément",
+        id: "t14",
         alt:"desagrement",
         type: ["Mentalisme"],
         description: "Vous donnez une envie irrésistible à une cible (figurant ou second rôle) de bâiller, tousser, éternuer ou se gratter. Ce désagrément ne dure qu’une seconde, mais peut s’avérer précieux au bon moment. La cible agacée subit 1 Désavantage pour ce tour."
     },
     {
         name: "Diable de poussière",
+        id: "t15",
         alt:"diable de poussiere",
         type: ["Air", "Terre"],
         description: "Vous créez un petit tourbillon (1 mètre maximum) qui rassemble la poussière, la cendre et le sable environnants. Le sort dure *MAG* tours. Une créature prise dans le tourbillon sera incommodée par la poussière dans les yeux, et devra tester son END à chaque tour pour ne pas être Affaiblie."
     },
     {
         name: "Dissipation d'ivresse",
+        id: "t16",
         alt:"",
         type: ["Châtiment", "Eau", "Mentalisme"],
         description: "Ce sort dissipe les effets mentaux de l’alcool sur une cible. Très utile face à un individu ivre mort, qui retrouvera son aspect normal et tous ses esprits, ou pour se débarrasser d’une « gueule de bois ». La cible gagne 1 Avantage aux tests d’HAB pendant *MAG* tours."
     },
     {
         name: "Doigts de fée",
+        id: "t17",
         alt:"doigts de fee",
         type: ["Enchantements", "Ombre"],
         description: "La cible gagne 1 Avantage aux tests d’HAB pendant *MAG* tours."
     },
     {
         name: "Eau bénite",
+        id: "t18",
         alt:"eau benite",
         type: ["Châtiment", "Protection"],
         description: "Vous bénissez de l’eau (environ un bol). Indispensable contre certains démons et morts-vivants.",
     },
     {
         name: "Eau de feu",
+        id: "t19",
         alt:"",
         type: ["Châtiment", "Feu", "Alchimie"],
         description: "Ce tour change environ un litre d’eau en une substance inflammable pendant *MAG* heures. Passé ce délai, ce liquide ne sera plus que de l’eau souillée.",
     },
     {
         name: "Escamotage",
+        id: "t20",
         alt:"",
         type: ["Illusions", "Ombre"],
         description: "Ce charme bien utile rend invisible un objet (pas un être vivant) ne dépassant pas *MAG*x 20 cm pendant une heure. Une bourse d’or, des dés pipés, une épée courte, une fiole de poison ou un grimoire maudit pourront ainsi être introduits partout."
     },
     {
         name: "Étincelle",
+        id: "t21",
         alt:"etincelle",
         type: ["Feu", "Guerre", "Alchimie"],
         description: "Vous déclenchez une étincelle, à vue. Pour qu’elle donne lieu à une flammèche, il faut qu’elle se produise sur une matière combustible (paille, papier, bois sec…). Elle peut rallumer un feu à peine éteint."
     },
     {
         name: "Feux follets",
+        id: "t22",
         alt:"",
         type: ["Feu", "Nécromancie"],
         description: "Vous créez *MAG* lumières dansantes que vous dirigez à distance pendant une heure. Ces lumières ne brûlent pas, mais elles attirent l’attention."
     },
     {
         name: "Fumée sans feu",
+        id: "t23",
         alt:"fumee sans feu",
         type: ["Feu"],
         description: "Une fumée (blanche, grise ou noire) s’échappe du sol et envahit peu à peu une zone de *MAG* mètres de rayon pendant une heure. Cela peut faire croire à un incendie ou l’œuvre d’un démon."
     },
     {
         name: "Graisse",
+        id: "t24",
         alt:"",
         type: ["Animalisme", "Alchimie"],
         description: "Vous appliquez sur le sol ou un objet une graisse particulièrement glissante (1m² maximum), qui nécessitera un test de MOU ou d’HAB (selon les cas) pour continuer son action. La graisse se solidifie au bout d’une heure."
     },
     {
         name: "Guérison cutanée",
+        id: "t25",
         alt:"guerison cutanee",
         type: ["Protection"],
         description: "Ce tour guérit instantanément les petits désagréments cutanés (boutons, verrues, rougeurs…) et permet de recouvrer une peau sans défaut. Ce sort ne fonctionne pas sur les furoncles issus de maladies graves comme la peste. La cible gagne 1 Avantage aux tests de SUR pendant *MAG* tours."
     },
     {
         name: "Instinct naturel",
+        id: "t26",
         alt:"",
         type: ["Animalisme", "Terre", "Voyage"],
         description: "La cible gagne 1 Avantage aux tests de SUR pendant *MAG* tours.",
     },
     {
         name: "Les goûts et les couleurs",
+        id: "t27",
         alt:"les gouts et les couleurs",
         type: ["Illusions"],
         description: "Pendant *MAG* heures, vous modifiez la couleur d’un objet ou le goût et l’odeur d’un aliment (plus doux, plus épicé, plus aigre ou même infect)."
     },
     {
         name: "Lien cadavérique",
+        id: "t28",
         alt:"lien cadaverique",
         type: ["Guerre", "Nécromancie"],
         description: "Ce sort permet de voir, entendre, ou sentir à la place d’un cadavre, pendant *MAG* minutes. Vous devez être à moins de 100 m du corps (mais vous n’êtes pas obligé de le voir). Si le cadavre a les yeux fermés, vous ne pourrez rien voir, car vous ne projetez que vos sens sur ce corps, sans pouvoir agir sur lui."
     },
     {
         name: "Lumière",
+        id: "t29",
         alt:"lumiere",
         type: ["Feu", "Illusions", "Protection"],
         description: "Vous enchantez un objet qui se met à briller pendant *MAG* minutes. La lumière est celle d’une torche."
     },
     {
         name: "Manipulation lointaine",
+        id: "t30",
         alt:"",
         type: ["Air", "Mentalisme", "Ombre"],
         description: "Vous déplacez par la pensée un objet ne dépassant pas 1 kilo sur *MAG* mètres. L’objet ne peut être projeté avec violence."
     },
     {
         name: "Ombre furtive",
+        id: "t31",
         alt:"",
         type: ["Illusions", "Nécromancie", "Ombre"],
         description: "La cible gagne 1 Avantage aux tests de DIS pendant *MAG* tours."
     },
     {
         name: "Pare-pluie",
+        id: "t32",
         alt:["pare pluie", "para pluie", "para-pluie", "parapluie"],
         type: ["Eau", "Voyage"],
         description: "Les gouttes de pluie ne touchent pas la cible, qui reste bien au sec pendant *MAG* heures. La cible gagne 1 Avantage en MOU pendant *MAG* tours."
     },
     {
         name: "Pied-léger",
+        id: "t34",
         alt:["pied leger", "pied-leger", "pied léger"],
         type: ["Air", "Animalisme", "Voyage"],
         description: "La cible gagne 1 Avantage en MOU pendant *MAG* tours.",
     },
     {
         name: "Plume magique",
+        id: "t35",
         alt:"",
         type: ["Enchantements", "Protection"],
         description: "Ce charme enchante une plume, qui peut écrire seule sous la dictée. De plus l’encre dans laquelle elle est trempée peut devenir luminescente, et ainsi être lue dans l’obscurité. Ce tour dure *MAG* heures."
     },
     {
         name: "Présage",
+        id: "t36",
         alt:"presage",
         type: ["Divination"],
         description: "Ce tour vous permet de lancer un d100 et de garder le résultat « en réserve » pendant une heure. Vous pourrez utiliser ce résultat (ou non) à un prochain test demandé par le MJ. Attention : si vous obtenez un double un revers de fortune vous fera perdre 1PV. Vous ne pouvez lancer ce tour qu’une fois par jour."
     },
     {
         name: "Purification de l'eau",
+        id: "t37",
         alt:"purification de l eau",
         type: ["Feu", "Protection", "Voyage", "Alchimie", "Eau"],
         description: "Vous pouvez rendre claire et potable environ un litre d’eau de mer, d’eau souillée ou contaminée."
     },
     {
         name: "Réparation",
+        id: "t38",
         alt:"reparation",
         type: ["Enchantements", "Terre"],
         description: "Ce charme répare un objet simple (ne dépassant pas un mètre) pendant *MAG* heures. Après quoi, l’objet retrouve son état initial."
     },
     {
         name: "Sculpture du bois",
+        id: "t39",
         alt:"",
         type: ["Terre"],
         description: "Ce tour permet de tailler et sculpter une pièce de bois ne dépassant pas un mètre. Vous pourrez ainsi graver rapidement une image grossière ou construire un gourdin en modelant une branche de chêne."
     },
     {
         name: "Solide comme un roc",
+        id: "t40",
         alt:"",
         type: ["Guerre", "Terre"],
         description: "La cible gagne 1 point de protection pendant *MAG* minutes. Ce point est à usage unique et disparaît dès qu’il a été utilisé."
     },
     {
         name: "Trouver de l'eau",
+        id: "t41",
         alt:"trouver de l eau",
         type: ["Divination", "Eau"],
         description: "Vous localisez la source la plus proche (jusqu’à *MAG* kilomètres) s’il y en a une : un point d’eau, une rivière, un puits, une source souterraine…"
     },
     {
         name: "Vent de murmures",
+        id: "t42",
         alt:"",
         type: ["Air", "Guerre", "Ombre"],
         description: "Vous invoquez un vent léger, qui délivrera un message sous la forme de légers murmures. Il peut parcourir jusqu’à *MAG* kilomètres, mais tous ceux qui se trouvent sur sa route entendront le message s’ils tendent suffisamment l’oreille (test de PER)."
     },
     {
         name: "Ventriloquie",
+        id: "t43",
         alt:"ventriloque",
         type: ["Air", "Illusions", "Mentalisme"],
         description: "Vous « projetez » votre voix à une dizaine de pas, et vous pouvez donc vous exprimer même si vous êtes bâillonné. Ce tour dure *MAG* minutes."
     },
     {
         name: "Vision de nuit",
+        id: "t44",
         alt:["vision nocturne", "nyctalopie"],
         type: ["Divination", "Nécromancie", "Ombre", "Voyage"],
         description: "Ce tour vous confère pendant *MAG* minutes une vision nocturne qui vous prémunit des malus dus à l’obscurité. Ce sort est inutile dans le noir total."
     },
     {
         name: "Voir les animaux",
+        id: "t45",
         alt:"",
         type: ["Animalisme", "Divination"],
         description: "Pendant *MAG* heures, vous pouvez localiser tous les animaux tels que les oiseaux, les insectes, les mammifères et les poissons (hormis les animaux fabuleux) autour de vous sur une portée moyenne."
     },
     {
         name: "Voir les esprits",
+        id: "t46",
         alt:"",
         type: ["Châtiment", "Divination", "Nécromancie"],
         description: "Vous pouvez voir tous les esprits présents autour de vous à une portée moyenne pendant *MAG* minutes (sauf les esprits particulièrement puissants qui souhaitent rester invisibles)."
@@ -597,6 +642,7 @@ const tricks = [
 const spells = [
     {
       name: "Abondance <br>providentielle de Tegmine",
+      id: "s1",
       alt: "Abondance providentielle de Tegmine",
       difficulty: 20,
       formula: "Généreuse est la terre, pour celui qui a faim,<br>Qui connaît ses mystères, et veille à ses jardins",
@@ -609,6 +655,7 @@ const spells = [
     },
     {
       name: "Acuité animale de Nünki",
+      id: "s2",
       alt: "acuite animale de nunki",
       difficulty: 10,
       formula: "Les Hommes ont-ils vendu tous leurs premiers instincts ?<br>L’ouïe, le flair et la vue, pour ne plus avoir faim ?",
@@ -621,6 +668,7 @@ const spells = [
     },
     {
       name: "Aigle-ouragan",
+      id: "s3",
       alt: "aigle ouragan",
       difficulty: -30,
       formula: "Ses grandes ailes déployées, sont comme de noirs nuages,<br>Ses serres sont des épées, son cri est un orage",
@@ -635,6 +683,7 @@ const spells = [
     },
     {
       name: "Ailes de l’archange",
+      id: "s4",
       alt: "ailes de l'archange",
       difficulty: -10,
       formula: "Pour rejoindre les cieux, j’ai déployé mes ailes,<br>Et que mon vol gracieux, glorifie l’Éternel",
@@ -647,6 +696,7 @@ const spells = [
     },
     {
       name: "Âmes infidèles",
+      id: "s5",
       alt: "ames infideles",
       difficulty: -10,
       formula: "Par malheur ma famille n’a le rang qui me sied,<br>J’ai troqué mes guenilles, pour vos habits princiers",
@@ -660,6 +710,7 @@ const spells = [
     },
     {
       name: "Amour passionnel",
+      id: "s6",
       alt: "",
       difficulty: -10,
       formula: "Deux mortels désignés, s’aimeront désormais,<br>D’un désir exalté, à défaut d’être vrai",
@@ -674,6 +725,7 @@ const spells = [
     },
     {
       name: "Ange gardien",
+      id: "s7",
       alt: "",
       difficulty: 10,
       formula: "Garde-moi du danger, des démons et leur horde,<br>Tu sais me protéger, ange de miséricorde",
@@ -686,6 +738,7 @@ const spells = [
     },
     {
       name: "Antidote miraculeux",
+      id: "s8",
       alt: "",
       difficulty: 0,
       formula: "Bois cette eau que je donne, bois d’un trait ce calice,<br>Que ton corps abandonne, poisons et vénéfices",
@@ -698,6 +751,7 @@ const spells = [
     },
     {
       name: "Aperçu du futur",
+      id: "s9",
       alt: "apercu du futur",
       difficulty: 0,
       formula: "J’ai lu entre les lignes des volontés célestes,<br>L’avenir et ses signes, bienveillants ou funestes",
@@ -710,6 +764,7 @@ const spells = [
     },
     {
       name: "Arme de lumière",
+      id: "s10",
       alt: "arme de lumiere",
       difficulty: 0,
       formula: "Ce présent dont on doit se servir dignement,<br>Est une arme de foi, de lumière et d’argent",
@@ -722,6 +777,7 @@ const spells = [
     },
     {
       name: "Arme invincible d’Althor",
+      id: "s11",
       alt: "arme invincible d'Althor",
       difficulty: 10,
       formula: "Il se joue des armures, invincible est ce fer,<br>Qu’il abatte les murs, qui se brisent comme du verre",
@@ -734,6 +790,7 @@ const spells = [
     },
     {
       name: "Armée triomphatrice",
+      id: "s12",
       alt: ["armee triomphante", "armée triomphante"],
       difficulty: -10,
       formula: "Une légion derrière moi, aux armes étincelantes,<br>Hurle, chante et festoie sa victoire écrasante",
@@ -748,6 +805,7 @@ const spells = [
     },
     {
         name: "Armure des Rois",
+        id: "s13",
         alt: "",
         difficulty: 0,
         formula: "Pour affronter le Mal, j’ai endossé l’armure<br>Forgée dans le métal qui arme les coeurs purs",
@@ -760,6 +818,7 @@ const spells = [
       },
       {
         name: "Bannissement du mal",
+        id: "s14",
         alt: "",
         difficulty: 0,
         formula: "Que la douce lumière, aussi pure qu’un cristal<br>Renvoie à la poussière les serviteurs du mal",
@@ -772,6 +831,7 @@ const spells = [
       },
       {
         name: "Beauté subtillisée",
+        id: "s15",
         alt: "beaute subtilisee",
         difficulty: 10,
         formula: "Que justice soit rendue, il fallait te l’ôter<br>Je recouvre mon dû, et reprends ta beauté",
@@ -786,6 +846,7 @@ const spells = [
       },
       {
         name: "Breuvage des nymphes",
+        id: "s16",
         alt: "",
         difficulty: 0,
         formula: "Bois le secret des nymphes pour guérir tes humeurs<br>Le sang, la bile, la lymphe, s’uniront en douceur",
@@ -799,6 +860,7 @@ const spells = [
       },
       {
         name: "Brumes argentées",
+        id: "s17",
         alt: "brumes argentees",
         difficulty: 10,
         formula: "Perdus dans le brouillard, on n’y voit à deux pas,<br>Ni sourire, ni poignard, seules les ombres sont là",
@@ -811,6 +873,7 @@ const spells = [
       },
       {
         name: "Cautérisation",
+        id: "s18",
         alt: "",
         difficulty: 0,
         formula: "Sur les braises qu’on rallume, de l’ultime ordalie<br>Que mes plaies se consument, en des sillons brunis",
@@ -823,6 +886,7 @@ const spells = [
       },
       {
         name: "Chemin sûr d’Auva",
+        id: "s19",
         alt: ["chemin sur d'auva", "chemin sûr d'Auva"],
         difficulty: 20,
         formula: "Ce halo dans la nuit, il m’appelle et m’attire,<br>Tel un phare qui luit, pour guider les navires",
@@ -835,6 +899,7 @@ const spells = [
       },
       {
         name: "Clairvoyance",
+        id: "s20",
         alt: "",
         difficulty: 0,
         formula: "J’ai pris de la hauteur, dans le ciel, sous sa voûte,<br>Je suis le spectateur qui t’observe et t’écoute",
@@ -847,6 +912,7 @@ const spells = [
       },
       {
         name: "Clef absolue",
+        id: "s21",
         alt: "",
         difficulty: 10,
         formula: "Prends une clef de la sorte, il y en a à foison,<br>lle ouvrira les portes, des palais, des prisons",
@@ -859,6 +925,7 @@ const spells = [
       },
       {
         name: "Colère de l’orage",
+        id: "s22",
         alt: ["colere de l'orage", "colère de l'orage"],
         difficulty: -20,
         formula: "Les nuages qui occultent les cieux vocifèrent<br>Que le tonnerre exulte, en un terrible éclair !",
@@ -871,6 +938,7 @@ const spells = [
       },
       {
         name: "Communion",
+        id: "s23",
         alt: "",
         difficulty: 20,
         formula: "Conversons à présent : nos esprits sont liés<br>Par le fil scintillant de nos lointaines pensées",
@@ -883,6 +951,7 @@ const spells = [
       },
       {
         name: "Connaissances profondes",
+        id: "s24",
         alt: "",
         difficulty: 10,
         formula: "Les grands esprits se murent, dans les hautes tours d’ivoire<br>Mais parfois des murmures, divulguent leurs savoirs",
@@ -895,6 +964,7 @@ const spells = [
       },
       {
         name: "Convocation d’Ignés",
+        id: "s25",
         alt: ["convocation d'ignes", "convocation d'Ignès"],
         difficulty: 10,
         formula: "Dans les chardons ardents, ils sont nés ;<br>Qu’on acclame ! Les derniers descendants du Feu et de la Flamme",
@@ -907,6 +977,7 @@ const spells = [
       },
       {
         name: "Convocation d’Ondines",
+        id: "s26",
         alt: "convocation d'ondines",
         difficulty: 10,
         formula: "Elles laissent sur leur sillage, les embruns qui parfument<br>L’air, et les coquillages, de leurs cheveux d’écume",
@@ -919,6 +990,7 @@ const spells = [
       },
       {
         name: "Convocation de Gnomes",
+        id: "s27",
         alt: "",
         difficulty: 10,
         formula: "J’ai trouvé sous les roches, le Petit Peuple Gris<br>Le voilà qui approche, si loin de son abri",
@@ -931,6 +1003,7 @@ const spells = [
       },
       {
         name: "Convocation de Sylphes",
+        id: "s28",
         alt: "",
         difficulty: 10,
         formula: "A trop semer le vent, j’ai des sylphes pour récolte<br>Ils viennent, je les entends, qui dansent et virevoltent",
@@ -943,6 +1016,7 @@ const spells = [
       },
       {
         name: "Corde enchantée",
+        id: "s29",
         alt: "corde enchantee",
         difficulty: 20,
         formula: "Entends ces quelques vers qu’avec joie je t’adresse,<br>Et déjà comme un ver, tu ondules et te dresses",
@@ -955,6 +1029,7 @@ const spells = [
       },
       {
         name: "Corps monstrueux",
+        id: "s30",
         alt: "",
         difficulty: -10,
         formula: "Âme damnée qu’on ne sauve, je suis le monstre abject<br>L’enfant bâtard des fauves, des rapaces, des insectes",
@@ -969,6 +1044,7 @@ const spells = [
       },
       {
         name: "Course du vent",
+        id: "s31",
         alt: "",
         difficulty: 0,
         formula: "Courrons à vive allure : que nos jambes soient légères !<br>Sur le sol, sur les murs, comme portés par les airs !",
@@ -981,6 +1057,7 @@ const spells = [
       },
       {
         name: "Course sylvestre de Nünki",
+        id: "s32",
         alt: "course sylvestre de nunki",
         difficulty: 0,
         formula: "Le sentier que j’emprunte, vénérable secret,<br>Ne laisse aucune empreinte, dans les bois et forêts",
@@ -993,6 +1070,7 @@ const spells = [
       },
       {
         name: "Crânes enchantés",
+        id: "s33",
         alt: "cranes enchantés",
         difficulty: 0,
         formula: "Vous êtes à mes côtés, mes amis les plus chers,<br>Pauvres décapités, qui étiez-vous naguère ?",
@@ -1006,6 +1084,7 @@ const spells = [
       },
       {
         name: "Croisade",
+        id: "s34",
         alt: "",
         difficulty: -20,
         formula: "Oyez frères et amis, les cris et les prières<br>Haro sur l’ennemi qui rampe à nos frontières !",
@@ -1018,6 +1097,7 @@ const spells = [
       },
       {
         name: "Danse macabre",
+        id: "s35",
         alt: "",
         difficulty: -10,
         formula: "Comme une dernière offrande aux âmes des trépassés<br>Dansez la sarabande, jusqu’à vous effondrer",
@@ -1031,6 +1111,7 @@ const spells = [
       },
       {
         name: "Décalage illusoire de Nuhataïa",
+        id: "s36",
         alt: ["decalage illusoire de Nuhataia", "décalage illusoire de nuhataia"],
         difficulty: 0,
         formula: "Évitons cet endroit, où le moindre faux-pas<br>Mène les maladroits, de la vie au trépas",
@@ -1043,6 +1124,7 @@ const spells = [
       },
       {
         name: "Déluge de la Noyée",
+        id: "s37",
         alt: "",
         difficulty: -20,
         formula: "Crains le courroux du ciel, et cours trouver refuge<br>Tombez pluies torrentielles, déchaînez le Déluge !",
@@ -1057,6 +1139,7 @@ const spells = [
       },
       {
         name: "Démence",
+        id: "s38",
         alt: "",
         difficulty: -10,
         formula: "Dans la ruine, la débâcle, ils se mettent à genoux<br>Comme un triste spectacle, dans le Pays des Fous",
@@ -1070,6 +1153,7 @@ const spells = [
       },
       {
         name: "Derniers sacrements",
+        id: "s39",
         alt: "",
         difficulty: 10,
         formula: "Ce dernier chant funèbre, demeure un chant d’amour<br>Et garde des ténèbres, ton voyage sans-retour",
@@ -1082,6 +1166,7 @@ const spells = [
       },
       {
         name: "Discernement",
+        id: "s40",
         alt: "",
         difficulty: 10,
         formula: "Les charmes et maléfices ne font plus illusion<br>J’ai saisi l’artifice d’où vient la confusion",
@@ -1094,6 +1179,7 @@ const spells = [
       },
       {
         name: "Disparition",
+        id: "s41",
         alt: "",
         difficulty: -10,
         formula: "Nuages et fumées blanches se présentent, quelle aubaine !<br>Pour descendre des planches, disparaître de scène",
@@ -1106,6 +1192,7 @@ const spells = [
       },
       {
         name: "Dissimulation",
+        id: "s42",
         alt: "",
         difficulty: 10,
         formula: "Mille couleurs, mille reflets, ont recouvert mon corps<br>Pour un portrait parfait de la toile du décor",
@@ -1118,6 +1205,7 @@ const spells = [
       },
       {
         name: "Domination",
+        id: "s43",
         alt: "",
         difficulty: 0,
         formula: "Obéis à ton maître : tout ira pour le mieux,<br>Ne laisse rien paraître, dans tes gestes ou tes yeux",
@@ -1130,6 +1218,7 @@ const spells = [
       },
       {
         name: "Don divin",
+        id: "s44",
         alt: "",
         difficulty: 20,
         formula: "J’ai chanté tes louanges à la lumière du ciel,<br>Pour que là-haut les anges, t’offrent l’or et le miel",
@@ -1142,6 +1231,7 @@ const spells = [
       },
       {
         name: "Dragon des Abysses",
+        id: "s45",
         alt: "",
         difficulty: -30,
         formula: "Il surgit du néant, et sillonne le monde<br>Le Dragon-Océan est en chasse et il gronde",
@@ -1156,6 +1246,7 @@ const spells = [
       },
       {
         name: "Duplication",
+        id: "s46",
         alt: "",
         difficulty: -10,
         formula: "Quand d’une main de maître, on façonne, on duplique,<br>Nul ne peut reconnaître, le faux de l’authentique",
@@ -1169,6 +1260,7 @@ const spells = [
       },
       {
         name: "Eau de roche",
+        id: "s47",
         alt: "",
         difficulty: 20,
         formula: "Comme le disaient les sages à la gorge trop sèche<br>-Point de meilleur breuvage, que cette eau pure et fraîche !",
@@ -1181,6 +1273,7 @@ const spells = [
       },
       {
         name: "Effondrement",
+        id: "s48",
         alt: "",
         difficulty: 0,
         formula: "Tel le pas d’un géant creuse le sol et la pierre,<br>Laisse un gouffre béant dans un bruit de tonnerre !",
@@ -1193,6 +1286,7 @@ const spells = [
       },
       {
         name: "Égide",
+        id: "s49",
         alt: "",
         alt: "egide",
         difficulty: 0,
@@ -1206,6 +1300,7 @@ const spells = [
       },
       {
         name: "Élixir de jouvence",
+        id: "s50",
         alt: "elixir de jouvence",
         difficulty: -30,
         formula: "L’élixir de cette flasque renversera le temps<br>J’ai modelé vos masques dans le sang des enfants",
@@ -1220,6 +1315,7 @@ const spells = [
       },
       {
         name: "Elixirs sexuels",
+        id: "s51",
         alt: "",
         difficulty: 0,
         formula: "Buvez donc ces liqueurs, pour la fertilité,<br>Retrouver sa vigueur, ou sa virginité",
@@ -1233,6 +1329,7 @@ const spells = [
       },
       {
         name: "Enfant du Verseau",
+        id: "s52",
         alt: "",
         difficulty: -10,
         formula: "Né de chair et de sang, je ne suis plus que l’eau,<br>Libre et fort : le torrent de l’amphore du Verseau",
@@ -1245,6 +1342,7 @@ const spells = [
       },
       {
         name: "Envol",
+        id: "s53",
         alt: "",
         difficulty: -20,
         formula: "Je prendrai mon élan à la fin de ces vers<br>Pour chevaucher le vent et ne plus toucher terre",
@@ -1257,6 +1355,7 @@ const spells = [
       },
       {
         name: "Étendard des héros",
+        id: "s54",
         alt: "etendard des héros",
         difficulty: 0,
         formula: "Quand le combat fait rage dans les cris et les flammes,<br>Ne perds jamais courage et cherche l’oriflamme",
@@ -1269,6 +1368,7 @@ const spells = [
       },
       {
         name: "Exorcisme",
+        id: "s55",
         alt: "",
         difficulty: 0,
         formula: "Ô puissante cantique, tu triomphes des démons<br>Des paroles hérétiques et des sombres visions",
@@ -1281,6 +1381,7 @@ const spells = [
       },
       {
         name: "Fardeau du condamné",
+        id: "s56",
         alt: "",
         difficulty: 0,
         formula: "Sous le poids d’un fardeau, sur la voie du calvaire<br>Tu courberas le dos, mettras genou à terre",
@@ -1293,6 +1394,7 @@ const spells = [
       },
       {
         name: "Feuille d’Automne",
+        id: "s57",
         alt: "feuille d'automne",
         difficulty: 20,
         formula: "Le vent m’a chuchoté : « Si l’infortuné tombe<br>Il sera plus léger que la plume d’une colombe »",
@@ -1305,6 +1407,7 @@ const spells = [
       },
       {
         name: "Flèche ardente",
+        id: "s58",
         alt: "fleche ardente",
         difficulty: 0,
         formula: "Je t’invoque flèche ardente, trait de feu sanguinaire,<br>Que tes flammes dévorantes se nourrissent de la chair !",
@@ -1317,6 +1420,7 @@ const spells = [
       },
       {
         name: "Flèche du Sagittaire",
+        id: "s59",
         alt: "fleche du sagittaire",
         difficulty: 0,
         formula: "La flèche ensorcelée vole droit vers le coeur<br>Du gibier désigné du terrible chasseur",
@@ -1329,6 +1433,7 @@ const spells = [
       },
       {
         name: "Fleur de feu",
+        id: "s60",
         alt: "",
         difficulty: -20,
         formula: "Graine de feu, fleur carmin ne demande qu’à éclore<br>Comme elle brille dans mes mains, brûle de plus en plus fort !",
@@ -1341,6 +1446,7 @@ const spells = [
       },
       {
         name: "Fontaine de vie",
+        id: "s61",
         alt: "",
         difficulty: 0,
         formula: "Sur ma peau, ma figure, doucement immergées,<br>Se ferment les blessures qu’ils m’ont tous infligés",
@@ -1353,6 +1459,7 @@ const spells = [
       },
       {
         name: "Fragilité du cristal",
+        id: "s62",
         alt: "",
         difficulty: 20,
         formula: "Ephémère est la chose, qu’une pincée de poudre<br>Qu’on étale, qu’on dépose, suffira à dissoudre",
@@ -1365,6 +1472,7 @@ const spells = [
       },
       {
         name: "Fraternité de la meute",
+        id: "s63",
         alt: "",
         difficulty: 10,
         formula: "Nous parcourons la lande, dans la nuit, dans le froid<br>Et partageons la viande encore chaude de nos proies",
@@ -1377,6 +1485,7 @@ const spells = [
       },
       {
         name: "Frère d’armes",
+        id: "s64",
         alt: ["frere d'armes", "frères d'armes"],
         difficulty: 0,
         formula: "Le frère d’armes que j’invoque, virevolte à mes côtés,<br>Frappe de taille et d’estoc sans jamais reculer",
@@ -1389,6 +1498,7 @@ const spells = [
       },
       {
         name: "Fumée sombre",
+        id: "s65",
         alt: "fumee sombre",
         difficulty: 10,
         formula: "Subterfuge démoniaque jaillissant des crevasses<br>Fumées noires et opaques, nous entourent, nous enlacent",
@@ -1401,6 +1511,7 @@ const spells = [
       },
       {
         name: "Gangrène",
+        id: "s66",
         alt: "gangrene",
         difficulty: 0,
         formula: "Quand la gangrène torture, comme sur la plaie le sel<br>La plus petite morsure, peut s’avérer mortelle",
@@ -1414,6 +1525,7 @@ const spells = [
       },
       {
         name: "Gigantisme",
+        id: "s67",
         alt: "",
         difficulty: -10,
         formula: "Nous redoutions leur force, leur folie destructrice<br>Ils avaient sur le torse, mille-et-une cicatrices",
@@ -1426,6 +1538,7 @@ const spells = [
       },
       {
         name: "Gigantisme Animal",
+        id: "s68",
         alt: "",
         difficulty: -20,
         formula: "Retrouvez à présent la taille de vos ancêtres<br>Pour qu’en vous lentement, ils puissent enfin renaître",
@@ -1438,6 +1551,7 @@ const spells = [
       },
       {
         name: "Golem",
+        id: "s69",
         alt: "",
         difficulty: -10,
         formula: "Nuit et jour j’ai créé, façonné de mes mains,<br>Ce serviteur dévoué, qui s’éveille, presqu’humain",
@@ -1452,6 +1566,7 @@ const spells = [
       },
       {
         name: "Guérison de la folie",
+        id: "s70",
         alt: "",
         difficulty: 0,
         formula: "En fouillant le dédale du fond de ton esprit,<br>Je trouverai le mal qui t’a tant affaibli",
@@ -1465,6 +1580,7 @@ const spells = [
       },
       {
         name: "Guérison des blessures",
+        id: "s71",
         alt: "",
         difficulty: 10,
         formula: "Toi qui souffres et qui cries, je guérirai tes maux<br>Et les jours assombris brilleront à nouveau",
@@ -1477,6 +1593,7 @@ const spells = [
       },
       {
         name: "Griffes de la Mort",
+        id: "s72",
         alt: "",
         difficulty: -10,
         formula: "La vieille dame des charniers m’a confié son trésor,<br>De mes doigts décharnés pendent les griffes de la Mort",
@@ -1490,6 +1607,7 @@ const spells = [
       },
       {
         name: "Guerrier fantasmatique",
+        id: "s73",
         alt: "guerrier fantasmagorique",
         difficulty: -10,
         formula: "J’en appelle au champion de Fantasmagorie<br>Ce fidèle compagnon ne m’a jamais trahi",
@@ -1503,6 +1621,7 @@ const spells = [
       },
       {
         name: "Histoire de l’inconnu",
+        id: "s74",
         alt: "histoire de l'inconnu",
         difficulty: 0,
         formula: "Tout sujet garde en lui mille-et-un souvenirs<br>Les beaux jours et les pluies, les sanglots et les rires",
@@ -1515,6 +1634,7 @@ const spells = [
       },
       {
         name: "Hurlement terrifiant de Shyr",
+        id: "s75",
         alt: "",
         difficulty: 10,
         formula: "Laisse entrer la furie, c’est une folle délivrance<br>C’est un souffle, c’est un cri qui déchire le silence",
@@ -1527,6 +1647,7 @@ const spells = [
       },
       {
         name: "Incandescence",
+        id: "s76",
         alt: "",
         difficulty: 0,
         formula: "Nous ferons rendre gorge à l’ennemi arrogant,<br>Notre colère nous forge des armes chauffées à blanc",
@@ -1539,6 +1660,7 @@ const spells = [
       },
       {
         name: "Influence insidieuse",
+        id: "s77",
         alt: "",
         difficulty: 10,
         formula: "Laissez ces doux murmures approcher vos oreilles<br>Il est toujours plus sûr d’écouter leurs conseils",
@@ -1551,6 +1673,7 @@ const spells = [
       },
       {
         name: "Instinct infaillible de Marrak",
+        id: "s78",
         alt: "",
         difficulty: 0,
         formula: "A la croisée des routes, j’ai suivi mon instinct,<br>Ni la peur ni les doutes, n’entravaient mon destin",
@@ -1563,6 +1686,7 @@ const spells = [
       },
       {
         name: "Invisibilité aux animaux",
+        id: "s79",
         alt: "",
         difficulty: 0,
         formula: "Ne commets point la faute - elle peut être fatale,<br>De marcher tête haute dans l’assemblée bestiale",
@@ -1575,6 +1699,7 @@ const spells = [
       },
       {
         name: "Invisibilité aux Hommes",
+        id: "s80",
         alt: "",
         difficulty: 0,
         formula: "D’un geste, d’une parole, enfilons ce costume,<br>Pour danser la farandole des voyageurs de brume",
@@ -1588,6 +1713,7 @@ const spells = [
       },
       {
         name: "Invisibilité au Mal",
+        id: "s81",
         alt: "",
         difficulty: 0,
         formula: "Elles vivent autour de nous, ces créatures terribles<br>Rejoins à pas-de-loup, le Royaume Invisible",
@@ -1600,6 +1726,7 @@ const spells = [
       },
       {
         name: "Invocation de l’homme-lige",
+        id: "s82",
         alt: ["invocation de l'homme-lige", "invocation de l'homme lige"],
         difficulty: 0,
         formula: "Tu ne cherches ni la gloire, ni l’or, ni le prestige,<br>Bats-toi pour ma victoire, ô valeureux homme-lige",
@@ -1612,6 +1739,7 @@ const spells = [
       },
       {
         name: "Jugement Dernier",
+        id: "s83",
         alt: "",
         difficulty: -30,
         formula: "La fournaise étouffante des mille forges de l’Enfer<br>Offre une mort terrifiante aux âmes noires prisonnières",
@@ -1625,6 +1753,7 @@ const spells = [
       },
     {
         name: "Lame vampire de Shaula",
+        id: "s84",
         alt: "",
         difficulty: 0,
         formula: "Elle veut d’autres victimes, sombre lame assoiffée<br>Le sang de tous ses crimes ne l’a pas rassasiée",
@@ -1639,6 +1768,7 @@ const spells = [
     },
     {
         name: "Langage Véritable",
+        id: "s85",
         alt: "langage veritable",
         difficulty: 0,
         formula: "Unis aux premiers âges, les hommes de tous pays,<br>Parlaient le même langage, oublié aujourd’hui",
@@ -1652,6 +1782,7 @@ const spells = [
     },
     {
         name: "Langue des Bêtes",
+        id: "s86",
         alt: "langue des betes",
         difficulty: 10,
         formula: "Ô mes beaux frères sauvages, je comprends vos paroles,<br>De vos cris sous l’orage, au chant du rossignol",
@@ -1664,6 +1795,7 @@ const spells = [
     },
     {
         name: "Lecture des Pensées de Lanks",
+        id: "s87",
         alt: "lecture des pensées de lanks",
         difficulty: -10,
         formula: "Toute âme est comme un livre au mystérieux langage,<br>Les secrets qu’il délivre, sont enfouis dans ses pages",
@@ -1676,6 +1808,7 @@ const spells = [
     },
     {
         name: "Linceul noir",
+        id: "s88",
         alt: "",
         difficulty: 0,
         formula: "C’est un monde silencieux, sans lumière ni vacarme,<br>C’est un voile sur tes yeux, de ténèbres et de larmes",
@@ -1689,6 +1822,7 @@ const spells = [
     },
     {
         name: "Lion de braise",
+        id: "s89",
         alt: "",
         difficulty: -30,
         formula: "Trop longtemps enfermé, je l’ai laissé s’enfuir,<br>Le fauve est affamé, écoutez-le rugir !",
@@ -1703,6 +1837,7 @@ const spells = [
     },
     {
         name: "Main de la Justice",
+        id: "s90",
         alt: "",
         difficulty: 0,
         formula: "Que l’homme qui a meurtri, subisse le châtiment<br>En payant vie pour vie, oeil pour oeil, dent pour dent",
@@ -1715,6 +1850,7 @@ const spells = [
     },
     {
         name: "Maître de la douleur",
+        id: "s91",
         alt: "maitre de la douleur",
         difficulty: 0,
         formula: "Tu deviendras l’esclave de cette longue pénitence<br>Prisonnier des entraves de ta propre souffrance",
@@ -1727,6 +1863,7 @@ const spells = [
     },
     {
         name: "Maître des animaux",
+        id: "s92",
         alt: "maitre des animaux",
         difficulty: 10,
         formula: "Noble bête, mon vassal, je suis ton nouveau Roi !<br>Ne te montre loyal à nul autre que moi",
@@ -1739,6 +1876,7 @@ const spells = [
     },
     {
         name: "Maître des flammes",
+        id: "s93",
         alt: "maitre des flammes",
         difficulty: 10,
         formula: "Jouons avec le feu, sa fumée ou sa forme,<br>Qu’il éblouisse nos yeux ou bien qu’il se rendorme !",
@@ -1751,6 +1889,7 @@ const spells = [
     },
     {
         name: "Maître du vent",
+        id: "s94",
         alt: "maitre du vent",
         difficulty: 10,
         formula: "Le vent du sud m’écoute, le vent du nord se plie,<br>Le vent d’ouest me redoute, le vent d’est obéit",
@@ -1763,6 +1902,7 @@ const spells = [
     },
     {
         name: "Mal de mer de Sadaltajir",
+        id: "s95",
         alt: "",
         difficulty: 10,
         formula: "De la poupe à la proue, le navire penche et tangue<br>Les vagues et les remous, laissent les malades exsangues",
@@ -1775,6 +1915,7 @@ const spells = [
     },
     {
         name: "Malédiction du Bouc Noir",
+        id: "s96",
         alt: "malediction du bouc noir",
         difficulty: -10,
         formula: "Ton âme seule est intacte, vois comme tu as changé,<br>Sois puni pour tes actes dans ce corps étranger",
@@ -1788,6 +1929,7 @@ const spells = [
     },
     {
         name: "Manteau des voyageurs",
+        id: "s97",
         alt: "",
         difficulty: 10,
         formula: "J’ai porté ce manteau, qu’il ait ma gratitude !<br>Des étés les plus chauds aux hivers les plus rudes",
@@ -1800,6 +1942,7 @@ const spells = [
     },
     {
         name: "Marche sur l’Eau",
+        id: "s98",
         alt: "marche sur l'eau",
         difficulty: 0,
         formula: "Pieds nus, je suis parti, j’ai longtemps avancé,<br>Même les mers en furie, je les ai traversées",
@@ -1812,6 +1955,7 @@ const spells = [
     },
     {
         name: "Martyr",
+        id: "s99",
         alt: "",
         difficulty: 0,
         formula: "Trop de sang a coulé, pardonnez leurs erreurs<br>Que mon corps soit brûlé, pour que cesse leur douleur",
@@ -1824,6 +1968,7 @@ const spells = [
     },
     {
         name: "Mélodie de la Dame Grise",
+        id: "s100",
         alt: "melodie de la dame grise",
         difficulty: 0,
         formula: "Même le froid, la misère, n’ont brisé l’harmonie<br>Car nous restons des frères, courageux et unis",
@@ -1836,6 +1981,7 @@ const spells = [
     },
     {
         name: "Métamorphose",
+        id: "s101",
         alt: "",
         difficulty: 0,
         formula: "Pour charmer Dame Nature, mets tes plus beaux atours<br>Écailles, plumes, et fourrures sont de mise à sa cour",
@@ -1848,6 +1994,7 @@ const spells = [
     },
     {
         name: "Miasmes Putrides de Marrak",
+        id: "s102",
         alt: "",
         difficulty: 10,
         formula: "Dans un souffle puissant, que jaillissent les vapeurs<br>Et relents pestilents venus des profondeurs",
@@ -1860,6 +2007,7 @@ const spells = [
     },
     {
         name: "Mille pointes",
+        id: "s103",
         alt: "",
         difficulty: 10,
         formula: "Vois ces quelques cailloux embrocher l’adversaire<br>Aux jambes, au ventre, au cou, comme mille pointes de fer",
@@ -1872,6 +2020,7 @@ const spells = [
     },
     {
         name: "Monstre d’ombre",
+        id: "s104",
         alt: "monstre d'ombre",
         difficulty: -20,
         formula: "Elles se cachent derrière nous, elles évitent le soleil,<br>Ces silhouettes au-dessous, seule la faim les éveille",
@@ -1885,6 +2034,7 @@ const spells = [
     },
     {
         name: "Monture du preux",
+        id: "s105",
         alt: "",
         difficulty: 0,
         formula: "Au sortir de l’étable jusqu’au soleil couchant,<br>Tu es infatigable et plus vif que le vent",
@@ -1897,6 +2047,7 @@ const spells = [
     },
     {
         name: "Mur de feu",
+        id: "s106",
         alt: "",
         difficulty: 0,
         formula: "Invincible rempart, gigantesque brasier<br>Par le feu nous sépare du fer et de l’acier",
@@ -1909,6 +2060,7 @@ const spells = [
     },
     {
         name: "Mur de Pierre",
+        id: "s107",
         alt: "",
         difficulty: 10,
         formula: "Pour préserver les nôtres, nous bâtirons ce mur<br>Une pierre après l’autre, qui jamais ne fissure",
@@ -1921,6 +2073,7 @@ const spells = [
     },
     {
         name: "Muraille de Vent",
+        id: "s108",
         alt: "",
         difficulty: 0,
         formula: "Il n’a ni lance, ni casque, ce soldat aérien,<br>Il est la grande bourrasque qui me sert de gardien",
@@ -1933,6 +2086,7 @@ const spells = [
     },
     {
         name: "Nuage de cendres",
+        id: "s109",
         alt: "",
         difficulty: -20,
         formula: "Vents de cendre et de soufre s’élèvent en tourbillon,<br>Où peu à peu s’engouffre le souffle des Dragons",
@@ -1946,6 +2100,7 @@ const spells = [
     },
     {
         name: "Œil du Basilic",
+        id: "s110",
         alt: "oeil du basilic",
         difficulty: -10,
         formula: "Comme l’antique vestige des cités de naguère,<br>C’est le temps qui se fige sur une statue de pierre",
@@ -1959,6 +2114,7 @@ const spells = [
     },
     {
         name: "Œil-Horizon",
+        id: "s111",
         alt: ["oeil horizon", "oeil-horizon"],
         difficulty: 10,
         formula: "Par-delà les frontières, à travers les cloisons<br>Quelles que soient les barrières, nous verrons l’horizon",
@@ -1971,6 +2127,7 @@ const spells = [
     },
     {
         name: "Ombres et Lumières",
+        id: "s112",
         alt: "",
         difficulty: 20,
         formula: "Quand les Rois nous promirent d’apporter la lumière<br>Ils n’ont fait que trahir, leurs ombres étaient derrière",
@@ -1983,6 +2140,7 @@ const spells = [
     },
     {
         name: "Or des fous",
+        id: "s113",
         alt: "",
         difficulty: 10,
         formula: "Poussière de mensonge, or des fous, poudre aux yeux,<br>Font sortir de mes songes le métal si précieux",
@@ -1996,6 +2154,7 @@ const spells = [
     },
     {
         name: "Ours de Pierre",
+        id: "s114",
         alt: "",
         difficulty: -30,
         formula: "Souviens-toi du gardien des monts et des forêts,<br>Géant des temps anciens, le voilà qui renaît",
@@ -2009,6 +2168,7 @@ const spells = [
     },
     {
         name: "Palimpseste",
+        id: "s115",
         alt: "",
         difficulty: -20,
         formula: "Les mots doivent disparaître, de ce vieux parchemin<br>Pour que de nouvelles lettres, montrent un autre chemin",
@@ -2021,6 +2181,7 @@ const spells = [
     },
     {
         name: "Parfums et pestilences",
+        id: "s116",
         alt: "",
         difficulty: 20,
         formula: "Comme l’odeur de la mort ou le parfum des fleurs<br>Quelques vers et un sort troubleront bien des coeurs",
@@ -2033,6 +2194,7 @@ const spells = [
     },
     {
         name: "Passe-Muraille",
+        id: "s117",
         alt: "passe muraille",
         difficulty: 0,
         formula: "Les portes et murailles des grands châteaux de pierre<br>Ont chacune une faille pour passer au travers",
@@ -2045,6 +2207,7 @@ const spells = [
     },
     {
         name: "Peau d’Écorce",
+        id: "s118",
         alt: ["peau d'ecorce", "peau d'écorce"],
         difficulty: 0,
         formula: "Nous avons hérité de l’écorce des vieux chênes,<br>Et au solstice d’été, leur sève coule dans nos veines",
@@ -2057,6 +2220,7 @@ const spells = [
     },
     {
         name: "Piège de feu de Mesarthim",
+        id: "s119",
         alt: "",
         difficulty: 0,
         formula: "J’ai tracé ce symbole pour défendre les miens<br>Et qu’un jour il immole, les curieux, les vauriens",
@@ -2069,6 +2233,7 @@ const spells = [
     },
     {
         name: "Pluie acide",
+        id: "s120",
         alt: "",
         difficulty: 0,
         formula: "Que le ciel s’assombrisse, et que tombent les gouttes<br>D’une pluie destructrice sur une armée dissoute",
@@ -2081,6 +2246,7 @@ const spells = [
     },
     {
         name: "Prescience",
+        id: "s121",
         alt: "",
         difficulty: 0,
         formula: "C’est une voix qui m’entraîne, m’inspire et me protège<br>Guide mes pas dans l’arène comme les plus grands stratèges",
@@ -2093,6 +2259,7 @@ const spells = [
     },
     {
         name: "Prison de givre",
+        id: "s122",
         alt: "",
         difficulty: 0,
         formula: "Les montagnes du Nord ont des neiges éternelles<br>J’y ai plongé ton corps dans une prison de gel",
@@ -2105,6 +2272,7 @@ const spells = [
     },
     {
         name: "Puissance du Roi-Fauve",
+        id: "s123",
         alt: "puissance du roi fauve",
         difficulty: 0,
         formula: "Ne plus suivre les ordres, courir sans s’arrêter<br>Hurler, bondir et mordre : goûter la liberté",
@@ -2117,6 +2285,7 @@ const spells = [
     },
     {
         name: "Reflets multiples des Jumeaux",
+        id: "s124",
         alt: "",
         difficulty: 0,
         formula: "Les reflets des miroirs attendent ce stratagème,<br>Et brûlent d’enfin pouvoir exister par eux-mêmes",
@@ -2129,6 +2298,7 @@ const spells = [
     },
     {
         name: "Remède prodigieux",
+        id: "s125",
         alt: "",
         difficulty: 0,
         formula: "Il ne faudra qu’un geste, une main sur une peau<br>Pour que fièvres et pestes s’évaporent aussitôt",
@@ -2141,6 +2311,7 @@ const spells = [
     },
     {
         name: "Renaissance du Printemps",
+        id: "s126",
         alt: "",
         difficulty: 0,
         formula: "Le temps sait te guérir, que repoussent tes branches<br>Je les vois refleurir, ô glorieuse revanche",
@@ -2153,6 +2324,7 @@ const spells = [
     },
     {
         name: "Repos du guerrier",
+        id: "s127",
         alt: "",
         difficulty: 10,
         formula: "Les guerriers silencieux, autour du feu éteint<br>Ont rendu grâce à Dieu et se reposent enfin",
@@ -2165,6 +2337,7 @@ const spells = [
     },
     {
         name: "Respiration aquatique de Vernalys",
+        id: "s128",
         alt: "",
         difficulty: 20,
         formula: "J’ai reçu ce cadeau de la main des tritons<br>Pour les suivre sous l’eau dans les Pays Profonds",
@@ -2177,6 +2350,7 @@ const spells = [
     },
     {
         name: "Réveil des morts",
+        id: "s129",
         alt: "reveil des morts",
         difficulty: 0,
         formula: "Autour de moi les corps, un à un se réveillent<br>Prêts à se battre encore, jusqu’au dernier sommeil",
@@ -2190,6 +2364,7 @@ const spells = [
     },
     {
         name: "Révélations morbides",
+        id: "s130",
         alt: "",
         difficulty: 0,
         formula: "J’ai lu dans ses yeux vides, la paix ou le tourment,<br>Courte vision limpide de ses derniers instants",
@@ -2202,6 +2377,7 @@ const spells = [
     },
     {
         name: "Rêves et chimères",
+        id: "s131",
         alt: "reves et chimeres",
         difficulty: 0,
         formula: "Dans les contrées lointaines des rêves évanouis<br>Vivent les diables, les sirènes, du sommeil de minuit",
@@ -2214,6 +2390,7 @@ const spells = [
     },
     {
         name: "Roi des bêtes",
+        id: "s132",
         alt: "roi des betes",
         difficulty: "-10",
         formula: "Que tous les animaux qui ont prêté serment,<br>Rejoignent aussitôt mon cri de ralliement",
@@ -2226,6 +2403,7 @@ const spells = [
     },
     {
         name: "Ronces Gardiennes",
+        id: "s133",
         alt: "",
         difficulty: 0,
         formula: "Reculez face aux ronces, qui s’érigent en barrière<br>Elles s’enroulent et s’enfoncent au plus profond des chairs",
@@ -2238,6 +2416,7 @@ const spells = [
     },
     {
         name: "Salamandre",
+        id: "s134",
         alt: "",
         difficulty: 0,
         formula: "Mes haillons sont noircis, mais mon corps reste entier,<br>Au coeur de l’incendie ou sur le grand bûcher",
@@ -2250,6 +2429,7 @@ const spells = [
     },
     {
         name: "Sanctuaire Sacré",
+        id: "s135",
         alt: "",
         difficulty: 0,
         formula: "Béni soit ce sanctuaire : que ceux qui le franchissent<br>Subissent la colère des flammes de la justice",
@@ -2262,6 +2442,7 @@ const spells = [
     },
     {
         name: "Sécheresse de l’Été",
+        id: "s136",
         alt: ["secheresse de l'ete", "sécheresse de l'été"],
         difficulty: 0,
         formula: "Elle s’acharne, vengeresse, fait plier les empires,<br>La cruelle sécheresse vous regarde dépérir",
@@ -2274,6 +2455,7 @@ const spells = [
     },
     {
         name: "Soif de Sang",
+        id: "s137",
         alt: "",
         difficulty: 0,
         formula: "Donne le goût du sang et l’écume à mes lèvres<br>La rage du survivant, dans une dernière fièvre",
@@ -2286,6 +2468,7 @@ const spells = [
     },
     {
         name: "Sommeil du Juste",
+        id: "s138",
         alt: "",
         difficulty: 0,
         formula: "Quand s’éteint le soleil derrière tes yeux si lourds<br>Entre dans un sommeil aux doux draps de velours",
@@ -2298,6 +2481,7 @@ const spells = [
     },
     {
         name: "Sons et silences",
+        id: "s139",
         alt: "",
         difficulty: 20,
         formula: "Coquins et nobles gens le savent tous au dehors :<br>La parole est d’argent mais le silence est d’or",
@@ -2310,6 +2494,7 @@ const spells = [
     },
     {
         name: "Souffle de pureté",
+        id: "s140",
         alt: "",
         difficulty: 20,
         formula: "J’ai parcouru le ciel, qu’on m’accueille, triomphal<br>Que l’air pestilentiel disparaisse d’une rafale !",
@@ -2322,6 +2507,7 @@ const spells = [
     },
     {
         name: "Souvenirs et oublis",
+        id: "s141",
         alt: "",
         difficulty: -10,
         formula: "Il est dit que l’Histoire appartient aux vainqueurs<br>Ils balayent les mémoires, qui dans l’oubli se meurent",
@@ -2334,6 +2520,7 @@ const spells = [
     },
     {
         name: "Spectre nocturne",
+        id: "s142",
         alt: "",
         difficulty: -20,
         formula: "Mon esprit s’arrache de ce corps bien trop lourd<br>Qu’il vole sans attaches jusqu’au lever du jour",
@@ -2348,6 +2535,7 @@ const spells = [
     },
     {
         name: "Spiritisme",
+        id: "s143",
         alt: "",
         difficulty: 0,
         formula: "Pour qu’on me prête mainforte dans les heures les plus sombres<br>J’ai frappé à la porte du royaume des ombres",
@@ -2362,6 +2550,7 @@ const spells = [
     },
     {
         name: "Suffocation",
+        id: "s144",
         alt: "",
         difficulty: 0,
         formula: "Comme le chien qu’on punit en tirant sur sa sangle<br>C’est ton air qui s’enfuit, c’est ta gorge qu’on étrangle",
@@ -2374,6 +2563,7 @@ const spells = [
     },
     {
         name: "Territoire de l’Hiver",
+        id: "s145",
         alt: "territoire de l'hiver",
         difficulty: 0,
         formula: "L’imprudent qui veut suivre, ces chemins recouverts<br>Par la neige et le givre, devra vaincre l’Hiver",
@@ -2386,6 +2576,7 @@ const spells = [
     },
     {
         name: "Torche de vérité",
+        id: "s146",
         alt: "torche de verite",
         difficulty: -10,
         formula: "A l’heure de comparaître à l’épreuve du bûcher<br>Les félons et les traîtres seront tous démasqués",
@@ -2398,6 +2589,7 @@ const spells = [
     },
     {
         name: "Torche magique de Tegmine",
+        id: "s147",
         alt: "",
         difficulty: 20,
         formula: "En un claquement de doigts, qu’une flamme apparaisse !<br>Qu’elle crépite et flamboie comme dans les nuits d’ivresse",
@@ -2410,6 +2602,7 @@ const spells = [
     },
     {
         name: "Tour Chancelante d’Althor",
+        id: "s148",
         alt: "tour chancelante d'althor",
         difficulty: -10,
         formula: "Mes légions souterraines abattront à l’instant<br>Pour les Rois et les Reines un travail de titan",
@@ -2423,6 +2616,7 @@ const spells = [
     },
     {
         name: "Transmutation",
+        id: "s149",
         alt: "",
         difficulty: 10,
         formula: "Roche, métal ou bien bois, sont issus du même sang<br>On les confond parfois, tant la terre a d’enfants",
@@ -2435,6 +2629,7 @@ const spells = [
     },
     {
         name: "Traque du malfaisant",
+        id: "s150",
         alt: "",
         difficulty: -10,
         formula: "Les condamnés marqués du symbole de la honte<br>Ne pourront échapper à la loi des Archontes",
@@ -2447,6 +2642,7 @@ const spells = [
     },
     {
         name: "Trompe-l’œil",
+        id: "s151",
         alt: ["trompe l'oeil", "trompe-l'oeil"],
         difficulty: 10,
         formula: "Dépourvus de sagesse, les pécheurs veulent encore<br>Les plus somptueuses richesses qui pourtant s’évaporent",
@@ -2459,6 +2655,7 @@ const spells = [
     },
     {
         name: "Vapeur colorée de Vernalys",
+        id: "s152",
         alt: "",
         difficulty: 0,
         formula: "Que le souffle d’azur, émeraude, écarlate,<br>Se répande en brûlures et douloureux stigmates",
@@ -2471,6 +2668,7 @@ const spells = [
     },
     {
         name: "Venin noir",
+        id: "s153",
         alt: "",
         difficulty: 0,
         formula: "Que les crocs du serpent, et le dard du scorpion,<br>Soient les deux artisans de ce sombre poison",
@@ -2484,6 +2682,7 @@ const spells = [
     },
     {
         name: "Ventre de la Terre",
+        id: "s154",
         alt: "",
         difficulty: -10,
         formula: "Voyez la pierre se fendre et les arbres s’ouvrir<br>Cachons-nous sans attendre pour échapper au pire",
@@ -2496,6 +2695,7 @@ const spells = [
     },
     {
         name: "Visions <br>cauchemardesques de Shaula",
+        id: "s155",
         alt: "Visions cauchemardesques de Shaula",
         difficulty: 10,
         formula: "J’ai exhumé la peur, dans tes rêves, tes nuits noires<br>Pour qu’au fond de ton cœur se creuse le désespoir",
@@ -2509,6 +2709,7 @@ const spells = [
     },
     {
         name: "Vision de l’aura",
+        id: "s156",
         alt: ["vision de l'aura", "vision de l aura"],
         difficulty: 10,
         formula: "On discerne les âmes, qui est lion, qui est rat,<br>A l’ardeur de leur flamme, à la teinte et l’éclat",
@@ -2521,6 +2722,7 @@ const spells = [
     },
     {
         name: "Vol des corbeaux",
+        id: "s157",
         alt: "",
         difficulty: -10,
         formula: "Un millier de plumes noires ornaient mes oripeaux<br>J’ai puisé mon pouvoir dans le vol des corbeaux",
@@ -2533,6 +2735,7 @@ const spells = [
     },
     {
         name: "Voyage bienheureux",
+        id: "s158",
         alt: "",
         difficulty: 10,
         formula: "Chaussez vos meilleures bottes, aiguisez votre épée<br>Car partout on chuchote, que l’heure est arrivée",

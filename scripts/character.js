@@ -212,7 +212,9 @@ function getName(character, config) {
             // choix du prénom
         let i = aleatoire(prenoms[x][y].length)
     
-        character.name = prenoms[x][y][i]
+        character.name.value = prenoms[x][y][i]
+        character.name.original = character.name.value ;
+        console.log(character.name.original)
     }
 
     // choix aléatoire en fonction du peuple
@@ -246,7 +248,8 @@ function getName(character, config) {
         // choix du prénom
     let i = aleatoire(prenoms[x][y].length)
 
-    character.name = prenoms[x][y][i]
+    character.name.value = prenoms[x][y][i] ;
+    character.name.original = character.name.value ;
     }
 
 
@@ -256,7 +259,8 @@ function getName(character, config) {
             // choix du prénom
         let i = aleatoire(prenoms[config.name][y].length)
         
-        character.name = prenoms[config.name][y][i]
+        character.name.value = prenoms[config.name][y][i]
+        character.name.original = character.name.value ;
     }
 }
 
@@ -272,41 +276,44 @@ function getAge(character) {
     switch (character.originID) {
         case 0 :
             //humain
-            character.age = aleatoire(33)+12
+            character.age.original = aleatoire(33)+12
             break ;
         case 1 :
             //elfe
-            character.age = aleatoire(288)+12
+            character.age.original  = aleatoire(288)+12
             break ;
         case 2 :
             //nain
-            character.age = aleatoire(88)+12
+            character.age.original  = aleatoire(88)+12
             break ;
         case 3 :
             //halfelin
-            character.age = aleatoire(68)+12
+            character.age.original  = aleatoire(68)+12
             break ;
         case 4 :
             //elvin
-            character.age = aleatoire(48)+12
+            character.age.original  = aleatoire(48)+12
             break ;
         case 5 :
             //hudvàr
-            character.age = aleatoire(58)+12
+            character.age.original  = aleatoire(58)+12
             break ;
         case 6 :
             //ogrin
-            character.age = aleatoire(28)+12
+            character.age.original  = aleatoire(28)+12
             break ;
         case 7 :
             //orquin
-            character.age = aleatoire(28)+12
+            character.age.original  = aleatoire(28)+12
             break ;
         case 8 :
             //orquin
-            character.age = aleatoire(38)+12
+            character.age.original  = aleatoire(38)+12
             break ;
     }
+
+        character.age.value = character.age.original ;
+
 }
 
 

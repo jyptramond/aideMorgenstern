@@ -6,11 +6,19 @@
 function initCharacter() {
 
     let character = {
-        name : "",
+        name : {
+            original: "",
+            value: "",
+            input: "",
+        },
+        age: {
+            original: "",
+            value: "",
+            input: "",
+        },
         traits: [],
         origin: "",
         archetype: "",
-        age: "",
         group: "",
         job: "",
 

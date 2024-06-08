@@ -1,34 +1,41 @@
-import { toggleNav, changeScreenRatio, toggleConfig } from './export.js';
-
 
 function generator() {
 
-
-    let job = parseInt(document.getElementById('selectCarriere').value);
-    console.log(job);
-
-
+    loadObjectAsCookie("character-cookie");
   
     displayJobsOnClick();
+    resetDisplay();
 
+    let character ;
+
+    //console.log(cookieExists("character-cookie"));
+    if (cookieExists("character-cookie")) {
+        character = getObjectFromCookie("character-cookie") ;
+        setUserInputs(character.name.input, 'champTexte') ;
+        setUserInputs(character.age.input, 'champAge')
+    }
+    else {
+        character = createCharacter();
+    }
+
+    inputListenersLaunch(character, champTexte, "champTexte", 30);
+    inputListenersLaunch(character, champAge, "champAge", 5);
+    displayCharacter(character);
     toggleNav();
     changeScreenRatio();
     toggleConfig();
-    generateButtonListener();
     displayDetailedView();
     displayNotes();
 
+    savingCharacter(character);
+
+
+    generateButtonListener();
     rotateButton("generer");
-    
-    resetDisplay();
-    let character = createCharacter();
-    userInput(character, champTexte, "champTexte",30);
-    userInput(character, champAge, "champAge",5);
-    displayCharacter(character);
-    
 
+    console.log(character) ;
 
-    takeScreenshotWeb(character);
+    setObjectAsCookie("character-cookie", character, 360);
 }
 
 
