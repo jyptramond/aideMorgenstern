@@ -2,6 +2,7 @@ let difficultyFilter = -30;
 let lastSelectedOptionId = 'ascending';
 
 let myCustomSpellbook = [] ;
+let myCustomSpellbookName = "";
 
 
 
@@ -9,14 +10,28 @@ let myCustomSpellbook = [] ;
 function launch() {
 
     generateMySpellbook();
+    let config;
 
     //console.log(cookieExists("character-cookie"));
     if (cookieExists("spellbook-cookie")) {
+
         myCustomSpellbook = getObjectFromCookie("spellbook-cookie") ;
 
         //console.log(myCustomSpellbook)
         if (myCustomSpellbook[0]) {
             displayCustomSpellbookFromCookie(myCustomSpellbook)
+        }
+    }
+
+    if (cookieExists("spellbook-name-cookie")) {
+        let custom = document.getElementById('customSpellbook');
+        let title = document.getElementById('mySpellbookTitle');
+
+        myCustomSpellbookName = getObjectFromCookie("spellbook-name-cookie") ;
+        //console.log(myCustomSpellbook)
+        if (myCustomSpellbookName) {
+            title.textContent = myCustomSpellbookName;
+            custom.value = myCustomSpellbookName;
         }
     }
 
@@ -46,6 +61,8 @@ function deletingCustomSpeelbook() {
         myCustomSpellbook = [] ;
         const myDiv = document.getElementById("mySpellbook");
         myDiv.innerHTML = "";
+        let spellbookRecap = document.querySelector("aside ul");
+        spellbookRecap.innerHTML = "";
         setObjectAsCookie("spellbook-cookie", myCustomSpellbook, 1);
         
         theFilter();
@@ -282,19 +299,18 @@ function cardRemove(src) {
     
     if (src.classList.contains('notsaved')) {
         src.classList.add('addedToSpellbook');
-        src.classList.add('fade');
         const print = `<span><i class="fa-solid fa-book-bookmark full-size"></i></span>`;
         src.innerHTML = print ;
         setTimeout(() => {
             src.remove.bind(src);
             theFilter();
-        }, 500);
+        }, 250);
     }
     else {
         src.innerHTML = `<span><i class="fa-solid fa-trash-can full-size"></i></span>`;
         src.classList.add('addedToSpellbook');
         theFilter();
-        setTimeout(src.remove.bind(src), 500);
+        setTimeout(src.remove.bind(src), 250);
     }
 }
 
@@ -663,9 +679,13 @@ function customizeSpellbookName() {
         
         if (customSpellbook && customSpellbook.value !== "") {
             mySpellbookTitle.textContent = DOMPurify.sanitize(customSpellbook.value, config);
+            myCustomSpellbookName = mySpellbookTitle.textContent;
+            setObjectAsCookie("spellbook-name-cookie", myCustomSpellbookName, 360);
         }
         else {
             mySpellbookTitle.textContent = "Mon Grimoire";
+            myCustomSpellbookName = "";
+            setObjectAsCookie("spellbook-name-cookie", myCustomSpellbookName, 360);
         }
     });
 }

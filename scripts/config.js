@@ -21,7 +21,7 @@ function newCharacter() {
     resetDisplay();
     let character = createCharacter();
     displayCharacter(character);
-    console.log(character);
+    //console.log(character);
     setObjectAsCookie("character-cookie", character, 360);
     inputListenersLaunch(character, champTexte, "champTexte", 30);
     inputListenersLaunch(character, champAge, "champAge", 5);
@@ -251,7 +251,7 @@ function toggleConfig() {
     toggleButton.addEventListener("click", function(event) {
         
         for (let element of allConfigs) {
-            console.log(element)
+            //console.log(element)
             element.classList.toggle('active');
         }
         

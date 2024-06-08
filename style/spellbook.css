@@ -46,16 +46,6 @@
  */
 
 
-article {
-    opacity : 1;
-    transition: opacity 0.25s 0.25s !important; /* Transition duration and easing */
-}
-
-article.fade {
-    opacity: 0 !important;
-    
-}
-
 #fullWindow article,
 #fullWindow div article {
     border: none;

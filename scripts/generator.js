@@ -33,7 +33,7 @@ function generator() {
     generateButtonListener();
     rotateButton("generer");
 
-    console.log(character) ;
+    //console.log(character) ;
 
     setObjectAsCookie("character-cookie", character, 360);
 }

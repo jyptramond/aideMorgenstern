@@ -37,6 +37,12 @@
 
 @media screen and (max-width: 1500px) {
 
+
+    #screen {
+        display:none;
+    }
+    
+
     main {
         display:flex;
         flex-direction: column;
@@ -126,6 +132,7 @@ aside .inputRadio div {
  * Header
  */
  @media screen and (max-width: 1100px) {
+
 
  nav {
     padding: 1rem !important;
@@ -238,11 +245,6 @@ aside {
  article h3 {
     font-size: 1.1rem !important;
  }
-
-#screen {
-    display:none;
-}
-
 
 #bottom-links {
     text-align:left;
