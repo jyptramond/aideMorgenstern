@@ -385,7 +385,7 @@ const tricks = [
         description: "Vous plongez dans un état de catalepsie pendant *MAG* heures, qui vous fait passer pour mort. Conscient, vous ne pouvez cependant ni voir, ni agir. Seul un test de MAG réussi peut détecter la supercherie."
     },
     {
-        name: "Connaissance<br>des objets magiques",
+        name: "Connaissance <br>des objets magiques",
         id: "t10",
         alt:"connaissance des objets magiques",
         type: ["Enchantements", "Alchimie"],

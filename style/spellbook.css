@@ -59,7 +59,7 @@ article.fade {
 #fullWindow article,
 #fullWindow div article {
     border: none;
-    padding: 1rem;
+    padding: 16px;
     margin: 0.5rem;
     border-radius: 10px;
     width: 275px;

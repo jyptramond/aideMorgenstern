@@ -14,7 +14,7 @@ function launch() {
     if (cookieExists("spellbook-cookie")) {
         myCustomSpellbook = getObjectFromCookie("spellbook-cookie") ;
 
-        console.log(myCustomSpellbook)
+        //console.log(myCustomSpellbook)
         if (myCustomSpellbook[0]) {
             displayCustomSpellbookFromCookie(myCustomSpellbook)
         }
@@ -32,10 +32,31 @@ function launch() {
     displayTricksAndSpells();
     customizeSpellbookName();
     takeScreenshotWeb();
-
+    deletingCustomSpeelbook();
 }
 
 launch();
+
+
+function deletingCustomSpeelbook() {
+
+    const button = document.getElementById("delete-spellbook");
+
+    button.addEventListener("click", function(event) {
+        myCustomSpellbook = [] ;
+        const myDiv = document.getElementById("mySpellbook");
+        myDiv.innerHTML = "";
+        setObjectAsCookie("spellbook-cookie", myCustomSpellbook, 1);
+        
+        theFilter();
+    });
+}
+
+
+
+
+
+
 
 
 function displayCustomSpellbookFromCookie(spellbook) {
@@ -64,7 +85,7 @@ function displayCustomSpellbookFromCookie(spellbook) {
             createRecap(savedElement);
         }
 
-        console.log(savedElement)
+        //console.log(savedElement)
 
 
 
@@ -142,8 +163,7 @@ function displayTrick(trick, tricksDiv) {
     descriptionTrick.innerHTML = `${trick.description}`;
 
     // On rattache la balise article a la section Fiches
-
-
+    
         tricksDiv.appendChild(trickCard);
         trickCard.appendChild(nameTrick);
         trickCard.appendChild(descriptionTrick);
@@ -255,18 +275,27 @@ const cards = document.querySelectorAll(".notsaved");
 
 
 function cardRemove(src) {
+
+    let height = src.clientHeight-32;
+    //console.log(height);
+    src.style.height = height + 'px';
     
     if (src.classList.contains('notsaved')) {
-        src.innerHTML = `<span><i class="fa-solid fa-book-bookmark full-size"></i></span>`;
         src.classList.add('addedToSpellbook');
+        src.classList.add('fade');
+        const print = `<span><i class="fa-solid fa-book-bookmark full-size"></i></span>`;
+        src.innerHTML = print ;
+        setTimeout(() => {
+            src.remove.bind(src);
+            theFilter();
+        }, 500);
     }
     else {
         src.innerHTML = `<span><i class="fa-solid fa-trash-can full-size"></i></span>`;
         src.classList.add('addedToSpellbook');
+        theFilter();
+        setTimeout(src.remove.bind(src), 500);
     }
-
-        src.classList.add('fade');
-    setTimeout(src.remove.bind(src), 500);
 }
 
 function createRecap(src) {
@@ -666,11 +695,20 @@ function addToCustomSpellbook(element) {
     };
 
 
-    let elementToFind = element.firstChild.textContent;
+    let elementToFind = element.firstChild.textContent.trimEnd();
+
+
+
     let foundObject = [...spells, ...tricks].find(obj => DOMPurify.sanitize(obj.name, configDOMPurify) === elementToFind);
 
-    myCustomSpellbook.push(foundObject.id) ;
-    console.log(myCustomSpellbook)
+    if (foundObject) {
+        myCustomSpellbook.push(foundObject.id) ;
+        //console.log(myCustomSpellbook)
+    }
+    else {
+        console.log("Error 666 : "+elementToFind+" not found...");
+    }
+    
 
     setObjectAsCookie("spellbook-cookie", myCustomSpellbook, 360);
 }
@@ -684,16 +722,22 @@ function removeFromCustomSpellbook(element) {
         ALLOWED_ATTR: false
     };
 
-    console.log(element)
+    //console.log(element)
 
-    let elementToFind = element.firstChild.textContent;
-    console.log("elementToFind : "+elementToFind)
+    let elementToFind = element.firstChild.textContent.trimEnd();
+    //console.log("elementToFind : "+elementToFind)
     let foundObject = [...spells, ...tricks].find(obj => DOMPurify.sanitize(obj.name, configDOMPurify) === elementToFind);
-    console.log("foundObject : "+foundObject+" ("+foundObject.id+")")
+    //console.log("foundObject : "+foundObject+" ("+foundObject.id+")")
     
-    myCustomSpellbook = myCustomSpellbook.filter(obj => obj !== foundObject.id);
+    if (foundObject) {
+        myCustomSpellbook = myCustomSpellbook.filter(obj => obj !== foundObject.id);
+    }
+    else {
+        console.log("Error 666 : "+elementToFind+" not found...");
+    }
+    
 
-    console.log(myCustomSpellbook)
+    //console.log(myCustomSpellbook)
 
     setObjectAsCookie("spellbook-cookie", myCustomSpellbook, 360);
 }

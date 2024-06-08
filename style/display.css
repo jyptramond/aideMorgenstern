@@ -340,7 +340,8 @@ ul li {
  #save,
  #screen,
  #toggle-button,
- #toggle-button-config {
+ #toggle-button-config,
+ #delete-spellbook {
     aspect-ratio: 1 / 1;
  }
 
