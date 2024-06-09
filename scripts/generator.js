@@ -15,7 +15,7 @@ function generator() {
         setUserInputs(character.age.input, 'champAge')
     }
     else {
-        character = createCharacter();
+        character = createCharacter(initConfig());
     }
 
     inputListenersLaunch(character, champTexte, "champTexte", 30);

@@ -6,10 +6,10 @@
  *********************************************************************************/
 
 
-function createCharacter() {
+function createCharacter(myConfig) {
             
     
-        let config = initConfig();
+        let config = myConfig;
         let character = initCharacter();
 
         getOrigin(character, config);

@@ -1,0 +1,151 @@
+#content {
+    width: 100%
+}
+
+.column {
+    margin: 10px;
+}
+
+#explications {
+    grid-area : foot;
+    margin: 1rem;
+    padding:10px 10px 10px 30px;
+    background-color: var(--color-black-transparent-dark);
+}
+
+
+#groupSheet {
+    display: grid;
+    width:100%;
+    grid-template-columns: 2.5fr 3fr 4fr;    
+}
+
+
+/**
+ * fullWindow
+ */
+
+ #content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#groupSheet {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#fullWindow {
+    margin-right : 314px;
+}
+
+#groupSheetHeader {
+    margin-top: 20px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/**
+ * Config
+ */
+
+#champAge {
+    width:20%;
+}
+
+#champTexte {
+    width : 60%;
+}
+
+
+
+
+/**
+ * Tableau
+ */
+
+#notes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:10px;
+}
+
+#champNotes {
+    background-color: var(--color-black-transparent-dark);
+    border:none;
+    box-sizing: border-box;
+    width:100%;
+    padding: 10px;
+    resize: vertical;
+    font-family:"Segoe UI";
+    font-size: 16px;
+}
+
+
+
+/**
+ * Rotation du bouton générer
+ */
+
+
+ #generer i {
+    transition: transform 0.25s ease-in-out; /* Smooth transition */
+ } 
+
+
+
+.myButton.small {
+        height: fit-content;
+    }
+
+
+
+.myButton.small.active {
+    background-color: rgba(0, 0, 0, 0.39);
+    }  
+
+
+/**
+ * Card
+ */
+
+
+
+#fullWindow article,
+#fullWindow div article {
+    border: none;
+    padding: 16px;
+    margin: 0.5rem;
+    border-radius: 10px;
+    width: 275px;
+    background-color: var(--color-black-transparent-dark);
+    background-size:auto;
+}
+
+
+article h3 {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    text-align: right;
+    color: var(--color-black);
+    border-bottom: solid 2px rgb(56, 56, 56);
+}
+
+p.header {
+    margin-bottom: 0;
+}
+
+p.description {
+    margin: 10px 0
+}

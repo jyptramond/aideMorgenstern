@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
 
-    <title>aideMorgenstern Générateur</title>
+    <title>aideMorgenstern Rencontres</title>
 
     <!-- Style -->
     <link rel="stylesheet" href="../style/display.css">
-    <link rel="stylesheet" href="../style/generator.css">
+    <link rel="stylesheet" href="../style/encounter.css">
     <link rel="stylesheet" href="../style/responsive.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -19,15 +19,17 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="../scripts/data.js" defer></script>
 
-    <script src="../scripts/display.js" defer></script>
+    
     <script src="../scripts/character.js" defer></script>
+    
+    <script src="../scripts/display.js" defer ></script>
     <script src="../scripts/init.js" defer></script>
     <script src="../scripts/math.js" defer></script>
     <script src="../scripts/magic.js" defer></script>
     <script src="../scripts/specialist.js" defer></script>
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/cookies.js" defer></script>
-    <script src="../scripts/generator.js" defer ></script>
+    <script src="../scripts/encounter.js" defer ></script>
 
     <!-- DOMpurify -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js"></script>
@@ -50,7 +52,7 @@
                 <a href="../index.html">Accueil</a>
                 <a href="generator.html">Générateur</a>
                 <a href="spellbook.html">Grimoire</a>
-                <a href="encoutner.html">Rencontres</a>
+                <a href="encounter.html">Rencontres</a>
             </div>
         </nav>
     </header>
@@ -60,166 +62,289 @@
 
         <aside class="generator">
 
-                
+            <div class="divRow">
+                <button class="myButton" title="Afficher les options"   id="toggle-button-config"><i class="fa-solid fa-bars button-size"></i></button>
+                <button class="myButton" title="Changer format"         id="screen"><i class="fa-solid fa-mobile-screen button-size"></i></button>
+                <button class="myButton" title="Enregistrer Ctrl+S"     id="save"><i class="fa-solid fa-floppy-disk button-size"></i></button>
+                <button class="myButton" title="Générer Alt+Q"          id="generer"><i class="fa-solid fa-square-plus button-size"></i></i></button>
+            </div>
 
-                <div class="divRow">
-                    <button id="toggle-button-config" title="Afficher les options" class="myButton"><i class="fa-solid fa-bars button-size"></i></button>
-                    <button class="myButton" title="Changer format" role="button" id="screen"><i class="fa-solid fa-mobile-screen button-size"></i></button>
-                    <button class="myButton" title="Enregistrer Ctrl+S" role="button" id="save"><i class="fa-solid fa-floppy-disk button-size"></i></button>
-                    <button class="myButton" title="Générer Alt+Q" role="button" id="generer"><i class="fa-solid fa-arrows-rotate button-size"></i></button>
-                </div>
 
-                <div class="inputText divRow toggle">
-                    <input type="text" id="champTexte" maxlength="30" placeholder="Nom">
-                    <input type="text" id="champAge"  placeholder="âge" maxlength="5">
-                </div>
+            <div class="inputText divRow toggle">
+                <input type="text" id="champGroup" maxlength="30" placeholder="Intitulé du groupe">
+            </div>
 
-                <div class="inputSelect toggle">
-                    <label for="nom">Nom:</label>
-                    <select id="selectName" name="nom">
-                    <fieldset>
-                        <option value="-2">Logique</option>
-                        <option value="-1">Aléatoire</option>
-                    </fieldset>
-                    <fieldset>
-                        <option value="2">Anglais</option>
-                        <option value="7">Arabe</option>
-                        <option value="6">Celtique</option>
-                        <option value="0">Francophone</option>
-                        <option value="4">Germanique</option>
-                        <option value="5">Hellenistique</option>
-                        <option value="1">Hispanique</option>
-                        <option value="3">Italien</option>
-                        <option value="8">Russe</option>
-                    </fieldset>
-                    <fieldset>
-                        <option value="10">Elfique</option>
-                        <option value="9">Gobelinoïde</option>  
-                        <option value="12">Halfelin</option>
-                        <option value="11">Nain</option>
-                    </fieldset>  
-                    <fieldset>
-                        
-                    </fieldset>
-                    </select>
-                </div>
 
-                <div  class="inputSelect toggle">
-                    <label for="archetype">Archétype:</label>
-                    <select id="selectArchetype" name="archetype">
-                        <option value="-1">Aléatoire</option>
-                        <option value="0">Aigle</option>
-                        <option value="1">Âne</option>
-                        <option value="2">Cerf</option>
-                        <option value="3">Chat</option>
-                        <option value="4">Chien</option>
-                        <option value="5">Coq</option>
-                        <option value="6">Corbeau</option>
-                        <option value="7">Fourmi</option>
-                        <option value="8">Hibou</option>
-                        <option value="9">Hyène</option>
-                        <option value="10">Lapin</option>
-                        <option value="11">Lion</option>
-                        <option value="12">Loup</option>
-                        <option value="13">Mouton</option>
-                        <option value="14">Ours</option>
-                        <option value="15">Paon</option>
-                        <option value="16">Porc</option>
-                        <option value="17">Rat</option>
-                        <option value="18">Renard</option>
-                        <option value="19">Serpent</option>
-                        <option value="20">Singe</option>
-                        <option value="21">Souris</option>
-                        <option value="22">Taureau</option>
-                        <option value="23">Vautour</option>
-                    </select>
-                </div>
+            <div class="divRow">
+                <button class="myButton small active" id="leader" title="Chef" >Chef</button>
+                <button class="myButton small" id="minions" title="Sbires" >Sbires</button>
+            </div>
 
-                <div class="inputSelect toggle">
-                    <label for="peuple">Peuple:</label>
-                    <select id="selectPeuple" name="peuple">
-                        <option value="-2">Logique</option>
-                        <option value="-1">Aléatoire</option>
-                        <option value="0">Humain</option>
-                        <option value="1">Elfe</option>
-                        <option value="4">Demi-Elfe</option>
-                        <option value="2">Nain</option>
-                        <option value="5">Demi-Nain</option>
-                        <option value="3">Halfelin</option>
-                        <option value="6">Orc</option>
-                        <option value="7">Demi-Orc</option>
-                        <option value="8">Gobelin</option>
-                    </select>
-                </div>
 
-                <div class="inputSelect toggle">
-                    <label for="groupe">Groupe:</label>
-                    <select id="selectGroupe" name="groupe">
-                        <option value="-2">Logique</option>
-                        <option value="-1">Aléatoire</option>
-                        <option value="0">Agents et domestiques</option>
-                        <option value="1">Aristocrates et nobles</option>
-                        <option value="2">Artisans et commerçants</option>
-                        <option value="3">Bandits et brigands</option>
-                        <option value="4">Bateleurs et saltimbanques</option>
-                        <option value="5">Érudits et lettrés</option>
-                        <option value="6">Filous et roublards</option>
-                        <option value="7">Forestiers et paysans</option>
-                        <option value="8">Guerriers et bretteurs</option>
-                        <option value="9">Hommes d'armes et soldats</option>
-                        <option value="10">Magiciens et thaumaturges</option>
-                        <option value="11">Parias et miséreux</option>
-                        <option value="12">Religieux et prêtres</option>
-                    </select>
-                </div>
+                <section id="leaderConfigSection">
 
-                <div class="inputSelect toggle">
-                    <label for="carriere">Carrière:</label>
-                    <select id="selectCarriere" nom="carriere">
-                        <option value="-1">Aléatoire</option>
-                        <option value="0"></option>
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option value="4"></option>
-                        <option value="5"></option>
-                        <option value="6"></option>
-                        <option value="7"></option>
-                    </select>
-                </div>
-            
-                <div class="inputSelect toggle">
-                    <label for="mode">Compétences:</label>
-                    <select id="selectMode" name="mode">
-                        <option value="0">Répartition</option>
-                        <option value="1">Tirage</option>
-                        <option value="2">Tirage (5)</option>
-                    </select>
-                </div>
-
-                <div class="inputSelect toggle">
-                    <label for="role">Mode:</label>
-                    <select id="selectRole" name="role">
-                        <option value="0">Normal</option>
-                        <option value="1">Spécialiste</option>
-                        <option value="2">Champion</option>
-                        <option value="3">Héros Mineur</option>
-                        <option value="4">Héros Majeur</option>
-                    </select>
-                </div>
-
-                <div class="inputCheckbox toggle">
-                    <div>
-                        <input type="checkbox" id="cocherInfo" unchecked>
-                        <label for="cocherInfo">Plus d'infos</label>
+                    <div class="inputText divRow toggle">
+                        <input type="text" id="champTexte" maxlength="30" placeholder="Nom">
+                        <input type="text" id="champAge"  placeholder="âge" maxlength="5">
                     </div>
-                    <div>
-                        <input type="checkbox" id="cocherNotes" unchecked>
-                        <label for="cocherNotes">Notes</label>
-                    </div>
-                </div>
 
+                    <div class="inputSelect toggle">
+                        <label for="nom">Nom:</label>
+                        <select id="selectName" name="nom">
+                        <fieldset>
+                            <option value="-2">Logique</option>
+                            <option value="-1">Aléatoire</option>
+                        </fieldset>
+                        <fieldset>
+                            <option value="2">Anglais</option>
+                            <option value="7">Arabe</option>
+                            <option value="6">Celtique</option>
+                            <option value="0">Francophone</option>
+                            <option value="4">Germanique</option>
+                            <option value="5">Hellenistique</option>
+                            <option value="1">Hispanique</option>
+                            <option value="3">Italien</option>
+                            <option value="8">Russe</option>
+                        </fieldset>
+                        <fieldset>
+                            <option value="10">Elfique</option>
+                            <option value="9">Gobelinoïde</option>  
+                            <option value="12">Halfelin</option>
+                            <option value="11">Nain</option>
+                        </fieldset>  
+                        <fieldset>
+                            
+                        </fieldset>
+                        </select>
+                    </div>
+
+                    <div  class="inputSelect toggle">
+                        <label for="archetype">Archétype:</label>
+                        <select id="selectArchetype" name="archetype">
+                            <option value="-1">Aléatoire</option>
+                            <option value="0">Aigle</option>
+                            <option value="1">Âne</option>
+                            <option value="2">Cerf</option>
+                            <option value="3">Chat</option>
+                            <option value="4">Chien</option>
+                            <option value="5">Coq</option>
+                            <option value="6">Corbeau</option>
+                            <option value="7">Fourmi</option>
+                            <option value="8">Hibou</option>
+                            <option value="9">Hyène</option>
+                            <option value="10">Lapin</option>
+                            <option value="11">Lion</option>
+                            <option value="12">Loup</option>
+                            <option value="13">Mouton</option>
+                            <option value="14">Ours</option>
+                            <option value="15">Paon</option>
+                            <option value="16">Porc</option>
+                            <option value="17">Rat</option>
+                            <option value="18">Renard</option>
+                            <option value="19">Serpent</option>
+                            <option value="20">Singe</option>
+                            <option value="21">Souris</option>
+                            <option value="22">Taureau</option>
+                            <option value="23">Vautour</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="peuple">Peuple:</label>
+                        <select id="selectPeuple" name="peuple">
+                            <option value="-2">Logique</option>
+                            <option value="-1">Aléatoire</option>
+                            <option value="0">Humain</option>
+                            <option value="1">Elfe</option>
+                            <option value="4">Demi-Elfe</option>
+                            <option value="2">Nain</option>
+                            <option value="5">Demi-Nain</option>
+                            <option value="3">Halfelin</option>
+                            <option value="6">Orc</option>
+                            <option value="7">Demi-Orc</option>
+                            <option value="8">Gobelin</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="groupe">Groupe:</label>
+                        <select id="selectGroupe" name="groupe">
+                            <option value="-2">Logique</option>
+                            <option value="-1">Aléatoire</option>
+                            <option value="0">Agents et domestiques</option>
+                            <option value="1">Aristocrates et nobles</option>
+                            <option value="2">Artisans et commerçants</option>
+                            <option value="3">Bandits et brigands</option>
+                            <option value="4">Bateleurs et saltimbanques</option>
+                            <option value="5">Érudits et lettrés</option>
+                            <option value="6">Filous et roublards</option>
+                            <option value="7">Forestiers et paysans</option>
+                            <option value="8">Guerriers et bretteurs</option>
+                            <option value="9">Hommes d'armes et soldats</option>
+                            <option value="10">Magiciens et thaumaturges</option>
+                            <option value="11">Parias et miséreux</option>
+                            <option value="12">Religieux et prêtres</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="carriere">Carrière:</label>
+                        <select id="selectCarriere" nom="carriere">
+                            <option value="-1">Aléatoire</option>
+                            <option value="0"></option>
+                            <option value="1"></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                            <option value="5"></option>
+                            <option value="6"></option>
+                            <option value="7"></option>
+                        </select>
+                    </div>
                 
+                    <div class="inputSelect toggle">
+                        <label for="mode">Compétences:</label>
+                        <select id="selectMode" name="mode">
+                            <option value="0">Répartition</option>
+                            <option value="1">Tirage</option>
+                            <option value="2">Tirage (5)</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="role">Mode:</label>
+                        <select id="selectRole" name="role">
+                            <option value="0">Normal</option>
+                            <option value="1">Spécialiste</option>
+                            <option value="2">Champion</option>
+                            <option value="3">Héros Mineur</option>
+                            <option value="4">Héros Majeur</option>
+                        </select>
+                    </div>
+
+                    <div class="inputCheckbox toggle">
+                        <div>
+                            <input type="checkbox" id="cocherNotes" unchecked>
+                            <label for="cocherNotes">Notes</label>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="minionsConfigSection"   class="do-not-display">
+                   
+                    <div  class="inputSelect toggle">
+                        <label for="archetype">Archétype:</label>
+                        <select id="selectMiArchetype" name="archetype">
+                            <option value="-1">Aléatoire</option>
+                            <option value="0">Aigle</option>
+                            <option value="1">Âne</option>
+                            <option value="2">Cerf</option>
+                            <option value="3">Chat</option>
+                            <option value="4">Chien</option>
+                            <option value="5">Coq</option>
+                            <option value="6">Corbeau</option>
+                            <option value="7">Fourmi</option>
+                            <option value="8">Hibou</option>
+                            <option value="9">Hyène</option>
+                            <option value="10">Lapin</option>
+                            <option value="11">Lion</option>
+                            <option value="12">Loup</option>
+                            <option value="13">Mouton</option>
+                            <option value="14">Ours</option>
+                            <option value="15">Paon</option>
+                            <option value="16">Porc</option>
+                            <option value="17">Rat</option>
+                            <option value="18">Renard</option>
+                            <option value="19">Serpent</option>
+                            <option value="20">Singe</option>
+                            <option value="21">Souris</option>
+                            <option value="22">Taureau</option>
+                            <option value="23">Vautour</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="peuple">Peuple:</label>
+                        <select id="selectMiGrPeuple" name="peuple">
+                            <option value="-2">Logique</option>
+                            <option value="-1">Aléatoire</option>
+                            <option value="0">Humain</option>
+                            <option value="1">Elfe</option>
+                            <option value="4">Demi-Elfe</option>
+                            <option value="2">Nain</option>
+                            <option value="5">Demi-Nain</option>
+                            <option value="3">Halfelin</option>
+                            <option value="6">Orc</option>
+                            <option value="7">Demi-Orc</option>
+                            <option value="8">Gobelin</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="groupe">Groupe:</label>
+                        <select id="selectMiGrGroupe" name="groupe">
+                            <option value="-2">Logique</option>
+                            <option value="-1">Aléatoire</option>
+                            <option value="0">Agents et domestiques</option>
+                            <option value="1">Aristocrates et nobles</option>
+                            <option value="2">Artisans et commerçants</option>
+                            <option value="3">Bandits et brigands</option>
+                            <option value="4">Bateleurs et saltimbanques</option>
+                            <option value="5">Érudits et lettrés</option>
+                            <option value="6">Filous et roublards</option>
+                            <option value="7">Forestiers et paysans</option>
+                            <option value="8">Guerriers et bretteurs</option>
+                            <option value="9">Hommes d'armes et soldats</option>
+                            <option value="10">Magiciens et thaumaturges</option>
+                            <option value="11">Parias et miséreux</option>
+                            <option value="12">Religieux et prêtres</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="carriere">Carrière:</label>
+                        <select id="selectMiCarriere" nom="carriere">
+                            <option value="-1">Aléatoire</option>
+                            <option value="0"></option>
+                            <option value="1"></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                            <option value="4"></option>
+                            <option value="5"></option>
+                            <option value="6"></option>
+                            <option value="7"></option>
+                        </select>
+                    </div>
+                
+                    <div class="inputSelect toggle">
+                        <label for="mode">Compétences:</label>
+                        <select id="selectMiMode" name="mode">
+                            <option value="0">Répartition</option>
+                            <option value="1">Tirage</option>
+                            <option value="2">Tirage (5)</option>
+                        </select>
+                    </div>
+
+                    <div class="inputSelect toggle">
+                        <label for="role">Mode:</label>
+                        <select id="selecMiRole" name="role">
+                            <option value="0">Normal</option>
+                            <option value="1">Spécialiste</option>
+                            <option value="2">Champion</option>
+                            <option value="3">Héros Mineur</option>
+                            <option value="4">Héros Majeur</option>
+                        </select>
+                    </div>
+
+                    <div class="inputCheckbox toggle">
+                        <div>
+                            <input type="checkbox" id="cocherNotes" unchecked>
+                            <label for="cocherNotes">Notes</label>
+                        </div>
+                    </div>
+
+                </section>
 
         </aside>
         
@@ -227,97 +352,15 @@
 
             <div id="content">
 
-                <div id="characterSheetHeader">
-                    <h1 id="identite">Nom, Peuple <span class="sub-h1">(archétype, âge)</span></h1>
+                <div id="groupSheetHeader">
+                    <h1 id="nameDisplay">Mon groupe</h1>
                     <p id="vices"></p>
                 </div>
 
 
-                <div id="characterSheet">
+                <div id="groupSheet">
                     
-                    <div class="column">
 
-                        <table id="attributs">
-                            <h2><i class="fa-solid fa-image-portrait"></i> Attributs</h2>
-                            <tbody>
-                                <tr><td>Carrière</td>           <td id="CARR"></td></tr>
-                                <tr><td><i class="fa-solid fa-heart"></i> Vitalité</td>           <td><span class="expert do-not-display is-smaller" id="PVinfo"></span><span id="PV" class="strong">0</span></td></tr>
-                                <tr><td><i class="fa-solid fa-bolt"></i> Sang-Froid</td>         <td><span class="expert do-not-display is-smaller" id="SFinfo"></span><span id="SF" class="strong">0</span></td></tr>
-                                <tr><td>Initiative</td>         <td id="INIT">0</td></tr>
-                                <tr><td>Destin</td>             <td id="DEST" class="strong">0</td></tr>
-                                <tr><td>Seuil de blessure</td>  <td id="SB">0</td></tr>
-                                <tr><td>Instabilité</td>        <td id="INST">0</td></tr>
-                                <tr><td>Spécial</td>            <td id="SPE"></td></tr>
-                                <tr class="expert do-not-display"><td class="expert do-not-display">ΣComp</td>              <td id="COMP" class="expert do-not-display  is-smaller">0</td></tr>
-                                
-                            </tbody>
-                        </table>
-
-                        <div id="tresor">
-                            <h2><i class="fa-solid fa-coins"></i></i> Trésor</h2>
-                            <div>
-                                <ul id="listeTresor"></ul>
-                            </div>
-                        </div>
-
-                        <div id="atouts">
-                            <h2><i class="fa-solid fa-hands-holding-circle"></i> Atouts</h2>
-                            <div>
-                            <ul id="listeAtouts"></ul>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="column">
-                            
-                        <table id="competences">
-                            <h2><i class="fa-solid fa-fire-flame-curved"></i> Compétences</h2>
-                            <tbody>
-                                <tr><td>Combat (COM)</td>           <td id="cominfo" class="expert do-not-display is-smaller" width ="40%"></td><td id="com" width ="5%">0</td></tr>
-                                <tr><td>Connaissances (CNS) </td>   <td id="cnsinfo" class="expert do-not-display is-smaller"></td><td id="cns">0</td></tr>
-                                <tr><td>Discrétion (DIS)</td>       <td id="disinfo" class="expert do-not-display is-smaller"></td><td id="dis">0</td></tr>
-                                <tr><td>Endurance (END)</td>        <td id="endinfo" class="expert do-not-display is-smaller"></td><td id="end">0</td></tr>
-                                <tr><td>Force (FOR)</td>            <td id="forinfo" class="expert do-not-display is-smaller"></td><td id="for">0</td></tr>
-                                <tr><td>Habileté (HAB)</td>         <td id="habinfo" class="expert do-not-display is-smaller"></td><td id="hab">0</td></tr>
-                                
-                                <tr><td>Mouvement (MOU)</td>        <td id="mouinfo" class="expert do-not-display is-smaller"></td><td id="mou">0</td></tr>
-                                <tr><td>Perception (PER)</td>       <td id="perinfo" class="expert do-not-display is-smaller"></td><td id="per">0</td></tr>
-                                <tr><td>Sociabilité (SOC)</td>      <td id="socinfo" class="expert do-not-display is-smaller"></td><td id="soc">0</td></tr>
-                                <tr><td>Survie (SUR)</td>           <td id="surinfo" class="expert do-not-display is-smaller"></td><td id="sur">0</td></tr>
-                                <tr><td>Tir (TIR)</td>              <td id="tirinfo" class="expert do-not-display is-smaller"></td><td id="tir">0</td></tr>
-                                <tr><td>Volonté (VOL)</td>          <td id="volinfo" class="expert do-not-display is-smaller"></td><td id="vol">0</td></tr>
-                                <tr class="magie"><td>Magie (MAG)</td>            <td id="maginfo" class="expert is-smaller do-not-display"></td><td id="mag">0</td></tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                    <div class="column">
-
-                        <div id="weapons">
-                            <h2><i class="fa-solid fa-shield-halved"></i> Équipements</h2>
-                            <div>
-                                <ul id="weapons-list"></ul>
-                            </div>
-                        </div>
-
-                        <div id="equipements">
-                            <h2><i class="fa-solid fa-sack-xmark"></i> Inventaire</h2>
-                            <div>
-                                <ul id="listeEquipement"></ul>
-                            </div>
-                        </div>
-
-                        <div id="spellbook" class="magie">
-                            <h2><i class="fa-solid fa-scroll"></i> Grimoire</h2>
-                                <div>
-                                    <ul id="tricks-list"></ul>
-                                    <ul id="spells-list"></ul>
-                                </div>
-                        </div>
-
-                    </div>
                 </div>
 
 

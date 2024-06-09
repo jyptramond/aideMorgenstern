@@ -19,7 +19,7 @@ function generateButtonListener() {
 
 function newCharacter() {
     resetDisplay();
-    let character = createCharacter();
+    let character = createCharacter(initConfig());
     displayCharacter(character);
     //console.log(character);
     setObjectAsCookie("character-cookie", character, 360);
