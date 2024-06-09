@@ -1,1 +1,3 @@
-Le site Brigandyne Character Generator permet de créer un personnage de jeu de rôle aléatoirement selon certains paramètres en respectant toutes les règles proposées dans l'ouvrage Brigandyne 2nde édition.
+Le site web aideMorgenstern regroupe différents outils pour assister meneur.se.s de jeu et joueur.se.s dans vos parties endiablés de Morgenstern
+- Un générateur de personnage aléatoire (avec de nombreuses options de configuration)
+- Un éditeur de grimoire
