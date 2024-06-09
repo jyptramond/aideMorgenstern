@@ -149,3 +149,7 @@ p.header {
 p.description {
     margin: 10px 0
 }
+
+article.editing {
+    border: solid 2px black !important;
+}

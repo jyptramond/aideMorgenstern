@@ -1,5 +1,5 @@
 
-function generator() {
+function launchGenerator() {
 
     loadObjectAsCookie("character-cookie");
   
@@ -27,7 +27,7 @@ function generator() {
     displayDetailedView();
     displayNotes();
 
-    savingCharacter(character);
+    savingCharacter(character, "generator");
 
 
     generateButtonListener();
@@ -41,4 +41,4 @@ function generator() {
 
 
 
-generator();
+launchGenerator();

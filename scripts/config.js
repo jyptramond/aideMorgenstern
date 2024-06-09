@@ -114,30 +114,31 @@ function configFromSelect(srcID) {
 
 
 
-function savingCharacter(character) {
+function savingCharacter(character, mode) {
     document.addEventListener('keydown', function(event) {
         if (event.ctrlKey && event.key === 's') {
             event.preventDefault(); // Prevent the default browser behavior for Ctrl+S
             //console.log('Ctrl+S was pressed');
 
             // Your custom save logic here
-            takeScreenshotWeb(character);
+            takeScreenshotWeb(character, mode);
 
             return false; // Prevent the default browser behavior for Ctrl+S (alternative way)
         }
     });
     document.getElementById('save').addEventListener('click', function(event) {
-        takeScreenshotWeb(character);
+        takeScreenshotWeb(character, mode);
     });
 }
 
 
 
-function takeScreenshotWeb(character) {
+function takeScreenshotWeb(character, mode) {
 
         let baliseCocherNotes = document.getElementById("cocherNotes");
         let textarea;
         let text;
+        let filename;
 
         if (baliseCocherNotes.checked) {
             textarea = document.getElementById('champNotes');
@@ -148,6 +149,7 @@ function takeScreenshotWeb(character) {
 
         html2canvas(document.getElementById('content')).then(function(canvas) {
             
+            console.log(character.name);
             
             if (baliseCocherNotes.checked) {
                 drawTextArea(canvas, text);
@@ -158,7 +160,12 @@ function takeScreenshotWeb(character) {
             link.href = canvas.toDataURL('image/jpeg');
 
             // Déterminer le nom de fichier basé sur le contenu du textarea et d'autres variables
-            const filename = `${character.name.value}-${character.origin}-${character.archetype}-${character.age.value}-Brigandyne.jpeg`;
+            if (mode === 'generator') {
+                filename = `${character.name.value}-${character.origin}-${character.archetype}-${character.age.value}-Brigandyne.jpeg`;
+            } else {
+                filename = `${character.name}-Brigandyne.jpeg`;
+            }
+            
             
             link.download = filename;
 

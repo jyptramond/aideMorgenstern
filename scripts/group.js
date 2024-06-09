@@ -37,14 +37,15 @@ function renamingGroup() {
 
     nameBalise.addEventListener('input', function(event) {
     let name = getUserInputs("champGroup") ;
-        console.log("ok")
         if (name) {
             nameDisplay.textContent = name ;
+            myGroup.name = name ;
+            
         }
         else {
             nameDisplay.textContent = "Mon groupe"
+            myGroup.name =  "Mon groupe";
         }
-
     });
 }
 
@@ -55,7 +56,7 @@ function displayLeader(character) {
     const groupSheet = document.getElementById("groupSheet") ;
 
     const card = document.createElement("article");
-    card.classList.add("card-effect");
+    card.classList.add("card-effect", "characterCard");
     
     const name = document.createElement("h3");
     name.innerHTML = `${character.name}, ${character.archetype} (${character.job} ${character.origin})`;
@@ -92,21 +93,89 @@ function addingMember() {
 }
 
 
+function cardEditor() {
+    let cards = document.getElementsByClassName("characterCard")
+    console.log(cards)
+
+    for (let i=0 ; i < cards.length ; i++) {
+        cards[i].addEventListener("click", function(event) {
+            console.log(cards[i])
+            
+            if (this.classList.contains("editing")) {
+                this.classList.remove("editing") ;
+            } else {
+            
+                deselectAllCards();
+                this.classList.add("editing") ;
+            }
+        })
+    }
+
+        
+}
 
 
-function initGroupConfig(mode) {
+function deleter() {
 
-    let config = {
-        name: -2,
-        archetype: -1,
-        origin: -2,
-        group: -2,
-        job: -1,
-        mode: 0,
-        role: 0
-    } 
+    const currentEdit = document.getElementsByClassName("editing") ;
+    const groupSheet = document.getElementById("groupSheet") ;
 
-    let mode ;
+    console.log("super ok")
+
+    if (!currentEdit[0]) {
+        groupSheet.innerHTML = "";
+    } else {
+        currentEdit[0].remove(); ;
+    }
+}
+
+function trashListener() {
+
+    const trashButton = document.getElementById("delete-group") ;
+
+    trashButton.addEventListener("click", function(event) {
+        console.log("ok")
+        deleter();
+
+    });
+
+}
+
+
+
+
+function deselectAllCards() {
+    let cards = document.getElementsByClassName("characterCard")
+    for (let i = 0 ; i < cards.length ; i++) {
+        if (cards[i].classList.contains("editing")) {
+            cards[i].classList.remove("editing");
+        }
+    }
+}
+
+function deselectOnWindow() {
+    window.addEventListener("click", function(event) {
+        
+        let cards = document.getElementsByClassName("characterCard") ;
+        let fullWindow = document.getElementById("fullWindow") ;
+        let clickedInsideCard = false;
+
+                Array.from(cards).forEach((card) => {
+                    if (card.contains(event.target)) {
+                        clickedInsideCard = true;
+                    }
+                });
+
+                if (fullWindow.contains(event.target) && (!clickedInsideCard)) {
+                        console.log("Clicked outside the cards");
+                        deselectAllCards();
+                }
+    });
+}
+
+
+
+function initGroupConfig() {
 
     const leader = document.getElementById("leader")
     if (leader.classList.contains("active")) {
@@ -130,11 +199,6 @@ function initGroupConfig(mode) {
             role: "selectMiRole"
         }
     }
-
-
-
-
-    getGroupConfig(mode, config);
 
     return config
 }
@@ -182,16 +246,3 @@ let character = {
     weapon: "couteau RU+1",
     stats: "PER 50  MOU 45  CNS 60"
 }
-
-displayLeader(character);
-displayLeader(character);
-displayLeader(character);
-displayLeader(character);
-displayLeader(character);
-displayLeader(character);
-displayLeader(character);
-displayLeader(character);
-
-renamingGroup();
-configGroupListener();
-displayNotes();

@@ -334,16 +334,14 @@ ul li {
   }
  
 
- #generer {
-     aspect-ratio: 1 / 1;
- }
 
-
+ #generer,
  #save,
  #screen,
  #toggle-button,
  #toggle-button-config,
- #delete-spellbook {
+ #delete-spellbook,
+ #delete-group {
     aspect-ratio: 1 / 1;
  }
 

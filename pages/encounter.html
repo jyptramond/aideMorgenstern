@@ -29,7 +29,8 @@
     <script src="../scripts/specialist.js" defer></script>
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/cookies.js" defer></script>
-    <script src="../scripts/encounter.js" defer ></script>
+    <script src="../scripts/group.js" defer ></script>
+    <script src="../scripts/encounter-main.js" defer ></script>
 
     <!-- DOMpurify -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js"></script>
@@ -222,13 +223,6 @@
                         </select>
                     </div>
 
-                    <div class="inputCheckbox toggle">
-                        <div>
-                            <input type="checkbox" id="cocherNotes" unchecked>
-                            <label for="cocherNotes">Notes</label>
-                        </div>
-                    </div>
-
                 </section>
 
                 <section id="minionsConfigSection"   class="do-not-display">
@@ -337,14 +331,18 @@
                         </select>
                     </div>
 
-                    <div class="inputCheckbox toggle">
-                        <div>
-                            <input type="checkbox" id="cocherNotes" unchecked>
-                            <label for="cocherNotes">Notes</label>
-                        </div>
-                    </div>
-
                 </section>
+
+                <div class="inputCheckbox toggle">
+                    <div>
+                        <input type="checkbox" id="cocherNotes" unchecked>
+                        <label for="cocherNotes">Notes</label>
+                    </div>
+                </div>
+
+                <div class="divRow toggle">
+                    <button class="myButton" title="Supprimer" role="button" id="delete-group"><i class="fa-solid fa-trash-can button-size"></i></button>
+                </div>
 
         </aside>
         
@@ -354,7 +352,6 @@
 
                 <div id="groupSheetHeader">
                     <h1 id="nameDisplay">Mon groupe</h1>
-                    <p id="vices"></p>
                 </div>
 
 
