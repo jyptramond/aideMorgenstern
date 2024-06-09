@@ -73,6 +73,10 @@ article h3 {
     border-bottom: solid 2px rgb(56, 56, 56);
 }
 
+h4 {
+    margin: 15px 0 4px;
+}
+
 .addedToSpellbook {
     display: flex;
     flex: column;
@@ -109,6 +113,7 @@ margin-bottom: 5px;
 .header {
     margin-bottom: 8px;
 }
+
 
 
 .description-spell {

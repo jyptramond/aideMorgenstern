@@ -224,9 +224,9 @@ function displaySpell(spell, spellsDiv) {
     const nameSpell = document.createElement("h3");
     nameSpell.innerHTML = `${spell.isForbidden ? `${spell.name} <i class="fa-solid fa-book-skull"></i>` : `${spell.name}`}`;
 
-    const formulaSpell = document.createElement("p");
-    formulaSpell.classList.add("formula");
-    formulaSpell.innerHTML = spell.formula;
+    //const formulaSpell = document.createElement("p");
+    //formulaSpell.classList.add("formula");
+    //formulaSpell.innerHTML = spell.formula;
 
     const ritualSpell = document.createElement("p");
     ritualSpell.innerHTML = `${spell.isRitual ? `RITUEL` : ''}`
@@ -251,7 +251,7 @@ function displaySpell(spell, spellsDiv) {
         spellsDiv.appendChild(spellCard);
 
 		spellCard.appendChild(nameSpell);
-        spellCard.appendChild(formulaSpell);
+        //spellCard.appendChild(formulaSpell);
         if (ritualSpell.innerHTML !== null) {
             spellCard.appendChild(ritualSpell);
         }
@@ -430,28 +430,59 @@ function filterMagicType(array) {
 }
 
 function getTricks(data) {
+    let array = tricks.filter(trick => {
+        let matchFound = false;
 
-    let array = tricks.filter(trick => 
-        trick.alt.includes(data) || 
-        trick.name.toLowerCase().includes(data) || 
-        trick.description.toLowerCase().includes(data)
-    );
+        //check 'alt' field
+        if (Array.isArray(trick.alt)) {
+            if (trick.alt.some(entry => entry.toLowerCase().includes(data.toLowerCase()))) {
+                matchFound = true;
+            }
+        } else if (trick.alt.toLowerCase().includes(data.toLowerCase())) {
+            matchFound = true ;
+        }
 
-    return array
+        // Check for 'name' and 'description' fields
+        if (trick.name.toLowerCase().includes(data.toLowerCase()) ||
+            trick.description.toLowerCase().includes(data.toLowerCase())) {
+                matchFound = true ;
+            }
+            return matchFound
+    });
+
+    return array ;
 }
 
 
 function getSpells(data) {
+    let array = spells.filter(spell => {
+        let matchFound = false;
 
-    let array = spells.filter(spell =>
-        (spell.alt.includes(data) ||
-        spell.name.toLowerCase().includes(data) ||
-        spell.description.toLowerCase().includes(data) ||
-        spell.formula.toLowerCase().includes(data)) &&
-        spell.difficulty >= difficultyFilter
-    );
+        // Check for 'alt' field
+        if (Array.isArray(spell.alt)) {
+            if (spell.alt.some(entry => entry.toLowerCase().includes(data.toLowerCase()))) {
+                matchFound = true;
+            }
+        } else if (spell.alt.toLowerCase().includes(data.toLowerCase())) {
+            matchFound = true;
+        }
 
-    return array
+        // Check for 'name', 'description', 'formula' fields
+        if (spell.name.toLowerCase().includes(data.toLowerCase()) ||
+            spell.description.toLowerCase().includes(data.toLowerCase()) ||
+            spell.formula.toLowerCase().includes(data.toLowerCase())) {
+            matchFound = true;
+        }
+
+        // Check difficulty filter
+        if (spell.difficulty < difficultyFilter) {
+            matchFound = false;
+        }
+
+        return matchFound;
+    });
+
+    return array;
 }
 
 function theFilter() {

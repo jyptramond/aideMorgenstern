@@ -150,11 +150,11 @@ const origine = [
     ["Nain",        30,      25,     25,     30,     25,     30,     20,     20,     20,     20,     20,     30,     0],
     ["Halfelin",    20,      25,     35,     20,     15,     30,     30,     25,     35,     25,     25,     20,     0],
 
-    ["Elvin",       25,      25,     25,     20,     25,     25,     25,     30,     30,     25,     25,     20,     0],
-    ["Hudvàr",      25,      25,     25,     30,     25,     25,     20,     20,     25,     25,     25,     30,     0],
-    ["Ogrin",       30,      15,     15,     35,     35,     20,     25,     25,     20,     25,     25,     25,     0],
-    ["Orquin",      30,      20,     25,     25,     30,     20,     25,     25,     20,     25,     25,     25,     0],
-    ["Morvelin",    25,      25,     30,     30,     20,     25,     30,     25,     20,     25,     25,     20,     0],
+    ["Demi-Elfe",   25,      25,     25,     20,     25,     25,     25,     30,     30,     25,     25,     20,     0],
+    ["Demi-Nain",   25,      25,     25,     30,     25,     25,     20,     20,     25,     25,     25,     30,     0],
+    ["Orc",         30,      15,     15,     35,     35,     20,     25,     25,     20,     25,     25,     25,     0],
+    ["Demi-Orc",    30,      20,     25,     25,     30,     20,     25,     25,     20,     25,     25,     25,     0],
+    ["Gobelin",     25,      25,     30,     30,     20,     25,     30,     25,     20,     25,     25,     20,     0],
 
     ]
 
@@ -385,9 +385,9 @@ const tricks = [
         description: "Vous plongez dans un état de catalepsie pendant *MAG* heures, qui vous fait passer pour mort. Conscient, vous ne pouvez cependant ni voir, ni agir. Seul un test de MAG réussi peut détecter la supercherie."
     },
     {
-        name: "Connaissance <br>des objets magiques",
+        name: "Détection ésotérique",
         id: "t10",
-        alt:"connaissance des objets magiques",
+        alt: ["connaissance des objets magiques", "objet magique", "artefact"],
         type: ["Enchantements", "Alchimie"],
         description: "Ce sort permet de détecter tous les objets magiques autour de vous pendant *MAG* minutes. De plus, il vous permet de connaître exactement le pouvoir d’un tel objet, mais il vous faudra le porter (casque sur la tête, amulette autour du cou, bottes aux pieds, etc.)."
     },
@@ -399,9 +399,9 @@ const tricks = [
         description: "Vous reconnaissez les potions et préparations alchimiques lorsque vous en voyez une, leurs effets et comment vous en prémunir (si ce moyen est possible et connu des alchimistes)."
     },
     {
-        name: "Connaissance du temps écoulé",
+        name: "Perception temporelle",
         id: "t12",
-        alt:"connaissance du temps ecoule",
+        alt: ["connaissance du temps ecoule", "Connaissance du temps écoulé"],
         type: ["Châtiment", "Divination", "Mentalisme"],
         description: "Ce tour a une double utilité : connaître l’âge d’une chose ou d’une personne, et connaître le temps exact qui s’est écoulé à partir d’un moment précis."
     },
@@ -420,7 +420,7 @@ const tricks = [
         description: "Vous donnez une envie irrésistible à une cible (figurant ou second rôle) de bâiller, tousser, éternuer ou se gratter. Ce désagrément ne dure qu’une seconde, mais peut s’avérer précieux au bon moment. La cible agacée subit 1 Désavantage pour ce tour."
     },
     {
-        name: "Diable de poussière",
+        name: "Tourbillon",
         id: "t15",
         alt:"diable de poussiere",
         type: ["Air", "Terre"],
@@ -641,7 +641,7 @@ const tricks = [
 
 const spells = [
     {
-      name: "Abondance <br>providentielle de Tegmine",
+      name: "Abondance providentielle",
       id: "s1",
       alt: "Abondance providentielle de Tegmine",
       difficulty: 20,
@@ -654,9 +654,9 @@ const spells = [
       description: "Vous plongez vos mains dans la terre et en sortez de gros fruits ou légumes, prêts à être dégustés. Ce sort permet de fournir un repas frugal à (RU) personnes."
     },
     {
-      name: "Acuité animale de Nünki",
+      name: "Acuité animale",
       id: "s2",
-      alt: "acuite animale de nunki",
+      alt: "acuite animale de nunki, Acuité animale de Nünki",
       difficulty: 10,
       formula: "Les Hommes ont-ils vendu tous leurs premiers instincts ?<br>L’ouïe, le flair et la vue, pour ne plus avoir faim ?",
       type: ["Animalisme", "Divination", "Voyage"],
@@ -667,9 +667,9 @@ const spells = [
       description: "Vous développez un des sens de votre cible de façon extraordinaire. Elle gagne +20 en PER avec un sens précis. Elle peut ainsi disposer d’une vue d’aigle, de l’odorat ou l’ouïe du chien, de la vision nocturne du chat…"
     },
     {
-      name: "Aigle-ouragan",
+      name: "Faucon-Typhon",
       id: "s3",
-      alt: "aigle ouragan",
+      alt: ["aigle ouragan", "aigle-ouragan", "faucon typhon"],
       difficulty: -30,
       formula: "Ses grandes ailes déployées, sont comme de noirs nuages,<br>Ses serres sont des épées, son cri est un orage",
       type: ["Air"],
@@ -679,7 +679,7 @@ const spells = [
       range: "extrême",
       resistance: "-",
       success: "Dégâts +1",
-      description: "Vous invoquez l’Aigle-Ouragan, un rapace de 18 mètres d’envergure dont les cris sont terrifiants. Vous pouvez le monter avec vos compagnons et lui ordonner de combattre. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>AIGLE-OURAGAN</h4> <p><strong>COM</strong> 70/-20 <strong>Init</strong> : 21 <strong>Prot</strong> : 2 <strong>PV</strong> : 31 <br><strong>DG</strong> : Serres, bec RU+7 <br><strong>Comp</strong> : END 70, FOR 70, MOU 50, PER&nbsp;80,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : Vol, PEUR (1)</p></div"
+      description: "Vous invoquez le Faucon-Typhon, un rapace de 18 mètres d’envergure dont les cris sont terrifiants. Vous pouvez le monter avec vos compagnons et lui ordonner de combattre. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>FAUCON-TYPHON</h4> <p><strong>COM</strong> 70/-20 <strong>Prot</strong> : 2 <strong>PV</strong> : 31 <br><strong>DG</strong> : Serres, bec RU+7 <br><strong>Comp</strong> : END 70, FOR 70, MOU 50, PER&nbsp;80,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : Vol, PEUR (1)</p></div>"
     },
     {
       name: "Ailes de l’archange",
@@ -776,9 +776,9 @@ const spells = [
       description: "Une arme de lumière (épée ou lance) apparaît dans les mains de votre cible. Elle n’est utilisable que contre les démons, les dragons et les morts-vivants et confère à son porteur un +10 au COM et +*MAG* aux dégâts (qui s’ajoutent aux dégâts de base). Le porteur de l’arme peut être désarmé."
     },
     {
-      name: "Arme invincible d’Althor",
+      name: "Arme invincible",
       id: "s11",
-      alt: "arme invincible d'Althor",
+      alt: "arme invincible d'Althor, Arme invincible d’Althor",
       difficulty: 10,
       formula: "Il se joue des armures, invincible est ce fer,<br>Qu’il abatte les murs, qui se brisent comme du verre",
       type: ["Enchantements"],
@@ -804,9 +804,9 @@ const spells = [
       description: "Une armée illusoire vous suit : il y a *MAG*x100 hommes en armes, bruyants, hargneux et très impressionnants. Ils forment un seul bloc et vous ne pouvez les div"
     },
     {
-        name: "Armure des Rois",
+        name: "Armure royale",
         id: "s13",
-        alt: "",
+        alt: "Armure des Rois",
         difficulty: 0,
         formula: "Pour affronter le Mal, j’ai endossé l’armure<br>Forgée dans le métal qui arme les coeurs purs",
         type:["Guerre", "Enchantements"],
@@ -817,9 +817,9 @@ const spells = [
         description: "Vous enchantez une armure qui gagne +*MAG* points de protection, et devient indestructible durant toute la durée du sort. Viser une partie non protégée permet toujours d’ignorer la protection fournie car le sort n’enchante que l’armure."
       },
       {
-        name: "Bannissement du mal",
+        name: "Bannissement",
         id: "s14",
-        alt: "",
+        alt: "Bannissement du mal",
         difficulty: 0,
         formula: "Que la douce lumière, aussi pure qu’un cristal<br>Renvoie à la poussière les serviteurs du mal",
         type: ["Protection", "Châtiment"],
@@ -885,9 +885,9 @@ const spells = [
         description: "Vous enchantez une flamme, qui une fois passée sur une blessure, la guérira. Elle laissera cependant une vilaine cicatrice noirâtre. Ce sort permet de guérir (RU) Points de Vitalité et d’arrêter les hémorragies."
       },
       {
-        name: "Chemin sûr d’Auva",
+        name: "Chemin sûr",
         id: "s19",
-        alt: ["chemin sur d'auva", "chemin sûr d'Auva"],
+        alt: ["chemin sur d'auva", "chemin sûr d'Auva", "Chemin sûr d’Auva"],
         difficulty: 20,
         formula: "Ce halo dans la nuit, il m’appelle et m’attire,<br>Tel un phare qui luit, pour guider les navires",
         type: ["Voyage", "Divination"],
@@ -1056,9 +1056,9 @@ const spells = [
         description: "La cible du sort peut courir à une vitesse incroyable (jusqu’à MOUx2 km/h) et se déplacer sur les murs."
       },
       {
-        name: "Course sylvestre de Nünki",
+        name: "Course sylvestre",
         id: "s32",
-        alt: "course sylvestre de nunki",
+        alt: ["course sylvestre de nunki", "Course sylvestre de Nünki"],
         difficulty: 0,
         formula: "Le sentier que j’emprunte, vénérable secret,<br>Ne laisse aucune empreinte, dans les bois et forêts",
         type: ["Terre"],
@@ -1110,9 +1110,9 @@ const spells = [
         description: "Une musique funèbre résonne autour de vous. Désignez jusqu’à (RU) cibles, qui se mettent à danser une gigue démentielle de pantins désarticulés, et ne peuvent rien faire d’autre. Les attaquer est toujours considéré comme une attaque surprise mais mettra fin à l’envoûtement et elles reprendront leurs esprits au prochain tour. Si vous attendez la fin du sort, les danseurs tomberont à terre et seront Épuisés."
       },
       {
-        name: "Décalage illusoire de Nuhataïa",
+        name: "Décalage illusoire",
         id: "s36",
-        alt: ["decalage illusoire de Nuhataia", "décalage illusoire de nuhataia"],
+        alt: ["decalage illusoire de Nuhataia", "décalage illusoire de nuhataia", "Décalage illusoire de Nuhataïa"],
         difficulty: 0,
         formula: "Évitons cet endroit, où le moindre faux-pas<br>Mène les maladroits, de la vie au trépas",
         type: ["Illusions"],
@@ -1123,9 +1123,9 @@ const spells = [
         description: "L’image de la cible est décalée d’un pas sur le côté par rapport à son corps, qui devient transparent (mais pas invisible). Ainsi, les ennemis attaqueront en priorité le double, ce qui laisse la possibilité de riposter par des attaques d’opportunité. L’ennemi peut saisir la supercherie en réussissant un test de PER."
       },
       {
-        name: "Déluge de la Noyée",
+        name: "Déluge",
         id: "s37",
-        alt: "",
+        alt: "Déluge de la Noyée",
         difficulty: -20,
         formula: "Crains le courroux du ciel, et cours trouver refuge<br>Tombez pluies torrentielles, déchaînez le Déluge !",
         type: ["Eau"],
@@ -1230,9 +1230,9 @@ const spells = [
         description: "La cible pourra relancer son prochain échec gratuitement. Vous pouvez également bénir une arme afin qu’elle puisse blesser les créatures maléfiques insensibles aux armes normales comme les fantômes."
       },
       {
-        name: "Dragon des Abysses",
+        name: "Dragon Abyssal",
         id: "s45",
-        alt: "",
+        alt: "Dragon des Abysses",
         difficulty: -30,
         formula: "Il surgit du néant, et sillonne le monde<br>Le Dragon-Océan est en chasse et il gronde",
         type: ["Eau"],
@@ -1242,7 +1242,7 @@ const spells = [
         range: "Extrême",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Vous invoquez le Dragon des Abysses, un gigantesque monstre d’eau. Il ne peut apparaître que dans une grande étendue d’eau (lac, fleuve, mer, océan…). Il peut combattre à vos côtés, et vous avaler pour vous faire voyager sous l’eau, ainsi que (MAG) alliés. Il vous recrachera ensuite à la surface. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>DRAGON DES ABYSSES</h4> <p><strong>COM</strong> 70/-20 <strong>Init</strong> : 15 <strong>Prot</strong> : 5 <strong>PV</strong> : 37 <br><strong>DG</strong> : Crocs, griffes RU+8 <br><strong>Comp</strong> : END 90, FOR 90, MOU&nbsp;50,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : PEUR (1)</p></div>"
+        description: "Vous invoquez le Dragon Abyssal, un gigantesque monstre d’eau. Il ne peut apparaître que dans une grande étendue d’eau (lac, fleuve, mer, océan…). Il peut combattre à vos côtés, et vous avaler pour vous faire voyager sous l’eau, ainsi que (MAG) alliés. Il vous recrachera ensuite à la surface. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>DRAGON ABYSSAL</h4> <p><strong>COM</strong> 70/-20 <strong>Prot</strong> : 5 <strong>PV</strong> : 37 <br><strong>DG</strong> : Crocs, griffes RU+8 <br><strong>Comp</strong> : END 90, FOR 90, MOU&nbsp;50,&nbsp;VOL&nbsp;50 <br><strong>Spécial</strong> : PEUR (1)</p></div>"
       },
       {
         name: "Duplication",
@@ -1562,7 +1562,7 @@ const spells = [
         range: "Contact",
         resistance: "-",
         success: "Protection +1",
-        description: "Qu’il s’agisse d’un corps sculpté ou d’un amalgame de cadavres, vous avez créé un humanoïde massif à votre service. Il ne peut communiquer et vous devez inscrire sur un petit parchemin les ordres qu’il exécutera et lui glisser dans la bouche. Vous pouvez également voir par ses yeux en lui enfonçant deux pierres précieuses dans les orbites. Ses valeurs sont les suivantes : COM 45/+5 Init : 9 Prot : 2 PV : 15+RU DG : Mains nues RU+5 Comp : FOR 60, MOU 20, PER 30, VOL 50"
+        description: "Qu’il s’agisse d’un corps sculpté ou d’un amalgame de cadavres, vous avez créé un humanoïde massif à votre service. Il ne peut communiquer et vous devez inscrire sur un petit parchemin les ordres qu’il exécutera et lui glisser dans la bouche. Vous pouvez également voir par ses yeux en lui enfonçant deux pierres précieuses dans les orbites. <div><h4>GOLEM</h4> <p><strong>COM</strong> 45/+5 <strong>Prot</strong> : 2 <strong>PV</strong> : 15 <br><strong>DG</strong> : Mains nues RU+5<br><strong>Comp</strong> : FOR 60, MOU 20, PER 30, VOL 50</p></div>"
       },
       {
         name: "Guérison de la folie",
@@ -1617,7 +1617,7 @@ const spells = [
         range: "Moyenne",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Un guerrier illusoire - dont vous décidez de l’apparence - apparaît et affronte vos ennemis. Ceux-ci doivent réussir un test de VOL à chaque tour pour ne pas subir ses coups, sans quoi les attaques qu’il porte sont bien réelles. Ses valeurs sont les suivantes : <div><h4>GUERRIER FANTASMATIQUE</h4> <p><strong>COM</strong> 60/-10 <strong>Init</strong> : 15 <strong>Prot</strong> : 5 <strong>PV</strong> : 20 <br><strong>DG</strong> : Épée ou hache RU +6 <br><strong>Comp</strong> : FOR 60, MOU 70</p></div>"
+        description: "Un guerrier illusoire - dont vous décidez de l’apparence - apparaît et affronte vos ennemis. Ceux-ci doivent réussir un test de VOL à chaque tour pour ne pas subir ses coups, sans quoi les attaques qu’il porte sont bien réelles. Ses valeurs sont les suivantes : <div><h4>GUERRIER FANTASMATIQUE</h4> <p><strong>COM</strong> 60/-10 <strong>Prot</strong> : 5 <strong>PV</strong> : 20 <br><strong>DG</strong> : Épée ou hache RU +6 <br><strong>Comp</strong> : FOR 60, MOU 70</p></div>"
       },
       {
         name: "Histoire de l’inconnu",
@@ -1633,9 +1633,9 @@ const spells = [
         description: "En touchant un objet ou un être vivant, vous apprenez des détails de son histoire (à la discrétion du MJ). Pour un objet, il peut s’agir du sexe de son dernier propriétaire et de son état d’esprit, du prix pour lequel il a été échangé, de l’identité de son fabricant, etc. Concernant un être vivant, le sort permet de revivre des moments de son passé. Vous pouvez orienter vos visions et chercher des détails précis."
       },
       {
-        name: "Hurlement terrifiant de Shyr",
+        name: "Hurlement terrifiant",
         id: "s75",
-        alt: "",
+        alt: "Hurlement terrifiant de Shyr",
         difficulty: 10,
         formula: "Laisse entrer la furie, c’est une folle délivrance<br>C’est un souffle, c’est un cri qui déchire le silence",
         type: ["Animalisme"],
@@ -1672,9 +1672,9 @@ const spells = [
         description: "Vous insufflez vos idées dans l’esprit de votre cible. Elle ira dans votre sens et vous gagnez un bonus de +20 en SOC avec cette personne pendant toute la durée du sort. Ce sort ne fonctionne que sur une cible prête à dialoguer et non un ennemi assoiffé de sang en plein combat."
       },
       {
-        name: "Instinct infaillible de Marrak",
+        name: "Instinct infaillible",
         id: "s78",
-        alt: "",
+        alt: "Instinct infaillible de Marrak",
         difficulty: 0,
         formula: "A la croisée des routes, j’ai suivi mon instinct,<br>Ni la peur ni les doutes, n’entravaient mon destin",
         type: ["Protection", "Châtiment", "Divination"],
@@ -1725,9 +1725,9 @@ const spells = [
         description: "La cible consentante devient totalement invisible pour les morts-vivants, les démons et tous les monstres dotés d’une vision magique comme les golems ou les gargouilles. Cependant, si elle attaque un de ces monstres pendant ce sort, elle redeviendra visible immédiatement (mais elle a tout de même droit à une attaque surprise)."
       },
       {
-        name: "Invocation de l’homme-lige",
+        name: "Vassal inflexible",
         id: "s82",
-        alt: ["invocation de l'homme-lige", "invocation de l'homme lige"],
+        alt: ["invocation de l'homme-lige", "invocation de l'homme lige", "Invocation de l’homme-lige"],
         difficulty: 0,
         formula: "Tu ne cherches ni la gloire, ni l’or, ni le prestige,<br>Bats-toi pour ma victoire, ô valeureux homme-lige",
         type: ["Guerre", "Enchantements"],
@@ -1735,7 +1735,7 @@ const spells = [
         range: "Courte",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Vous invoquez un guerrier en armure antique et aux yeux brillants qui agit immédiatement selon vos ordres. Il n’est pas obligé d’attaquer et peut très bien se tenir près de vous, comme un garde du corps. <div><h4>HOMME-LIGE</h4><p><strong>COM</strong> 50/0 <strong>PV</strong> : 20 <strong>Init</strong> : 12 <br><strong>Prot</strong> : 4 (armure antique) <br><strong>DG</strong> : Épée ou Lance RU+5 <br><strong>Comp</strong> : FOR 50, MOU 40, PER 50</p></div>"
+        description: "Vous invoquez un guerrier en armure antique et aux yeux brillants qui agit immédiatement selon vos ordres. Il n’est pas obligé d’attaquer et peut très bien se tenir près de vous, comme un garde du corps. <div><h4>VASSAL</h4><p><strong>COM</strong> 50/0 <strong>PV</strong> : 20 <br><strong>Prot</strong> : 4 (armure antique) <br><strong>DG</strong> : Épée ou Lance RU+5 <br><strong>Comp</strong> : FOR 50, MOU 40, PER 50</p></div>"
       },
       {
         name: "Jugement Dernier",
@@ -1752,9 +1752,9 @@ const spells = [
         description: "<i>« Tuez-les tous, Dieu reconnaîtra les siens »</i><br>Le ciel se déchire, et les astres semblent se disperser le temps d’une seconde. Tous vos ennemis voient leur peau se flétrir, comme calcinée par le châtiment divin. Ils subissent tous immédiatement (RU +8) dégâts de feu (l’armure ne compte pas). Les survivants perdent ensuite 1 PV par tour jusqu’à ce qu’ils subissent des soins. Ce sort n’a aucun effet contre une âme sainte ou innocente."
       },
     {
-        name: "Lame vampire de Shaula",
+        name: "Lame vampirique",
         id: "s84",
-        alt: "",
+        alt: ["Lame vampire de Shaula"],
         difficulty: 0,
         formula: "Elle veut d’autres victimes, sombre lame assoiffée<br>Le sang de tous ses crimes ne l’a pas rassasiée",
         type: ["Enchantements", "Nécromancie"],
@@ -1794,9 +1794,9 @@ const spells = [
         description: "Vous pouvez communiquer avec les animaux, leur demander des services qu’ils accompliront si cela ne les met pas en danger et que vous leur êtes amical."
     },
     {
-        name: "Lecture des Pensées de Lanks",
+        name: "Lecture de l'esprit",
         id: "s87",
-        alt: "lecture des pensées de lanks",
+        alt: ["lecture des pensées de lanks", "Lecture des Pensées de Lanks"],
         difficulty: -10,
         formula: "Toute âme est comme un livre au mystérieux langage,<br>Les secrets qu’il délivre, sont enfouis dans ses pages",
         type: ["Châtiment", "Mentalisme"],
@@ -1821,9 +1821,9 @@ const spells = [
         description: "Ce sort enferme les sens de votre cible. Sa vision se trouble, son ouïe est soudain déficiente, même les odeurs lui sont difficiles à percevoir. Il subit un -20 en HAB, PER et TIR, et un -10 à toutes ses actions physiques."
     },
     {
-        name: "Lion de braise",
+        name: "Lion Ardent",
         id: "s89",
-        alt: "",
+        alt: "Lion de Braise",
         difficulty: -30,
         formula: "Trop longtemps enfermé, je l’ai laissé s’enfuir,<br>Le fauve est affamé, écoutez-le rugir !",
         type: ["Feu"],
@@ -1833,7 +1833,7 @@ const spells = [
         range: "Courte",
         resistance: "-",
         success: "Dégâts +1",
-        description: "Vous invoquez le Lion de Braise, monstre rougeoyant à la crinière enflammée, qui pourra combattre à vos côtés. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>LION DE BRAISE</h4> <p><strong>COM</strong> 75/-25 <strong>Init</strong> : 21 <strong>Prot</strong> : 2 <strong>PV</strong> : 29 <br><strong>DG</strong> : Griffes, crocs RU +7 dégâts de feu <br><strong>Comp</strong> : FOR 70, MOU 70, PER 50, VOL 50 <br><strong>Spécial</strong> : PEUR, Corps de feu (son corps incandescent cause 1 dégât de feu par tour à tous ses adversaires en mêlée).</p></div>"
+        description: "Vous invoquez le Lion de Braise, monstre rougeoyant à la crinière enflammée, qui pourra combattre à vos côtés. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>LION DE BRAISE</h4> <p><strong>COM</strong> 75/-25 <strong>Prot</strong> : 2 <strong>PV</strong> : 29 <br><strong>DG</strong> : Griffes, crocs RU +7 dégâts de feu <br><strong>Comp</strong> : FOR 70, MOU 70, PER 50, VOL 50 <br><strong>Spécial</strong> : PEUR, Corps de feu (son corps incandescent cause 1 dégât de feu par tour à tous ses adversaires en mêlée).</p></div>"
     },
     {
         name: "Main de la Justice",
@@ -1901,9 +1901,9 @@ const spells = [
         description: "Vous pouvez réduire ou augmenter la puissance du vent et rendre ainsi un vent faible en un vent fort pour avancer plus vite sur une embarcation, ou pour éteindre une torche. En combat vous pouvez concentrer la puissance du vent en une puissante rafale qui dure 1 tour et met fin au sort immédiatement. Cette rafale fait tomber RU objets et/ou adversaires présents."
     },
     {
-        name: "Mal de mer de Sadaltajir",
+        name: "Mal de mer",
         id: "s95",
-        alt: "",
+        alt: "Mal de mer de Sadaltajir",
         difficulty: 10,
         formula: "De la poupe à la proue, le navire penche et tangue<br>Les vagues et les remous, laissent les malades exsangues",
         type: ["Eau", "Mentalisme"],
@@ -1967,9 +1967,9 @@ const spells = [
         description: "Pour chaque allié blessé, vous perdez 1 PV. En contrepartie, ils regagnent tous immédiatement (RU) PV. Le maximum d’alliés bénéficiant du sort est de (*MAG*) alliés."
     },
     {
-        name: "Mélodie de la Dame Grise",
+        name: "Mélodie envoûtante",
         id: "s100",
-        alt: "melodie de la dame grise",
+        alt: ["melodie de la dame grise", "Mélodie de la Dame Grise", "mélodie envoutante", "melodie envoutante"],
         difficulty: 0,
         formula: "Même le froid, la misère, n’ont brisé l’harmonie<br>Car nous restons des frères, courageux et unis",
         type: ["Enchantements", "Protection", "Voyage"],
@@ -1993,9 +1993,9 @@ const spells = [
         description: "Vous prenez la forme et les aptitudes physiques (scores, capacités) d’un animal commun. Vous pouvez choisir cet animal selon votre *MAG*.<ul><li> 1-2 : rat, poule, fourmi, mouton</li><li> 3-4 : chat, chien, renard, moineau, mouche, mule</li><li> 5-6 : loup, corbeau, serpent, araignée, cheval, cerf</li><li> 7+ : ours, faucon, aigle, lion, taureau</li></ul>"
     },
     {
-        name: "Miasmes Putrides de Marrak",
+        name: "Miasmes putrides",
         id: "s102",
-        alt: "",
+        alt: "Miasmes Putrides de Marrak",
         difficulty: 10,
         formula: "Dans un souffle puissant, que jaillissent les vapeurs<br>Et relents pestilents venus des profondeurs",
         type: ["Nécromancie"],
@@ -2139,9 +2139,9 @@ const spells = [
         description: "Vous pouvez diffuser une lumière intense ou étendre une ombre aussi noire que la nuit sur une zone de *MAG* mètres de rayon. De plus, vous maîtrisez les jeux d’ombre et de lumière, en créant des feux follets, des lumières dansantes, ou donner vie à votre ombre, qui peut se déplacer et communiquer par signes."
     },
     {
-        name: "Or des fous",
+        name: "Avarice",
         id: "s113",
-        alt: "",
+        alt: "Or des fous",
         difficulty: 10,
         formula: "Poussière de mensonge, or des fous, poudre aux yeux,<br>Font sortir de mes songes le métal si précieux",
         type: ["Enchantements", "Alchimie"],
@@ -2153,9 +2153,9 @@ const spells = [
         description: "Vous enchantez une pincée de poussière qui peut recouvrir jusqu’à *MAG* piécettes ou cailloux. Elle leur donnera l’apparence de véritables pièces d’or ou pierres précieuses pendant toute la durée du sort. Vous pouvez changer l’aspect des pièces pour qu’elles semblent frappées du lieu que vous souhaitez avec l’emblème voulu."
     },
     {
-        name: "Ours de Pierre",
+        name: "Ours Minéal",
         id: "s114",
-        alt: "",
+        alt: "Ours de Pierre",
         difficulty: -30,
         formula: "Souviens-toi du gardien des monts et des forêts,<br>Géant des temps anciens, le voilà qui renaît",
         type: ["Terre"],
@@ -2164,7 +2164,7 @@ const spells = [
         range: "Courte",
         resistance: "-",
         success: "PV de l’Ours +*MAG*",
-        description: "Vous invoquez l’Ours de pierre, colossal monstre minéral aux yeux d’obsidienne, qui peut combattre à vos côtés ou vous transporter vous et vos compagnons. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>OURS DE PIERRE</h4> <p><strong>COM</strong> 70/-20 <strong>Init</strong> : 11 <strong>Prot</strong> : 7 <strong>PV</strong> : 31 <br><strong>DG</strong> : Griffes RU+8 <br><strong>Comp</strong> : FOR 80, MOU 20, PER 20, VOL 50 <br><strong>Spécial</strong> : Corps minéral. Sur une R+, l’ennemi brise son arme contre le corps du monstre. Les masses et les marteaux ne sont pas concernés par cet effet.</p></div>"
+        description: "Vous invoquez l’Ours Minéral, colossal monstre rocailleux aux yeux d’obsidienne, qui peut combattre à vos côtés ou vous transporter vous et vos compagnons. Vous ne pouvez l’invoquer plus d’une fois par semaine. <div><h4>OURS MINÉRAL</h4> <p><strong>COM</strong> 70/-20 <strong>Prot</strong> : 7 <strong>PV</strong> : 31 <br><strong>DG</strong> : Griffes RU+8 <br><strong>Comp</strong> : FOR 80, MOU 20, PER 20, VOL 50 <br><strong>Spécial</strong> : Corps minéral. Sur une R+, l’ennemi brise son arme contre le corps du monstre. Les masses et les marteaux ne sont pas concernés par cet effet.</p></div>"
     },
     {
         name: "Palimpseste",
@@ -2219,9 +2219,9 @@ const spells = [
         description: "La peau de la cible consentante prend l’aspect du bois, et elle bénéficie d’une protection de *MAG*-1 points supplémentaires partout sur le corps. Elle gagne également +20 en DIS dans les bois et forêts."
     },
     {
-        name: "Piège de feu de Mesarthim",
+        name: "Piège de feu",
         id: "s119",
-        alt: "",
+        alt: "Piège de feu de Mesarthim",
         difficulty: 0,
         formula: "J’ai tracé ce symbole pour défendre les miens<br>Et qu’un jour il immole, les curieux, les vauriens",
         type: ["Châtiment", "Feu"],
@@ -2271,9 +2271,9 @@ const spells = [
         description: "Un cercueil de glace vient recouvrir le corps de votre ennemi. Cette prison l’empêche de bouger et lui cause (RU/2) dégâts de froid à chaque tour. Il est néanmoins protégé des autres attaques. Il pourra détruire cette prison avec un test de FOR à -20."
     },
     {
-        name: "Puissance du Roi-Fauve",
+        name: "Puissance Bestiale",
         id: "s123",
-        alt: "puissance du roi fauve",
+        alt: ["puissance du roi fauve", "Puissance du Roi-Fauve"],
         difficulty: 0,
         formula: "Ne plus suivre les ordres, courir sans s’arrêter<br>Hurler, bondir et mordre : goûter la liberté",
         type: ["Animalisme"],
@@ -2284,9 +2284,9 @@ const spells = [
         description: "Un flot d’énergie bestiale électrise le corps de la cible et lui procure un grand sentiment de puissance. Elle gagne 10% en COM, FOR, END, et MOU. Son score de Vitalité n’est pas modifié par cette augmentation."
     },
     {
-        name: "Reflets multiples des Jumeaux",
+        name: "Reflets multiples",
         id: "s124",
-        alt: "",
+        alt: "Reflets multiples des Jumeaux",
         difficulty: 0,
         formula: "Les reflets des miroirs attendent ce stratagème,<br>Et brûlent d’enfin pouvoir exister par eux-mêmes",
         type: ["Illusions"],
@@ -2336,9 +2336,9 @@ const spells = [
         description: "Ce sortilège ne peut être lancé qu’après un affrontement car il se nourrit de l’apaisement de la situation. Il permet de soigner jusqu’à (RU) alliés, qui récupèrent chacun *MAG* points de Vitalité."
     },
     {
-        name: "Respiration aquatique de Vernalys",
+        name: "Respiration aquatique",
         id: "s128",
-        alt: "",
+        alt: "Respiration aquatique de Vernalys",
         difficulty: 20,
         formula: "J’ai reçu ce cadeau de la main des tritons<br>Pour les suivre sous l’eau dans les Pays Profonds",
         type: ["Animalisme", "Eau"],
@@ -2360,7 +2360,7 @@ const spells = [
         range: "Moyenne",
         resistance: "-",
         success: "Durée x2",
-        description: "(RU) cadavres autour de vous s’animent et vous obéissent. Consultez les valeurs des Zombies ou des Squelettes (cf Livre II)."
+        description: "(RU) cadavres autour de vous s’animent et vous obéissent (zombies ou squelettes). <div><h4>SQUELETTE</h4> <p><strong>COM</strong> 35/+15 <strong>Prot</strong> : 2 (bouclier) <strong>PV</strong> : 10 <br><strong>DG</strong> : Épée longue RU+3 <br> <i>En force: 25/+25 DG+3</i> <br><strong>Comp</strong> : PER 25, VOL 30<br><strong>Spécial</strong> : PEUR (1), Mort-vivant <br>Vulnérabilité (armes contondantes)</p></div><div><h4>ZOMBIE</h4> <p><strong>COM</strong> 30/+20 <strong>Prot</strong> : 0 <strong>PV</strong> : 8 <br><strong>DG</strong> : Mains nues, morsure RU+1<br><strong>Comp</strong> : DIS 20, FOR 30, MOU 15, VOL 20<br><strong>Spécial</strong> : PEUR (1), Mort-vivant</p></div>"
     },
     {
         name: "Révélations morbides",
@@ -2441,9 +2441,9 @@ const spells = [
         description: "Un cercle magique de *MAG* mètres de rayon vous entoure. Toute créature qui franchit ce cercle subit *MAG* dégâts de feu par tour passé à l’intérieur du cercle."
     },
     {
-        name: "Sécheresse de l’Été",
+        name: "Sécheresse",
         id: "s136",
-        alt: ["secheresse de l'ete", "sécheresse de l'été"],
+        alt: ["secheresse de l'ete", "sécheresse de l'été", "Sécheresse de l’Été"],
         difficulty: 0,
         formula: "Elle s’acharne, vengeresse, fait plier les empires,<br>La cruelle sécheresse vous regarde dépérir",
         type: ["Feu", "Eau"],
@@ -2562,9 +2562,9 @@ const spells = [
         description: "Un ennemi est pris à la gorge et a de plus en plus de mal à respirer. Il est Affaibli et subit MAG dégâts asphyxiants par tour."
     },
     {
-        name: "Territoire de l’Hiver",
+        name: "Hiver",
         id: "s145",
-        alt: "territoire de l'hiver",
+        alt: ["territoire de l'hiver", "Territoire de l’Hiver"],
         difficulty: 0,
         formula: "L’imprudent qui veut suivre, ces chemins recouverts<br>Par la neige et le givre, devra vaincre l’Hiver",
         type: ["Eau"],
@@ -2588,9 +2588,9 @@ const spells = [
         description: "Lorsque la torche ciblée est allumée, tous ceux qui se trouvent à moins de (MAG) mètres doivent dire la vérité aux questions qu’on leur pose. En cas de mensonge, ils subissent une brûlure magique (1 dégât de feu). Ils peuvent néanmoins garder le silence."
     },
     {
-        name: "Torche magique de Tegmine",
+        name: "Torche magique",
         id: "s147",
-        alt: "",
+        alt: "Torche magique de Tegmine",
         difficulty: 20,
         formula: "En un claquement de doigts, qu’une flamme apparaisse !<br>Qu’elle crépite et flamboie comme dans les nuits d’ivresse",
         type: ["Feu", "Voyage"],
@@ -2601,9 +2601,9 @@ const spells = [
         description: "Une flamme apparaît et vole à un endroit de votre choix : elle peut vous suivre ou rester statique. Elle peut enflammer des objets et est très résistante au vent et à la pluie. Elle peut néanmoins être éteinte si on y passe un tour."
     },
     {
-        name: "Tour Chancelante d’Althor",
+        name: "Tour Chancelante",
         id: "s148",
-        alt: "tour chancelante d'althor",
+        alt: ["tour chancelante d'althor", "Tour Chancelante d’Althor"],
         difficulty: -10,
         formula: "Mes légions souterraines abattront à l’instant<br>Pour les Rois et les Reines un travail de titan",
         type: ["Terre"],
@@ -2654,9 +2654,9 @@ const spells = [
         description: "Vous faites apparaître une illusion visuelle, auditive et olfactive, un véritable mirage issu de votre imagination. Cette illusion est immobile, et ne dépasse pas *MAG* mètres cubes."
     },
     {
-        name: "Vapeur colorée de Vernalys",
+        name: "Vapeur colorée",
         id: "s152",
-        alt: "",
+        alt: "Vapeur colorée de Vernalys",
         difficulty: 0,
         formula: "Que le souffle d’azur, émeraude, écarlate,<br>Se répande en brûlures et douloureux stigmates",
         type: ["Eau", "Illusions", "Alchimie"],
@@ -2694,7 +2694,7 @@ const spells = [
         description: "La terre, un arbre ou un rocher s’ouvre pour vous accueillir et vous protéger. L’abri peut contenir *MAG*x2 personnes. Vous pouvez l’ouvrir et le refermer à volonté."
     },
     {
-        name: "Visions <br>cauchemardesques de Shaula",
+        name: "Cauchemar",
         id: "s155",
         alt: "Visions cauchemardesques de Shaula",
         difficulty: 10,

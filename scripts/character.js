@@ -220,7 +220,7 @@ function getName(character, config) {
     // choix aléatoire en fonction du peuple
     if (config.name === -2) {
 
-        switch (character.origin) {
+        switch (character.originID) {
             case 1: 
                 x = 10;
                 break;
