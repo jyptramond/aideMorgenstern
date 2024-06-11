@@ -25,7 +25,7 @@ let armesdetrait = `${armesdetir}/${armesapoudre}`
     // les batons
 const batons = "bâton noueux (RU+*FOR*-1)/bâton ferré (RU+*FOR*-1)"
 
-    // les armes d'hast
+    // les armes d’hast
 const armesdhast = "attrappe-hommes (RU+*FOR*-2)/bâton ferré (RU+*FOR*-1)/bâton noueux (RU+*FOR*-1)/faux (RU+*FOR*+0)/fauchard (RU+*FOR*+0)/fourche (RU+*FOR*-1)/hallebarde (RU+*FOR*+0)/bardiche (RU+*FOR*+0)/lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)/pertusiane(RU+*FOR*+0)"
 
     // les lances
@@ -52,10 +52,10 @@ const epeequalitesuperieure = "épée bâtarde de qualité supérieure (RU+*FOR*
 const armesdemeleelegere = "cestes (RU+*FOR*-2)/griffes (RU+*FOR*-2)/gourdin (RU+*FOR*-2)/stylet (RU+*FOR*-2)/fouet (RU+*FOR*-2)/racine-fouet (RU+*FOR*-2)/attrappe-homme (RU+*FOR*-2)/couteau (RU+*FOR*-1)/poignard (RU+*FOR*-1)/dague (RU+*FOR*-1)/miséricorde (RU+*FOR*-1)/brise-lames (RU+*FOR*-1)/épée courte (RU+*FOR*-1)/main gauche (RU+*FOR*-1)/hachette (RU+*FOR*-1)/bâton ferré (RU+*FOR*-1)/bâton noueux (RU+*FOR*-1)/fourche (RU+*FOR*-1)"
 
     // les armes de mêlée ordinaire
-const armesdemeleeordinaire = "dragonne (RU+*FOR*+0)/épée bâtarde (RU+*FOR*+0)/épée large (RU+*FOR*+0)/sabre (RU+*FOR*+0)/épée longue (RU+*FOR*+0)/rapière (RU+*FOR*+0)/hache (RU+*FOR*+0)/cognée (RU+*FOR*+0)/masse d'armes (RU+*FOR*+0)/masse épineuse (RU+*FOR*+0)/faux (RU+*FOR*+0)/fauchard (RU+*FOR*+0)/hallebarde (RU+*FOR*+0)/bardiche (RU+*FOR*+0)/lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)/pertusiane (RU+*FOR*+0)"
+const armesdemeleeordinaire = "dragonne (RU+*FOR*+0)/épée bâtarde (RU+*FOR*+0)/épée large (RU+*FOR*+0)/sabre (RU+*FOR*+0)/épée longue (RU+*FOR*+0)/rapière (RU+*FOR*+0)/hache (RU+*FOR*+0)/cognée (RU+*FOR*+0)/masse d’armes (RU+*FOR*+0)/masse épineuse (RU+*FOR*+0)/faux (RU+*FOR*+0)/fauchard (RU+*FOR*+0)/hallebarde (RU+*FOR*+0)/bardiche (RU+*FOR*+0)/lance courte (RU+*FOR*+0)/lance longue (RU+*FOR*+0)/pertusiane (RU+*FOR*+0)"
 
     // les armes de guerre
-const armesdeguerre = "hache du clan (RU+*FOR*+1)/fléau d'armes (RU+*FOR*+1)/marteau de guerre (RU+*FOR*+0)/"
+const armesdeguerre = "hache du clan (RU+*FOR*+1)/fléau d’armes (RU+*FOR*+1)/marteau de guerre (RU+*FOR*+0)/"
 
 const armeslourdes = "espadon (RU+*FOR*+2)/flamberge (RU+*FOR*+2)/hache de guerre (RU+*FOR*+2)"
 
@@ -427,7 +427,7 @@ const tricks = [
         description: "Vous créez un petit tourbillon (1 mètre maximum) qui rassemble la poussière, la cendre et le sable environnants. Le sort dure *MAG* tours. Une créature prise dans le tourbillon sera incommodée par la poussière dans les yeux, et devra tester son END à chaque tour pour ne pas être Affaiblie."
     },
     {
-        name: "Dissipation d'ivresse",
+        name: "Dissipation d’ivresse",
         id: "t16",
         alt:"",
         type: ["Châtiment", "Eau", "Mentalisme"],
@@ -567,7 +567,7 @@ const tricks = [
         description: "Ce tour vous permet de lancer un d100 et de garder le résultat « en réserve » pendant une heure. Vous pourrez utiliser ce résultat (ou non) à un prochain test demandé par le MJ. Attention : si vous obtenez un double un revers de fortune vous fera perdre 1PV. Vous ne pouvez lancer ce tour qu’une fois par jour."
     },
     {
-        name: "Purification de l'eau",
+        name: "Purification de l’eau",
         id: "t37",
         alt:"purification de l eau",
         type: ["Feu", "Protection", "Voyage", "Alchimie", "Eau"],
@@ -595,7 +595,7 @@ const tricks = [
         description: "La cible gagne 1 point de protection pendant *MAG* minutes. Ce point est à usage unique et disparaît dès qu’il a été utilisé."
     },
     {
-        name: "Trouver de l'eau",
+        name: "Trouver de l’eau",
         id: "t41",
         alt:"trouver de l eau",
         type: ["Divination", "Eau"],
@@ -733,7 +733,7 @@ const spells = [
       duration: "RU minutes",
       range: "moyenne",
       resistance: "-",
-      success: "Flux d'énergie ou Soins",
+      success: "Flux d’énergie ou Soins",
       description: "Sous la protection d’une lumière qu’elle seule peut ressentir, votre cible peut ignorer une (et une seule) blessure pendant la durée du sort, même s’il s’agit d’un coup critique. Ce n’est pas obligatoirement la première blessure, et elle peut « laisser passer » certains coups pour annuler seulement le plus puissant."
     },
     {
@@ -1338,7 +1338,7 @@ const spells = [
         range: "Contact",
         resistance: "-",
         success: "Vous utilisez votre équipement",
-        description: "Votre corps (mais pas votre équipement, qui tombe au sol) devient liquide et transparent, mais vous gardez forme humaine et continuez à agir. Aucune arme non magique ne peut vous atteindre mais vous ne pouvez pas non plus utiliser d’arme ou d'objet (vous attaquerez à mains nues). Un grand feu, comme un incendie ou un souffle de dragon, peut vous évaporer et vous tuer sur le coup."
+        description: "Votre corps (mais pas votre équipement, qui tombe au sol) devient liquide et transparent, mais vous gardez forme humaine et continuez à agir. Aucune arme non magique ne peut vous atteindre mais vous ne pouvez pas non plus utiliser d’arme ou d’objet (vous attaquerez à mains nues). Un grand feu, comme un incendie ou un souffle de dragon, peut vous évaporer et vous tuer sur le coup."
       },
       {
         name: "Envol",
@@ -2760,9 +2760,9 @@ const groups = [
         inventory: [
             "vêtements de roturier en bon état",
             "livrée/tablier",
-            "gourde d'eau/gourde de vin"
+            "gourde d’eau/gourde de vin"
         ],
-        money: "bourse contenant 1d10+*SOC* pièces d'argent"
+        money: "bourse contenant 1d10+*SOC* pièces d’argent"
     },
     {
         name: "Aristocrates et nobles",
@@ -2774,7 +2774,7 @@ const groups = [
             "élégant costume de cour", 
             "cheval avec sa selle et son harnais"
         ],
-        money: "bourse contenant 2d10+*SOC* pièces d'or" 
+        money: "bourse contenant 2d10+*SOC* pièces d’or" 
     },
     {
         name: "Artisans et commerçants",
@@ -2784,10 +2784,10 @@ const groups = [
         ],
         inventory: [
             "vêtements de roturier", 
-            "gourde d'eau/gourde de vin", 
+            "gourde d’eau/gourde de vin", 
             "besace contenant une fine couverture, un bol en bois et 1d10 rations de voyage (pain, fromage, fruits)"
         ],
-        money: "bourse avec 1d10+*HAB* pièces d'argent/bourse avec 1d10+*SOC* pièces d'argent"
+        money: "bourse avec 1d10+*HAB* pièces d’argent/bourse avec 1d10+*SOC* pièces d’argent"
     },
     {
         name: "Bandits et brigands",
@@ -2798,9 +2798,9 @@ const groups = [
         inventory: [
             "vêtements de vilains sales", 
             "sac en toile contenant un bol en bois, et 1d10 rations (volées à sa dernière victime)",
-            "gourde d'eau/gourde de vin"
+            "gourde d’eau/gourde de vin"
         ],
-        money: "bourse avec 1d10+*COM* pièces d'argent/bourse avec 1d10+*TIR* pièces d'argent"
+        money: "bourse avec 1d10+*COM* pièces d’argent/bourse avec 1d10+*TIR* pièces d’argent"
     },
     {
         name: "Bateleurs et saltimbanques",
@@ -2811,9 +2811,9 @@ const groups = [
         inventory: [
             "vêtements de vilain défraîchis", 
             "sac en toile contenant un bol en bois, et 1d10 rations", 
-            "gourde d'eau/gourde de vin"
+            "gourde d’eau/gourde de vin"
         ],
-        money: "bourse avec 1d10+*HAB* pièces d'argent/bourse avec 1d10+*SOC* pièces d'argent"
+        money: "bourse avec 1d10+*HAB* pièces d’argent/bourse avec 1d10+*SOC* pièces d’argent"
     },
     {
         name: "Érudits et lettrés",
@@ -2823,13 +2823,13 @@ const groups = [
         ],
         inventory: [
             "costume de bourgeois", 
-            "nécessaire d'écriture, 1d10 parchemins", 
+            "nécessaire d’écriture, 1d10 parchemins", 
             "trois plumes et deux encriers, main de papier (20 pages)", 
             "*CNS* livres reliés", "bésicles", 
             "gibecière avec couverture, bol en bois, et 1d10 rations supérieures", 
             "gourde contenant du bon vin"
         ],
-        money: "bourse contenant 1d10+*CNS* pièces d'or"
+        money: "bourse contenant 1d10+*CNS* pièces d’or"
     },
     {
         name: "Filous et roublards",
@@ -2841,9 +2841,9 @@ const groups = [
         inventory: [
             "vêtements de vilains usés/vêtements de vilains sales", 
             "sac en toile contenant un bol en bois, et 1d10 ration(s)", 
-            "gourde d'eau/gourde de vin"
+            "gourde d’eau/gourde de vin"
         ],
-        money: "bourse avec 1d10+*HAB* pièces d'argent/bourse avec 1d10+*DIS* pièces d'argent/bourse avec 1d10+*SOC* pièces d'argent"
+        money: "bourse avec 1d10+*HAB* pièces d’argent/bourse avec 1d10+*DIS* pièces d’argent/bourse avec 1d10+*SOC* pièces d’argent"
     },
     {
         name: "Forestiers et paysans",
@@ -2856,7 +2856,7 @@ const groups = [
             "Animal de compagnie",
             "vêtements de vilain", 
             "bâton de marche", 
-            "gourde d'eau/gourde de vin", 
+            "gourde d’eau/gourde de vin", 
             "gibecière contenant une fine couverture, un bol en bois et 1d10 ration(s) de voyage", 
         ],
         money: "1d10+*HAB* pièces de cuivre/1d10+*END* pièces de cuivre"
@@ -2873,12 +2873,12 @@ const groups = [
             `bouclier en bois (protection+1)`,
             "vêtements de voyage", 
             "sac en toile contenant un bol en bois, et 1d10 rations", 
-            "gourde d'eau/gourde de vin"
+            "gourde d’eau/gourde de vin"
         ],
-        money: "bourse contenant 1d10+*COM* pièces d'argent/bourse contenant 1d10+*TIR* pièces d'argent"
+        money: "bourse contenant 1d10+*COM* pièces d’argent/bourse contenant 1d10+*TIR* pièces d’argent"
     },
     {
-        name: "Hommes d'armes et soldats",
+        name: "Hommes d’armes et soldats",
         armor: `${armureslegeres}/${armuresmoyennes}`,
         weapons: [
             `${armesdemelee}`, 
@@ -2889,9 +2889,9 @@ const groups = [
             "casaque militaire", 
             "vêtements de voyage", 
             "sac en toile contenant un bol en bois, et 1d10 ration(s)", 
-            "gourde d'eau/gourde de vin"
+            "gourde d’eau/gourde de vin"
         ],
-        money: "bourse contenant 1d10+*COM* pièces d'argent/bourse contenant 1d10+*TIR* pièces d'argent"
+        money: "bourse contenant 1d10+*COM* pièces d’argent/bourse contenant 1d10+*TIR* pièces d’argent"
     },
     {
         name: "Magiciens et thaumaturges",
@@ -2903,11 +2903,11 @@ const groups = [
             "costume de bourgeois", 
             "main de papier (20 pages), plume et encrier", 
             "*CNS* livres occultes reliés", 
-            "1d10+*MAG* ingrédients utiles à leur savoir (patte d'animaux, poudres, herbes, sang d'animal...)", 
+            "1d10+*MAG* ingrédients utiles à leur savoir (patte d’animaux, poudres, herbes, sang d’animal...)", 
             "gibecière contenant une couverture, un col en bois et 1d10 rations de bonne qualité", 
             "gourde contenant du bon vin"
         ],
-        money: "bourse avec 1d10+*MAG* pièces d'or"
+        money: "bourse avec 1d10+*MAG* pièces d’or"
     },
     {
         name: "Parias et miséreux",
@@ -2918,7 +2918,7 @@ const groups = [
         inventory: [
             "harde de gueux", 
             "sac en toile contenant un bol en bois et 1d10 ration(s) de piètre qualité", 
-            "gourde d'eau/gourde de mauvais vin"
+            "gourde d’eau/gourde de mauvais vin"
         ],
         money: "*END* pièce(s) de cuivres"
     },
@@ -2934,9 +2934,9 @@ const groups = [
             "symbole sacré", 
             "chapelet", 
             "sac en toile contenant un bol en bois et 1d10 ration(s)", 
-            "gourde d'eau/gourde de vin"
+            "gourde d’eau/gourde de vin"
         ],
-        money: "bourse avec 1d10+*CNS* pièces d'argent"
+        money: "bourse avec 1d10+*CNS* pièces d’argent"
     }
 ]
 
@@ -3116,7 +3116,7 @@ const jobs = [
         inventory: []
     },
     {
-        name: "Prévôt/Collecteur d'impôts",
+        name: "Prévôt/Collecteur d’impôts",
         skills: [
             "Commerce", 
             "Discours", 
@@ -3136,7 +3136,7 @@ const jobs = [
             "Doué (VOL)", 
             "Mémoire sans faille", 
             "Prudent", 
-            "Sain d'esprit/Second souffle", 
+            "Sain d’esprit/Second souffle", 
             "Sixième sens", 
             "Solidité", 
             "Vivacité"
@@ -3185,7 +3185,7 @@ const jobs = [
     },
     
     {
-        name: "Prévôt/Collecteur d'impôts",
+        name: "Prévôt/Collecteur d’impôts",
         skills: [
             "Commerce", 
             "Discours", 
@@ -3205,7 +3205,7 @@ const jobs = [
             "Doué (VOL)", 
             "Mémoire sans faille", 
             "Prudent", 
-            "Sain d'esprit/Second souffle", 
+            "Sain d’esprit/Second souffle", 
             "Sixième sens", 
             "Solidité", 
             "Vivacité"
@@ -3246,7 +3246,7 @@ const jobs = [
             "Second souffle",
             "Sixième sens",
             "Solidité",
-            "Tireur d'élite/Tir précis"
+            "Tireur d’élite/Tir précis"
         ],
         armor: `${armureslegeres}/${armuresmoyennes}`,
         weapons: [
@@ -3275,8 +3275,8 @@ const jobs = [
             "Coup de maître",
             "Dévoué serviteur/Festoyeur",
             "Fascination/Panache",
-            "Maître d'armes",
-            "Maîtrise du bouclier/Port d'armure",
+            "Maître d’armes",
+            "Maîtrise du bouclier/Port d’armure",
             "Résilience/Riposte",
             "Solidité",
             "Vivacité"
@@ -3309,16 +3309,16 @@ const jobs = [
             "Coups précis",
             "Coups puissants",
             "Coup de maître/Dévoué serviteur",
-            "Maître d'armes",
+            "Maître d’armes",
             "Maîtrise du bouclier",
-            "Panache/Port d'armure",
+            "Panache/Port d’armure",
             "Résilience/Riposte",
             "Sauvegarde",
             "Solidité"
         ],
         armor: "armure de plates (protection+5)",
         weapons: [
-            "masse d'armes (RU+*FOR*+0)",
+            "masse d’armes (RU+*FOR*+0)",
             `${lances}`,
             "épée longue (RU+*FOR*+0)"
         ],
@@ -3356,10 +3356,10 @@ const jobs = [
         armor: "",
         weapons: [],
         inventory: [
-            "épée d'apparat/nécessaire de maquillage",
+            "épée d’apparat/nécessaire de maquillage",
             "deux autres costumes de cour très élégants aux couleurs et ornements différents",
             "deux fioles de parfum",
-            "bijoux d'une valeur de 5d10 pièces d'or",
+            "bijoux d’une valeur de 5d10 pièces d’or",
             "main de papier (20 feuilles)",
             "plume et encrier"
         ]
@@ -3374,7 +3374,7 @@ const jobs = [
             "Jeux",
             "Lettres/Persuasion",
             "Renseignements",
-            "Résistance à l'alcool",
+            "Résistance à l’alcool",
             "Se cacher",
             "Sexualité"
         ],
@@ -3470,7 +3470,7 @@ const jobs = [
         inventory: [
             "deux habits de cour de grande qualité",
             "une fiole de parfum",
-            "des bijoux d'une valeur de 2d10 pièces d'or"
+            "des bijoux d’une valeur de 2d10 pièces d’or"
         ]
     },
     {
@@ -3522,7 +3522,7 @@ const jobs = [
             "Pugilat",
             "Renseignements",
             "Repérage",
-            "Résistance à l'alcool"
+            "Résistance à l’alcool"
         ],
         talents: [
             "Bagarre",
@@ -3541,7 +3541,7 @@ const jobs = [
         inventory: [
             "costume de bourgeois",
             "livre de comptes",
-            "bonne bouteille d'alcool"
+            "bonne bouteille d’alcool"
         ]
     },
     {
@@ -3556,7 +3556,7 @@ const jobs = [
             "Premiers soins",
             "Repérage",
             "Résistance aux maladies",
-            "Résistance à l'alcool"
+            "Résistance à l’alcool"
         ],
         talents: [
             "Calme",
@@ -3565,7 +3565,7 @@ const jobs = [
             "Doué (HAB)",
             "Doué (VOL)",
             "Mains blanches",
-            "Sain d'esprit",
+            "Sain d’esprit",
             "Sauvegarde",
             "Second souffle",
             "Solidité"
@@ -3579,9 +3579,9 @@ const jobs = [
             "ciseaux",
             "bandages",
             "nécessaire antipoison",
-            "bouteille d'alcool fort",
+            "bouteille d’alcool fort",
             "corde de 10 mètres",
-            "torche et boîte d'amadou"
+            "torche et boîte d’amadou"
         ]
     },
       {
@@ -3608,7 +3608,7 @@ const jobs = [
             "Inoffensif", 
             "Second souffle", 
             "Solidité", 
-            "Travail d'équipe"
+            "Travail d’équipe"
         ],
         armor: "",
         weapons: [
@@ -3676,7 +3676,7 @@ const jobs = [
             "Doué (FOR)", 
             "Doué (HAB)", 
             "Maîtrise du bouclier", 
-            "Port d'armure", 
+            "Port d’armure", 
             "Second souffle", 
             "Solidité"
         ],
@@ -3695,11 +3695,11 @@ const jobs = [
             "Jeux", 
             "Pugilat", 
             "Repérage", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Résistance aux maladies", 
             "Souffle", 
-            "Travail d'un matériau (au choix)", 
-            "Travail d'un matériau (au choix)", 
+            "Travail d’un matériau (au choix)", 
+            "Travail d’un matériau (au choix)", 
             "Travaux de force"
         ],
         talents: [
@@ -3712,7 +3712,7 @@ const jobs = [
             "Guérison rapide", 
             "Sauvegarde", 
             "Solidité", 
-            "Travail d'équipe"
+            "Travail d’équipe"
         ],
         armor: "",
         weapons: [],
@@ -3732,7 +3732,7 @@ const jobs = [
             "Lettres", 
             "Persuasion", 
             "Renseignements", 
-            "Travail d'un matériau (au choix)"
+            "Travail d’un matériau (au choix)"
         ],
         talents: [
             "Compagnon animal/Dévoué serviteur", 
@@ -3741,7 +3741,7 @@ const jobs = [
             "Doué (CNS)/Doué (HAB)", 
             "Fascination", 
             "Inoffensif", 
-            "Mensonge éhonté/Sain d'esprit", 
+            "Mensonge éhonté/Sain d’esprit", 
             "Polyglotte", 
             "Prudent", 
             "Relations"
@@ -3764,7 +3764,7 @@ const jobs = [
             "Jeux", 
             "Milieu naturel (montagne)/Milieu naturel (forêt)", 
             "Pugilat", 
-            "Résistance à l'alcool",
+            "Résistance à l’alcool",
             "Résistance aux maladies", 
             "Travail de la pierre", 
             "Travaux de force"
@@ -3884,7 +3884,7 @@ const jobs = [
             "Esquive/Guérison rapide",
             "Inspiration",
             "Solidité/Surnombre",
-            "Tireur d'élite",
+            "Tireur d’élite",
             "Tir du chasseur",
             "Vivacité"
         ],
@@ -3928,7 +3928,7 @@ const jobs = [
         inventory: [
             "un capuchon",
             "trois torches",
-            "une boîte d'amadou"
+            "une boîte d’amadou"
         ]
     },
     {
@@ -3942,7 +3942,7 @@ const jobs = [
             "Navigation",
             "Noeuds",
             "Orientation",
-            "Résistance à l'alcool",
+            "Résistance à l’alcool",
             "Résistance aux maladies"
         ],
         talents: [
@@ -3962,7 +3962,7 @@ const jobs = [
         inventory: [
             "une corde de 10 mètres et un grappin",
             "une lanterne",
-            "une bouteille d'alcool"
+            "une bouteille d’alcool"
         ]
     },
     {
@@ -4029,7 +4029,7 @@ const jobs = [
         armor: "",
         weapons: [],
         inventory: [
-            "1d10 pièces d'argent",
+            "1d10 pièces d’argent",
             "un long manteau"
         ]
     },
@@ -4237,7 +4237,7 @@ const jobs = [
             "Réflexes éclairs", 
             "Tir ciblé", 
             "Tir précis", 
-            "Tireur d'élite", 
+            "Tireur d’élite", 
             "Spectacle", 
             "Solidité"
         ],
@@ -4325,7 +4325,7 @@ const jobs = [
         skills: [
             "Charme", 
             "Discours", 
-            "Dissimulation d'objets", 
+            "Dissimulation d’objets", 
             "Intuition", 
             "Jeux", 
             "Légendes", 
@@ -4424,7 +4424,7 @@ const jobs = [
         weapons: [],
         inventory: [
             "deux livres de droit", 
-            "costume d'avoué (selon la région)"
+            "costume d’avoué (selon la région)"
         ]
     },
     {
@@ -4450,7 +4450,7 @@ const jobs = [
             "Esprit de compétition", 
             "Mémoire sans faille", 
             "Polyglotte", 
-            "Prudent/Sain d'esprit", 
+            "Prudent/Sain d’esprit", 
             "Relations"
         ],
         armor: "",
@@ -4505,7 +4505,7 @@ const jobs = [
             "Persuasion", 
             "Pugilat", 
             "Renseignements", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Se cacher"
         ],
         talents: [
@@ -4552,7 +4552,7 @@ const jobs = [
             "Mains blanches", 
             "Mémoire sans faille", 
             "Relations", 
-            "Sain d'esprit", 
+            "Sain d’esprit", 
             "Second souffle"
         ],
         armor: "",
@@ -4574,8 +4574,8 @@ const jobs = [
             "Légendes", 
             "Persuasion", 
             "Repérage", 
-            "Travail d'un matériau (au choix)", 
-            "Travail d'un matériau (au choix)"
+            "Travail d’un matériau (au choix)", 
+            "Travail d’un matériau (au choix)"
         ],
         talents: [
             "Calme", 
@@ -4619,7 +4619,7 @@ const jobs = [
             "Inoffensif", 
             "Mémoire sans faille", 
             "Polyglotte", 
-            "Relations/Sain d'esprit"
+            "Relations/Sain d’esprit"
         ],
         armor: "",
         weapons: [],
@@ -4674,7 +4674,7 @@ const jobs = [
             "Charme", 
             "Commerce", 
             "Course", 
-            "Dissimulation d'objets", 
+            "Dissimulation d’objets", 
             "Légendes", 
             "Lettres", 
             "Persuasion", 
@@ -4698,17 +4698,17 @@ const jobs = [
         weapons: [],
         inventory: [
             "costume de bourgeois usé", 
-            "1d10 articles d'escroqueries ou de contrefaçons tels que des remèdes, des poudres miracles, des fausses reliques, des laissez-passer"
+            "1d10 articles d’escroqueries ou de contrefaçons tels que des remèdes, des poudres miracles, des fausses reliques, des laissez-passer"
         ]
     },
     {
-        name: "Cambrioleur/Monte-en-l'air",
+        name: "Cambrioleur/Monte-en-l’air",
         skills: [
             "Arme à distance (au choix)", 
             "Arme légère (au choix)", 
             "Crochetage", 
             "Déplacement silencieux", 
-            "Dissimulation d'objets", 
+            "Dissimulation d’objets", 
             "Écoute", 
             "Escalade", 
             "Fouille", 
@@ -4741,7 +4741,7 @@ const jobs = [
             "Arme de mêlée (au choix)", 
             "Commerce", 
             "Déplacement silencieux", 
-            "Dissimulation d'objets", 
+            "Dissimulation d’objets", 
             "Droit et usages", 
             "Estimation", 
             "Persuasion", 
@@ -4812,7 +4812,7 @@ const jobs = [
             "Courage", 
             "Crochetage", 
             "Déplacement silencieux", 
-            "Dissimulation d'objets", 
+            "Dissimulation d’objets", 
             "Pièges", 
             "Résistance aux maladies", 
             "Se cacher", 
@@ -4844,7 +4844,7 @@ const jobs = [
         skills: [
             "Charme", 
             "Course", 
-            "Dissimulation d'objets", 
+            "Dissimulation d’objets", 
             "Droit et usages", 
             "Intuition", 
             "Jeux", 
@@ -4869,7 +4869,7 @@ const jobs = [
         weapons: [],
         inventory: [
             "un costume de bourgeois", 
-            "des bijoux d'une valeur de 2d10 pièces d'or", 
+            "des bijoux d’une valeur de 2d10 pièces d’or", 
             "trois dés en os", 
             "un paquet de cartes", 
             "des bottes en cuir"
@@ -4882,7 +4882,7 @@ const jobs = [
             "Arme de mêlée ou à distance légère (au choix)", 
             "Course", 
             "Déplacement silencieux", 
-            "Dissimulation d'objets", 
+            "Dissimulation d’objets", 
             "Escalade", 
             "Passe-passe", 
             "Repérage", 
@@ -4953,7 +4953,7 @@ const jobs = [
             "Premiers soins", 
             "Pugilat", 
             "Orientation", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Résistance aux maladies", 
             "Résistance aux poisons", 
             "Travail du bois/Travaux de force"
@@ -5128,7 +5128,7 @@ const jobs = [
             "Natation", 
             "Noeuds/Orientation", 
             "Pugilat", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Résistance aux maladies"
         ],
         talents: [
@@ -5149,7 +5149,7 @@ const jobs = [
         ],
         inventory: [
             "corde de 10 mètres et grappin", 
-            "bouteille d'alcool"
+            "bouteille d’alcool"
         ]
     },
     {
@@ -5212,7 +5212,7 @@ const jobs = [
             "Réflexes éclairs", 
             "Solidité", 
             "Tir ciblé", 
-            "Tireur d'élite", 
+            "Tireur d’élite", 
             "Tir précis", 
             "Vivacité"
         ],
@@ -5279,10 +5279,10 @@ const jobs = [
             "Coups puissants", 
             "Doué (END)/Doué (FOR)", 
             "Esquive/Maîtrise du bouclier", 
-            "Maître d'armes", 
+            "Maître d’armes", 
             "Sauvagerie", 
             "Second souffle", 
-            "Port d'armure/Vivacité"
+            "Port d’armure/Vivacité"
         ],
         armor: "",
         weapons: [
@@ -5313,7 +5313,7 @@ const jobs = [
             "Doué (END)", 
             "Maîtrise du bouclier", 
             "Nyctalopie", 
-            "Port d'armure", 
+            "Port d’armure", 
             "Second souffle", 
             "Recharge rapide/Sixième sens", 
             "Solidité/Tir précis"
@@ -5338,7 +5338,7 @@ const jobs = [
             "Jeux", 
             "Pugilat", 
             "Repérage", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Résistance aux poisons"
         ],
         talents: [
@@ -5380,7 +5380,7 @@ const jobs = [
             "Coups puissants", 
             "Doué (END)", 
             "Doué (PER)", 
-            "Maître d'armes", 
+            "Maître d’armes", 
             "Maîtrise du bouclier", 
             "Sauvagerie", 
             "Sixième sens", 
@@ -5390,7 +5390,7 @@ const jobs = [
         armor: "",
         weapons: [],
         inventory: [
-            "la tête d'un ennemi animal au combat/la tête d'un humanoïde tué au combat/la tête d'un monstre tué au combat"
+            "la tête d’un ennemi animal au combat/la tête d’un humanoïde tué au combat/la tête d’un monstre tué au combat"
         ]
     },
     {
@@ -5414,7 +5414,7 @@ const jobs = [
             "Coups précis", 
             "Doué (FOR)", 
             "Esquive/Maîtrise du bouclier", 
-            "Maître d'armes", 
+            "Maître d’armes", 
             "Riposte", 
             "Solidité", 
             "Sauvegarde/Tir précis"
@@ -5422,7 +5422,7 @@ const jobs = [
         armor: "",
         weapons: [],
         inventory: [
-            "une bouteille d'alcool"
+            "une bouteille d’alcool"
         ]
     },
     {
@@ -5444,7 +5444,7 @@ const jobs = [
             "Calme", 
             "Coup de maître", 
             "Coups puissants", 
-            "Maître d'armes", 
+            "Maître d’armes", 
             "Coups précis",
             "Esquive/Maîtrise du bouclier",
             "Réflexes éclairs", 
@@ -5461,7 +5461,7 @@ const jobs = [
         ]
     },
 
-    // 10 : Hommes d'armes et soldats   (72-79)
+    // 10 : Hommes d’armes et soldats   (72-79)
 
     {
         name: "Artilleur/Pétardier",
@@ -5486,7 +5486,7 @@ const jobs = [
             "Recharge rapide", 
             "Second souffle", 
             "Solidité", 
-            "Tireur d'élite", 
+            "Tireur d’élite", 
             "Tir ciblé"
         ],
         armor: "",
@@ -5516,7 +5516,7 @@ const jobs = [
             "Doué (MOU)", 
             "Esprit de compétition", 
             "Esquive/Maîtrise du bouclier", 
-            "Maître d'armes", 
+            "Maître d’armes", 
             "Réflexes éclairs", 
             "Riposte", 
             "Solidité"
@@ -5539,7 +5539,7 @@ const jobs = [
             "Premiers soins", 
             "Pugilat", 
             "Renseignements", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Résistance aux maladies", 
             "Torture", 
             "Travaux de force"
@@ -5552,7 +5552,7 @@ const jobs = [
             "Doué (VOL)", 
             "Guérison rapide", 
             "Résilience", 
-            "Sain d'esprit", 
+            "Sain d’esprit", 
             "Sauvegarde", 
             "Solidité"
         ],
@@ -5610,7 +5610,7 @@ const jobs = [
             "Intimidation", 
             "Pugilat", 
             "Repérage", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Stratégie"
         ],
         talents: [
@@ -5693,7 +5693,7 @@ const jobs = [
             "Mémoire sans faille", 
             "Nyctalopie", 
             "Prudent", 
-            "Sain d'esprit/Second souffle", 
+            "Sain d’esprit/Second souffle", 
             "Sixième sens", 
             "Vivacité"
         ],
@@ -5715,7 +5715,7 @@ const jobs = [
             "Intimidation", 
             "Jeux", 
             "Milieu naturel (au choix)", 
-            "Résistance à l'alcool", 
+            "Résistance à l’alcool", 
             "Stratégie"
         ],
         talents: [
@@ -5725,7 +5725,7 @@ const jobs = [
             "Cri de guerre", 
             "Doué (END)/Doué (FOR)", 
             "Doué (VOL)", 
-            "Maître d'armes", 
+            "Maître d’armes", 
             "Maîtrise du bouclier", 
             "Second souffle", 
             "Sauvegarde/Solidité"
@@ -5836,7 +5836,7 @@ const jobs = [
         weapons: [],
         inventory: [
             "jeu de tarot divinatoire",
-            "précis d'astrologie"
+            "précis d’astrologie"
         ]
     },
     {
@@ -5869,7 +5869,7 @@ const jobs = [
         weapons: [],
         inventory: [
             "jeu de cartes",
-            "baguette d'illusionniste en bois"
+            "baguette d’illusionniste en bois"
         ]
     },
 
@@ -5896,7 +5896,7 @@ const jobs = [
             "Magie innée",
             "Magie invisible",
             "Mémoire sans faille",
-            "Nyctalopie/Sain d'esprit",
+            "Nyctalopie/Sain d’esprit",
             "Sort fétiche"
         ],
         armor: "",
@@ -5958,7 +5958,7 @@ const jobs = [
             "Coup surnaturel",
             "Coups précis",
             "Esquive",
-            "Maître d'armes",
+            "Maître d’armes",
             "Magie destructrice",
             "Magie sanglante",
             "Réflexes éclairs",
@@ -6319,7 +6319,7 @@ const jobs = [
             "Doué (VOL)",
             "Esprit gardien",
             "Magie contrôlée",
-            "Mémoire sans faille/Sain d'esprit",
+            "Mémoire sans faille/Sain d’esprit",
             "Solidité",
             "Souffle de vie"
         ],
@@ -6401,7 +6401,7 @@ const jobs = [
             "serpe bien aiguisée (RU+*FOR*-1)/couteau bien aiguisé (RU+*FOR*-1)"
         ],
         inventory: [
-            "bâton orné d'une tête d'animal sculptée",
+            "bâton orné d’une tête d’animal sculptée",
             "fourrure",
             "nécessaire anti-poison"
         ]
@@ -6418,7 +6418,7 @@ const jobs = [
             "Premiers soins",
             "Religion",
             "Résistance aux maladies",
-            "Travail d'un matériau (au choix)"
+            "Travail d’un matériau (au choix)"
         ],
         talents: [
             "Calme",
@@ -6427,7 +6427,7 @@ const jobs = [
             "Doué (VOL)",
             "Mains blanches",
             "Mémoire sans faille",
-            "Polyglotte/Sain d'esprit",
+            "Polyglotte/Sain d’esprit",
             "Sommeil léger",
             "Résistance magique",
             "Second souffle"
@@ -6466,7 +6466,7 @@ const jobs = [
             "Polyglotte",
             "Résilience",
             "Résistance magique",
-            "Sain d'esprit",
+            "Sain d’esprit",
             "Sort fétiche/Souffle de vie"
         ],
         armor: "",
@@ -6534,7 +6534,7 @@ const jobs = [
             "Magie innée",
             "Résilience",
             "Résistance magique",
-            "Sain d'esprit",
+            "Sain d’esprit",
             "Solidité",
             "Souffle de vie"
         ],
@@ -6550,7 +6550,7 @@ const jobs = [
         ]
     },
     {
-        name: "Templier/Chevalier d'Abel",
+        name: "Templier/Chevalier d’Abel",
         skills: [
             "Arme lourde (au choix)",
             "Arme de mêlée (au choix)",
@@ -6565,13 +6565,13 @@ const jobs = [
         ],
         talents: [
             "Calme",
-            "Coups puissants/Tireur d'élite",
+            "Coups puissants/Tireur d’élite",
             "Coup surnaturel",
             "Doué (END)",
             "Doué (VOL)",
             "Gardien",
             "Maîtrise du bouclier",
-            "Maître d'armes/Port d'armure",
+            "Maître d’armes/Port d’armure",
             "Résilience",
             "Solidité/Souffle de vie"
         ],
@@ -8359,7 +8359,7 @@ const prenoms = [
         "Barbe hirsute",
         "Queue de cheval",
         "Vêtements déchirés",
-        "Bandeau sur l'œil",
+        "Bandeau sur l’œil",
         "Cicatrices multiples",
         "Voix rauque",
         "Voix douce",
@@ -8395,7 +8395,7 @@ const prenoms = [
         "Voix grave",
         "Ongles vernis",
         "Lèvres noires",
-        "Boucles d'oreilles pendantes",
+        "Boucles d’oreilles pendantes",
         "Sourire édenté",
         "Grandes oreilles",
         "Cheveux en brosse",
@@ -8471,7 +8471,7 @@ const prenoms = [
         "Sourcils en bataille",
         "Cheveux courts",
         "Sourire narquois",
-        "Boucles d'oreilles en perle",
+        "Boucles d’oreilles en perle",
         "Sandales en cuir",
         "Chemise en soie",
         "Sourire carnassier",
