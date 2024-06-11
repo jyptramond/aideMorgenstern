@@ -5,28 +5,16 @@ let myGroup = {
 
 function launchEncounter() {
 
-
-    displayCard(character);
-    displayCard(character);
-    displayCard(character);
-    displayCard(character);
-    displayCard(character);
-    displayCard(character);
-    displayCard(character);
-    displayCard(character);
-    
-    renamingGroup();
     displayNotes();
-    
+    renamingGroup();
     savingCharacter(myGroup, 'encounter')
-    cardEditor();
     trashListener();
     deselectOnWindow();
 
     toggleNav();
-    
+    displayJobsOnClick();
     toggleConfig();
-    customCard();
+    addCardListener();
 }
 
 

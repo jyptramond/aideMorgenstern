@@ -244,6 +244,16 @@ h1 {
     font-family: Book Antiqua;
 }
 
+.h1 {
+    border:none;
+    width: 100%;
+    background-color:transparent;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Book Antiqua;
+}
+
 
 h2 {
     text-align: center;
@@ -340,6 +350,7 @@ ul li {
  #generer,
  #save,
  #screen,
+ #add,
  #toggle-button,
  #toggle-button-config,
  #delete-spellbook,

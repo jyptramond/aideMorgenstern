@@ -2805,7 +2805,9 @@ const groups = [
     {
         name: "Bateleurs et saltimbanques",
         armor: "",
-        weapons: [],
+        weapons: [
+            "Mains nues (RU+*FOR*-3)"
+        ],
         inventory: [
             "vêtements de vilain défraîchis", 
             "sac en toile contenant un bol en bois, et 1d10 rations", 
@@ -2816,7 +2818,9 @@ const groups = [
     {
         name: "Érudits et lettrés",
         armor: "",
-        weapons: [],
+        weapons: [
+            "Mains nues (RU+*FOR*-3)"
+        ],
         inventory: [
             "costume de bourgeois", 
             "nécessaire d'écriture, 1d10 parchemins", 
@@ -2845,10 +2849,11 @@ const groups = [
         name: "Forestiers et paysans",
         armor: "",
         weapons: [
-            `${armesdemeleelegere}`, 
-            "couteau (RU+*FOR*-1)/Animal de compagnie"
+            `${armesdemeleelegere}/`, 
+            "couteau (RU+*FOR*-1)"
         ],
         inventory: [
+            "Animal de compagnie",
             "vêtements de vilain", 
             "bâton de marche", 
             "gourde d'eau/gourde de vin", 
@@ -2861,10 +2866,11 @@ const groups = [
         armor: `${armureslegeres}/${armuresmoyennes}`,
         weapons: [
             `${armesdemelee}`, 
-            "couteau (RU+*FOR*-1)", 
-            `${armesdetir}/bouclier en bois (protection+1)`
+            `couteau (RU+*FOR*-1)/${armesdetir}`
+            
         ],
         inventory: [
+            `bouclier en bois (protection+1)`,
             "vêtements de voyage", 
             "sac en toile contenant un bol en bois, et 1d10 rations", 
             "gourde d'eau/gourde de vin"
@@ -2876,10 +2882,10 @@ const groups = [
         armor: `${armureslegeres}/${armuresmoyennes}`,
         weapons: [
             `${armesdemelee}`, 
-            "couteau (RU+*FOR*-1)", 
-            `${armesdetir}/${boucliers}`
+            "couteau (RU+*FOR*-1)/${armesdetir}"
         ],
         inventory: [
+            `${boucliers}`,
             "casaque militaire", 
             "vêtements de voyage", 
             "sac en toile contenant un bol en bois, et 1d10 ration(s)", 
@@ -2890,7 +2896,9 @@ const groups = [
     {
         name: "Magiciens et thaumaturges",
         armor: "",
-        weapons: [],
+        weapons: [
+            "Mains nues (RU+*FOR*-3)"
+        ],
         inventory: [
             "costume de bourgeois", 
             "main de papier (20 pages), plume et encrier", 
@@ -2917,7 +2925,9 @@ const groups = [
     {
         name: "Religieux et prêtres",
         armor: "",
-        weapons: [],
+        weapons: [
+            "Mains nues (RU+*FOR*-3)"
+        ],
         inventory: [
             "robe de la couleur autorisée par le culte/froc de la couleur autorisée par le culte", 
             "vêtements de voyage", 
@@ -3273,11 +3283,11 @@ const jobs = [
         ],
         armor: `${armuresmoyennes}`,
         weapons: [
-            `${lances}`,
-            `${boucliers}`
+            `${lances}`
         ],
         inventory: [
-            "un costume de voyage"
+            "un costume de voyage",
+            `${boucliers}`
         ]
     },
     {
@@ -3310,11 +3320,11 @@ const jobs = [
         weapons: [
             "masse d'armes (RU+*FOR*+0)",
             `${lances}`,
-            "épée longue (RU+*FOR*+0)",
-            "bouclier (protection+2)/écu (protection+2)"
+            "épée longue (RU+*FOR*+0)"
         ],
         inventory: [
-            "destrier fidèle et bien dressé (remplace le cheval)"
+            "destrier fidèle et bien dressé (remplace le cheval)",
+            "bouclier (protection+2)/écu (protection+2)"
         ]
     },
     {
@@ -3914,12 +3924,12 @@ const jobs = [
             "Vivacité"
         ],
         armor: "",
-        weapons: [
+        weapons: [],
+        inventory: [
             "un capuchon",
             "trois torches",
             "une boîte d'amadou"
-        ],
-        inventory: []
+        ]
     },
     {
         name: "Pirate",
@@ -5617,11 +5627,12 @@ const jobs = [
         ],
         armor: "",
         weapons: [
-            `${armesdhast}`, 
-            `${boucliers}`, 
-            "un casque à plume (protection+1)"
+            `${armesdhast}`            
         ],
-        inventory: []
+        inventory: [
+            `${boucliers}`,
+            "un casque à plume (protection+1)"
+        ]
     },
     {
         name: "Patrouilleur/Garde-route",
@@ -5651,13 +5662,13 @@ const jobs = [
         ],
         armor: "",
         weapons: [
-            `${armesadistance}`,
-            "bouclier en bois (protection+1)"
+            `${armesadistance}`
         ],
         inventory: [
             "un cheval avec sa selle et son harnais", 
             "une corde de 10 mètres et un grappin", 
-            "une lanterne"
+            "une lanterne",
+            "bouclier en bois (protection+1)"
         ]
     },
     {
@@ -5721,10 +5732,11 @@ const jobs = [
         ],
         armor: "",
         weapons: [
-            `${armesdhast}`, 
-            "casque (protection+1)"
+            `${armesdhast}`            
         ],
-        inventory: []
+        inventory: [
+            "casque (protection+1)"
+        ]
     },
 
     // 11 : Magiciens et thaumaturges   (80-87)
@@ -6241,9 +6253,10 @@ const jobs = [
         ],
         armor: "",
         weapons: [
-            "bâton de marche"
+            
         ],
         inventory: [
+            "bâton de marche",
             "besace contenant poudres, onguents et ingrédients étranges"
         ]
     },
@@ -6565,11 +6578,12 @@ const jobs = [
         armor: `${armuresmoyennes}/${armureslourdes}`,
         weapons: [
             `${armesdemelee}`,
-            `${armesdemelee}`,
-            `${boucliers}/arc (RU+*FOR*+0) et 10 flèches`
+            `${armesdemelee}/arc (RU+*FOR*+0) et 10 flèches`,
+            
         ],
         inventory: [
             "livre saint",
+            `${boucliers}`,
             "un cheval avec sa selle et son harnais",
             "une lanterne"
         ]

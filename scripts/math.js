@@ -127,8 +127,11 @@ function weaponsDamage(str) {
         result = Number(number1) - Number(number2) ;
     }
 
-
     str = str.replace(calcul, result) ;
+
+    if (result < 0) {
+        str = str.replace('+','')
+    }
 
     return str
 }

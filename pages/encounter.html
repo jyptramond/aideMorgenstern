@@ -21,15 +21,16 @@
 
     
     <script src="../scripts/character.js" defer></script>
+
     <script src="../scripts/display.js" defer ></script>
     <script src="../scripts/init.js" defer></script>
     <script src="../scripts/math.js" defer></script>
     <script src="../scripts/magic.js" defer></script>
     <script src="../scripts/specialist.js" defer></script>
     <script src="../scripts/config.js" defer></script>
+
     <script src="../scripts/cookies.js" defer></script>
     <script src="../scripts/group.js" defer ></script>
-    <script src="../scripts/custom.js" defer ></script>
     <script src="../scripts/cardhandler.js" defer ></script>
     <script src="../scripts/encounter-main.js" defer ></script>
 
@@ -68,17 +69,40 @@
                 <button class="myButton" title="Afficher les options"   id="toggle-button-config"><i class="fa-solid fa-bars button-size"></i></button>
                 <button class="myButton" title="Changer format"         id="screen"><i class="fa-solid fa-mobile-screen button-size"></i></button>
                 <button class="myButton" title="Enregistrer Ctrl+S"     id="save"><i class="fa-solid fa-floppy-disk button-size"></i></button>
-                <button class="myButton" title="Générer Alt+Q"          id="generer"><i class="fa-solid fa-square-plus button-size"></i></i></button>
+                <button class="myButton" title="Ajouter Alt+Q"          id="add"><i class="fa-solid fa-square-plus button-size"></i></i></button>
             </div>
 
-
-            <div class="inputTextCustom">
-                <input type="text" id="champGroup" maxlength="30" placeholder="Intitulé du groupe">
+            <div class="inputSelect toggle">
+                <label for="nom">Nom:</label>
+                <select id="selectName" name="nom">
+                <fieldset>
+                    <option value="-2">Logique</option>
+                    <option value="-1">Aléatoire</option>
+                </fieldset>
+                <fieldset>
+                    <option value="2">Anglais</option>
+                    <option value="7">Arabe</option>
+                    <option value="6">Celtique</option>
+                    <option value="0">Francophone</option>
+                    <option value="4">Germanique</option>
+                    <option value="5">Hellenistique</option>
+                    <option value="1">Hispanique</option>
+                    <option value="3">Italien</option>
+                    <option value="8">Russe</option>
+                </fieldset>
+                <fieldset>
+                    <option value="10">Elfique</option>
+                    <option value="9">Gobelinoïde</option>  
+                    <option value="12">Halfelin</option>
+                    <option value="11">Nain</option>
+                </fieldset>  
+                <fieldset>
+                    
+                </fieldset>
+                </select>
             </div>
 
-
-
-                    <div  class="inputSelect toggle">
+                    <div class="inputSelect toggle">
                         <label for="archetype">Archétype:</label>
                         <select id="selectArchetype" name="archetype">
                             <option value="-1">Aléatoire</option>
@@ -202,7 +226,7 @@
             <div id="content">
 
                 <div id="groupSheetHeader">
-                    <h1 id="nameDisplay">Mon groupe</h1>
+                    <input class='h1' type="text" id="nameDisplay" maxlength="30" placeholder="Intitulé du groupe" value="Mon groupe">
                 </div>
 
 

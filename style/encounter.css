@@ -37,6 +37,7 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
+    margin-bottom:2rem;
 }
 
 #fullWindow {
@@ -44,6 +45,7 @@
 }
 
 #groupSheetHeader {
+    width:100%;
     margin-top: 20px;
 }
 
@@ -103,6 +105,13 @@ p.header span {
     font-weight: bold;
 }
 
+.customSubName {
+    width: 100%;
+    text-align: right;
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
 .customDescription {
     font-style: italic ; 
     text-align: center;
@@ -114,12 +123,16 @@ p.header span {
 }
 
 .customPV {
-    width: 30px;
+    width: 26px;
     text-align: right;
 }
 
 .customPVMax {
-    width: 30px;
+    width: 26px;
+}
+
+.customInit {
+    width: 20px;
 }
 
 .customCOM,
@@ -137,19 +150,14 @@ p.header span {
             box-sizing: border-box;
 }
 
-.customProt {
-    position: relative;
-    top: -4px;
-}
 
-.customDG {
+.customDG,
+.customProt,
+.customComp {
     position:relative;
     top: -1px;
 }
 
-.customComp {
-    text-align: center;
-}
 
 
 

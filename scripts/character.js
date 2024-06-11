@@ -62,6 +62,7 @@ function createCharacter(myConfig) {
 
         sortAbilities(character);
 
+
         return character
 }
 
@@ -328,11 +329,11 @@ function getAge(character) {
 
 function getStats(character) {
 
-let sum = 0
-let stats = []
-let pool = 120
-let y = 0 // le tableau des caractéristiques    
-let i = 0
+let sum = 0;
+let stats = [];
+let pool = 120;
+let y = 0 ;// le tableau des caractéristiques    
+let i = 0;
 
     // pour chaque caractéristique on attribue une valeur aléatoire (0, 5, 10, 15 ou 20)
     for (i = 0; i < 12; i++) {
