@@ -6,23 +6,27 @@ let myGroup = {
 function launchEncounter() {
 
 
-    displayLeader(character);
-    displayLeader(character);
-    displayLeader(character);
-    displayLeader(character);
-    displayLeader(character);
-    displayLeader(character);
-    displayLeader(character);
-    displayLeader(character);
+    displayCard(character);
+    displayCard(character);
+    displayCard(character);
+    displayCard(character);
+    displayCard(character);
+    displayCard(character);
+    displayCard(character);
+    displayCard(character);
     
     renamingGroup();
-    configGroupListener();
     displayNotes();
     
     savingCharacter(myGroup, 'encounter')
     cardEditor();
     trashListener();
     deselectOnWindow();
+
+    toggleNav();
+    
+    toggleConfig();
+    customCard();
 }
 
 

@@ -21,7 +21,6 @@
 
     
     <script src="../scripts/character.js" defer></script>
-    
     <script src="../scripts/display.js" defer ></script>
     <script src="../scripts/init.js" defer></script>
     <script src="../scripts/math.js" defer></script>
@@ -30,6 +29,8 @@
     <script src="../scripts/config.js" defer></script>
     <script src="../scripts/cookies.js" defer></script>
     <script src="../scripts/group.js" defer ></script>
+    <script src="../scripts/custom.js" defer ></script>
+    <script src="../scripts/cardhandler.js" defer ></script>
     <script src="../scripts/encounter-main.js" defer ></script>
 
     <!-- DOMpurify -->
@@ -71,53 +72,11 @@
             </div>
 
 
-            <div class="inputText divRow toggle">
+            <div class="inputTextCustom">
                 <input type="text" id="champGroup" maxlength="30" placeholder="Intitulé du groupe">
             </div>
 
 
-            <div class="divRow">
-                <button class="myButton small active" id="leader" title="Chef" >Chef</button>
-                <button class="myButton small" id="minions" title="Sbires" >Sbires</button>
-            </div>
-
-
-                <section id="leaderConfigSection">
-
-                    <div class="inputText divRow toggle">
-                        <input type="text" id="champTexte" maxlength="30" placeholder="Nom">
-                        <input type="text" id="champAge"  placeholder="âge" maxlength="5">
-                    </div>
-
-                    <div class="inputSelect toggle">
-                        <label for="nom">Nom:</label>
-                        <select id="selectName" name="nom">
-                        <fieldset>
-                            <option value="-2">Logique</option>
-                            <option value="-1">Aléatoire</option>
-                        </fieldset>
-                        <fieldset>
-                            <option value="2">Anglais</option>
-                            <option value="7">Arabe</option>
-                            <option value="6">Celtique</option>
-                            <option value="0">Francophone</option>
-                            <option value="4">Germanique</option>
-                            <option value="5">Hellenistique</option>
-                            <option value="1">Hispanique</option>
-                            <option value="3">Italien</option>
-                            <option value="8">Russe</option>
-                        </fieldset>
-                        <fieldset>
-                            <option value="10">Elfique</option>
-                            <option value="9">Gobelinoïde</option>  
-                            <option value="12">Halfelin</option>
-                            <option value="11">Nain</option>
-                        </fieldset>  
-                        <fieldset>
-                            
-                        </fieldset>
-                        </select>
-                    </div>
 
                     <div  class="inputSelect toggle">
                         <label for="archetype">Archétype:</label>
@@ -223,115 +182,7 @@
                         </select>
                     </div>
 
-                </section>
-
-                <section id="minionsConfigSection"   class="do-not-display">
-                   
-                    <div  class="inputSelect toggle">
-                        <label for="archetype">Archétype:</label>
-                        <select id="selectMiArchetype" name="archetype">
-                            <option value="-1">Aléatoire</option>
-                            <option value="0">Aigle</option>
-                            <option value="1">Âne</option>
-                            <option value="2">Cerf</option>
-                            <option value="3">Chat</option>
-                            <option value="4">Chien</option>
-                            <option value="5">Coq</option>
-                            <option value="6">Corbeau</option>
-                            <option value="7">Fourmi</option>
-                            <option value="8">Hibou</option>
-                            <option value="9">Hyène</option>
-                            <option value="10">Lapin</option>
-                            <option value="11">Lion</option>
-                            <option value="12">Loup</option>
-                            <option value="13">Mouton</option>
-                            <option value="14">Ours</option>
-                            <option value="15">Paon</option>
-                            <option value="16">Porc</option>
-                            <option value="17">Rat</option>
-                            <option value="18">Renard</option>
-                            <option value="19">Serpent</option>
-                            <option value="20">Singe</option>
-                            <option value="21">Souris</option>
-                            <option value="22">Taureau</option>
-                            <option value="23">Vautour</option>
-                        </select>
-                    </div>
-
-                    <div class="inputSelect toggle">
-                        <label for="peuple">Peuple:</label>
-                        <select id="selectMiGrPeuple" name="peuple">
-                            <option value="-2">Logique</option>
-                            <option value="-1">Aléatoire</option>
-                            <option value="0">Humain</option>
-                            <option value="1">Elfe</option>
-                            <option value="4">Demi-Elfe</option>
-                            <option value="2">Nain</option>
-                            <option value="5">Demi-Nain</option>
-                            <option value="3">Halfelin</option>
-                            <option value="6">Orc</option>
-                            <option value="7">Demi-Orc</option>
-                            <option value="8">Gobelin</option>
-                        </select>
-                    </div>
-
-                    <div class="inputSelect toggle">
-                        <label for="groupe">Groupe:</label>
-                        <select id="selectMiGrGroupe" name="groupe">
-                            <option value="-2">Logique</option>
-                            <option value="-1">Aléatoire</option>
-                            <option value="0">Agents et domestiques</option>
-                            <option value="1">Aristocrates et nobles</option>
-                            <option value="2">Artisans et commerçants</option>
-                            <option value="3">Bandits et brigands</option>
-                            <option value="4">Bateleurs et saltimbanques</option>
-                            <option value="5">Érudits et lettrés</option>
-                            <option value="6">Filous et roublards</option>
-                            <option value="7">Forestiers et paysans</option>
-                            <option value="8">Guerriers et bretteurs</option>
-                            <option value="9">Hommes d'armes et soldats</option>
-                            <option value="10">Magiciens et thaumaturges</option>
-                            <option value="11">Parias et miséreux</option>
-                            <option value="12">Religieux et prêtres</option>
-                        </select>
-                    </div>
-
-                    <div class="inputSelect toggle">
-                        <label for="carriere">Carrière:</label>
-                        <select id="selectMiCarriere" nom="carriere">
-                            <option value="-1">Aléatoire</option>
-                            <option value="0"></option>
-                            <option value="1"></option>
-                            <option value="2"></option>
-                            <option value="3"></option>
-                            <option value="4"></option>
-                            <option value="5"></option>
-                            <option value="6"></option>
-                            <option value="7"></option>
-                        </select>
-                    </div>
                 
-                    <div class="inputSelect toggle">
-                        <label for="mode">Compétences:</label>
-                        <select id="selectMiMode" name="mode">
-                            <option value="0">Répartition</option>
-                            <option value="1">Tirage</option>
-                            <option value="2">Tirage (5)</option>
-                        </select>
-                    </div>
-
-                    <div class="inputSelect toggle">
-                        <label for="role">Mode:</label>
-                        <select id="selecMiRole" name="role">
-                            <option value="0">Normal</option>
-                            <option value="1">Spécialiste</option>
-                            <option value="2">Champion</option>
-                            <option value="3">Héros Mineur</option>
-                            <option value="4">Héros Majeur</option>
-                        </select>
-                    </div>
-
-                </section>
 
                 <div class="inputCheckbox toggle">
                     <div>
@@ -368,35 +219,6 @@
 
 
         </div>
-        
-        <div id="explications" class="expert do-not-display">
-            <h2>Quelques explications...</h2><br>
-            <span class="strong">ΣComp</span>: <span class="is-smaller">((Valeurs de base + Pts de compétences sup. + Archétype) - (Magie - Pts décrémentés sur le COM)) + Magie = Total des pts de compétences (doit être le même résultat)</span><br><br>
-            <span class="strong">Nom</span>:
-            <ul><li><span class=italic>Logique</span>: tire un nom au sort de façon cohérente avec le peuple sélectionné
-            </ul><br>
-            <span class="strong">Peuple</span> :
-            <ul><li><span class=italic>Logique</span>: tire un peuple au sort sur la table des origines (Livre I, p29)
-            </ul><br>
-            <span class="strong">Groupe</span> :
-            <ul><li><span class=italic>Logique</span>: tire un groupe de carrière au sort sur la table des carrières (Livre I, p55-56) en fontion du peuple sélectionné 
-            </ul><br>
-            <span class="strong">Compétences</span> (définit le mode de calcul des points venant s'ajouter aux valeurs de base des compétences) :
-            <ul><li><span class=italic>Répartition</span> : répartit 120 points dans les compétences (sauf magie) par tranches de 5 
-                <li><span class=italic>Tirage</span> : assigne la somme de 2d10 dans chaque compétence (sauf magie)
-                <li><span class=italic>Tirage (tranche de 5)</span> : assigne 0, 5, 10, 15 ou 20 dans chaque compétence (saug magie)
-            </ul><br>
-            <span class="strong">Mode</span>:
-            <ul><li><span class=italic>Normal</span>: permet de créer un personnage-joueur ou un premier rôle selon les règles normales de création
-                <li><span class=italic>Spécialiste</span>: le personnage dispose de caractéristiques supplémentaires (voir détails d'attribution des caractéristiques)
-                <li><span class=italic>Champion</span>: idem
-                <li><span class=italic>Héros mineur</span>: idem
-                <li><span class=italic>Héros majeur</span>: idem<br>
-                <span class="italic is-smaller"><span class="strong">Note</span>: la génération de l'équipement reste toujours calquée sur le mode normal. Il peut donc être intéressant de l'adapter pour les autres modes.</span>
-            </ul><br>
-        </div>
-
-
         </div>
 
 

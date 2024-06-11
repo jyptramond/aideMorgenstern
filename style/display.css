@@ -12,8 +12,10 @@
  * mon set de couleur
  */
 
+
+ 
 html {
-    --color-black: black;
+    --color-black: #0d0d0d;
     --color-white: white;
     --color-grey: rgba(255, 255, 255, 0.25);
 

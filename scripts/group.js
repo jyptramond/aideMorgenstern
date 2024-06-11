@@ -1,36 +1,3 @@
-function configGroupListener() {
-    const leader = document.getElementById("leader");
-    const minions = document.getElementById("minions");
-    const leaderConfig = document.getElementById("leaderConfigSection");
-    const minionsConfig = document.getElementById("minionsConfigSection");
-
-    leader.addEventListener("click", function (event) {
-        console.log("leader")
-        switchGroupConfig(leader, minions, leaderConfig, minionsConfig);
-
-    });
-
-    minions.addEventListener("click", function (event) {
-        console.log("minions")
-        switchGroupConfig(minions, leader, minionsConfig, leaderConfig);
-
-    });
-}
-
-
-function switchGroupConfig(add, remove, addConfig, removeConfig) {
-
-    if (!add.classList.contains("active")) {
-        add.classList.add("active");
-        addConfig.classList.remove("do-not-display");
-    }
-
-    if (remove.classList.contains("active")) {
-        remove.classList.remove("active");
-        removeConfig.classList.add("do-not-display")
-    }
-}
-
 function renamingGroup() {
     let nameBalise = document.getElementById("champGroup") ;
     let nameDisplay = document.getElementById("nameDisplay") ;
@@ -50,7 +17,7 @@ function renamingGroup() {
 }
 
 
-function displayLeader(character) {
+function displayCard(character) {
 
     // Création d’une balise dédiée à un sortilège
     const groupSheet = document.getElementById("groupSheet") ;
@@ -59,19 +26,22 @@ function displayLeader(character) {
     card.classList.add("card-effect", "characterCard");
     
     const name = document.createElement("h3");
-    name.innerHTML = `${character.name}, ${character.archetype} (${character.job} ${character.origin})`;
+    name.innerHTML = `<input type="text" class='customName transparent' maxlength="40" style='display: inline' value='${character.name}, ${character.archetype} (${character.job} ${character.origin})'></input>`
 
 
     const description = document.createElement("p");
     description.classList.add("description");
-    description.innerHTML = `<i>${character.description}</i>`;
+    description.innerHTML = `<input type="text" class='customDescription transparent' maxlength="50" value='${character.description}'>`;
 
     const header = document.createElement("p");
     header.classList.add("header");
-    header.innerHTML =     `<strong>COM</strong>:&nbsp;${character.com} <strong>PV</strong>:&nbsp;${character.pv}<br>
-                                <strong>Prot</strong>:&nbsp;${character.armor ? `${character.armor}` : `0`}<br>
-                                <strong>DG</strong>:&nbsp;${character.weapon}<br>
-                                <strong>Comp</strong>:&nbsp;${character.stats}`;
+
+    header.innerHTML =     `<span><strong>COM</strong>:&nbsp;<input type="text" class='customCOM transparent' maxlength="7" style='display: inline' value='${character.com}'>
+                            <strong>PV</strong>:&nbsp;<input type="text" class='customPV transparent' maxlength="3" style='display: inline' value='${character.pv}'> / <input type="text" class='customPVMax transparent' maxlength="3" style='display: inline' value='${character.pv}'></span>
+                            <span><i class="fa-solid fa-shield-halved"></i>&nbsp;<input type="text" class='customProt transparent' maxlength="32" value='${character.armor}'></span>
+                            <span><strong>DG</strong>:&nbsp;<input type="text" class='customDG transparent' maxlength="32" value='${character.dg}'></span>
+                            <span><strong>//</strong>&nbsp;<input type="text" class='customComp transparent' maxlength="35" value='${character.stats}'></span>`
+
 
     // On rattache la balise article a la section Fiche
 
@@ -93,85 +63,7 @@ function addingMember() {
 }
 
 
-function cardEditor() {
-    let cards = document.getElementsByClassName("characterCard")
-    console.log(cards)
 
-    for (let i=0 ; i < cards.length ; i++) {
-        cards[i].addEventListener("click", function(event) {
-            console.log(cards[i])
-            
-            if (this.classList.contains("editing")) {
-                this.classList.remove("editing") ;
-            } else {
-            
-                deselectAllCards();
-                this.classList.add("editing") ;
-            }
-        })
-    }
-
-        
-}
-
-
-function deleter() {
-
-    const currentEdit = document.getElementsByClassName("editing") ;
-    const groupSheet = document.getElementById("groupSheet") ;
-
-    console.log("super ok")
-
-    if (!currentEdit[0]) {
-        groupSheet.innerHTML = "";
-    } else {
-        currentEdit[0].remove(); ;
-    }
-}
-
-function trashListener() {
-
-    const trashButton = document.getElementById("delete-group") ;
-
-    trashButton.addEventListener("click", function(event) {
-        console.log("ok")
-        deleter();
-
-    });
-
-}
-
-
-
-
-function deselectAllCards() {
-    let cards = document.getElementsByClassName("characterCard")
-    for (let i = 0 ; i < cards.length ; i++) {
-        if (cards[i].classList.contains("editing")) {
-            cards[i].classList.remove("editing");
-        }
-    }
-}
-
-function deselectOnWindow() {
-    window.addEventListener("click", function(event) {
-        
-        let cards = document.getElementsByClassName("characterCard") ;
-        let fullWindow = document.getElementById("fullWindow") ;
-        let clickedInsideCard = false;
-
-                Array.from(cards).forEach((card) => {
-                    if (card.contains(event.target)) {
-                        clickedInsideCard = true;
-                    }
-                });
-
-                if (fullWindow.contains(event.target) && (!clickedInsideCard)) {
-                        console.log("Clicked outside the cards");
-                        deselectAllCards();
-                }
-    });
-}
 
 
 
@@ -231,18 +123,3 @@ if (!isNaN(job)) {
 } 
 }
 
-
-let character = {
-    name: "Jonathan",
-    archetype: "Loup",
-    job: "Chômeur",
-    origin: "Humain",
-
-    description: "particulièrement beau",
-
-    com: "45/+5",
-    pv: "18",
-    armor : "brigandine (+1)",
-    weapon: "couteau RU+1",
-    stats: "PER 50  MOU 45  CNS 60"
-}

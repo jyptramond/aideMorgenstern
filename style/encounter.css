@@ -67,6 +67,89 @@ section {
     width : 60%;
 }
 
+.inputTextCustom {
+    display: flex;
+    flex-direction: column;
+}
+
+aside .inputTextCustom input {
+    display:block;
+    font-size: 18px;
+    background-image: linear-gradient(#464d55, #000000);
+    background-color: var(--color-black);
+    padding: 0.4rem;
+    border:none;
+    color:var(--color-white);
+    height:1.9rem;
+}
+
+p.header span {
+    display: flex;
+    width:100%;
+}
+
+.transparent {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-family: "Segoe UI";
+    display: flex;
+    align-items: center;
+}
+
+.customName {
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.customDescription {
+    font-style: italic ; 
+    text-align: center;
+    width: 100%;
+}
+
+.customCOM{
+    width: 60px;
+}
+
+.customPV {
+    width: 30px;
+    text-align: right;
+}
+
+.customPVMax {
+    width: 30px;
+}
+
+.customCOM,
+.customPV,
+.customPVMax {
+    position: relative;
+    top: -1px;
+}
+
+.customDG,
+.customProt,
+.customComp {
+    display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+}
+
+.customProt {
+    position: relative;
+    top: -4px;
+}
+
+.customDG {
+    position:relative;
+    top: -1px;
+}
+
+.customComp {
+    text-align: center;
+}
 
 
 
@@ -121,7 +204,6 @@ section {
  */
 
 
-
 #fullWindow article,
 #fullWindow div article {
     border: none;
@@ -144,6 +226,7 @@ article h3 {
 
 p.header {
     margin-bottom: 0;
+    text-align: left;
 }
 
 p.description {
