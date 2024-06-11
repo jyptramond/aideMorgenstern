@@ -32,6 +32,7 @@ function transformCharacter(old) {
         archetype: old.archetype,
         job: old.job,
         origin: old.origin,
+        id: 0,
 
         input: "",
 
@@ -55,7 +56,6 @@ function getStrFromWeapon(weapon) {
     let str ;
     let index = weapon.indexOf(')')
     let remove = weapon.slice(index+1)
-    console.log('to remove : '+remove)
     str = weapon.replace(remove, '')
 
     return str
@@ -92,8 +92,6 @@ let array = [];
 
     let myStats = `${stat1} | ${stat2} | ${stat3} | ${stat4}`;
 
-    console.log(myStats)
-
     return myStats
 }
 
@@ -103,8 +101,6 @@ function transformStatFromArray(string) {
     let stat = string.slice(index+1, index+4)
     let value = string.slice(0,2);
     let myNewStr = `${stat} ${value}`;
-
-    console.log(myNewStr)
 
     return myNewStr ;
 }

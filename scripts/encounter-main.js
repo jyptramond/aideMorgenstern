@@ -1,6 +1,7 @@
 let myGroup = {
         name: "Mon groupe",
-        editing : null,
+        editing: null,
+        character: []
     }
 
 function launchEncounter() {

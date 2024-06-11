@@ -28,7 +28,7 @@ function addCardListener() {
         newCharac = transformCharacter(character);
 
         displayCard(newCharac);
-        cardIdentifier();
+        cardIdentifier(newCharac);
 
     });
 }
@@ -83,15 +83,19 @@ function displayCard(character) {
         cardSelector(card);
 }
 
-function cardIdentifier() {
+function cardIdentifier(character) {
 
     const cards = document.getElementsByClassName("characterCard") ;
 
     for (let i = 0 ; i < cards.length ; i++) {
         cards[i].id = `card${i}` ;
+
+        if (character) {
+            myGroup.character[cards.length-1] = character ;
+        }
+        myGroup.character[i].id = i ;
+        console.log(cards[i].id,myGroup.character[i].id)
     }
-
-
 }
 
 
@@ -99,10 +103,19 @@ function cardIdentifier() {
 
 function deleter() {
 
+    const cards = document.getElementsByClassName("characterCard") ;
+
+    for (let i = 0 ; i < cards.length ; i++) {
+        if (cards[i].classList.contains('editing')) {
+            console.log('you are trying to delete card n°'+i)
+            myGroup.character.splice(i,1)
+        }
+    }
+
+
     const currentEdit = document.getElementsByClassName("editing") ;
     const groupSheet = document.getElementById("groupSheet") ;
 
-    console.log("super ok")
 
     if (!currentEdit[0]) {
         groupSheet.innerHTML = "";
@@ -110,7 +123,7 @@ function deleter() {
         currentEdit[0].remove(); ;
     }
 
-    cardIdentifier();
+    cardIdentifier(null);
 }
 
 function trashListener() {
@@ -118,7 +131,7 @@ function trashListener() {
     const trashButton = document.getElementById("delete-group") ;
 
     trashButton.addEventListener("click", function(event) {
-        console.log("ok")
+
         deleter();
 
     });
