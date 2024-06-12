@@ -129,6 +129,12 @@ custom.addEventListener("blur", function(event) {
 }
 
 
+function modifyGroupName() {
+
+modifyInput(document, "#nameDisplay", myGroup, "name")
+
+}
+
 
 function modifyObject(context, haveArmor) {
 

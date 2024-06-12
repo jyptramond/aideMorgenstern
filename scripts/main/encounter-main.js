@@ -19,7 +19,7 @@ function launchEncounter() {
     toggleNav();
     changeScreenRatio();
     erasingCards();
-
+    modifyGroupName();
  
     rotateButton("generer","encounter");
 
