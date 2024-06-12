@@ -4661,12 +4661,12 @@ const jobs = [
             "Second souffle/Mensonge éhonté"
         ],
         armor: "",
-        weapons: [
+        weapons: [],
+        inventory: [
             "costume de bourgeois", 
             "2d10 tracts incitant à la rébellion", 
             "deux torches"
-        ],
-        inventory: []
+        ]
     },
     {
         name: "Charlatan/Escroc",
@@ -4728,12 +4728,12 @@ const jobs = [
             "Réflexes éclairs/Vivacité"
         ],
         armor: "",
-        weapons: [
+        weapons: [],
+        inventory: [
             "jeu de crochets", 
             "paire de gants noirs", 
             "corde de 10 mètres et grappin"
-        ],
-        inventory: []
+        ]
     },
     {
         name: "Contrebandier/Receleur",
@@ -6255,10 +6255,9 @@ const jobs = [
         ],
         armor: "",
         weapons: [
-            
+            "bâton de marche (RU+*FOR*-2)"
         ],
         inventory: [
-            "bâton de marche",
             "besace contenant poudres, onguents et ingrédients étranges"
         ]
     },
