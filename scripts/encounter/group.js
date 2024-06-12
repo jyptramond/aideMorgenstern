@@ -5,8 +5,6 @@ function renamingGroup() {
 
     nameDisplay = document.getElementById("nameDisplay") ;
 
-    console.log(myGroup.name)
-
     nameDisplay.value = myGroup.name;
 
     nameDisplay.addEventListener("input", function(event) {
@@ -60,9 +58,8 @@ function rollinitiative(value) {
 
     for (let i = 0 ; i < myGroup.character.length ; i++) {
         let myRoll = (aleatoire(value))+1 ;
-        console.log(myRoll)
         myGroup.character[i].roll = Number(myGroup.character[i].init) + myRoll ;
-        rollDisplay[i].textContent = `#${myGroup.character[i].roll}`
+        rollDisplay[i].value = String(myGroup.character[i].roll);
     }
 
     myGroup.character.sort((a, b) => b.roll - a.roll);
@@ -77,9 +74,7 @@ function initListener() {
     
     initButton.addEventListener("click", function(event) {
         let value = getUserInputs("selectDice")
-        console.log("value = "+value);
         rollinitiative(value)
-        console.log(myGroup.character)
     });
 }
 

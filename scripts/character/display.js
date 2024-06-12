@@ -116,17 +116,22 @@ function displayStat(property, tagID) {
 function displayStatInfo(property, name, what) {
     let bonus = "";
 
-    if (name !== "titre") {
+    if (name === 'archétype') {
         if (property !== 0) {
             property > 0 ?  bonus = `${name} (<span class="is-green strong">+${property}</span>)<br>` : 
                             bonus = `${name} (<span class="is-red strong">${property}</span>)<br>` ;
             }
     }
-    else {
+    else if (name === 'titre') {
         if (property !== 0) {
             bonus = `${what} (<span class="is-green strong">+${property}</span>)<br>` ;
         }
-    }
+    } 
+    else if (name === 'magie') {
+        if (property !== 0) {
+            bonus = `${name} (<span class="is-red strong">-${property}</span>)<br>` ;
+        }
+    } 
 
         return bonus
 }

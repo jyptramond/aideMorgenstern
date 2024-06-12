@@ -156,8 +156,6 @@ function validateInputStr(event) {
   }
 
 
-
-
 function configFromSelect(srcID) {
     let data = parseInt(document.getElementById(srcID).value);
     return data
@@ -210,7 +208,7 @@ function drawScreen(mode) {
             link.href = canvas.toDataURL('image/jpeg');
 
             // Déterminer le nom de fichier basé sur le contenu du textarea et d'autres variables
-            console.log(mode)
+            //console.log(mode)
             if (mode === 'generator') {
                 let characterId= clearTagsFromId("identite");
                 filename = `${characterId}-Morgenstern.jpeg`;

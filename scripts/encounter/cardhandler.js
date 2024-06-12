@@ -53,13 +53,13 @@ function displayCard(character) {
     card.classList.add("card-effect", "characterCard");
     
     const name = document.createElement("h3");
-    name.innerHTML =    `<input oninput="validateInputStats(event)" type="text" class='customName transparent' maxlength="35" style='display: inline' value='${character.name}'></input>
-                        <input oninput="validateInputStats(event)" type="text" class='customSubName transparent' maxlength="35" style='display: inline' value='${character.subname}'></input>`
+    name.innerHTML =    `<input oninput="validateInputStats(event)" type="text" class='customName transparent' maxlength="30" style='display: inline' value="${character.name}"></input>
+                        <input oninput="validateInputStats(event)" type="text" class='customSubName transparent' maxlength="35" style='display: inline' value="${character.subname}"></input>`
 
 
     const description = document.createElement("p");
     description.classList.add("description");
-    description.innerHTML = `<input oninput="validateInputStats(event)" type="text" class='customDescription transparent' maxlength="30" value='${character.description}'>`;
+    description.innerHTML = `<input oninput="validateInputStats(event)" type="text" class='customDescription transparent' maxlength="30" value="${character.description}">`;
 
     const header = document.createElement("p");
     header.classList.add("header");
@@ -67,18 +67,18 @@ function displayCard(character) {
 
     if (character.armor) {
         haveArmor = true ;
-        header.innerHTML =     `<span><strong>COM</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customCOM transparent' maxlength="7" style='display: inline' value='${character.com}'>
+        header.innerHTML =     `<span><strong>COM</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customCOM transparent' maxlength="7" style='display: inline' value="${character.com}">
                                 <strong>PV</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customPV transparent' maxlength="3" style='display: inline' value='${character.pv}'> / <input type="text" class='customPVMax transparent' maxlength="3" style='display: inline' value='${character.pv}'>
-                                <strong>Init</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customInit transparent' maxlength="2" style='display: inline' value='${character.init}'><span class='character-roll'>#${character.roll}</span></span>
-                                <span><strong>Prot</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customProt transparent' maxlength="30" value='${character.armor}'></span>
-                                <span><strong>DG</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customDG transparent' maxlength="30" value='${character.dg}'></span>
-                                <span><input oninput="validateInputStats(event)" type="text" class='customComp transparent' maxlength="40" value='${character.stats}'></span>`
+                                <strong>Init</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customInit transparent' maxlength="2" style='display: inline' value='${character.init}'><input oninput="validateInputNumbers(event)" type="text" class='character-roll transparent' maxlength="3" style='display: inline' value="${character.roll}"></span>
+                                <span><strong>Prot</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customProt transparent' maxlength="30" value="${character.armor}"></span>
+                                <span><strong>DG</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customDG transparent' maxlength="30" value="${character.dg}"></span>
+                                <span><input oninput="validateInputStats(event)" type="text" class='customComp transparent' maxlength="40" value="${character.stats}"></span>`
     } else {
-        header.innerHTML =     `<span><strong>COM</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customCOM transparent' maxlength="7" style='display: inline' value='${character.com}'>
+        header.innerHTML =     `<span><strong>COM</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customCOM transparent' maxlength="7" style='display: inline' value="${character.com}">
                                 <strong>PV</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customPV transparent' maxlength="3" style='display: inline' value='${character.pv}'> / <input type="text" class='customPVMax transparent' maxlength="3" style='display: inline' value='${character.pv}'>
-                                <strong>Init</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customInit transparent' maxlength="2" style='display: inline' value='${character.init}'><span class='character-roll'>#${character.roll}</span></span>
-                                <span><strong>DG</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customDG transparent' maxlength="32" value='${character.dg}'></span>
-                                <span><input oninput="validateInputStats(event)" type="text" class='customComp transparent' maxlength="40" value='${character.stats}'></span>`
+                                <strong>Init</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customInit transparent' maxlength="2" style='display: inline' value="${character.init}"><input oninput="validateInputNumbers(event)" type="text" class='character-roll transparent' maxlength="3" style='display: inline' value="${character.roll}"></span>
+                                <span><strong>DG</strong>:&nbsp;<input oninput="validateInputStats(event)" type="text" class='customDG transparent' maxlength="32" value="${character.dg}"></span>
+                                <span><input oninput="validateInputStats(event)" type="text" class='customComp transparent' maxlength="40" value="${character.stats}"></span>`
     }
 
     
@@ -114,19 +114,21 @@ function cardIdentifier(character) {
 function modifyInput(context, classId, saveSpot, target) {
     let custom = context.querySelector(classId) ;
 
-custom.addEventListener("input", function(event) {
+custom.addEventListener("blur", function(event) {
 
     let i = getEditedCard();
-    console.log("my i is "+i)
     let cardi = `card${i}`
     let input = getUserInputsFromStr(custom.value) ;
     let id = context.id ;
-    console.log("my id is "+id)
-    console.log("my element is "+cardi)
 
     if (cardi === id) {
         saveSpot[i][target] = input;
-        console.log(saveSpot[i][target])
+    }
+
+    if (target === 'roll') {
+        myGroup.character.sort((a, b) => b.roll - a.roll);
+        groupSheet.innerHTML = "";
+        displayGroupFromObj(myGroup) ;
     }
 
     setObjectAsCookie("encounter-cookie", myGroup, 360);
@@ -146,6 +148,7 @@ modifyInput(context, ".customPVMax", myGroup.character, "pvmax")
 modifyInput(context, ".customInit", myGroup.character, "init")
 modifyInput(context, ".customDG", myGroup.character, "dg")
 modifyInput(context, ".customComp", myGroup.character, "stats")
+modifyInput(context, ".character-roll", myGroup.character, "roll")
 
 if (haveArmor) {
     modifyInput(context, ".customProt", myGroup.character, "armor")
@@ -162,7 +165,7 @@ function getEditedCard() {
 
     for (let i = 0 ; i < cards.length ; i++) {
         if (cards[i].classList.contains('editing')) {
-            console.log('you deletes card n°'+i)
+            //console.log('you edit card n°'+i)
             return i
         }
     }
@@ -233,7 +236,7 @@ function deselectOnWindow() {
                 });
 
                 if (fullWindow.contains(event.target) && (!clickedInsideCard)) {
-                        console.log("Clicked outside the cards");
+                        //console.log("Clicked outside the cards");
                         deselectAllCards();
                 }
     });
