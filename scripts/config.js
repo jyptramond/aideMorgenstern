@@ -58,6 +58,32 @@ function getUserInputs(id) {
 }
 
 
+function clearTagsFromId(id) {
+
+    const configDOMPurify = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+    let input = DOMPurify.sanitize(document.getElementById(id).innerHTML, configDOMPurify);
+    return input
+
+}
+
+
+function getUserInputsFromStr(str) {
+
+    const configDOMPurify = {
+        ALLOWED_TAGS: false,
+        ALLOWED_ATTR: false
+    };
+
+    let input = DOMPurify.sanitize(str, configDOMPurify);
+    return input
+
+}
+
+
 
 
 function inputListenersLaunch(character, target, targetID, inputLength) {
@@ -104,6 +130,32 @@ if (!isNaN(job)) {
 }
 
 
+function validateInputStr(event) {
+    const input = event.target;
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ' 0-9]*$/;
+    if (!regex.test(input.value)) {
+      input.value = input.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ' 0-9]/g, '');
+    }
+  }
+
+
+  function validateInputNumbers(event) {
+    const input = event.target;
+    const regex = /^[0-9]*$/;
+    if (!regex.test(input.value)) {
+      input.value = input.value.replace(/[^0-9]/g, '');
+    }
+  }
+
+  function validateInputStats(event) {
+    const input = event.target;
+    const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ' +-/|()0-9]*$/;
+    if (!regex.test(input.value)) {
+      input.value = input.value.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ' +-/|()0-9]/g, '');
+    }
+  }
+
+
 
 
 function configFromSelect(srcID) {
@@ -114,33 +166,33 @@ function configFromSelect(srcID) {
 
 
 
-function savingCharacter(character, mode) {
+function screenshot(mode) {
     document.addEventListener('keydown', function(event) {
         if (event.ctrlKey && event.key === 's') {
             event.preventDefault(); // Prevent the default browser behavior for Ctrl+S
             //console.log('Ctrl+S was pressed');
 
             // Your custom save logic here
-            takeScreenshotWeb(character, mode);
+            drawScreen(mode);
 
             return false; // Prevent the default browser behavior for Ctrl+S (alternative way)
         }
     });
     document.getElementById('save').addEventListener('click', function(event) {
-        takeScreenshotWeb(character, mode);
+        drawScreen(mode);
     });
 }
 
 
 
-function takeScreenshotWeb(character, mode) {
+function drawScreen(mode) {
 
         let baliseCocherNotes = document.getElementById("cocherNotes");
         let textarea;
         let text;
         let filename;
 
-        if (baliseCocherNotes.checked) {
+        if (baliseCocherNotes && baliseCocherNotes.checked) {
             textarea = document.getElementById('champNotes');
             text = textarea.value;
             textarea.value = "";
@@ -148,10 +200,8 @@ function takeScreenshotWeb(character, mode) {
 
 
         html2canvas(document.getElementById('content')).then(function(canvas) {
-            
-            console.log(character.name);
-            
-            if (baliseCocherNotes.checked) {
+                        
+            if (baliseCocherNotes && baliseCocherNotes.checked) {
                 drawTextArea(canvas, text);
             } 
 
@@ -160,10 +210,16 @@ function takeScreenshotWeb(character, mode) {
             link.href = canvas.toDataURL('image/jpeg');
 
             // Déterminer le nom de fichier basé sur le contenu du textarea et d'autres variables
+            console.log(mode)
             if (mode === 'generator') {
-                filename = `${character.name.value}-${character.origin}-${character.archetype}-${character.age.value}-Brigandyne.jpeg`;
-            } else {
-                filename = `${character.name}-Brigandyne.jpeg`;
+                let characterId= clearTagsFromId("identite");
+                filename = `${characterId}-Morgenstern.jpeg`;
+            } else if (mode === 'spellbook') {
+                let spellbookName = clearTagsFromId("mySpellbookTitle");
+                filename = `${spellbookName}-Morgenstern.jpeg`;
+            } else if (mode === 'encounter') {
+                let groupName = getUserInputs("nameDisplay");
+                filename = `${groupName}-Morgenstern.jpeg`;
             }
             
             

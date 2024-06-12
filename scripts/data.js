@@ -2849,7 +2849,7 @@ const groups = [
         name: "Forestiers et paysans",
         armor: "",
         weapons: [
-            `${armesdemeleelegere}/`, 
+            `${armesdemeleelegere}`, 
             "couteau (RU+*FOR*-1)"
         ],
         inventory: [
@@ -6105,8 +6105,10 @@ const jobs = [
             "Nyctalopie",
             "Solidité"
         ],
-        armor: `${batons}`,
-        weapons: [],
+        armor: "",
+        weapons: [
+            `${batons}`
+        ],
         inventory: [
             "une lanterne",
             "une corde de 10 mètres",

@@ -1,3 +1,11 @@
+let difficultyFilter = -30;
+let lastSelectedOptionId = 'ascending';
+
+let myCustomSpellbook = [] ;
+let myCustomSpellbookName = "";
+
+
+
 function launchSpellbook() {
 
     generateMySpellbook();
@@ -37,7 +45,7 @@ function launchSpellbook() {
     displaySpellbook();
     displayTricksAndSpells();
     customizeSpellbookName();
-    takeScreenshotWeb();
+    screenshot("spellbook")
     deletingCustomSpeelbook();
 }
 

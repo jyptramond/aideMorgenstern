@@ -1,11 +1,3 @@
-let difficultyFilter = -30;
-let lastSelectedOptionId = 'ascending';
-
-let myCustomSpellbook = [] ;
-let myCustomSpellbookName = "";
-
-
-
 function deletingCustomSpeelbook() {
 
     const button = document.getElementById("delete-spellbook");

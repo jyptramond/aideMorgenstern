@@ -20,19 +20,21 @@
     <script src="../scripts/data.js" defer></script>
 
     
-    <script src="../scripts/character.js" defer></script>
+    <script src="../scripts/character/character.js" defer></script>
+    <script src="../scripts/character/display.js" defer ></script>
+    <script src="../scripts/character/init.js" defer></script>
+    <script src="../scripts/character/math.js" defer></script>
+    <script src="../scripts/character/magic.js" defer></script>
+    <script src="../scripts/character/specialist.js" defer></script>
 
-    <script src="../scripts/display.js" defer ></script>
-    <script src="../scripts/init.js" defer></script>
-    <script src="../scripts/math.js" defer></script>
-    <script src="../scripts/magic.js" defer></script>
-    <script src="../scripts/specialist.js" defer></script>
+
+    <script src="../scripts/encounter/group.js" defer ></script>
+    <script src="../scripts/encounter/cardhandler.js" defer ></script>
+
     <script src="../scripts/config.js" defer></script>
-
     <script src="../scripts/cookies.js" defer></script>
-    <script src="../scripts/group.js" defer ></script>
-    <script src="../scripts/cardhandler.js" defer ></script>
-    <script src="../scripts/encounter-main.js" defer ></script>
+
+    <script src="../scripts/main/encounter-main.js" defer ></script>
 
     <!-- DOMpurify -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.5/dist/purify.min.js"></script>
@@ -70,6 +72,11 @@
                 <button class="myButton" title="Changer format"         id="screen"><i class="fa-solid fa-mobile-screen button-size"></i></button>
                 <button class="myButton" title="Enregistrer Ctrl+S"     id="save"><i class="fa-solid fa-floppy-disk button-size"></i></button>
                 <button class="myButton" title="Ajouter Alt+Q"          id="add"><i class="fa-solid fa-square-plus button-size"></i></i></button>
+            </div>
+
+            <div class="divRowCenter">
+                <input oninput="validateInputNumbers(event)" type="text" id="selectDice"  value="20" maxlength="2">
+                <button class="myButton" title="Tirer l'initiative"   id="initButton"><i class="fa-solid fa-dice-d20 button-size"></i></i></button>
             </div>
 
             <div class="inputSelect toggle">
@@ -226,7 +233,7 @@
             <div id="content">
 
                 <div id="groupSheetHeader">
-                    <input class='h1' type="text" id="nameDisplay" maxlength="30" placeholder="Intitulé du groupe" value="Mon groupe">
+                    <input oninput="validateInputStr(event)" class='h1' type="text" id="nameDisplay" maxlength="30" placeholder="Intitulé du groupe" value="Mon groupe">
                 </div>
 
 

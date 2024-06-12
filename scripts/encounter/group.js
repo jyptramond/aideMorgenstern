@@ -5,6 +5,10 @@ function renamingGroup() {
 
     nameDisplay = document.getElementById("nameDisplay") ;
 
+    console.log(myGroup.name)
+
+    nameDisplay.value = myGroup.name;
+
     nameDisplay.addEventListener("input", function(event) {
 
         let value = getUserInputs("nameDisplay");
@@ -28,18 +32,15 @@ function transformCharacter(old) {
 
 
     let newCharacter = {
-        name: old.name.original,
-        archetype: old.archetype,
-        job: old.job,
-        origin: old.origin,
+        name: `${old.name.original}, ${old.job}`,
+        subname: `${old.origin} (${old.archetype})`,
         id: 0,
-
-        input: "",
 
         description: getDescription(),
 
         com: getStrFromCom(old.stats.com.value),
         init: old.initiative,
+        roll: old.initiative,
         pvmax: old.pv.sum,
         pv: old.pv.sum,
         armor: old.armor,
@@ -50,6 +51,42 @@ function transformCharacter(old) {
 
     return newCharacter
 }
+
+
+function rollinitiative(value) {
+
+    let rollDisplay = document.getElementsByClassName("character-roll");
+    const groupSheet = document.getElementById("groupSheet") ;
+
+    for (let i = 0 ; i < myGroup.character.length ; i++) {
+        let myRoll = (aleatoire(value))+1 ;
+        console.log(myRoll)
+        myGroup.character[i].roll = Number(myGroup.character[i].init) + myRoll ;
+        rollDisplay[i].textContent = `#${myGroup.character[i].roll}`
+    }
+
+    myGroup.character.sort((a, b) => b.roll - a.roll);
+    groupSheet.innerHTML = "";
+    displayGroupFromObj(myGroup) ;
+}
+
+
+function initListener() {
+
+    let initButton = document.getElementById("initButton");
+    
+    initButton.addEventListener("click", function(event) {
+        let value = getUserInputs("selectDice")
+        console.log("value = "+value);
+        rollinitiative(value)
+        console.log(myGroup.character)
+    });
+}
+
+
+
+
+
 
 function getStrFromWeapon(weapon) {
 
@@ -124,4 +161,19 @@ function getStrFromCom(number) {
     }
 
     return string
+}
+
+
+
+
+function displayGroupFromObj(obj) {
+    
+    //console.log(myGroup)
+    //console.log(obj)
+
+    for (let i = 0 ; i < obj.character.length ; i++) {
+        
+        displayCard(obj.character[i]);
+        cardIdentifier(obj.character[i]);
+    }
 }

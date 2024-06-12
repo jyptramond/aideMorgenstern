@@ -23,11 +23,15 @@
 
     <!-- Scripts -->
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    
+    <script src="../scripts/spellbook/spellbook.js" defer></script>
+
     <script src="../scripts/data.js" defer></script>
     <script src="../scripts/cookies.js" defer></script>
     <script src="../scripts/config.js" defer></script>
-    <script src="../scripts/spellbook.js" defer></script>
-    <script src="../scripts/spellbook-main.js" defer></script>
+
+    <script src="../scripts/main/spellbook-main.js" defer></script>
     
     
     
@@ -69,7 +73,7 @@
                 </div>
 
                 <div class="inputText toggle">
-                    <input type="text" id="userSearch" maxlength="25" placeholder="Votre recherche">
+                    <input oninput="validateInputStr(event)" type="text" id="userSearch" maxlength="25" placeholder="Votre recherche">
                 </div>
 
 
@@ -137,7 +141,7 @@
                 </form>
 
                 <div class="inputText toggle">
-                    <input type="text" id="customSpellbook" maxlength="35" placeholder="Mon Grimoire">
+                    <input oninput="validateInputStr(event)" type="text" id="customSpellbook" maxlength="35" placeholder="Mon Grimoire">
                 </div>
 
                 <div class="divRow toggle">

@@ -27,7 +27,7 @@ function launchGenerator() {
     displayDetailedView();
     displayNotes();
 
-    savingCharacter(character, "generator");
+    screenshot("generator");
 
 
     generateButtonListener();
