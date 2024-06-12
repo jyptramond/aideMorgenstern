@@ -3856,11 +3856,11 @@ const jobs = [
             "Vivacité"
         ],
         armor: "",
-        weapons: [
+        weapons: [],
+        inventory: [
             "un objet extorqué il y a quelques jours (de petite valeur, à décider avec le MJ)",
             "des osselets ou trois dés en os"
-        ],
-        inventory: []
+        ]
     },
     {
         name: "Bandit de grand chemin",
