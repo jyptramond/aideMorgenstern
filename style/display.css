@@ -305,6 +305,7 @@ ul li {
 
 
  .myButton {
+    aspect-ratio: 1 / 1;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -353,22 +354,12 @@ ul li {
     box-shadow: none;
     transform: translateY(0);
   }
+
+  #eraser.alert {
+    background-color : red ;
+    color: white;
+  }
  
-
-
- #generer,
- #save,
- #screen,
- #add,
- #toggle-button,
- #toggle-button-config,
- #delete-spellbook,
- #delete-group,
- #initButton {
-    aspect-ratio: 1 / 1;
- }
-
-
 
 /**
  * Text

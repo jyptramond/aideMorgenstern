@@ -31,7 +31,7 @@ function launchGenerator() {
 
 
     generateButtonListener();
-    rotateButton("generer");
+    rotateButton("generer", null);
 
     //console.log(character) ;
 

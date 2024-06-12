@@ -6,6 +6,7 @@ function cardSelector(card) {
                 deselectAllCards();
                 this.classList.add("editing") ;
                 myGroup.editing = this ;
+                cardDeleteOnClick();
             }
         })
 
@@ -15,31 +16,20 @@ function cardSelector(card) {
                 deselectAllCards();
                 this.classList.add("editing") ;
                 myGroup.editing = this ;
+                cardDeleteOnClick();
             }
         })
 
     }    
 
 
-function addButtonListener() {
-    const add = document.getElementById("add")
+function cardDeleteOnClick() {
 
+    if (erasing) {
+        deleter();
+    }
 
-
-    add.addEventListener("click", function(event) {
-
-        const cards = document.getElementsByClassName("characterCard") ;
-        if (cards.length < 12) {
-            let myConfig = initConfig();
-            let character = createCharacter(myConfig);
-            newCharac = transformCharacter(character);
-            displayCard(newCharac);
-            cardIdentifier(newCharac);
-        }
-    });
 }
-
-
 
 
 function displayCard(character) {
@@ -47,7 +37,7 @@ function displayCard(character) {
     let haveArmor = false ;
 
     // Création d’une balise dédiée à un sortilège
-    const groupSheet = document.getElementById("groupSheet") ;
+    //const groupSheet = document.getElementById("groupSheet") ;
 
     const card = document.createElement("article");
     card.classList.add("card-effect", "characterCard");
@@ -111,6 +101,8 @@ function cardIdentifier(character) {
 }
 
 
+
+
 function modifyInput(context, classId, saveSpot, target) {
     let custom = context.querySelector(classId) ;
 
@@ -127,6 +119,7 @@ custom.addEventListener("blur", function(event) {
 
     if (target === 'roll') {
         myGroup.character.sort((a, b) => b.roll - a.roll);
+        
         groupSheet.innerHTML = "";
         displayGroupFromObj(myGroup) ;
     }
@@ -180,7 +173,7 @@ function deleter() {
 
     myGroup.character.splice(i,1)
     const currentEdit = document.getElementsByClassName("editing") ;
-    const groupSheet = document.getElementById("groupSheet") ;
+    //const groupSheet = document.getElementById("groupSheet") ;
 
 
     if (!currentEdit[0]) {

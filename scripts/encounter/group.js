@@ -54,7 +54,7 @@ function transformCharacter(old) {
 function rollinitiative(value) {
 
     let rollDisplay = document.getElementsByClassName("character-roll");
-    const groupSheet = document.getElementById("groupSheet") ;
+    //const groupSheet = document.getElementById("groupSheet") ;
 
     for (let i = 0 ; i < myGroup.character.length ; i++) {
         let myRoll = (aleatoire(value))+1 ;
@@ -159,8 +159,6 @@ function getStrFromCom(number) {
 }
 
 
-
-
 function displayGroupFromObj(obj) {
     
     //console.log(myGroup)
@@ -171,4 +169,82 @@ function displayGroupFromObj(obj) {
         displayCard(obj.character[i]);
         cardIdentifier(obj.character[i]);
     }
+}
+
+function areWeEditing() {
+
+    let edit = document.querySelector(".editing") ;
+    if (edit !== null) {
+        return true
+    }
+    else {
+        return false
+    }
+
+}
+
+
+
+
+function refreshCard() {
+
+    const refreshButton = document.getElementById("generer") ;
+
+    refreshButton.addEventListener('click', function(event) {
+
+        let edit = areWeEditing() ;
+        if (edit) {
+
+        let i = getEditedCard();
+        let cards = document.getElementsByClassName("characterCard");
+        let myConfig = initConfig();
+        let character = createCharacter(myConfig);
+        newCharac = transformCharacter(character);
+
+        myGroup.character[i] = newCharac ;
+
+        groupSheet.innerHTML = "";
+        displayGroupFromObj(myGroup) ;
+        cardIdentifier(null);
+
+        cards[i].classList.add("editing");
+        }
+    });
+}
+
+
+
+
+function erasingCards() {
+    const eraserButton = document.getElementById("eraser")
+
+    eraserButton.addEventListener("click", function(event) {
+
+        erasing = !erasing;
+        eraserButton.classList.toggle("alert")
+
+        
+        console.log(erasing) ;
+
+    });
+}
+
+
+
+function addButtonListener() {
+    const add = document.getElementById("add")
+
+
+
+    add.addEventListener("click", function(event) {
+
+        const cards = document.getElementsByClassName("characterCard") ;
+        if (cards.length < 12) {
+            let myConfig = initConfig();
+            let character = createCharacter(myConfig);
+            newCharac = transformCharacter(character);
+            displayCard(newCharac);
+            cardIdentifier(newCharac);
+        }
+    });
 }

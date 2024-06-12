@@ -28,19 +28,26 @@ function newCharacter() {
 }
 
 
-function rotateButton(target) {    
+function rotateButton(target, mode) {    
+   
+    let edit = true;
+
     let amount = 0
     document.getElementById(target).addEventListener("click", function(event) {
 
-        let icon = document.querySelector('#'+target+" i")
-
-        amount += 180;
-
-        if (icon) {
-            icon.style.transform = `rotate(${amount}deg)`;
+        if (mode === 'encounter') {
+            edit = areWeEditing();
         }
-        
-        
+
+        if (edit) {
+            let icon = document.querySelector('#'+target+" i")
+
+            amount += 180;
+    
+            if (icon) {
+                icon.style.transform = `rotate(${amount}deg)`;
+            }
+        }
     });
 }
 

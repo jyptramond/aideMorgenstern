@@ -4,20 +4,26 @@ let myGroup = {
         character: []
     }
 
-function launchEncounter() {
+let erasing = false;
 
+function launchEncounter() {
     
     screenshot('encounter')
     trashListener();
     deselectOnWindow();
-    
+    refreshCard();
     toggleConfig();
     displayJobsOnClick();
     addButtonListener();
     initListener();
     toggleNav();
     changeScreenRatio();
+    erasingCards();
 
+ 
+    rotateButton("generer","encounter");
+
+    
     if (cookieExists("encounter-cookie")) {
         myGroup = getObjectFromCookie("encounter-cookie") ;
 
