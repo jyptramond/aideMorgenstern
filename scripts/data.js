@@ -3177,9 +3177,9 @@ const jobs = [
             "Sixième sens", 
             "Solidité"
         ],
-        armor: "",
+        armor: `${armureslegeres}`,
         weapons: [
-            `${armesdemelee}`, `${armureslegeres}`
+            `${armesdemelee}`
         ],
         inventory: []
     },

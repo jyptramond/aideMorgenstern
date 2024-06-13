@@ -253,3 +253,15 @@ aside {
 }
 
 
+
+@media screen and (max-width: 448px) {
+    h1 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    h1 {
+        font-size: 23px;
+    }
+}
